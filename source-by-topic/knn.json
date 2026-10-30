@@ -1,0 +1,1292 @@
+[
+  {
+    "id": "knn-001",
+    "topic": "knn",
+    "subtopic": "Lazy / instance-based learning",
+    "difficulty": "recall",
+    "q": "KNN is often described as a \"lazy learner\" because ______.",
+    "options": [
+      "it performs no explicit training step and instead defers all computation to prediction time",
+      "it can only be applied reliably to datasets with a few dozen training examples",
+      "it requires manually tuning every model weight before it can generate a prediction",
+      "it cannot ever be updated or retrained at all once the model has been deployed to production"
+    ],
+    "correct": 0,
+    "explanation": "KNN simply stores the training data; the real computational work (searching for neighbors) only happens when a prediction is requested."
+  },
+  {
+    "id": "knn-002",
+    "topic": "knn",
+    "subtopic": "Lazy / instance-based learning",
+    "difficulty": "recall",
+    "q": "Which of the following best describes what happens during KNN's \"training\" phase?",
+    "options": [
+      "KNN simply stores the training examples; no model parameters are learned",
+      "KNN fits a set of weights by running gradient descent over many training epochs",
+      "KNN builds a hierarchical tree of if/else splits learned from the training data",
+      "KNN estimates a fixed parametric probability distribution over the class labels"
+    ],
+    "correct": 0,
+    "explanation": "Because KNN is non-parametric and instance-based, fitting the model is just memorizing the data rather than estimating parameters."
+  },
+  {
+    "id": "knn-003",
+    "topic": "knn",
+    "subtopic": "Lazy / instance-based learning",
+    "difficulty": "application",
+    "q": "A hospital diagnoses a new patient by finding the most similar past patients in its records and looking at their outcomes. Which property of KNN makes it a natural fit for this approach?",
+    "options": [
+      "It makes predictions directly by comparing a new case to stored past cases rather than learning a general decision rule",
+      "It first compresses all of the patient records into a small set of diagnostic rules before use",
+      "It automatically discovers entirely new and unexpected disease categories that were never present in the original labels",
+      "It requires all of the patient records to first be converted into a trained neural network"
+    ],
+    "correct": 0,
+    "explanation": "KNN's core mechanism is exactly this kind of case-based reasoning: predict from the outcomes of the closest known examples."
+  },
+  {
+    "id": "knn-004",
+    "topic": "knn",
+    "subtopic": "Lazy / instance-based learning",
+    "difficulty": "recall",
+    "q": "Unlike logistic regression or a trained decision tree, a KNN classifier ______ at training time.",
+    "options": [
+      "does not learn any parameters or build any explicit model",
+      "learns and stores a full set of fitted regression coefficients",
+      "builds a hierarchical tree of if/else splits during training",
+      "estimates a fixed probability distribution for each output class"
+    ],
+    "correct": 0,
+    "explanation": "KNN's \"training\" is just storing the data; the comparison against neighbors happens later, at prediction time."
+  },
+  {
+    "id": "knn-005",
+    "topic": "knn",
+    "subtopic": "Lazy / instance-based learning",
+    "difficulty": "analysis",
+    "q": "Why is KNN called a \"non-parametric\" method?",
+    "options": [
+      "It makes no fixed assumption about the functional form of the decision boundary, letting the data itself define it locally",
+      "It cannot ever be used to estimate any parameters whatsoever, since it has no learnable internal structure of any kind at all",
+      "It only works correctly when every single input feature is strictly categorical, never numeric",
+      "It has exactly zero hyperparameters that ever need to be tuned by the practitioner"
+    ],
+    "correct": 0,
+    "explanation": "Non-parametric here means the model does not assume a fixed equation (like a line or a fixed-degree curve); the boundary shape emerges from the local arrangement of stored points."
+  },
+  {
+    "id": "knn-006",
+    "topic": "knn",
+    "subtopic": "Lazy / instance-based learning",
+    "difficulty": "recall",
+    "q": "Instance-based learning algorithms such as KNN ______ to make a prediction.",
+    "options": [
+      "keep the entire training dataset in memory and use it directly",
+      "convert all training examples into a compact set of rules",
+      "discard the training data once a global function has been fit",
+      "require a separate validation set before any prediction can be made"
+    ],
+    "correct": 0,
+    "explanation": "Instance-based learning keeps the raw examples and compares new points against them directly, rather than summarizing them into a fitted function."
+  },
+  {
+    "id": "knn-007",
+    "topic": "knn",
+    "subtopic": "Lazy / instance-based learning",
+    "difficulty": "application",
+    "q": "A fraud detection system flags a new transaction by searching for the most similar past transactions and checking how many were confirmed fraudulent. This describes which kind of learning approach?",
+    "options": [
+      "Instance-based (lazy) learning, as used by KNN",
+      "Parametric learning with a fixed set of coefficients",
+      "Rule-based learning using a fixed decision tree",
+      "Unsupervised clustering with no labels involved"
+    ],
+    "correct": 0,
+    "explanation": "Looking up similar historical examples and borrowing their labels is the defining behavior of instance-based learners like KNN."
+  },
+  {
+    "id": "knn-008",
+    "topic": "knn",
+    "subtopic": "Lazy / instance-based learning",
+    "difficulty": "analysis",
+    "q": "Which statement correctly contrasts KNN with a parametric model like logistic regression?",
+    "options": [
+      "KNN defers almost all computational work to prediction time, while logistic regression does most of the work during training",
+      "KNN produces a single fixed equation that is learned once and reused for every future prediction",
+      "KNN always requires substantially more training time than logistic regression on every dataset",
+      "KNN cannot be used for any classification tasks at all, only for regression problems"
+    ],
+    "correct": 0,
+    "explanation": "Logistic regression invests effort upfront to fit coefficients; KNN instead searches the stored data anew for every query."
+  },
+  {
+    "id": "knn-009",
+    "topic": "knn",
+    "subtopic": "Lazy / instance-based learning",
+    "difficulty": "application",
+    "q": "What is a direct consequence of KNN having no explicit training phase?",
+    "options": [
+      "Adding new labeled examples later requires no retraining, since they simply join the stored dataset",
+      "KNN predictions become instant and require no computation, regardless of dataset size",
+      "KNN can no longer ever be fully used for regression tasks once it has already been deployed to production",
+      "KNN automatically updates and re-learns its distance metric over time as new data arrives"
+    ],
+    "correct": 0,
+    "explanation": "Because there is no fitted model to update, new examples can be incorporated by simply adding them to the stored set used at prediction time."
+  },
+  {
+    "id": "knn-010",
+    "topic": "knn",
+    "subtopic": "Choosing K and bias-variance tradeoff",
+    "difficulty": "recall",
+    "q": "Increasing the value of K in a KNN classifier tends to ______ the model's variance.",
+    "options": [
+      "decrease the model's variance, making predictions less sensitive to individual noisy points",
+      "increase the model's variance sharply by amplifying the effect of each and every single neighbor",
+      "leave the bias-variance tradeoff completely unaffected, regardless of dataset size",
+      "guarantee that the model overfits the training data no matter what K is chosen"
+    ],
+    "correct": 0,
+    "explanation": "Averaging the vote or value over more neighbors smooths out the effect of any single noisy point, which lowers variance."
+  },
+  {
+    "id": "knn-011",
+    "topic": "knn",
+    "subtopic": "Choosing K and bias-variance tradeoff",
+    "difficulty": "application",
+    "q": "A KNN classifier with K=1 is compared to one with K=50 on the same dataset. Compared to K=50, the K=1 model will typically ______.",
+    "options": [
+      "have much higher variance and be more sensitive to noisy individual points",
+      "have much lower variance and nearly identical bias to the K=50 model",
+      "ignore the training data entirely and predict the same class for every new point",
+      "require feature scaling to work at all, while the K=50 model does not"
+    ],
+    "correct": 0,
+    "explanation": "With K=1, a prediction depends entirely on one neighbor, so a single mislabeled or noisy point can flip the prediction, giving high variance."
+  },
+  {
+    "id": "knn-012",
+    "topic": "knn",
+    "subtopic": "Choosing K and bias-variance tradeoff",
+    "difficulty": "analysis",
+    "q": "Why does a very small value of K (e.g., K=1) make KNN prone to overfitting?",
+    "options": [
+      "The prediction depends on a single nearest neighbor, so noise or mislabeled points directly determine the output",
+      "A small K forces the algorithm to ignore the actual distance values entirely when voting",
+      "A small K always requires substantially more memory to store than a large K does",
+      "A small K prevents the use of Euclidean distance as the similarity metric altogether"
+    ],
+    "correct": 0,
+    "explanation": "When only the closest point decides the label, the model fits the idiosyncrasies of individual training points rather than the general pattern."
+  },
+  {
+    "id": "knn-013",
+    "topic": "knn",
+    "subtopic": "Choosing K and bias-variance tradeoff",
+    "difficulty": "application",
+    "q": "In a digit-recognition system, choosing a very large K (close to half the training set) would most likely cause the classifier to ______.",
+    "options": [
+      "become overly smooth and underfit, since predictions average over too many dissimilar digits",
+      "perfectly memorize every single training digit, achieving zero training error",
+      "run out of available memory almost immediately, regardless of how large the dataset actually is",
+      "stop using any distance metric and instead classify every digit at random"
+    ],
+    "correct": 0,
+    "explanation": "A very large neighborhood blends together examples from many different digit classes, washing out the local structure that distinguishes them."
+  },
+  {
+    "id": "knn-014",
+    "topic": "knn",
+    "subtopic": "Choosing K and bias-variance tradeoff",
+    "difficulty": "recall",
+    "q": "What is the typical effect of increasing K on the bias of a KNN model?",
+    "options": [
+      "Bias tends to increase, since predictions are smoothed over a larger and more diverse neighborhood",
+      "Bias tends to decrease sharply and quite steadily overall as more and more neighbors get averaged together",
+      "Bias is completely unaffected by the choice of K in any dataset whatsoever",
+      "Bias becomes mathematically undefined for any K value greater than one"
+    ],
+    "correct": 0,
+    "explanation": "Larger neighborhoods average over more varied points, pulling predictions toward a more generic, less locally precise answer, which raises bias."
+  },
+  {
+    "id": "knn-015",
+    "topic": "knn",
+    "subtopic": "Choosing K and bias-variance tradeoff",
+    "difficulty": "application",
+    "q": "A common practical method for choosing a good value of K is to ______.",
+    "options": [
+      "evaluate several candidate K values using cross-validation and pick the one with the best validation performance",
+      "always set K equal to the square root of the total number of input features used",
+      "always use K=1 so that training accuracy is maximized on every single run",
+      "pick the largest K value that the available hardware can compute within a reasonable time"
+    ],
+    "correct": 0,
+    "explanation": "Cross-validation directly estimates how each candidate K is likely to generalize, which is more reliable than a fixed rule of thumb."
+  },
+  {
+    "id": "knn-016",
+    "topic": "knn",
+    "subtopic": "Choosing K and bias-variance tradeoff",
+    "difficulty": "recall",
+    "q": "Why do practitioners often prefer an odd value of K in binary classification?",
+    "options": [
+      "To avoid ties in the majority vote between the two classes",
+      "Odd values of K always reduce the curse of dimensionality",
+      "Even values of K cannot be used with Euclidean distance",
+      "Odd values of K always eliminate the need for any feature scaling whatsoever"
+    ],
+    "correct": 0,
+    "explanation": "With two classes, an odd K guarantees one class always has strictly more votes, avoiding an ambiguous tie."
+  },
+  {
+    "id": "knn-017",
+    "topic": "knn",
+    "subtopic": "Choosing K and bias-variance tradeoff",
+    "difficulty": "analysis",
+    "q": "A model trained with K=3 achieves 99% training accuracy but only 70% test accuracy, while K=25 achieves 85% on both sets. What does this contrast illustrate?",
+    "options": [
+      "A small K leads to high variance and overfitting, while a larger K trades some fit for better generalization",
+      "K has no real relationship with overfitting in KNN whatsoever, regardless of its value",
+      "The K=25 model must somehow secretly be using a completely different distance metric than the K=3 model",
+      "The K=3 model has simply not been given enough training data to work at all"
+    ],
+    "correct": 0,
+    "explanation": "The large train-test gap at K=3 is a classic overfitting signature caused by relying on very few, easily-noisy neighbors."
+  },
+  {
+    "id": "knn-018",
+    "topic": "knn",
+    "subtopic": "Choosing K and bias-variance tradeoff",
+    "difficulty": "recall",
+    "q": "In the bias-variance tradeoff for KNN, which pairing is correct?",
+    "options": [
+      "Small K gives low bias and high variance; large K gives high bias and low variance",
+      "Small K always gives high bias and low variance; large K gives low bias and high variance",
+      "K has no measurable effect on either bias or variance in practice",
+      "Small K and large K always produce exactly identical bias and variance values"
+    ],
+    "correct": 0,
+    "explanation": "Small neighborhoods fit the local data closely (low bias) but are unstable (high variance); large neighborhoods smooth predictions (low variance) at the cost of precision (higher bias)."
+  },
+  {
+    "id": "knn-019",
+    "topic": "knn",
+    "subtopic": "Distance metrics",
+    "difficulty": "recall",
+    "q": "Which distance metric is typically used by default in KNN for continuous numeric features?",
+    "options": [
+      "Euclidean distance",
+      "Hamming distance",
+      "Jaccard distance",
+      "Levenshtein distance"
+    ],
+    "correct": 0,
+    "explanation": "Euclidean distance (straight-line distance) is the standard default metric for continuous numeric feature vectors."
+  },
+  {
+    "id": "knn-020",
+    "topic": "knn",
+    "subtopic": "Distance metrics",
+    "difficulty": "application",
+    "q": "Manhattan distance (the sum of absolute coordinate differences) is often preferred over Euclidean distance when ______.",
+    "options": [
+      "the data has many dimensions or a grid-like structure where diagonal movement is not meaningful",
+      "the features are all strictly categorical rather than continuous numeric values",
+      "the dataset contains only raw, completely unstructured text documents and no numeric features at all",
+      "the classifier is being used for regression instead of classification tasks"
+    ],
+    "correct": 0,
+    "explanation": "Manhattan distance sums per-axis differences rather than taking a diagonal path, which is often more robust in higher dimensions or grid-like feature spaces."
+  },
+  {
+    "id": "knn-021",
+    "topic": "knn",
+    "subtopic": "Distance metrics",
+    "difficulty": "application",
+    "q": "For a dataset describing documents as word-frequency or TF-IDF vectors, which distance or similarity measure is most appropriate for KNN?",
+    "options": [
+      "Cosine similarity, since it captures the orientation of the vectors rather than their raw magnitude",
+      "Hamming distance, since it was specifically designed for use only with purely continuous numeric vectors",
+      "Euclidean distance, since document length does not matter to this metric at all",
+      "Manhattan distance, since it completely ignores vector direction entirely"
+    ],
+    "correct": 0,
+    "explanation": "Cosine similarity compares the angle between vectors, which works well for sparse, high-dimensional text vectors where raw length varies a lot between documents."
+  },
+  {
+    "id": "knn-022",
+    "topic": "knn",
+    "subtopic": "Distance metrics",
+    "difficulty": "recall",
+    "q": "A dataset consists purely of binary categorical attributes (e.g., yes/no survey answers). Which distance metric naturally counts the number of mismatching attributes?",
+    "options": [
+      "Hamming distance",
+      "Euclidean distance",
+      "Cosine similarity",
+      "Manhattan distance"
+    ],
+    "correct": 0,
+    "explanation": "Hamming distance counts the positions at which two vectors differ, which maps directly onto mismatched categorical attributes."
+  },
+  {
+    "id": "knn-023",
+    "topic": "knn",
+    "subtopic": "Distance metrics",
+    "difficulty": "analysis",
+    "q": "Why is cosine similarity often preferred over Euclidean distance for high-dimensional sparse text data?",
+    "options": [
+      "It measures the angle between vectors, so it is less sensitive to the sparsity and raw magnitude differences that distort Euclidean distances in high dimensions",
+      "It is the only distance or similarity metric that can be mathematically computed for sparse, high-dimensional text data",
+      "It automatically performs feature scaling and dimensionality reduction on the underlying raw data before any comparison",
+      "It completely removes the curse of dimensionality for any dataset, no matter how many features it contains"
+    ],
+    "correct": 0,
+    "explanation": "Euclidean distances in sparse high-dimensional spaces are dominated by overall vector length rather than meaningful content overlap, which cosine similarity avoids by ignoring magnitude."
+  },
+  {
+    "id": "knn-024",
+    "topic": "knn",
+    "subtopic": "Distance metrics",
+    "difficulty": "application",
+    "q": "A recommendation system compares users' rating vectors to find the most similar users. If what matters is the pattern of preference rather than how many items a user rated in total, which metric best captures this?",
+    "options": [
+      "Cosine similarity",
+      "Hamming distance",
+      "Manhattan distance",
+      "Chi-squared distance"
+    ],
+    "correct": 0,
+    "explanation": "Cosine similarity focuses on the relative pattern (direction) of ratings, not on the overall magnitude, which fits users who rated very different numbers of items."
+  },
+  {
+    "id": "knn-025",
+    "topic": "knn",
+    "subtopic": "Distance metrics",
+    "difficulty": "recall",
+    "q": "Which of the following statements about distance metric choice in KNN is correct?",
+    "options": [
+      "The right distance metric depends on the data type: Euclidean or Manhattan for continuous features, Hamming for categorical data, and cosine for sparse data",
+      "Euclidean distance is always the only mathematically valid choice in every case, regardless of whether features are continuous, categorical, sparse, or text-based",
+      "Distance metric choice has no measurable effect on classifier performance in any dataset or application whatsoever",
+      "Hamming distance should always be used in place of Euclidean distance, even for purely continuous numeric data"
+    ],
+    "correct": 0,
+    "explanation": "Different metrics capture similarity differently, so matching the metric to the data type materially affects how meaningful the resulting neighbors are."
+  },
+  {
+    "id": "knn-026",
+    "topic": "knn",
+    "subtopic": "Distance metrics",
+    "difficulty": "analysis",
+    "q": "Squared Euclidean distance and plain Euclidean distance produce ______ rankings of nearest neighbors.",
+    "options": [
+      "the same",
+      "completely different",
+      "opposite",
+      "inconsistent"
+    ],
+    "correct": 0,
+    "explanation": "Squaring is a monotonic transformation of a non-negative distance, so it preserves the relative order of which points are closer or farther."
+  },
+  {
+    "id": "knn-027",
+    "topic": "knn",
+    "subtopic": "Distance metrics",
+    "difficulty": "application",
+    "q": "In a handwriting recognition task using pixel-intensity vectors, which distance metric is a standard baseline choice?",
+    "options": [
+      "Euclidean distance, since pixel intensities are continuous numeric values",
+      "Hamming distance, since pixel intensities are treated as categorical labels",
+      "Cosine similarity, since the order of the pixels does not matter at all",
+      "Jaccard distance, since each pixel simply represents binary set membership"
+    ],
+    "correct": 0,
+    "explanation": "Pixel intensities are continuous numbers on a comparable scale, making straightforward Euclidean distance a natural and historically common baseline for digit images."
+  },
+  {
+    "id": "knn-028",
+    "topic": "knn",
+    "subtopic": "Curse of dimensionality",
+    "difficulty": "analysis",
+    "q": "A KNN classifier performs very poorly even after scaling, on a dataset with 2,000 samples and 300 features. What phenomenon most likely explains this?",
+    "options": [
+      "The curse of dimensionality: in high-dimensional spaces, distances between points become less discriminative",
+      "The dataset is simply far too small in its overall size to ever apply any meaningful distance-based metric at all",
+      "KNN cannot mathematically handle more than 100 features under any circumstances",
+      "The labels must have been incorrectly encoded somewhere before training began"
+    ],
+    "correct": 0,
+    "explanation": "With far more features than is typical relative to the sample size, distances between points stop being meaningfully different, so neighbors are no longer reliably similar."
+  },
+  {
+    "id": "knn-029",
+    "topic": "knn",
+    "subtopic": "Curse of dimensionality",
+    "difficulty": "recall",
+    "q": "Why does the performance of KNN degrade as dimensionality increases?",
+    "options": [
+      "Because distances between points become less discriminative as dimensions grow",
+      "Because it must store far too many training samples in the available system memory",
+      "Because it always requires a nonlinear kernel transformation before use",
+      "Because it fundamentally cannot work with any integer-valued features"
+    ],
+    "correct": 0,
+    "explanation": "In high dimensions, the relative difference between the nearest and farthest points shrinks, so the whole notion of a \"close\" neighbor loses meaning."
+  },
+  {
+    "id": "knn-030",
+    "topic": "knn",
+    "subtopic": "Curse of dimensionality",
+    "difficulty": "analysis",
+    "q": "In very high-dimensional spaces, the distance between the nearest and farthest neighbor of a query point tends to ______.",
+    "options": [
+      "converge, making \"near\" and \"far\" much less meaningful",
+      "diverge sharply, making neighbors easier to separate",
+      "stay exactly proportional to the number of samples",
+      "become negative, which is mathematically impossible for real distances"
+    ],
+    "correct": 0,
+    "explanation": "This convergence effect is a core part of the curse of dimensionality: distances become increasingly similar to one another as dimensions grow."
+  },
+  {
+    "id": "knn-031",
+    "topic": "knn",
+    "subtopic": "Curse of dimensionality",
+    "difficulty": "application",
+    "q": "A text classifier represents each document as a 10,000-dimensional raw bag-of-words vector and applies KNN directly on the word counts. What problem is this approach especially vulnerable to?",
+    "options": [
+      "The curse of dimensionality, since most dimensions carry little discriminative signal and distances become unreliable",
+      "Underfitting, since the model would then have far too few meaningful features available to learn any useful pattern from",
+      "A fundamental inability to handle more than two output classes in this particular classification setting",
+      "A strict requirement to use only Hamming distance on this kind of very high-dimensional sparse data"
+    ],
+    "correct": 0,
+    "explanation": "Thousands of sparse, mostly uninformative word-count dimensions dilute the distance calculation, making true nearest neighbors hard to identify."
+  },
+  {
+    "id": "knn-032",
+    "topic": "knn",
+    "subtopic": "Curse of dimensionality",
+    "difficulty": "application",
+    "q": "Which strategy is commonly recommended to mitigate the curse of dimensionality before applying KNN?",
+    "options": [
+      "Reduce dimensionality through feature selection or a technique like PCA",
+      "Increase K all the way up to the maximum possible value the dataset allows",
+      "Always switch to Hamming distance regardless of the underlying data type",
+      "Simply remove all of the categorical features from the dataset entirely"
+    ],
+    "correct": 0,
+    "explanation": "Cutting down to the most informative dimensions restores meaningful distance comparisons, directly addressing the root cause of the degradation."
+  },
+  {
+    "id": "knn-033",
+    "topic": "knn",
+    "subtopic": "Curse of dimensionality",
+    "difficulty": "analysis",
+    "q": "As the number of irrelevant features grows, KNN's accuracy tends to ______ even if the relevant features remain unchanged.",
+    "options": [
+      "decline, since irrelevant dimensions add noise to the distance calculation",
+      "improve steadily, since extra features always add more useful signal",
+      "stay exactly the same, because KNN automatically ignores irrelevant features",
+      "become mathematically undefined once enough irrelevant features are added"
+    ],
+    "correct": 0,
+    "explanation": "Every additional irrelevant feature contributes random noise to the distance, diluting the contribution of the features that actually matter."
+  },
+  {
+    "id": "knn-034",
+    "topic": "knn",
+    "subtopic": "Curse of dimensionality",
+    "difficulty": "analysis",
+    "q": "Why doesn't the curse of dimensionality similarly cripple a model like a linear SVM on the same high-dimensional sparse data?",
+    "options": [
+      "A linear decision boundary can separate classes using weighted combinations of many features, without relying on raw point-to-point distance",
+      "Linear SVMs cannot mathematically process more than roughly ten input features at once, which makes them quite unlike a far more flexible model such as KNN",
+      "Linear SVMs do not rely on any mathematical notion of distance, similarity, or decision margin at all",
+      "Linear SVMs automatically reduce every dataset down to just two dimensions before any training begins"
+    ],
+    "correct": 0,
+    "explanation": "Linear models combine features through weights rather than comparing raw distances between whole points, so they are far less sensitive to dimensionality growth."
+  },
+  {
+    "id": "knn-035",
+    "topic": "knn",
+    "subtopic": "Curse of dimensionality",
+    "difficulty": "application",
+    "q": "A gene-expression dataset has 5,000 genes (features) measured for 150 patients. Applying KNN directly on all genes is likely to fail primarily because ______.",
+    "options": [
+      "with far more features than samples, distances between patients become uninformative due to the curse of dimensionality",
+      "KNN cannot mathematically process continuous numeric gene-expression values of any kind whatsoever, under any circumstances",
+      "Having only 150 patients is already far too many for any distance-based method to handle at all",
+      "Gene-expression data fundamentally cannot be scaled or standardized in any meaningful way"
+    ],
+    "correct": 0,
+    "explanation": "This is a textbook curse-of-dimensionality setup: a huge feature count relative to the number of samples destroys the usefulness of raw distance."
+  },
+  {
+    "id": "knn-036",
+    "topic": "knn",
+    "subtopic": "Curse of dimensionality",
+    "difficulty": "recall",
+    "q": "What name is given to the general phenomenon where distance-based methods lose discriminative power as the number of features grows?",
+    "options": [
+      "The curse of dimensionality",
+      "The bias-variance tradeoff",
+      "Gradient vanishing during training",
+      "The bagging effect from ensembling"
+    ],
+    "correct": 0,
+    "explanation": "This is the standard term used across machine learning for the degradation of distance-based reasoning in high-dimensional feature spaces."
+  },
+  {
+    "id": "knn-037",
+    "topic": "knn",
+    "subtopic": "Feature scaling",
+    "difficulty": "application",
+    "q": "KNN performs poorly when features are not scaled. What would be the reason for this?",
+    "options": [
+      "The distance metric gets distorted, letting large-scale features dominate the distance calculation",
+      "KNN ignores distance entirely and instead assigns class labels completely at random",
+      "The model always overfits badly, regardless of feature scale or the chosen K",
+      "The classifier effectively ends up using noticeably fewer neighbors when features are left unscaled"
+    ],
+    "correct": 0,
+    "explanation": "Distance calculations sum contributions across features; without scaling, a feature with a much larger numeric range swamps the others."
+  },
+  {
+    "id": "knn-038",
+    "topic": "knn",
+    "subtopic": "Feature scaling",
+    "difficulty": "application",
+    "q": "A dataset has \"income\" (ranging in the tens of thousands) and \"age\" (ranging 0-100) as features for KNN. Without scaling, which feature will dominate the Euclidean distance calculation?",
+    "options": [
+      "Income, because its much larger numeric range inflates its contribution to the distance",
+      "Age, because it happens to be listed first in the dataset's column ordering",
+      "Neither feature at all, since KNN automatically rescales and normalizes every feature internally",
+      "Both features equally, since KNN always normalizes data before computing distance"
+    ],
+    "correct": 0,
+    "explanation": "Euclidean distance is sensitive to the absolute magnitude of each feature, so the feature with the largest range tends to dominate unless features are scaled."
+  },
+  {
+    "id": "knn-039",
+    "topic": "knn",
+    "subtopic": "Feature scaling",
+    "difficulty": "analysis",
+    "q": "Why is feature scaling considered essential for KNN but optional for decision trees?",
+    "options": [
+      "KNN relies directly on distance between raw feature values, while decision tree splits only compare whether a value is above or below a threshold",
+      "Decision trees cannot mathematically accept any continuous numeric features at all, only categorical ones",
+      "KNN cannot mathematically process more than a single input feature without scaling it first",
+      "Scaling directly changes the actual class labels that decision trees are trained to predict"
+    ],
+    "correct": 0,
+    "explanation": "A threshold split's outcome is unaffected by monotonic rescaling of a feature, but a distance sum is directly affected by each feature's scale."
+  },
+  {
+    "id": "knn-040",
+    "topic": "knn",
+    "subtopic": "Feature scaling",
+    "difficulty": "recall",
+    "q": "Which preprocessing step should typically be applied before training a KNN model on features with very different units (e.g., kilometers and grams)?",
+    "options": [
+      "Standardize or normalize the features to a comparable scale",
+      "Convert all of the continuous features into categorical bins",
+      "Remove one of the two differently-scaled features entirely",
+      "Apply a logarithmic transform only to the target labels"
+    ],
+    "correct": 0,
+    "explanation": "Standardization or normalization puts features on comparable scales so that no single unit of measurement dominates the distance calculation."
+  },
+  {
+    "id": "knn-041",
+    "topic": "knn",
+    "subtopic": "Feature scaling",
+    "difficulty": "application",
+    "q": "A medical dataset has \"cholesterol level\" (measured in the hundreds) and \"number of prior visits\" (a single digit). If used unscaled with KNN, the neighbor search will be effectively driven almost entirely by ______.",
+    "options": [
+      "cholesterol level, since its much larger magnitude dominates the Euclidean distance",
+      "number of prior visits, since smaller numbers are weighted more heavily",
+      "neither feature at all, since KNN always discards raw magnitude information",
+      "an exactly equal combination of both features, regardless of their actual numeric scale"
+    ],
+    "correct": 0,
+    "explanation": "The feature with the larger numeric range contributes disproportionately more to the squared distance sum unless the features are scaled first."
+  },
+  {
+    "id": "knn-042",
+    "topic": "knn",
+    "subtopic": "Feature scaling",
+    "difficulty": "analysis",
+    "q": "Which of the following is best practice when applying feature scaling for KNN inside a cross-validation pipeline?",
+    "options": [
+      "Fit the scaler only on the training fold and apply it to the validation fold, to avoid leaking information",
+      "Fit the scaler once on the entire dataset before splitting into folds",
+      "Skip feature scaling entirely, but only for the validation fold each time",
+      "Apply a different, arbitrarily chosen scaler to each individual feature"
+    ],
+    "correct": 0,
+    "explanation": "Fitting the scaler on the full dataset before splitting lets information from the validation fold leak into training, inflating the estimated performance."
+  },
+  {
+    "id": "knn-043",
+    "topic": "knn",
+    "subtopic": "Feature scaling",
+    "difficulty": "recall",
+    "q": "Min-max normalization and z-score standardization both address the same underlying problem for KNN, which is ______.",
+    "options": [
+      "preventing features with larger numeric ranges from dominating the distance calculation",
+      "automatically removing all categorical features before training begins",
+      "substantially reducing the overall total number of training examples that are actually needed",
+      "completely eliminating the need to ever choose a value of K"
+    ],
+    "correct": 0,
+    "explanation": "Both techniques rescale features onto a comparable range so that distance contributions are balanced across features."
+  },
+  {
+    "id": "knn-044",
+    "topic": "knn",
+    "subtopic": "Feature scaling",
+    "difficulty": "analysis",
+    "q": "A KNN model trained on unscaled data performs worse than one trained on scaled data, even though both use the same K and the same features. What best explains this gap?",
+    "options": [
+      "Scaling corrects the distorted distance calculation, letting all features contribute proportionally to similarity",
+      "The unscaled model must simply be trained on far fewer training examples overall",
+      "The unscaled model must secretly be using a completely different learning algorithm",
+      "Scaling must somehow be changing the actual ground-truth labels of the dataset"
+    ],
+    "correct": 0,
+    "explanation": "Since KNN relies on distance, fixing the relative scale of features directly fixes how fairly each feature contributes to determining neighbors."
+  },
+  {
+    "id": "knn-045",
+    "topic": "knn",
+    "subtopic": "Feature scaling",
+    "difficulty": "recall",
+    "q": "Which other family of algorithms, besides KNN, also typically requires feature scaling because it relies on distance or dot products?",
+    "options": [
+      "SVM and PCA",
+      "Decision trees and random forests",
+      "Naive Bayes and association rule mining",
+      "Rule-based expert systems"
+    ],
+    "correct": 0,
+    "explanation": "SVM's margin and PCA's variance-based projections are both sensitive to the relative scale of features, just like KNN's distance calculation."
+  },
+  {
+    "id": "knn-046",
+    "topic": "knn",
+    "subtopic": "Computational cost at prediction time",
+    "difficulty": "recall",
+    "q": "What is the main computational drawback of KNN compared to a trained parametric model at prediction time?",
+    "options": [
+      "It must compute the distance from the query point to every stored training example, making prediction slow for large datasets",
+      "It fundamentally cannot make any predictions at all on new, previously unseen data points",
+      "It requires the entire model to be completely retrained from scratch before every single prediction",
+      "It only works correctly when the whole training set fits within a single physical disk sector"
+    ],
+    "correct": 0,
+    "explanation": "Since there is no fitted function to evaluate, KNN must search the full stored dataset at prediction time, which scales with dataset size."
+  },
+  {
+    "id": "knn-047",
+    "topic": "knn",
+    "subtopic": "Computational cost at prediction time",
+    "difficulty": "application",
+    "q": "A company deploys a KNN model with 50 million stored transactions to flag fraud in real time. What is the most likely operational challenge?",
+    "options": [
+      "Prediction latency, since each new transaction must be compared against a huge number of stored examples",
+      "A fundamental inability to represent any transactions as numeric feature vectors",
+      "A strict requirement to fully retrain the entire underlying model before every single new incoming transaction",
+      "A complete lack of any mathematical way to measure distance between transactions"
+    ],
+    "correct": 0,
+    "explanation": "Naive nearest-neighbor search time grows with the number of stored examples, so tens of millions of records can make real-time lookups slow."
+  },
+  {
+    "id": "knn-048",
+    "topic": "knn",
+    "subtopic": "Computational cost at prediction time",
+    "difficulty": "analysis",
+    "q": "Why is KNN sometimes described as having an inverted cost profile compared to models like logistic regression?",
+    "options": [
+      "KNN has almost no training cost but high prediction cost, while logistic regression has higher training cost but very fast prediction",
+      "KNN has very high training cost and essentially zero computational cost at prediction time",
+      "Both models have exactly identical computational cost profiles in virtually every practical case",
+      "KNN simply cannot be used to make any prediction at all once its training phase has finished"
+    ],
+    "correct": 0,
+    "explanation": "Logistic regression invests computation upfront to fit coefficients, after which prediction is cheap; KNN postpones that cost to prediction time instead."
+  },
+  {
+    "id": "knn-049",
+    "topic": "knn",
+    "subtopic": "Computational cost at prediction time",
+    "difficulty": "recall",
+    "q": "Which technique is commonly used to speed up nearest-neighbor search instead of comparing a query point against every single training example?",
+    "options": [
+      "Spatial index structures such as KD-trees or ball trees",
+      "Increasing K all the way up to its maximum possible value",
+      "Switching to Hamming distance for all feature types",
+      "Completely removing the test set from the pipeline"
+    ],
+    "correct": 0,
+    "explanation": "KD-trees and ball trees organize training points so that large portions of the search space can be pruned, avoiding a full linear scan for every query."
+  },
+  {
+    "id": "knn-050",
+    "topic": "knn",
+    "subtopic": "Computational cost at prediction time",
+    "difficulty": "analysis",
+    "q": "As the size of the training set grows, the prediction time of a naive KNN implementation tends to ______.",
+    "options": [
+      "increase roughly in proportion to the dataset size, since every stored point must be compared to the query",
+      "decrease steadily, since having access to more data makes the search easier",
+      "stay exactly constant, no matter how large the dataset eventually grows",
+      "become mathematically undefined once the dataset passes a few thousand points"
+    ],
+    "correct": 0,
+    "explanation": "A brute-force nearest-neighbor search compares the query to every stored point, so its cost scales with the number of stored points."
+  },
+  {
+    "id": "knn-051",
+    "topic": "knn",
+    "subtopic": "Computational cost at prediction time",
+    "difficulty": "application",
+    "q": "A startup needs a model that can be updated instantly as new labeled examples arrive, without any retraining step, but can tolerate somewhat slower predictions. Which property of KNN makes it suitable here?",
+    "options": [
+      "New examples can simply be added to the stored dataset, since there is no model-fitting step to redo",
+      "KNN automatically discards the very oldest stored examples in order to keep predictions reasonably fast",
+      "KNN always requires a completely fixed, unchangeable training set once deployed",
+      "KNN automatically converts every new labeled example into decision tree rules"
+    ],
+    "correct": 0,
+    "explanation": "Because KNN has no parameters to re-estimate, incorporating a new example is as simple as appending it to the stored dataset."
+  },
+  {
+    "id": "knn-052",
+    "topic": "knn",
+    "subtopic": "Computational cost at prediction time",
+    "difficulty": "recall",
+    "q": "What is the typical memory requirement of a basic KNN implementation relative to a trained logistic regression model?",
+    "options": [
+      "Much higher, since KNN must store the entire training dataset rather than a small set of coefficients",
+      "Much lower, since KNN always discards all of the training data right after use",
+      "Identical, since both models store exactly the same number of fitted parameters",
+      "Exactly zero, since KNN supposedly requires absolutely no memory of any kind at all to make a prediction"
+    ],
+    "correct": 0,
+    "explanation": "Logistic regression only needs to keep its learned coefficients, while KNN needs the full training set available at prediction time."
+  },
+  {
+    "id": "knn-053",
+    "topic": "knn",
+    "subtopic": "Computational cost at prediction time",
+    "difficulty": "application",
+    "q": "Why might KNN be a poor choice for a mobile app that must run offline with very limited storage, even if accuracy would otherwise be fine?",
+    "options": [
+      "It needs to carry and search through the entire training dataset at prediction time, which is costly in memory-constrained environments",
+      "KNN cannot be implemented at all without a constant, reliable internet connection",
+      "KNN absolutely requires dedicated GPU hardware acceleration to compute even a single prediction",
+      "KNN is fundamentally and entirely incompatible with running on any mobile operating system"
+    ],
+    "correct": 0,
+    "explanation": "Offline, storage-constrained devices struggle to carry a large stored training set, which KNN needs at prediction time unlike a compact parametric model."
+  },
+  {
+    "id": "knn-054",
+    "topic": "knn",
+    "subtopic": "Computational cost at prediction time",
+    "difficulty": "application",
+    "q": "Modern KNN implementations speed up prediction by computing distances using vectorized matrix operations instead of ______.",
+    "options": [
+      "looping over training examples one at a time in a slow interpreted loop",
+      "storing the data using an entirely different categorical encoding scheme",
+      "always increasing K to an arbitrarily and impractically large value",
+      "applying a nonlinear kernel transformation to the distances first"
+    ],
+    "correct": 0,
+    "explanation": "Batch, vectorized distance computations exploit optimized linear algebra libraries, which is much faster than comparing one training example at a time in a loop."
+  },
+  {
+    "id": "knn-055",
+    "topic": "knn",
+    "subtopic": "Classification vs regression with KNN",
+    "difficulty": "recall",
+    "q": "In KNN classification, the predicted class for a new point is typically determined by ______.",
+    "options": [
+      "a majority vote among its K nearest neighbors",
+      "averaging the numeric labels of its K nearest neighbors",
+      "the class of the single farthest neighbor",
+      "a weighted sum of all training examples regardless of distance"
+    ],
+    "correct": 0,
+    "explanation": "Classification with KNN assigns the new point to whichever class appears most often among the K closest training examples."
+  },
+  {
+    "id": "knn-056",
+    "topic": "knn",
+    "subtopic": "Classification vs regression with KNN",
+    "difficulty": "recall",
+    "q": "In KNN regression, the predicted value for a new point is typically computed as ______.",
+    "options": [
+      "the average (or weighted average) of the target values of its K nearest neighbors",
+      "the single overall majority class among all of its K nearest neighbors",
+      "the single closest neighbor's label only, applying absolutely no averaging whatsoever",
+      "the simple median value computed over the entire training dataset"
+    ],
+    "correct": 0,
+    "explanation": "Regression with KNN produces a continuous prediction by averaging the numeric targets of the nearest neighbors rather than voting on a class."
+  },
+  {
+    "id": "knn-057",
+    "topic": "knn",
+    "subtopic": "Classification vs regression with KNN",
+    "difficulty": "application",
+    "q": "A real-estate platform predicts a house's price by averaging the sale prices of the five most similar nearby houses. This is an example of ______.",
+    "options": [
+      "KNN regression",
+      "KNN classification",
+      "logistic regression",
+      "K-means clustering"
+    ],
+    "correct": 0,
+    "explanation": "Predicting a continuous numeric value (price) by averaging the targets of the nearest neighbors is the defining behavior of KNN regression."
+  },
+  {
+    "id": "knn-058",
+    "topic": "knn",
+    "subtopic": "Classification vs regression with KNN",
+    "difficulty": "application",
+    "q": "A spam filter labels a new email as spam or not-spam based on the majority label among its nearest neighboring emails. Which KNN variant is being used?",
+    "options": [
+      "KNN classification",
+      "Standard KNN regression",
+      "Weighted linear regression",
+      "Hierarchical clustering"
+    ],
+    "correct": 0,
+    "explanation": "Assigning a discrete class label by majority vote among neighbors is exactly how KNN classification works."
+  },
+  {
+    "id": "knn-059",
+    "topic": "knn",
+    "subtopic": "Classification vs regression with KNN",
+    "difficulty": "analysis",
+    "q": "What happens in KNN classification when there is an exact tie in the majority vote (e.g., K=4 with two classes each getting two votes)?",
+    "options": [
+      "The tie must be broken by a rule such as choosing the class of the closest neighbor or reducing the effective K",
+      "KNN automatically and silently switches over into full regression mode instead in that case",
+      "The prediction is always assigned to whichever class name comes first alphabetically, by definition of the algorithm",
+      "The classifier completely fails to produce any prediction output at all in that situation"
+    ],
+    "correct": 0,
+    "explanation": "Ties are a known edge case of majority voting and are typically resolved with a tie-breaking rule, such as weighting by distance or using an odd K."
+  },
+  {
+    "id": "knn-060",
+    "topic": "knn",
+    "subtopic": "Classification vs regression with KNN",
+    "difficulty": "analysis",
+    "q": "Why can the same core KNN algorithm be adapted for both classification and regression tasks?",
+    "options": [
+      "Because both tasks rely on the same neighbor-search step; only the final aggregation (voting vs. averaging) differs",
+      "Because KNN secretly fits an entirely different internal model for each separate task",
+      "Because classification and regression always use completely unrelated distance metrics",
+      "Because KNN regression secretly does not make use of any neighbors at all"
+    ],
+    "correct": 0,
+    "explanation": "Finding the K nearest neighbors is identical in both cases; the only difference is whether their labels are combined by vote or by average."
+  },
+  {
+    "id": "knn-061",
+    "topic": "knn",
+    "subtopic": "Classification vs regression with KNN",
+    "difficulty": "application",
+    "q": "In KNN regression for predicting a patient's recovery time, increasing K would most directly cause the prediction to ______.",
+    "options": [
+      "become a smoother average over more patients, reducing sensitivity to any single unusual case",
+      "always exactly equal the recovery time of just the single most similar patient found in the records",
+      "switch the underlying task from regression over to classification entirely",
+      "require switching over to a Hamming distance metric instead of a numeric one"
+    ],
+    "correct": 0,
+    "explanation": "A larger K averages the target values over a wider neighborhood, which smooths the prediction in the same way it reduces variance in classification."
+  },
+  {
+    "id": "knn-062",
+    "topic": "knn",
+    "subtopic": "Classification vs regression with KNN",
+    "difficulty": "recall",
+    "q": "Which of the following correctly distinguishes the aggregation step of KNN classification from KNN regression?",
+    "options": [
+      "Classification aggregates neighbor labels by vote; regression aggregates neighbor targets by averaging",
+      "Classification averages neighbor labels; regression votes on neighbor targets",
+      "Both tasks use an identical aggregation step with no difference between them",
+      "Classification technically requires no neighbors at all, while regression always requires quite a few of them"
+    ],
+    "correct": 0,
+    "explanation": "The neighbor search is shared, but the final step differs: a majority vote for discrete classes versus an average for continuous values."
+  },
+  {
+    "id": "knn-063",
+    "topic": "knn",
+    "subtopic": "Weighted KNN",
+    "difficulty": "recall",
+    "q": "In weighted KNN, how does a neighbor's distance typically affect its influence on the prediction?",
+    "options": [
+      "Closer neighbors are given greater influence, often weighted by the inverse of their distance",
+      "All neighbors are always given exactly equal influence regardless of distance, as in unweighted KNN",
+      "Farther neighbors are deliberately given much greater influence than closer ones",
+      "Only the single farthest neighbor ever influences the final prediction outcome"
+    ],
+    "correct": 0,
+    "explanation": "Inverse-distance weighting lets nearby, presumably more relevant neighbors count more heavily toward the final vote or average."
+  },
+  {
+    "id": "knn-064",
+    "topic": "knn",
+    "subtopic": "Weighted KNN",
+    "difficulty": "analysis",
+    "q": "What is the main motivation for using distance-weighted KNN instead of standard unweighted KNN?",
+    "options": [
+      "To let very close neighbors count more than distant ones, reducing the impact of less-relevant neighbors within the chosen K",
+      "To completely eliminate the need for ever choosing an appropriate value of K in the first place",
+      "To entirely avoid ever having to compute any distance metric at all during prediction",
+      "To completely guarantee that the model can never overfit, no matter what value of K is chosen"
+    ],
+    "correct": 0,
+    "explanation": "Weighting addresses the fact that not all K neighbors are equally reliable; the closest ones are usually more representative of the query point."
+  },
+  {
+    "id": "knn-065",
+    "topic": "knn",
+    "subtopic": "Weighted KNN",
+    "difficulty": "application",
+    "q": "A weighted KNN model uses inverse-distance weighting. If neighbor A is twice as close to the query point as neighbor B, neighbor A's vote will be ______ neighbor B's.",
+    "options": [
+      "weighted more heavily than",
+      "weighted less heavily than",
+      "treated as exactly equal to",
+      "completely ignored relative to"
+    ],
+    "correct": 0,
+    "explanation": "Under inverse-distance weighting, smaller distances translate into larger weights, so the closer neighbor contributes more to the outcome."
+  },
+  {
+    "id": "knn-066",
+    "topic": "knn",
+    "subtopic": "Weighted KNN",
+    "difficulty": "analysis",
+    "q": "In which scenario would distance-weighted KNN likely outperform standard unweighted KNN?",
+    "options": [
+      "When some of the K nearest neighbors are noticeably farther away than others and are less reliable indicators of the true class",
+      "When all of the K nearest neighbors happen to lie at exactly the same distance from the query point",
+      "When the dataset has only a single numeric feature available for any comparison",
+      "When K is set to exactly 1, since distance weighting then has no effect either way"
+    ],
+    "correct": 0,
+    "explanation": "Weighting only matters when neighbors differ meaningfully in distance; it lets the more trustworthy, closer neighbors dominate the vote."
+  },
+  {
+    "id": "knn-067",
+    "topic": "knn",
+    "subtopic": "Weighted KNN",
+    "difficulty": "application",
+    "q": "A product recommendation engine gives more weight to the ratings of users who are most similar to the target user, rather than treating all nearby users equally. This describes ______.",
+    "options": [
+      "distance-weighted KNN",
+      "standard unweighted KNN",
+      "basic K-means clustering",
+      "decision tree splitting"
+    ],
+    "correct": 0,
+    "explanation": "Scaling each neighbor's contribution by how similar (close) they are is exactly the mechanism behind distance-weighted KNN."
+  },
+  {
+    "id": "knn-068",
+    "topic": "knn",
+    "subtopic": "Weighted KNN",
+    "difficulty": "analysis",
+    "q": "Compared to simply increasing K, what is an advantage of using weighted KNN?",
+    "options": [
+      "It can include more neighbors in the vote while still letting the closest ones dominate the decision, balancing stability and relevance",
+      "It completely removes the need for any distance metric to ever be defined in the first place",
+      "It always guarantees a strictly lower computational cost than plain, unweighted KNN provides",
+      "It completely eliminates the curse of dimensionality, no matter how many features are used"
+    ],
+    "correct": 0,
+    "explanation": "Weighting lets a model use a larger, more stable neighborhood without fully diluting the influence of the truly closest points."
+  },
+  {
+    "id": "knn-069",
+    "topic": "knn",
+    "subtopic": "Weighted KNN",
+    "difficulty": "recall",
+    "q": "Which weighting scheme is most commonly used in practice for weighted KNN?",
+    "options": [
+      "Weights inversely proportional to distance, so closer neighbors contribute more",
+      "Weights directly proportional to distance, so farther neighbors always contribute more",
+      "Exactly equal weights applied to all neighbors, regardless of the chosen K",
+      "Completely randomly reassigned weights generated at every single prediction"
+    ],
+    "correct": 0,
+    "explanation": "Inverse-distance weighting is the standard scheme, reflecting the intuition that closer points are more relevant to the query."
+  },
+  {
+    "id": "knn-070",
+    "topic": "knn",
+    "subtopic": "Strengths and weaknesses vs parametric models",
+    "difficulty": "recall",
+    "q": "Which of the following is a genuine strength of KNN relative to parametric models like logistic regression?",
+    "options": [
+      "It can naturally capture complex, non-linear decision boundaries without assuming any fixed functional form",
+      "It always trains dramatically faster than logistic regression on very large datasets",
+      "It always requires significantly less memory at prediction time than any comparable parametric model would need",
+      "It is completely immune to the curse of dimensionality, no matter the feature count"
+    ],
+    "correct": 0,
+    "explanation": "Because KNN makes predictions from local neighborhoods rather than a single global equation, it can adapt to irregular, non-linear boundaries."
+  },
+  {
+    "id": "knn-071",
+    "topic": "knn",
+    "subtopic": "Strengths and weaknesses vs parametric models",
+    "difficulty": "analysis",
+    "q": "Which of the following is a genuine weakness of KNN relative to parametric models, specifically regarding how feature importance is handled?",
+    "options": [
+      "It has no built-in mechanism to automatically down-weight irrelevant or noisy features; every feature affects the distance equally unless handled manually",
+      "It fundamentally cannot be used at all for either classification or regression problems of any kind",
+      "It always requires assuming some fixed global functional form for the entire decision boundary",
+      "It fundamentally cannot handle more than two output classes in any dataset whatsoever"
+    ],
+    "correct": 0,
+    "explanation": "Unlike models that learn feature weights (e.g., regression coefficients), plain KNN treats every feature as equally important in the distance, so irrelevant features must be removed or scaled manually."
+  },
+  {
+    "id": "knn-072",
+    "topic": "knn",
+    "subtopic": "Strengths and weaknesses vs parametric models",
+    "difficulty": "application",
+    "q": "A team wants a model whose future predictions can be fully audited using a single short, printable formula for regulatory approval. Why does KNN make this difficult?",
+    "options": [
+      "KNN has no single closed-form equation; its decision depends on comparisons against the entire stored training set",
+      "KNN can only ever be implemented and run inside a remote cloud computing environment",
+      "KNN fundamentally cannot produce any numeric output whatsoever, under any circumstances",
+      "KNN is always strictly restricted to exactly two possible output classes total"
+    ],
+    "correct": 0,
+    "explanation": "Since there is no fitted equation or fixed set of coefficients, there is nothing short and self-contained to print and audit, unlike a linear model's formula."
+  },
+  {
+    "id": "knn-073",
+    "topic": "knn",
+    "subtopic": "Strengths and weaknesses vs parametric models",
+    "difficulty": "analysis",
+    "q": "Compared to a decision tree, one practical advantage of KNN is that ______.",
+    "options": [
+      "it can produce smoother, less blocky decision boundaries since it is not restricted to axis-aligned splits",
+      "it never requires any feature scaling at all, unlike decision trees do",
+      "it always trains in far less time than decision trees on very large datasets",
+      "it is completely and entirely unaffected by any irrelevant input features at all"
+    ],
+    "correct": 0,
+    "explanation": "Decision tree boundaries are made of axis-aligned rectangular regions, while KNN's neighborhood-based boundaries can curve more naturally with the data."
+  },
+  {
+    "id": "knn-074",
+    "topic": "knn",
+    "subtopic": "Strengths and weaknesses vs parametric models",
+    "difficulty": "analysis",
+    "q": "Which limitation makes KNN particularly sensitive compared to ensemble methods like random forests?",
+    "options": [
+      "Its predictions can be heavily swayed by noisy or mislabeled training points near the query, especially at small K",
+      "It fundamentally cannot ever be combined with other models inside an ensemble",
+      "It always requires far more hyperparameters to tune than random forests ever do",
+      "It fundamentally cannot use any categorical features under any circumstances"
+    ],
+    "correct": 0,
+    "explanation": "Random forests average over many trees to cancel out noise, while a small-K KNN prediction can hinge on just one or a few possibly noisy points."
+  },
+  {
+    "id": "knn-075",
+    "topic": "knn",
+    "subtopic": "Strengths and weaknesses vs parametric models",
+    "difficulty": "application",
+    "q": "A dataset is small, has few relevant features, and the relationship between features and the target is highly irregular and local. Why might KNN be a reasonable baseline here?",
+    "options": [
+      "With few dimensions and limited data, local similarity-based reasoning can work well without needing to assume a global functional form",
+      "KNN is always guaranteed to outperform every other possible model whenever the dataset is small",
+      "Irregular, highly local relationships specifically and only require using Hamming distance",
+      "Small datasets always directly violate KNN's core underlying modeling assumptions entirely"
+    ],
+    "correct": 0,
+    "explanation": "KNN's local, assumption-free approach is well suited to small, low-dimensional problems where the true relationship does not follow a simple global pattern."
+  },
+  {
+    "id": "knn-076",
+    "topic": "knn",
+    "subtopic": "Strengths and weaknesses vs parametric models",
+    "difficulty": "analysis",
+    "q": "Why is KNN often used as a simple baseline model before trying more complex algorithms?",
+    "options": [
+      "It makes very few assumptions and is quick to try, providing an easy benchmark for whether more complex models actually add value",
+      "It is always guaranteed to outperform all other algorithms once it is properly tuned",
+      "It requires absolutely no training data at all in order to produce any useful predictions",
+      "It completely eliminates the need for any evaluation metric to ever be defined or computed"
+    ],
+    "correct": 0,
+    "explanation": "Because KNN needs little setup beyond scaling and choosing K, it offers a fast sanity-check baseline against which fancier models can be compared."
+  },
+  {
+    "id": "knn-077",
+    "topic": "knn",
+    "subtopic": "Strengths and weaknesses vs parametric models",
+    "difficulty": "application",
+    "q": "Which of the following correctly summarizes the conditions under which KNN tends to be competitive with more complex models?",
+    "options": [
+      "Small to moderate datasets with relatively few, meaningful, properly scaled features",
+      "Very large datasets with millions of rows and very strict real-time latency requirements",
+      "Very high-dimensional sparse text data with hundreds of thousands of features",
+      "Datasets with heavy class imbalance and absolutely no feature scaling applied"
+    ],
+    "correct": 0,
+    "explanation": "KNN tends to struggle with very large data (slow prediction), very high dimensionality (curse of dimensionality), and unscaled features, but can do well outside those conditions."
+  },
+  {
+    "id": "knn-078",
+    "topic": "knn",
+    "subtopic": "Strengths and weaknesses vs parametric models",
+    "difficulty": "analysis",
+    "q": "KNN is considered less interpretable in a \"global\" sense than a linear model's coefficients, yet it still offers a form of local interpretability because ______.",
+    "options": [
+      "it has no single global equation to inspect, but it can show the actual nearest examples that justified a prediction",
+      "it fundamentally cannot explain any single prediction in any way at all, ever",
+      "it produces a single global coefficient for every feature, just like linear regression",
+      "it deliberately and permanently hides all of the training data completely from any kind of external inspection whatsoever"
+    ],
+    "correct": 0,
+    "explanation": "Even without a global formula, KNN can point to the specific neighboring examples behind a prediction, which is a useful, example-based explanation."
+  },
+  {
+    "id": "knn-079",
+    "topic": "knn",
+    "subtopic": "Real-world applications",
+    "difficulty": "application",
+    "q": "A streaming service recommends movies to a user by finding other users with highly similar viewing histories and suggesting what they watched. This is a direct real-world application of ______.",
+    "options": [
+      "KNN-based collaborative filtering",
+      "KNN-based time-series forecasting",
+      "logistic regression with L1 regularization",
+      "principal component regression"
+    ],
+    "correct": 0,
+    "explanation": "Finding similar users and borrowing their preferences is a classic nearest-neighbor approach to building recommendations."
+  },
+  {
+    "id": "knn-080",
+    "topic": "knn",
+    "subtopic": "Real-world applications",
+    "difficulty": "recall",
+    "q": "In handwritten digit recognition, a classic and historically important use case for KNN, the model predicts a digit's label by ______.",
+    "options": [
+      "comparing the pixel vector of a new digit image to stored labeled examples and taking the majority label among the closest matches",
+      "fitting and training a completely separate neural network for every individual digit class label",
+      "building just one single global linear decision rule that applies across every input pixel",
+      "clustering all of the digit images into exactly ten fixed, unlabeled groups beforehand"
+    ],
+    "correct": 0,
+    "explanation": "Digit recognition with KNN works by measuring similarity (e.g., Euclidean distance over pixel intensities) to labeled reference images and voting."
+  },
+  {
+    "id": "knn-081",
+    "topic": "knn",
+    "subtopic": "Real-world applications",
+    "difficulty": "application",
+    "q": "A bank flags a new transaction as potentially fraudulent by checking whether it closely resembles a cluster of previously confirmed fraudulent transactions. Which core KNN idea underlies this approach?",
+    "options": [
+      "Similarity-based prediction: nearby points in feature space tend to share the same label",
+      "Iterative gradient-based parameter estimation using backpropagation",
+      "Recursive binary splitting applied repeatedly on a very long sequence of feature thresholds",
+      "Finding the maximum-margin separation between the two classes"
+    ],
+    "correct": 0,
+    "explanation": "This is the central assumption behind KNN: examples that are close together in feature space are likely to share the same outcome."
+  },
+  {
+    "id": "knn-082",
+    "topic": "knn",
+    "subtopic": "Real-world applications",
+    "difficulty": "application",
+    "q": "Why is KNN a natural fit for medical diagnosis systems that work by retrieving similar past patient cases?",
+    "options": [
+      "It directly operationalizes the idea of diagnosing based on outcomes of the most similar historical cases, without needing a predefined formula",
+      "It always guarantees perfect diagnostic accuracy, regardless of the underlying data quality or sample size",
+      "It requires absolutely no patient data of any kind at all once the system has been deployed",
+      "It can only ever be used in cases where every single patient has an identical set of symptoms"
+    ],
+    "correct": 0,
+    "explanation": "Similar-patient lookup is exactly how KNN reasons: it finds the closest historical cases and uses their outcomes to inform the new prediction."
+  },
+  {
+    "id": "knn-083",
+    "topic": "knn",
+    "subtopic": "Real-world applications",
+    "difficulty": "analysis",
+    "q": "Which scenario below is a poor real-world fit for a plain, unmodified KNN deployment?",
+    "options": [
+      "A real-time system with millions of stored records and strict sub-millisecond latency requirements",
+      "A small clinical dataset used to find similar past patients for a diagnosis suggestion",
+      "A quick baseline model for a fairly small tabular dataset with just a handful of numeric input features",
+      "A simple recommendation demo comparing just a few thousand user profiles directly"
+    ],
+    "correct": 0,
+    "explanation": "Brute-force KNN search time grows with the number of stored examples, making it a poor match for massive, latency-critical real-time systems without extra optimization."
+  },
+  {
+    "id": "knn-084",
+    "topic": "knn",
+    "subtopic": "Real-world applications",
+    "difficulty": "application",
+    "q": "An e-commerce site groups customers by purchase similarity to recommend products bought by \"customers like you.\" Which property of KNN is being leveraged here?",
+    "options": [
+      "Its reliance on a distance or similarity measure between feature vectors to find comparable examples",
+      "Its ability to fit one single global regression equation across every customer",
+      "Its very strict requirement that every single customer must always belong to exactly one of two classes",
+      "Its built-in automatic mechanism for reducing the number of stored customers"
+    ],
+    "correct": 0,
+    "explanation": "\"Customers like you\" recommendations are a direct application of finding nearest neighbors by similarity in purchase-behavior feature space."
+  },
+  {
+    "id": "knn-085",
+    "topic": "knn",
+    "subtopic": "Real-world applications",
+    "difficulty": "analysis",
+    "q": "In an image-based quality control system on a factory line, a new product image is classified as defective or not by comparing it to the closest labeled example images. What is the primary risk of this approach as the image dataset grows very large?",
+    "options": [
+      "Slower prediction times, since each new image must be compared against an ever-growing set of stored examples",
+      "A sudden, unavoidable drop in classification accuracy regardless of image quality",
+      "A fundamental inability to represent any images at all as numeric feature vectors",
+      "A strict requirement to discard all but a single one of the stored example images"
+    ],
+    "correct": 0,
+    "explanation": "As with any KNN deployment, a growing stored dataset increases the cost of the nearest-neighbor search performed for every new prediction."
+  },
+  {
+    "id": "knn-086",
+    "topic": "knn",
+    "subtopic": "Real-world applications",
+    "difficulty": "application",
+    "q": "Which of these is the most appropriate description of KNN's role in a \"similar case lookup\" system, such as legal case retrieval or customer support ticket matching?",
+    "options": [
+      "It retrieves and aggregates outcomes from the most similar historical cases to the current one",
+      "It generates entirely new synthetic cases and outcomes that never actually existed before at all",
+      "It completely replaces the need for any historical case data at all",
+      "It converts every single case into a fixed, compact set of rules"
+    ],
+    "correct": 0,
+    "explanation": "Case-based retrieval systems are a natural use of KNN: the historical case data is the model, and retrieval is the nearest-neighbor search itself."
+  }
+]

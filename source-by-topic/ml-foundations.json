@@ -1,0 +1,2402 @@
+[
+  {
+    "id": "mlfound-001",
+    "topic": "ml-foundations",
+    "subtopic": "ML taxonomy & definitions",
+    "difficulty": "application",
+    "q": "A retailer collects millions of transaction records but none of them are tagged with any target label. Which category of learning algorithm is suited to finding structure in this data?",
+    "options": [
+      "Unsupervised learning",
+      "Supervised learning",
+      "Reinforcement learning",
+      "Semi-supervised learning"
+    ],
+    "correct": 0,
+    "explanation": "Unsupervised learning finds patterns or structure (such as clusters) in unlabeled data without needing a target variable."
+  },
+  {
+    "id": "mlfound-002",
+    "topic": "ml-foundations",
+    "subtopic": "ML taxonomy & definitions",
+    "difficulty": "recall",
+    "q": "An agent that learns to play a game by receiving rewards and penalties for its actions, without being given labeled correct moves, is using ______.",
+    "options": [
+      "Reinforcement learning",
+      "Supervised learning from labeled examples",
+      "Unsupervised learning",
+      "Semi-supervised learning"
+    ],
+    "correct": 0,
+    "explanation": "Reinforcement learning trains an agent through trial-and-error reward signals rather than labeled examples."
+  },
+  {
+    "id": "mlfound-003",
+    "topic": "ml-foundations",
+    "subtopic": "ML taxonomy & definitions",
+    "difficulty": "application",
+    "q": "A medical imaging lab has a large archive of scans, only a small fraction of which have been labeled by a radiologist as malignant or benign due to the cost of expert review. Which learning paradigm is designed to exploit both the labeled and the much larger unlabeled portion together?",
+    "options": [
+      "Semi-supervised learning",
+      "Supervised learning from labeled examples",
+      "Unsupervised learning on fully unlabeled data",
+      "Reinforcement learning via trial-and-error rewards"
+    ],
+    "correct": 0,
+    "explanation": "Semi-supervised learning combines a small labeled set with a larger unlabeled set to improve learning beyond what the labeled data alone would allow."
+  },
+  {
+    "id": "mlfound-004",
+    "topic": "ml-foundations",
+    "subtopic": "ML taxonomy & definitions",
+    "difficulty": "recall",
+    "q": "Arthur Samuel's 1959 description of machine learning emphasizes that a program should ______.",
+    "options": [
+      "learn without being explicitly programmed for every rule",
+      "be evaluated strictly by a task, experience, and performance measure triple",
+      "only operate within a reinforcement-learning reward framework",
+      "always outperform any hand-coded rule-based expert system on every single task"
+    ],
+    "correct": 0,
+    "explanation": "Samuel's informal 1959 definition describes machine learning as giving computers the ability to learn without being explicitly programmed."
+  },
+  {
+    "id": "mlfound-005",
+    "topic": "ml-foundations",
+    "subtopic": "ML taxonomy & definitions",
+    "difficulty": "analysis",
+    "q": "Compared to Arthur Samuel's informal description, what makes Tom Mitchell's 1997 definition of machine learning more rigorous?",
+    "options": [
+      "It explicitly names an experience E, a task T, and a performance measure P that must improve with E",
+      "It restricts the definition of machine learning entirely to supervised classification problems trained on labeled data",
+      "It was validated empirically across a much larger number of benchmark datasets than Samuel's",
+      "It completely removes the need for any performance measure or task definition"
+    ],
+    "correct": 0,
+    "explanation": "Mitchell's definition is considered more formal because it explicitly decomposes learning into experience (E), task (T), and performance measure (P)."
+  },
+  {
+    "id": "mlfound-006",
+    "topic": "ml-foundations",
+    "subtopic": "ML taxonomy & definitions",
+    "difficulty": "application",
+    "q": "A spam filter is said to learn under Tom Mitchell's framework. The task T is classifying emails as spam or not spam, and the performance measure P is classification accuracy on new emails. What plays the role of the experience E?",
+    "options": [
+      "The historical collection of emails the user has previously labeled",
+      "The accuracy score computed on new emails after the filter is deployed",
+      "The spam-classification task that the filter is being trained to perform",
+      "The fixed set of rules a programmer manually hand-codes into the spam filter itself"
+    ],
+    "correct": 0,
+    "explanation": "In Mitchell's framework, E is the experience the program learns from, which here is the labeled email history used during training."
+  },
+  {
+    "id": "mlfound-007",
+    "topic": "ml-foundations",
+    "subtopic": "ML taxonomy & definitions",
+    "difficulty": "recall",
+    "q": "A bank wants to predict whether a loan applicant will default, using a historical dataset where each past applicant is already tagged with 'defaulted' or 'repaid'. This is an example of ______.",
+    "options": [
+      "Supervised learning",
+      "Unsupervised learning",
+      "Reinforcement learning",
+      "Semi-supervised learning"
+    ],
+    "correct": 0,
+    "explanation": "Because each training example already carries a known target label, this is a supervised learning problem."
+  },
+  {
+    "id": "mlfound-008",
+    "topic": "ml-foundations",
+    "subtopic": "ML taxonomy & definitions",
+    "difficulty": "recall",
+    "q": "Predicting a continuous output such as a house price is an example of a ______ problem, while predicting a discrete category such as spam/not-spam is a ______ problem.",
+    "options": [
+      "regression; classification",
+      "classification task; regression task",
+      "supervised; unsupervised learning",
+      "unsupervised; supervised learning"
+    ],
+    "correct": 0,
+    "explanation": "Regression problems output a continuous numeric value, while classification problems output one of a fixed set of discrete categories."
+  },
+  {
+    "id": "mlfound-009",
+    "topic": "ml-foundations",
+    "subtopic": "ML taxonomy & definitions",
+    "difficulty": "application",
+    "q": "Clustering customers into unnamed segments based on purchasing behavior, with no predefined segment labels, falls under which of the unsupervised learning's typical tasks?",
+    "options": [
+      "Grouping similar data points together without predefined labels",
+      "Predicting a numeric target from a labeled training set",
+      "Learning a policy through trial-and-error reward signals",
+      "Refining labels using a small labeled subset plus a large unlabeled one"
+    ],
+    "correct": 0,
+    "explanation": "Clustering is a core unsupervised learning task: grouping similar examples together without any predefined category labels."
+  },
+  {
+    "id": "mlfound-010",
+    "topic": "ml-foundations",
+    "subtopic": "ML taxonomy & definitions",
+    "difficulty": "application",
+    "q": "A manufacturing plant wants to flag unusual sensor readings that differ from normal operating patterns, without having any examples of past failures labeled. This task is best framed as ______.",
+    "options": [
+      "Anomaly/novelty detection, an unsupervised learning task",
+      "A supervised classification task using failure labels",
+      "A reinforcement learning task with a reward for each sensor reading",
+      "A semi-supervised task requiring at least some positive failure examples"
+    ],
+    "correct": 0,
+    "explanation": "Without any labeled failure examples, detecting unusual readings is naturally framed as unsupervised anomaly detection."
+  },
+  {
+    "id": "mlfound-011",
+    "topic": "ml-foundations",
+    "subtopic": "ML taxonomy & definitions",
+    "difficulty": "analysis",
+    "q": "Why is 'ML is just applying standard programming techniques to solve any problem' a misleading description of machine learning?",
+    "options": [
+      "Machine learning lets the model learn its own rules/parameters from data, not hand-coded",
+      "Because all machine learning models inherently execute faster than equivalent hand-written code",
+      "Because machine learning never requires any code to be written at all, even for deployment",
+      "Because machine learning can only ever be applied to image and text data, never structured data"
+    ],
+    "correct": 0,
+    "explanation": "The defining feature of machine learning is that the system learns its own internal rules/parameters from data, rather than having every rule explicitly programmed."
+  },
+  {
+    "id": "mlfound-012",
+    "topic": "ml-foundations",
+    "subtopic": "ML taxonomy & definitions",
+    "difficulty": "recall",
+    "q": "A self-driving car agent that updates its driving policy based on positive rewards for staying in lane and penalties for collisions is an instance of ______.",
+    "options": [
+      "Reinforcement learning",
+      "Supervised learning from labeled driving examples",
+      "Unsupervised learning",
+      "Semi-supervised learning"
+    ],
+    "correct": 0,
+    "explanation": "Learning a policy from rewards and penalties through interaction with an environment is the defining feature of reinforcement learning."
+  },
+  {
+    "id": "mlfound-013",
+    "topic": "ml-foundations",
+    "subtopic": "ML taxonomy & definitions",
+    "difficulty": "recall",
+    "q": "Which statement correctly distinguishes regression from classification tasks in supervised learning?",
+    "options": [
+      "Regression predicts a continuous numeric value, while classification predicts one of a discrete set of categories",
+      "Regression predicts discrete categories, while classification predicts continuous numeric values, the reverse of the truth",
+      "Regression requires labeled data, while classification never requires any labels at all",
+      "Regression can only ever use exactly one single input feature, while classification can use many"
+    ],
+    "correct": 0,
+    "explanation": "Regression outputs continuous numeric values; classification outputs discrete category labels. Both are supervised learning tasks and both can use labeled data with any number of features."
+  },
+  {
+    "id": "mlfound-014",
+    "topic": "ml-foundations",
+    "subtopic": "ML taxonomy & definitions",
+    "difficulty": "application",
+    "q": "A hospital has thousands of patient records with lab results but no information about whether each patient was later diagnosed with the condition under study. The hospital wants to discover whether its patients naturally form distinct risk groups. This objective is best achieved with ______.",
+    "options": [
+      "An unsupervised clustering approach",
+      "A supervised regression approach",
+      "A reinforcement learning approach",
+      "A semi-supervised approach requiring at least partial diagnosis labels"
+    ],
+    "correct": 0,
+    "explanation": "With no outcome labels available, discovering natural groupings in the data is an unsupervised clustering problem."
+  },
+  {
+    "id": "mlfound-015",
+    "topic": "ml-foundations",
+    "subtopic": "Linear regression model & notation",
+    "difficulty": "recall",
+    "q": "In the univariate linear regression model f(w,b)(x) = wx + b, what do the parameters w and b represent?",
+    "options": [
+      "w is the weight (slope) applied to the input feature, and b is the bias (intercept) term",
+      "w is the total number of training examples used, and b is the batch size used during each training step",
+      "w is the learning rate controlling the gradient descent step size, and b is the number of iterations",
+      "w is the regularization strength applied to the model, and b is the number of input features used"
+    ],
+    "correct": 0,
+    "explanation": "w and b are the two learnable parameters of the model: w scales the input feature, and b shifts the output."
+  },
+  {
+    "id": "mlfound-016",
+    "topic": "ml-foundations",
+    "subtopic": "Linear regression model & notation",
+    "difficulty": "application",
+    "q": "A linear regression model is fit to predict a house's sale price from its floor area. If the fitted model is price = 150 * area + 20000, what does the value 20000 represent?",
+    "options": [
+      "The predicted price when floor area is zero, i.e. the bias/intercept term",
+      "The average sale price computed across every house in the full training dataset",
+      "The learning rate value used throughout the gradient descent training process",
+      "The total number of training examples originally used to fit this particular model"
+    ],
+    "correct": 0,
+    "explanation": "The constant term in a linear model is the bias/intercept: the predicted output when all input features are zero."
+  },
+  {
+    "id": "mlfound-017",
+    "topic": "ml-foundations",
+    "subtopic": "Linear regression model & notation",
+    "difficulty": "recall",
+    "q": "Why is linear regression considered a supervised learning algorithm?",
+    "options": [
+      "It is trained on labeled examples consisting of input features paired with known target values",
+      "It groups similar inputs together into clusters without relying on any labeled target values at all",
+      "It learns purely through trial-and-error reward and penalty signals from an environment",
+      "It requires no training data or labeled examples of any kind whatsoever"
+    ],
+    "correct": 0,
+    "explanation": "Linear regression fits parameters using training examples that each have a known, labeled target value, which is the hallmark of supervised learning."
+  },
+  {
+    "id": "mlfound-018",
+    "topic": "ml-foundations",
+    "subtopic": "Linear regression model & notation",
+    "difficulty": "recall",
+    "q": "A single training example in a housing price dataset is represented as (x^(i), y^(i)). What does y^(i) represent?",
+    "options": [
+      "The true/target output value for the i-th training example",
+      "The predicted output produced by the model for the i-th example",
+      "The index position of the example within the dataset",
+      "The weight parameter assigned specifically to the i-th input feature"
+    ],
+    "correct": 0,
+    "explanation": "y^(i) denotes the actual, observed label for the i-th example, as opposed to f(x^(i)), which is the model's prediction."
+  },
+  {
+    "id": "mlfound-019",
+    "topic": "ml-foundations",
+    "subtopic": "Linear regression model & notation",
+    "difficulty": "recall",
+    "q": "What is the key difference between the model's prediction f(x) and the training label y for a given example?",
+    "options": [
+      "f(x) is the model's estimated output, while y is the actual observed value from the data",
+      "f(x) is always required to equal y exactly once training has fully converged",
+      "y is computed directly from f(x) by applying the squared-error cost function",
+      "f(x) and y are simply two completely different notations referring to the exact same identical underlying quantity"
+    ],
+    "correct": 0,
+    "explanation": "f(x) is the model's output given its current parameters, while y is the ground-truth label; the cost function measures the gap between them."
+  },
+  {
+    "id": "mlfound-020",
+    "topic": "ml-foundations",
+    "subtopic": "Linear regression model & notation",
+    "difficulty": "analysis",
+    "q": "A model that assumes the relationship between input and output is a straight line will struggle to fit data where the true relationship is strongly curved. This limitation is a direct consequence of ______.",
+    "options": [
+      "linear regression's restriction to a linear combination of the input features",
+      "the use of far too many training examples relative to the number of features used overall",
+      "an excessively small learning rate chosen for the gradient descent optimizer",
+      "the choice of squared error instead of absolute error as the cost function"
+    ],
+    "correct": 0,
+    "explanation": "Plain linear regression can only represent straight-line (or hyperplane) relationships, so strongly curved patterns require engineered or polynomial features to capture."
+  },
+  {
+    "id": "mlfound-021",
+    "topic": "ml-foundations",
+    "subtopic": "Linear regression model & notation",
+    "difficulty": "recall",
+    "q": "In the notation m = number of training examples and n = number of features, what does a dataset with m=500 and n=3 represent?",
+    "options": [
+      "500 labeled examples, each described by 3 input features",
+      "3 labeled training examples, each described by 500 separate input features",
+      "500 features collected and recorded over 3 separate time periods",
+      "3 separate models, each trained independently on 500 examples"
+    ],
+    "correct": 0,
+    "explanation": "By convention, m counts training examples (rows) and n counts input features (columns), so m=500, n=3 means 500 examples with 3 features each."
+  },
+  {
+    "id": "mlfound-022",
+    "topic": "ml-foundations",
+    "subtopic": "Linear regression model & notation",
+    "difficulty": "application",
+    "q": "A simple linear regression model predicts crop yield from rainfall alone. Adding a second input feature, such as average temperature, turns this into ______.",
+    "options": [
+      "a multiple linear regression model with two input features",
+      "a polynomial regression model of degree two using only rainfall",
+      "a classification model predicting one of two discrete classes",
+      "an unsupervised clustering model grouping data into two clusters"
+    ],
+    "correct": 0,
+    "explanation": "Using more than one input feature while keeping a linear combination of them is called multiple linear regression."
+  },
+  {
+    "id": "mlfound-023",
+    "topic": "ml-foundations",
+    "subtopic": "Linear regression model & notation",
+    "difficulty": "analysis",
+    "q": "Why can a straight-line model still be useful even when the true relationship between inputs and outputs is only approximately linear?",
+    "options": [
+      "It can approximate a roughly linear trend over the range of interest, trading some accuracy for simplicity",
+      "It will always fit the training data perfectly, no matter how nonlinear the true underlying relationship actually is",
+      "It completely eliminates the need for any cost function during model training",
+      "It guarantees exactly zero error on any dataset given enough training iterations"
+    ],
+    "correct": 0,
+    "explanation": "A linear model trades some accuracy for simplicity and interpretability, and can still be a reasonable approximation when the true relationship is roughly linear."
+  },
+  {
+    "id": "mlfound-024",
+    "topic": "ml-foundations",
+    "subtopic": "Linear regression model & notation",
+    "difficulty": "recall",
+    "q": "In linear regression notation, x^(i)_j typically refers to ______.",
+    "options": [
+      "the value of the j-th feature in the i-th training example",
+      "the predicted output computed for the j-th training example overall",
+      "the i-th weight parameter used within the j-th separate trained model",
+      "the learning rate value used at iteration i for feature j specifically"
+    ],
+    "correct": 0,
+    "explanation": "The subscript j indexes the feature and the superscript (i) indexes the training example, so x^(i)_j is the j-th feature's value for the i-th example."
+  },
+  {
+    "id": "mlfound-025",
+    "topic": "ml-foundations",
+    "subtopic": "Linear regression model & notation",
+    "difficulty": "recall",
+    "q": "After training, a linear regression model is used to predict the output for a brand-new, unseen input. This step is referred to as ______.",
+    "options": [
+      "Inference/prediction",
+      "Gradient descent optimization",
+      "Feature scaling and normalization",
+      "Regularization penalty term"
+    ],
+    "correct": 0,
+    "explanation": "Using a trained model to produce outputs for new inputs is called inference or prediction, distinct from the training steps that fit the parameters."
+  },
+  {
+    "id": "mlfound-026",
+    "topic": "ml-foundations",
+    "subtopic": "Linear regression model & notation",
+    "difficulty": "recall",
+    "q": "A dataset used to fit a linear regression model contains an input feature 'number of bedrooms' and a target 'house price'. Which of these is the dependent variable?",
+    "options": [
+      "House price, since it is the quantity being predicted",
+      "Number of bedrooms, since it is the quantity being predicted",
+      "Both are equally dependent variables in linear regression",
+      "Neither; linear regression has no dependent variable"
+    ],
+    "correct": 0,
+    "explanation": "The dependent variable (target y) is the quantity the model predicts; the independent variable(s) are the input features used to predict it."
+  },
+  {
+    "id": "mlfound-027",
+    "topic": "ml-foundations",
+    "subtopic": "Cost function",
+    "difficulty": "recall",
+    "q": "What is the main purpose of the cost function J(w,b) in linear regression?",
+    "options": [
+      "To quantify how far predictions are from actual targets, so training minimizes this gap",
+      "To measure how many total labeled training examples were originally used to fit the model",
+      "To determine exactly how many input features should be included in the model",
+      "To directly set the learning rate value used by the gradient descent algorithm"
+    ],
+    "correct": 0,
+    "explanation": "The cost function measures the discrepancy between predictions and actual labels; training searches for parameters that minimize it."
+  },
+  {
+    "id": "mlfound-028",
+    "topic": "ml-foundations",
+    "subtopic": "Cost function",
+    "difficulty": "recall",
+    "q": "The squared-error cost function used in linear regression computes ______.",
+    "options": [
+      "the average squared difference between predicted and actual values across all examples",
+      "the total summed absolute difference between every single predicted and actual value",
+      "the single maximum prediction error observed anywhere in the training set",
+      "the exact count of training examples where the prediction matches the label with complete precision"
+    ],
+    "correct": 0,
+    "explanation": "Mean squared error averages the squared difference between each prediction and its true label over all training examples."
+  },
+  {
+    "id": "mlfound-029",
+    "topic": "ml-foundations",
+    "subtopic": "Cost function",
+    "difficulty": "analysis",
+    "q": "Why is the squared-error term in the cost function typically divided by 2m rather than just m (where m is the number of training examples)?",
+    "options": [
+      "The factor of 2 cancels the 2 from differentiating the squared term",
+      "Dividing the squared error by 2m guarantees the cost function becomes strictly non-convex",
+      "It mathematically converts the entire cost function into a valid probability distribution",
+      "It deliberately doubles the statistical weight given to outliers in the training data"
+    ],
+    "correct": 0,
+    "explanation": "Differentiating the squared error brings down a factor of 2; including 1/2 in the cost cancels this, giving a cleaner gradient expression."
+  },
+  {
+    "id": "mlfound-030",
+    "topic": "ml-foundations",
+    "subtopic": "Cost function",
+    "difficulty": "application",
+    "q": "A model's cost J(w,b) is very high on the training set. What does this most directly indicate?",
+    "options": [
+      "The model's predictions are, on average, far from the actual target values",
+      "The model has included far too many irrelevant or redundant input features overall",
+      "The learning rate chosen for gradient descent is set far too low",
+      "The model will definitely generalize poorly to brand-new unseen data"
+    ],
+    "correct": 0,
+    "explanation": "A high training cost directly reflects large average prediction error on the training data itself; it does not by itself diagnose the cause or predict generalization."
+  },
+  {
+    "id": "mlfound-031",
+    "topic": "ml-foundations",
+    "subtopic": "Cost function",
+    "difficulty": "recall",
+    "q": "For a fixed value of b, plotting the cost J against different values of w for a linear regression problem typically produces a ______ shaped curve.",
+    "options": [
+      "U-shaped/bowl-shaped (convex)",
+      "S-shaped (logistic sigmoid) curve",
+      "Flat and constant for all values of w",
+      "Jagged with multiple separate local minima"
+    ],
+    "correct": 0,
+    "explanation": "The squared-error cost for linear regression is convex, producing a single bowl-shaped curve with one global minimum."
+  },
+  {
+    "id": "mlfound-032",
+    "topic": "ml-foundations",
+    "subtopic": "Cost function",
+    "difficulty": "analysis",
+    "q": "Why is it desirable that the squared-error cost function for linear regression is convex?",
+    "options": [
+      "A convex function has one global minimum, so gradient descent cannot get stuck in a local minimum",
+      "Convexity guarantees the trained model will always have exactly zero bias",
+      "Convexity would mean the cost surface has several separate, equally good minima to freely choose between",
+      "Convexity completely removes the need to ever choose a learning rate value"
+    ],
+    "correct": 0,
+    "explanation": "Convexity guarantees a single global minimum, so an appropriately tuned gradient descent will not become trapped in a worse local minimum."
+  },
+  {
+    "id": "mlfound-033",
+    "topic": "ml-foundations",
+    "subtopic": "Cost function",
+    "difficulty": "application",
+    "q": "In a fraud-detection regression task predicting a risk score, if the squared-error cost function yields a much larger penalty for a prediction that misses the true value by 10 units than one that misses by 2 units, this reflects which property of the squared-error cost?",
+    "options": [
+      "It penalizes larger errors disproportionately more, since the error term is squared",
+      "It penalizes every single error by exactly the same fixed proportional fraction of the true target value",
+      "It completely ignores both the direction and magnitude of the error entirely",
+      "It only ever penalizes errors that exceed the overall mean of the target variable"
+    ],
+    "correct": 0,
+    "explanation": "Because the error is squared, a miss of 10 contributes 100 to the sum while a miss of 2 contributes only 4, so larger errors are penalized disproportionately."
+  },
+  {
+    "id": "mlfound-034",
+    "topic": "ml-foundations",
+    "subtopic": "Cost function",
+    "difficulty": "recall",
+    "q": "The parameters (w,b) that minimize the cost function J(w,b) for linear regression are the ______.",
+    "options": [
+      "parameters that produce the best-fitting line for the training data under the chosen cost",
+      "parameters that make the model's predictions always exactly equal every single training label",
+      "parameters that instead maximize the squared-error cost function value",
+      "parameters chosen arbitrarily before training begins and never updated at all"
+    ],
+    "correct": 0,
+    "explanation": "Training seeks the (w,b) that minimizes the cost, which corresponds to the best-fitting line under the squared-error criterion, not necessarily a perfect fit."
+  },
+  {
+    "id": "mlfound-035",
+    "topic": "ml-foundations",
+    "subtopic": "Cost function",
+    "difficulty": "recall",
+    "q": "A 3D plot of J(w,b) against w and b for a linear regression problem resembles ______.",
+    "options": [
+      "a bowl, with one unique point at the bottom corresponding to the minimum cost",
+      "an irregular saddle shape containing two completely separate dips in different regions",
+      "a completely flat plane containing no minimum at all",
+      "a jagged series of many disconnected peaks and valleys"
+    ],
+    "correct": 0,
+    "explanation": "Because the cost is convex in both parameters jointly, its surface over (w,b) forms a single bowl shape with one minimum."
+  },
+  {
+    "id": "mlfound-036",
+    "topic": "ml-foundations",
+    "subtopic": "Cost function",
+    "difficulty": "analysis",
+    "q": "Compared to the mean absolute error (MAE), what is a key practical drawback of using mean squared error (MSE) as a cost function when a dataset contains a few extreme outliers?",
+    "options": [
+      "MSE squares errors, so a few large outliers can dominate the cost and skew the line",
+      "MSE becomes completely undefined whenever any outliers are present in the data",
+      "MSE completely ignores the effect of outliers since it always normalizes the total by m",
+      "MSE can only ever be computed for classification-style problems, never regression"
+    ],
+    "correct": 0,
+    "explanation": "Because squaring amplifies large errors, MSE is more sensitive to outliers than MAE, which grows only linearly with the error size."
+  },
+  {
+    "id": "mlfound-037",
+    "topic": "ml-foundations",
+    "subtopic": "Cost function",
+    "difficulty": "analysis",
+    "q": "Suppose two different candidate models give the exact same squared error on every single training example. What must be true about their cost J?",
+    "options": [
+      "Their cost values J(w,b) must be identical",
+      "Their cost values must differ because the models have different parameters",
+      "Their cost values can only be compared after convergence",
+      "Their cost values are undefined since costs cannot be tied"
+    ],
+    "correct": 0,
+    "explanation": "Since J is computed entirely from the per-example squared errors, identical per-example errors necessarily give identical cost values, regardless of the underlying parameters."
+  },
+  {
+    "id": "mlfound-038",
+    "topic": "ml-foundations",
+    "subtopic": "Cost function",
+    "difficulty": "recall",
+    "q": "In general, the cost function used during training is evaluated on ______.",
+    "options": [
+      "the training data, since training seeks the parameters that minimize this value",
+      "data the model has genuinely never encountered before, used purely to test generalization",
+      "entirely randomly generated synthetic data that was never part of training",
+      "only a single randomly selected training example used for each pass"
+    ],
+    "correct": 0,
+    "explanation": "The training cost is computed on the training set, since the optimization process is searching for parameters that minimize error on that data."
+  },
+  {
+    "id": "mlfound-039",
+    "topic": "ml-foundations",
+    "subtopic": "Cost function",
+    "difficulty": "analysis",
+    "q": "Why does the cost function J(w,b) depend only on the parameters w and b once the training dataset is fixed?",
+    "options": [
+      "Because w and b are the only learned quantities; the features and labels stay fixed",
+      "Because the entire training dataset changes dynamically throughout the training process",
+      "Because the cost function is recomputed using an entirely new dataset at every single iteration",
+      "Because w and b are themselves fully computed from the cost function before training even starts"
+    ],
+    "correct": 0,
+    "explanation": "Once the dataset is fixed, the only free variables in J are the model parameters, so J becomes purely a function of w and b."
+  },
+  {
+    "id": "mlfound-040",
+    "topic": "ml-foundations",
+    "subtopic": "Gradient descent mechanics",
+    "difficulty": "application",
+    "q": "After several iterations of gradient descent, the cost J is observed to increase rather than decrease. What is the most likely cause?",
+    "options": [
+      "The learning rate is too large, causing the updates to overshoot the minimum",
+      "The learning rate is too small, causing updates to undershoot the minimum",
+      "The cost function being minimized happens to already be convex in overall shape",
+      "Feature scaling was properly applied to the data before training began"
+    ],
+    "correct": 0,
+    "explanation": "An increasing cost during gradient descent is a classic symptom of a learning rate that is too large, causing the updates to overshoot and diverge."
+  },
+  {
+    "id": "mlfound-041",
+    "topic": "ml-foundations",
+    "subtopic": "Gradient descent mechanics",
+    "difficulty": "recall",
+    "q": "What is the general update rule used by gradient descent to adjust a parameter w?",
+    "options": [
+      "w is updated by subtracting the learning rate times the cost's partial derivative",
+      "w is updated by simply adding the learning rate multiplied by the raw cost value",
+      "w is updated by multiplying its current value by the total number of training examples used",
+      "w is updated by replacing it entirely with the average of all previous w values"
+    ],
+    "correct": 0,
+    "explanation": "The standard gradient descent update is w := w - alpha * (dJ/dw), moving the parameter opposite to the gradient direction."
+  },
+  {
+    "id": "mlfound-042",
+    "topic": "ml-foundations",
+    "subtopic": "Gradient descent mechanics",
+    "difficulty": "analysis",
+    "q": "In the gradient descent update rule, why is the partial derivative of the cost function subtracted from the current parameter value rather than added?",
+    "options": [
+      "Subtracting the gradient moves the parameter in the direction that decreases the cost",
+      "Subtracting the gradient moves the parameter in the direction that increases the cost fastest",
+      "Subtraction is specifically required to keep the parameters from ever becoming negative values",
+      "Subtraction guarantees the learning rate always stays within a strictly valid numeric range"
+    ],
+    "correct": 0,
+    "explanation": "The gradient points in the direction of steepest increase of the cost, so subtracting it moves the parameter toward lower cost."
+  },
+  {
+    "id": "mlfound-043",
+    "topic": "ml-foundations",
+    "subtopic": "Gradient descent mechanics",
+    "difficulty": "recall",
+    "q": "Gradient descent is best described as an algorithm that ______.",
+    "options": [
+      "iteratively adjusts parameters in the direction that reduces the cost function",
+      "directly solves for the parameters that minimize cost in one closed-form step",
+      "randomly searches throughout the parameter space until the cost happens to decrease",
+      "only ever works when the cost function is quadratic in every single parameter"
+    ],
+    "correct": 0,
+    "explanation": "Gradient descent is an iterative optimization method that repeatedly nudges parameters toward lower cost, rather than solving for the optimum in one step."
+  },
+  {
+    "id": "mlfound-044",
+    "topic": "ml-foundations",
+    "subtopic": "Gradient descent mechanics",
+    "difficulty": "application",
+    "q": "During gradient descent, all parameters (e.g. w and b) should be updated ______.",
+    "options": [
+      "simultaneously, using old parameter values to compute every update before any change",
+      "one at a time: updating w completely before even beginning to compute any update for b",
+      "in a completely random order re-chosen at each training iteration",
+      "only a single time, right at the very end of training"
+    ],
+    "correct": 0,
+    "explanation": "Correct gradient descent computes all partial derivatives using the current parameter values and then updates every parameter at the same time."
+  },
+  {
+    "id": "mlfound-045",
+    "topic": "ml-foundations",
+    "subtopic": "Gradient descent mechanics",
+    "difficulty": "application",
+    "q": "A gradient descent run is stopped after a fixed number of iterations even though the cost is still slowly decreasing. What risk does this stopping rule carry?",
+    "options": [
+      "The algorithm may be stopped before reaching a point close enough to the minimum",
+      "The algorithm will have already diverged completely long before reaching that point",
+      "The cost function will unexpectedly become non-convex",
+      "The learning rate will automatically increase without any manual intervention"
+    ],
+    "correct": 0,
+    "explanation": "Stopping on a fixed iteration count regardless of the cost trend risks halting training prematurely, before the parameters have converged near the minimum."
+  },
+  {
+    "id": "mlfound-046",
+    "topic": "ml-foundations",
+    "subtopic": "Gradient descent mechanics",
+    "difficulty": "recall",
+    "q": "At the exact minimum of a convex cost function, what is true of the gradient (partial derivative) of the cost with respect to each parameter?",
+    "options": [
+      "It equals zero, so gradient descent makes no further updates",
+      "It becomes exactly equal to the learning rate value",
+      "It reaches its largest possible magnitude at that exact point",
+      "It becomes mathematically undefined exactly at the minimum"
+    ],
+    "correct": 0,
+    "explanation": "At the minimum of a smooth convex function, the slope in every direction is zero, so the gradient descent update becomes zero and parameters stop changing."
+  },
+  {
+    "id": "mlfound-047",
+    "topic": "ml-foundations",
+    "subtopic": "Gradient descent mechanics",
+    "difficulty": "analysis",
+    "q": "Why does gradient descent typically take smaller steps automatically as it approaches the minimum of a convex cost function, even with a fixed learning rate?",
+    "options": [
+      "The gradient's magnitude shrinks near the minimum, so update size shrinks too",
+      "The learning rate itself is automatically halved at every single training iteration",
+      "The number of available training examples steadily decreases as training proceeds",
+      "The cost function's overall shape changes as the algorithm approaches the minimum"
+    ],
+    "correct": 0,
+    "explanation": "Near a minimum, the slope of a convex cost function flattens out, so the gradient magnitude shrinks and the resulting update step shrinks even with a constant learning rate."
+  },
+  {
+    "id": "mlfound-048",
+    "topic": "ml-foundations",
+    "subtopic": "Gradient descent mechanics",
+    "difficulty": "analysis",
+    "q": "Gradient descent is applied to a cost function with multiple local minima. Compared to running it on the convex cost function of linear regression, what additional risk arises?",
+    "options": [
+      "The algorithm can converge to a local minimum instead of the global minimum",
+      "The algorithm can no longer compute any valid gradient at any point whatsoever",
+      "The learning rate must always be deliberately set to a negative value",
+      "The cost function is now guaranteed to diverge no matter what"
+    ],
+    "correct": 0,
+    "explanation": "Non-convex cost functions can have multiple local minima, so gradient descent may settle into one that is not the global minimum depending on initialization."
+  },
+  {
+    "id": "mlfound-049",
+    "topic": "ml-foundations",
+    "subtopic": "Gradient descent mechanics",
+    "difficulty": "recall",
+    "q": "Which of the following is a correct, high-level description of what one iteration of gradient descent does for linear regression?",
+    "options": [
+      "It computes the gradient of the cost for each parameter and takes a small step opposite to it",
+      "It evaluates the cost function at every single possible value of w and b and simply selects the smallest one found",
+      "It randomly perturbs the parameters and keeps the perturbation only if the cost happens to drop afterward",
+      "It solves the normal equation directly and exactly for the optimal parameters in one closed-form step"
+    ],
+    "correct": 0,
+    "explanation": "Each gradient descent iteration computes the gradient at the current parameters and takes one small step in the direction that reduces cost."
+  },
+  {
+    "id": "mlfound-050",
+    "topic": "ml-foundations",
+    "subtopic": "Gradient descent mechanics",
+    "difficulty": "application",
+    "q": "A junior data scientist initializes w and b to zero before training a linear regression model with gradient descent on a convex cost function. What should happen as iterations proceed?",
+    "options": [
+      "The parameters should move steadily toward the cost-minimizing values, given a suitable learning rate",
+      "The parameters will remain stuck at exactly zero forever, no matter what learning rate is chosen",
+      "The algorithm will immediately diverge off toward infinity purely because of the zero initialization chosen here",
+      "The cost function itself will become non-convex purely as a result of the zero initialization"
+    ],
+    "correct": 0,
+    "explanation": "For a convex cost function like squared error in linear regression, gradient descent will move the parameters toward the minimum from any reasonable starting point, including zero."
+  },
+  {
+    "id": "mlfound-051",
+    "topic": "ml-foundations",
+    "subtopic": "Gradient descent mechanics",
+    "difficulty": "recall",
+    "q": "What role does the learning rate play in the gradient descent update rule?",
+    "options": [
+      "It scales the size of the step taken in the direction of the negative gradient each iteration",
+      "It determines exactly how many individual training examples are used in each iteration",
+      "It sets the total number of distinct input features that are included in the entire model overall",
+      "It decides outright whether the cost function turns out to be convex or non-convex"
+    ],
+    "correct": 0,
+    "explanation": "The learning rate alpha multiplies the gradient in the update rule, controlling how large a step is taken at each iteration."
+  },
+  {
+    "id": "mlfound-052",
+    "topic": "ml-foundations",
+    "subtopic": "Gradient descent mechanics",
+    "difficulty": "application",
+    "q": "In an agricultural yield prediction model, gradient descent is run with a fixed learning rate and the cost is monitored every iteration. The cost decreases quickly at first and then decreases more and more slowly before leveling off. What does this pattern indicate?",
+    "options": [
+      "The algorithm is converging, since updates shrink naturally as parameters approach the minimum",
+      "The learning rate is set too large and the algorithm is actively diverging away from the minimum",
+      "The model is underfitting badly and clearly needs several additional relevant input features",
+      "The training data must be re-scaled entirely before the algorithm can proceed any further"
+    ],
+    "correct": 0,
+    "explanation": "A cost curve that decreases quickly then levels off is the expected, healthy pattern as gradient descent approaches a minimum."
+  },
+  {
+    "id": "mlfound-053",
+    "topic": "ml-foundations",
+    "subtopic": "Gradient descent mechanics",
+    "difficulty": "analysis",
+    "q": "Why is gradient descent generally preferred over an exhaustive grid search over all possible (w,b) combinations for training a linear regression model?",
+    "options": [
+      "Gradient descent uses the gradient to move efficiently toward the minimum, unlike an impractical exhaustive grid search",
+      "Gradient descent will always locate the exact minimum in precisely one single update step, regardless of the starting point chosen",
+      "Grid search cannot mathematically be applied to any convex cost function under any circumstances",
+      "Gradient descent does not require any cost function to be defined anywhere in the model"
+    ],
+    "correct": 0,
+    "explanation": "Grid search over a continuous parameter space is computationally infeasible at fine resolution, while gradient descent uses gradient information to move directly and efficiently toward the minimum."
+  },
+  {
+    "id": "mlfound-054",
+    "topic": "ml-foundations",
+    "subtopic": "Learning rate & convergence diagnostics",
+    "difficulty": "application",
+    "q": "A learning curve plots cost J against the number of gradient descent iterations. If the curve decreases at every single iteration and then flattens out, what does this suggest?",
+    "options": [
+      "Gradient descent is working correctly and has converged, or is very close to convergence",
+      "The learning rate is far too large and the algorithm is actively diverging away from a minimum",
+      "The model is overfitting the training data despite the cost curve still decreasing steadily",
+      "The input features were never scaled at all before training the model using gradient descent"
+    ],
+    "correct": 0,
+    "explanation": "A monotonically decreasing cost that flattens out is the expected signature of a correctly converging gradient descent run."
+  },
+  {
+    "id": "mlfound-055",
+    "topic": "ml-foundations",
+    "subtopic": "Learning rate & convergence diagnostics",
+    "difficulty": "application",
+    "q": "If a learning curve shows the cost J increasing after some iterations rather than monotonically decreasing, the most likely fix is to ______.",
+    "options": [
+      "reduce the learning rate",
+      "increase the learning rate",
+      "add more training examples",
+      "remove the bias term from the model"
+    ],
+    "correct": 0,
+    "explanation": "An increasing cost typically signals overshooting caused by too large a learning rate, so reducing it is the standard fix."
+  },
+  {
+    "id": "mlfound-056",
+    "topic": "ml-foundations",
+    "subtopic": "Learning rate & convergence diagnostics",
+    "difficulty": "recall",
+    "q": "What is a reasonable automatic convergence test for gradient descent?",
+    "options": [
+      "Declare convergence once the cost J decreases by less than a small threshold epsilon between iterations",
+      "Declare convergence immediately as soon as the cost is first observed to decrease even slightly",
+      "Declare convergence automatically after exactly one hundred iterations, regardless of the cost trend observed",
+      "Declare convergence only once the learning rate itself has fully decayed all the way to zero"
+    ],
+    "correct": 0,
+    "explanation": "A common automatic convergence check compares the change in cost between iterations to a small threshold epsilon, stopping once improvement becomes negligible."
+  },
+  {
+    "id": "mlfound-057",
+    "topic": "ml-foundations",
+    "subtopic": "Learning rate & convergence diagnostics",
+    "difficulty": "analysis",
+    "q": "Why is examining a learning curve (cost vs. iteration) often more reliable than picking a fixed iteration count in advance to decide when to stop training?",
+    "options": [
+      "Because the iterations needed vary by problem, the learning curve directly shows whether cost has leveled off",
+      "A learning curve entirely removes the need to ever choose a learning rate value at all",
+      "A fixed iteration count decided in advance will always converge faster than monitoring the actual learning curve",
+      "Learning curves completely eliminate the very possibility of a model overfitting the data"
+    ],
+    "correct": 0,
+    "explanation": "Because the number of iterations needed varies by problem and learning rate, directly observing whether the cost has flattened is more reliable than guessing a fixed count in advance."
+  },
+  {
+    "id": "mlfound-058",
+    "topic": "ml-foundations",
+    "subtopic": "Learning rate & convergence diagnostics",
+    "difficulty": "application",
+    "q": "A data scientist tries learning rates of 0.001, 0.01, 0.1, and 1.0 while monitoring the cost. At a learning rate of 1.0 the cost oscillates wildly and increases overall. What should be tried next?",
+    "options": [
+      "A smaller learning rate, such as one between 0.01 and 1.0",
+      "An even larger learning rate to escape the oscillation",
+      "More training examples instead of changing the learning rate",
+      "Removing the feature scaling that was previously applied"
+    ],
+    "correct": 0,
+    "explanation": "Oscillating, increasing cost indicates too large a learning rate; the next step is to try smaller values between the last stable and unstable rates."
+  },
+  {
+    "id": "mlfound-059",
+    "topic": "ml-foundations",
+    "subtopic": "Learning rate & convergence diagnostics",
+    "difficulty": "application",
+    "q": "When tuning the learning rate for gradient descent, a common practical strategy is to ______.",
+    "options": [
+      "Try a range of learning rates spaced by a roughly constant multiplicative factor and compare the resulting curves",
+      "Always start out with the single largest learning rate that is mathematically conceivable for solving this particular problem",
+      "Use the exact same learning rate value that worked well for a completely unrelated dataset, unchecked",
+      "Pick whichever learning rate produces the lowest cost on just the very first single iteration alone"
+    ],
+    "correct": 0,
+    "explanation": "A practical approach is to sweep a range of learning rates spaced by a roughly constant multiplicative factor and compare how the cost behaves over iterations for each."
+  },
+  {
+    "id": "mlfound-060",
+    "topic": "ml-foundations",
+    "subtopic": "Learning rate & convergence diagnostics",
+    "difficulty": "recall",
+    "q": "If the learning rate is set far too small, what is the most likely symptom observed in the learning curve?",
+    "options": [
+      "The cost decreases, but so slowly that an impractically huge number of iterations becomes needed",
+      "The cost oscillates wildly up and down forever and ever without ever settling anywhere near a true minimum value",
+      "The cost diverges outright to an extremely large value within just a handful of iterations",
+      "The cost becomes entirely undefined after only a small handful of training iterations"
+    ],
+    "correct": 0,
+    "explanation": "A learning rate that is too small still moves the parameters in the right direction but takes very small steps, requiring many more iterations to converge."
+  },
+  {
+    "id": "mlfound-061",
+    "topic": "ml-foundations",
+    "subtopic": "Learning rate & convergence diagnostics",
+    "difficulty": "application",
+    "q": "A learning curve for a credit-risk regression model shows the cost dropping sharply for the first 20 iterations and then staying essentially flat for the next 200. What is the most reasonable interpretation?",
+    "options": [
+      "Gradient descent has likely converged, and further iterations provide little additional benefit",
+      "The learning rate chosen for training is far too large and should be reduced immediately before continuing",
+      "The model has definitely and significantly overfit the entire training dataset by this point in training",
+      "The input features were never scaled at all, which is exactly why the curve flattens out so early"
+    ],
+    "correct": 0,
+    "explanation": "A sharp initial drop followed by a long flat region is the typical signature of convergence, after which further iterations yield little extra benefit."
+  },
+  {
+    "id": "mlfound-062",
+    "topic": "ml-foundations",
+    "subtopic": "Learning rate & convergence diagnostics",
+    "difficulty": "analysis",
+    "q": "Why can an overly large learning rate cause gradient descent to diverge even when the cost function is convex?",
+    "options": [
+      "A step too large can overshoot the minimum onto a steeper region, compounding over iterations",
+      "A convex cost function can supposedly never be minimized by gradient descent under any learning rate whatsoever",
+      "Divergence can only ever occur in practice when the underlying cost function itself is non-convex",
+      "A large learning rate supposedly converts the entire cost function into a non-convex one"
+    ],
+    "correct": 0,
+    "explanation": "Even on a convex surface, a step that is too large can overshoot the minimum onto a steeper part of the curve, and repeating this can make the cost grow without bound."
+  },
+  {
+    "id": "mlfound-063",
+    "topic": "ml-foundations",
+    "subtopic": "Learning rate & convergence diagnostics",
+    "difficulty": "analysis",
+    "q": "Which statement about choosing the learning rate for gradient descent is correct?",
+    "options": [
+      "Too small wastes computation with needlessly many iterations; too large risks overshoot or divergence",
+      "The learning rate truly has no effect at all on whether gradient descent converges, only on total training time",
+      "A larger learning rate always converges faster and should therefore always be maximized without any limit at all",
+      "The optimal learning rate is always exactly one divided by the total number of training examples available"
+    ],
+    "correct": 0,
+    "explanation": "The learning rate must be balanced: too small wastes iterations, too large risks overshoot or divergence, so tuning is necessary."
+  },
+  {
+    "id": "mlfound-064",
+    "topic": "ml-foundations",
+    "subtopic": "Learning rate & convergence diagnostics",
+    "difficulty": "recall",
+    "q": "A plot of cost versus iteration number for gradient descent is called a ______.",
+    "options": [
+      "learning curve",
+      "decision boundary",
+      "regularization path",
+      "confusion matrix"
+    ],
+    "correct": 0,
+    "explanation": "A learning curve tracks the cost function's value across training iterations, used to visually judge convergence."
+  },
+  {
+    "id": "mlfound-065",
+    "topic": "ml-foundations",
+    "subtopic": "Learning rate & convergence diagnostics",
+    "difficulty": "application",
+    "q": "Suppose the chosen convergence threshold epsilon is set extremely small (e.g. 10^-10). What is the main practical consequence?",
+    "options": [
+      "Gradient descent may run for many extra iterations chasing negligible improvements in cost",
+      "Gradient descent will converge in far fewer iterations than it would with a larger epsilon value",
+      "The cost function will unexpectedly become non-convex purely because of the threshold chosen",
+      "The learning rate will automatically be increased by the algorithm to compensate for this"
+    ],
+    "correct": 0,
+    "explanation": "An extremely tight convergence threshold forces the algorithm to keep iterating long after further cost reduction becomes practically negligible."
+  },
+  {
+    "id": "mlfound-066",
+    "topic": "ml-foundations",
+    "subtopic": "Learning rate & convergence diagnostics",
+    "difficulty": "analysis",
+    "q": "In a churn-prediction regression setup, the cost barely changes between iteration 500 and iteration 501 of gradient descent. Based on this alone, which conclusion is best supported?",
+    "options": [
+      "Training is likely near convergence, though this alone does not guarantee the global minimum",
+      "The learning rate currently being used must definitely be set far too large for this problem",
+      "The model is almost certainly underfitting the data at this particular stage of training",
+      "Feature scaling has definitely not been applied anywhere in this particular training pipeline"
+    ],
+    "correct": 0,
+    "explanation": "A negligible change between consecutive iterations suggests the algorithm is near convergence, though it does not by itself rule out being stuck near a flat region."
+  },
+  {
+    "id": "mlfound-067",
+    "topic": "ml-foundations",
+    "subtopic": "Learning rate & convergence diagnostics",
+    "difficulty": "application",
+    "q": "Which of these learning-curve shapes would most clearly indicate that the learning rate needs to be reduced?",
+    "options": [
+      "A curve where the cost rises and falls erratically, trending upward overall",
+      "A curve that decreases steeply at first and then levels off smoothly afterward",
+      "A curve that decreases slowly but steadily throughout the entire training process",
+      "A curve that decreases and then stays perfectly flat at a very low value indefinitely"
+    ],
+    "correct": 0,
+    "explanation": "Erratic, overall-increasing cost is the classic sign of a learning rate that is too large and needs to be reduced."
+  },
+  {
+    "id": "mlfound-068",
+    "topic": "ml-foundations",
+    "subtopic": "Batch, mini-batch & stochastic gradient descent",
+    "difficulty": "recall",
+    "q": "In batch gradient descent applied to linear regression, each single update to the parameters uses ______.",
+    "options": [
+      "every training example in the dataset to compute the gradient",
+      "exactly one single randomly chosen training example on every update",
+      "a small randomly chosen subset of all the training examples available",
+      "only the single most recently added training example in the set"
+    ],
+    "correct": 0,
+    "explanation": "Batch gradient descent computes the gradient by summing or averaging over the entire training set before making a single update."
+  },
+  {
+    "id": "mlfound-069",
+    "topic": "ml-foundations",
+    "subtopic": "Batch, mini-batch & stochastic gradient descent",
+    "difficulty": "application",
+    "q": "What is the main practical motivation for using stochastic gradient descent (SGD) instead of batch gradient descent on a very large training set?",
+    "options": [
+      "SGD updates using just one example at a time, cheaper than scanning the full dataset",
+      "SGD always converges to a meaningfully lower final cost than batch gradient descent does",
+      "SGD entirely removes the need to ever choose a learning rate value for training",
+      "SGD guarantees a smoother, perfectly monotonically decreasing cost curve throughout"
+    ],
+    "correct": 0,
+    "explanation": "SGD's key advantage on large datasets is that each update only requires one example, making updates much cheaper than scanning the full dataset every time."
+  },
+  {
+    "id": "mlfound-070",
+    "topic": "ml-foundations",
+    "subtopic": "Batch, mini-batch & stochastic gradient descent",
+    "difficulty": "recall",
+    "q": "Mini-batch gradient descent is best described as a method that ______.",
+    "options": [
+      "Computes each update using a small subset of examples rather than the full dataset or one example",
+      "Computes the gradient using the entire dataset at every single iteration, exactly like batch gradient descent does",
+      "Updates parameters only after every single example has been seen a fixed number of times total",
+      "Skips the gradient computation entirely and instead uses the raw cost value directly"
+    ],
+    "correct": 0,
+    "explanation": "Mini-batch gradient descent sits between batch and stochastic gradient descent by using a small subset (mini-batch) of examples per update."
+  },
+  {
+    "id": "mlfound-071",
+    "topic": "ml-foundations",
+    "subtopic": "Batch, mini-batch & stochastic gradient descent",
+    "difficulty": "analysis",
+    "q": "Compared to batch gradient descent, why does the cost curve for stochastic gradient descent typically look noisier, bouncing up and down rather than decreasing smoothly?",
+    "options": [
+      "Each update relies on only one example, so the gradient estimate varies a lot example to example",
+      "Stochastic gradient descent always uses a learning rate that is exactly ten times larger than normal",
+      "Stochastic gradient descent does not actually minimize the cost function at all in practice",
+      "The cost function itself becomes entirely non-convex when using stochastic updates instead"
+    ],
+    "correct": 0,
+    "explanation": "Using a single example per update gives a noisy, high-variance estimate of the true gradient, producing a jumpier cost curve than averaging over the full dataset."
+  },
+  {
+    "id": "mlfound-072",
+    "topic": "ml-foundations",
+    "subtopic": "Batch, mini-batch & stochastic gradient descent",
+    "difficulty": "application",
+    "q": "A company training a regression model on a dataset of 50 million transactions finds that batch gradient descent is far too slow per iteration. Which alternative is most appropriate to address this?",
+    "options": [
+      "Mini-batch or stochastic gradient descent, which avoid scanning the full dataset every update",
+      "Increasing the learning rate until convergence supposedly happens within a single training iteration",
+      "Switching to an entirely non-convex cost function for this particular regression task",
+      "Removing the bias term entirely from the underlying regression model altogether"
+    ],
+    "correct": 0,
+    "explanation": "Mini-batch or stochastic gradient descent avoid scanning the entire dataset for every single update, making them far more practical at this scale."
+  },
+  {
+    "id": "mlfound-073",
+    "topic": "ml-foundations",
+    "subtopic": "Batch, mini-batch & stochastic gradient descent",
+    "difficulty": "recall",
+    "q": "One epoch of training refers to ______.",
+    "options": [
+      "one complete pass through the entire training dataset",
+      "exactly one single parameter update, regardless of the batch size used",
+      "one complete run of the automatic convergence test procedure",
+      "one single iteration of hyperparameter tuning overall"
+    ],
+    "correct": 0,
+    "explanation": "An epoch is defined as one full pass through all the training examples, regardless of how many parameter updates occur within it."
+  },
+  {
+    "id": "mlfound-074",
+    "topic": "ml-foundations",
+    "subtopic": "Batch, mini-batch & stochastic gradient descent",
+    "difficulty": "analysis",
+    "q": "What trade-off does mini-batch gradient descent offer compared to the extremes of batch and stochastic gradient descent?",
+    "options": [
+      "It balances cheap frequent updates against the more stable gradients from averaging examples",
+      "It completely and entirely eliminates the need for any learning rate to be chosen at all",
+      "It guarantees convergence to the true global minimum even for completely non-convex cost functions",
+      "It always requires strictly fewer total passes through the data than plain batch gradient descent"
+    ],
+    "correct": 0,
+    "explanation": "Mini-batch gradient descent balances the cheap, frequent updates of SGD against the more stable gradient estimates obtained by averaging over a batch rather than one example."
+  },
+  {
+    "id": "mlfound-075",
+    "topic": "ml-foundations",
+    "subtopic": "Batch, mini-batch & stochastic gradient descent",
+    "difficulty": "analysis",
+    "q": "Why might the cost curve of mini-batch gradient descent never settle to a perfectly flat line, even near convergence?",
+    "options": [
+      "Each mini-batch is a different random sample, so the gradient fluctuates slightly batch to batch",
+      "Mini-batch gradient descent cannot mathematically ever be applied to any convex cost function at all",
+      "The learning rate increases automatically and without bound as training proceeds further",
+      "Mini-batch gradient descent recomputes the entire dataset again at every single iteration"
+    ],
+    "correct": 0,
+    "explanation": "Because each mini-batch is a different sample, the computed gradient and cost naturally fluctuate slightly even once the parameters are near the minimum."
+  },
+  {
+    "id": "mlfound-076",
+    "topic": "ml-foundations",
+    "subtopic": "Batch, mini-batch & stochastic gradient descent",
+    "difficulty": "application",
+    "q": "A practitioner wants gradient descent updates that are both computationally cheap per step and reasonably stable, avoiding the extreme noise of single-example updates. Which approach fits this goal best?",
+    "options": [
+      "Mini-batch gradient descent with a moderate batch size",
+      "Pure batch gradient descent over the full dataset every step",
+      "Pure stochastic gradient descent with batch size one",
+      "Running gradient descent with no learning rate at all"
+    ],
+    "correct": 0,
+    "explanation": "Mini-batch gradient descent with a moderate batch size offers a practical middle ground between the cost-per-step of batch GD and the noise of pure SGD."
+  },
+  {
+    "id": "mlfound-077",
+    "topic": "ml-foundations",
+    "subtopic": "Batch, mini-batch & stochastic gradient descent",
+    "difficulty": "application",
+    "q": "In batch gradient descent, if the training set size m doubles, what is the most direct consequence for each single parameter update (holding the algorithm otherwise fixed)?",
+    "options": [
+      "Each update becomes more costly, since the gradient is averaged over twice as many examples",
+      "Each update becomes noticeably cheaper to compute, since there is now much more data available to average over",
+      "The learning rate must automatically and immediately double in response",
+      "The cost function abruptly becomes non-convex as a direct result"
+    ],
+    "correct": 0,
+    "explanation": "Because batch gradient descent processes every training example for each update, doubling m roughly doubles the computational cost of each update."
+  },
+  {
+    "id": "mlfound-078",
+    "topic": "ml-foundations",
+    "subtopic": "Batch, mini-batch & stochastic gradient descent",
+    "difficulty": "analysis",
+    "q": "A key difference between stochastic gradient descent and batch gradient descent in terms of convergence behavior is that stochastic gradient descent ______.",
+    "options": [
+      "Tends to wander near the minimum rather than settle exactly on it, due to noisy single-example updates",
+      "Always converges in strictly and reliably fewer total iterations than plain batch gradient descent ever does",
+      "Cannot ever be used together with a gradually decreasing learning rate schedule",
+      "Never converges to any region anywhere close to the true minimum at all"
+    ],
+    "correct": 0,
+    "explanation": "Because each SGD update is a noisy estimate of the true gradient, the parameters typically wander in a small region around the minimum rather than settling exactly on it."
+  },
+  {
+    "id": "mlfound-079",
+    "topic": "ml-foundations",
+    "subtopic": "Feature scaling & normalization",
+    "difficulty": "application",
+    "q": "A dataset has two features: house size in square feet (ranging from 500 to 5000) and number of bedrooms (ranging from 1 to 5). Without feature scaling, what problem is likely to occur during gradient descent?",
+    "options": [
+      "The cost function's contours become elongated, causing gradient descent to zig-zag slowly",
+      "The cost function abruptly and unexpectedly becomes non-convex as a direct result",
+      "The model can no longer learn any bias term whatsoever after this",
+      "Gradient descent will actually converge noticeably faster than it would with properly scaled features"
+    ],
+    "correct": 0,
+    "explanation": "When features have very different ranges, the cost contours stretch along the smaller-range feature, causing gradient descent to zig-zag inefficiently toward the minimum."
+  },
+  {
+    "id": "mlfound-080",
+    "topic": "ml-foundations",
+    "subtopic": "Feature scaling & normalization",
+    "difficulty": "recall",
+    "q": "What is the general goal of feature scaling before applying gradient descent?",
+    "options": [
+      "To bring all features into a similar range so convergence is faster",
+      "To completely and entirely remove the need for any cost function during training at all",
+      "To convert every continuous input feature into a categorical one instead",
+      "To substantially increase the total number of features available to the model"
+    ],
+    "correct": 0,
+    "explanation": "Feature scaling puts all features on comparable scales, which helps gradient descent take more balanced, efficient steps toward the minimum."
+  },
+  {
+    "id": "mlfound-081",
+    "topic": "ml-foundations",
+    "subtopic": "Feature scaling & normalization",
+    "difficulty": "recall",
+    "q": "Mean normalization rescales a feature by ______.",
+    "options": [
+      "subtracting the feature's mean and dividing by its range (max minus min)",
+      "subtracting the feature's minimum value and dividing by its maximum value",
+      "multiplying the feature directly by the chosen learning rate value",
+      "replacing each value with its overall rank among all training examples"
+    ],
+    "correct": 0,
+    "explanation": "Mean normalization centers a feature around zero by subtracting its mean, then scales it by dividing by its range (max - min)."
+  },
+  {
+    "id": "mlfound-082",
+    "topic": "ml-foundations",
+    "subtopic": "Feature scaling & normalization",
+    "difficulty": "recall",
+    "q": "Z-score normalization (standardization) rescales a feature by ______.",
+    "options": [
+      "subtracting its mean and dividing by its standard deviation",
+      "subtracting its minimum value and dividing by its overall range",
+      "multiplying it by the total number of available training examples",
+      "dividing by the single largest value observed anywhere in the training set"
+    ],
+    "correct": 0,
+    "explanation": "Z-score standardization subtracts the mean and divides by the standard deviation, producing a feature with mean 0 and standard deviation 1."
+  },
+  {
+    "id": "mlfound-083",
+    "topic": "ml-foundations",
+    "subtopic": "Feature scaling & normalization",
+    "difficulty": "application",
+    "q": "A loan default model uses 'annual income' (ranging from $10,000 to $500,000) and 'number of credit inquiries' (ranging from 0 to 10) as features. Why would feature scaling likely help gradient descent here?",
+    "options": [
+      "Income's much larger scale would dominate the gradient updates, making convergence slow and uneven",
+      "Feature scaling is strictly required because gradient descent supposedly cannot handle more than one feature at a time",
+      "Feature scaling is needed specifically to convert this regression problem into a classification problem",
+      "Feature scaling would entirely remove the number of credit inquiries as a useful predictor variable"
+    ],
+    "correct": 0,
+    "explanation": "With such a large scale mismatch between the two features, gradient descent updates become unbalanced; scaling both features helps convergence happen more evenly and quickly."
+  },
+  {
+    "id": "mlfound-084",
+    "topic": "ml-foundations",
+    "subtopic": "Feature scaling & normalization",
+    "difficulty": "analysis",
+    "q": "After feature scaling, a model's learned weights w_j become easier to interpret for comparing feature importance because ______.",
+    "options": [
+      "Features now share a comparable scale, so each weight's size more fairly reflects its effect",
+      "Scaling supposedly guarantees that every single weight becomes exactly equal to all the others",
+      "Scaling entirely removes the bias term from the trained model",
+      "Scaling directly converts the weights into probability values"
+    ],
+    "correct": 0,
+    "explanation": "When features share a comparable scale, differences in weight magnitude more fairly reflect differences in each feature's contribution, rather than differences in raw units."
+  },
+  {
+    "id": "mlfound-085",
+    "topic": "ml-foundations",
+    "subtopic": "Feature scaling & normalization",
+    "difficulty": "application",
+    "q": "Which of the following symptoms during gradient descent most directly suggests that feature scaling could help?",
+    "options": [
+      "The learning curve converges extremely slowly despite trying several reasonable learning rates",
+      "The learning curve converges smoothly and very quickly within just a small handful of iterations",
+      "The model's underlying cost function is found to be strictly convex",
+      "The dataset contains only a single solitary input feature overall"
+    ],
+    "correct": 0,
+    "explanation": "Persistently slow convergence despite reasonable learning rates is a classic sign that unscaled features with very different ranges are skewing the cost surface."
+  },
+  {
+    "id": "mlfound-086",
+    "topic": "ml-foundations",
+    "subtopic": "Feature scaling & normalization",
+    "difficulty": "analysis",
+    "q": "Why is it important to scale a new test example using the same mean and range/standard deviation computed from the training set, rather than recomputing them from the test example alone?",
+    "options": [
+      "To keep scaling consistent with what the model learned in training, so predictions stay meaningful",
+      "Because test examples apparently do not need any kind of scaling at all",
+      "Because recomputing statistics from just a single isolated test example alone is mathematically undefined",
+      "Because the cost function itself requires test-set statistics during training"
+    ],
+    "correct": 0,
+    "explanation": "The model's weights were learned relative to the training set's scaling statistics, so new examples must be scaled the same way for predictions to be meaningful."
+  },
+  {
+    "id": "mlfound-087",
+    "topic": "ml-foundations",
+    "subtopic": "Feature scaling & normalization",
+    "difficulty": "application",
+    "q": "A feature such as 'number of rooms' ranging from 0 to 10, plotted on the same axis as 'house price' ranging from 100,000 to 900,000, would create contour plots of the cost function that are ______ before scaling.",
+    "options": [
+      "very elongated/skewed, making it harder for gradient descent to move directly toward the minimum",
+      "perfectly circular in shape, making gradient descent converge immediately in just one single step",
+      "undefined entirely, since the cost cannot be computed at all with unscaled features",
+      "identical in every way to the contours obtained after proper scaling"
+    ],
+    "correct": 0,
+    "explanation": "A large scale mismatch between features stretches the cost contours into narrow ellipses, forcing gradient descent to zig-zag rather than move directly toward the minimum."
+  },
+  {
+    "id": "mlfound-088",
+    "topic": "ml-foundations",
+    "subtopic": "Feature scaling & normalization",
+    "difficulty": "recall",
+    "q": "Which statement correctly compares min-max scaling and z-score standardization?",
+    "options": [
+      "Min-max scaling maps values into a fixed range like [0,1]; z-score standardization uses mean and std dev without a fixed bound",
+      "Min-max scaling and z-score standardization are always mathematically guaranteed to produce exactly identical rescaled values in every single case",
+      "Z-score standardization strictly requires labeled data, while min-max scaling never does",
+      "Min-max scaling can only ever be applied to the target variable, never to any input features"
+    ],
+    "correct": 0,
+    "explanation": "Min-max scaling maps values into a fixed bounded range, while z-score standardization centers and scales by standard deviation without a guaranteed fixed bound."
+  },
+  {
+    "id": "mlfound-089",
+    "topic": "ml-foundations",
+    "subtopic": "Feature scaling & normalization",
+    "difficulty": "analysis",
+    "q": "A dataset has a feature with almost no variation (e.g. every patient's 'number of limbs' value is 2) alongside features with wide variation. What is the likely effect of including this near-constant feature on gradient descent, scaling aside?",
+    "options": [
+      "It contributes little useful gradient signal, since there is almost no variation present",
+      "It will cause gradient descent to diverge almost immediately after training even begins",
+      "It will unexpectedly dominate the overall cost function far more than any other single feature",
+      "It converts the entire task from a regression problem into a classification one entirely"
+    ],
+    "correct": 0,
+    "explanation": "A feature with almost no variation carries little information for the model to exploit, so it contributes little useful signal regardless of scaling."
+  },
+  {
+    "id": "mlfound-090",
+    "topic": "ml-foundations",
+    "subtopic": "Feature scaling & normalization",
+    "difficulty": "recall",
+    "q": "In practice, feature scaling is typically applied ______.",
+    "options": [
+      "before running gradient descent, as a preprocessing step on the training data",
+      "after gradient descent has already fully converged, purely as a post-processing step",
+      "only ever applied to the target variable y, and never applied to any input features",
+      "only ever needed specifically when using the normal equation instead of gradient descent"
+    ],
+    "correct": 0,
+    "explanation": "Feature scaling is a preprocessing step applied to input features before training, so that gradient descent operates on well-conditioned data from the start."
+  },
+  {
+    "id": "mlfound-091",
+    "topic": "ml-foundations",
+    "subtopic": "Feature scaling & normalization",
+    "difficulty": "analysis",
+    "q": "Why is scaling generally considered unnecessary for a dataset with a single input feature on linear regression?",
+    "options": [
+      "There is no second feature with a different scale to cause gradient imbalance between parameters",
+      "A single feature always and necessarily has a range of exactly [0,1] by definition",
+      "Scaling can mathematically never ever be computed correctly when there is only one single feature present",
+      "Single-feature models supposedly do not use gradient descent at all"
+    ],
+    "correct": 0,
+    "explanation": "Scale imbalance problems arise from comparing features with very different ranges; with only one feature, there is no such imbalance to correct."
+  },
+  {
+    "id": "mlfound-092",
+    "topic": "ml-foundations",
+    "subtopic": "Feature scaling & normalization",
+    "difficulty": "application",
+    "q": "A dataset has an income feature in whole dollars (e.g. 45,000) and an age feature in years (e.g. 35). If convergence is slow, which action is most directly aimed at correcting the scale imbalance between these two features?",
+    "options": [
+      "Applying feature scaling (e.g. normalization or standardization) to both features",
+      "Increasing the number of training iterations substantially without changing anything else",
+      "Switching from a linear regression model to a full classification model",
+      "Removing the bias term entirely from the trained model"
+    ],
+    "correct": 0,
+    "explanation": "Feature scaling directly addresses scale imbalance by bringing both features to comparable ranges, which typically speeds up convergence."
+  },
+  {
+    "id": "mlfound-093",
+    "topic": "ml-foundations",
+    "subtopic": "Feature engineering & polynomial regression",
+    "difficulty": "application",
+    "q": "A model predicting house price only from floor length and floor width might be improved by engineering a new feature equal to length times width. What is this new feature meant to capture?",
+    "options": [
+      "The total floor area, which may relate more directly to price than length and width alone",
+      "The simple average of the two original features, used specifically to reduce the parameter count",
+      "The ratio of length to width, used specifically to detect scaling errors",
+      "A completely randomly generated feature meant only to regularize the model"
+    ],
+    "correct": 0,
+    "explanation": "Multiplying length by width creates a floor-area feature, which is often more directly predictive of price than the two dimensions taken separately."
+  },
+  {
+    "id": "mlfound-094",
+    "topic": "ml-foundations",
+    "subtopic": "Feature engineering & polynomial regression",
+    "difficulty": "recall",
+    "q": "What does polynomial regression allow a linear-regression-style model to capture that plain linear regression cannot?",
+    "options": [
+      "Curved, nonlinear relationships, captured via added power features like x^2",
+      "Decision boundaries that separate discrete output categories from each other",
+      "Clustering structure hidden within completely unlabeled training data",
+      "Reward-based sequential decision making carried out over many multiple time steps"
+    ],
+    "correct": 0,
+    "explanation": "By adding powers of the original features as new inputs, polynomial regression can fit curved relationships while still being fit with linear regression's machinery."
+  },
+  {
+    "id": "mlfound-095",
+    "topic": "ml-foundations",
+    "subtopic": "Feature engineering & polynomial regression",
+    "difficulty": "analysis",
+    "q": "A polynomial regression model uses features x, x^2, and x^3 derived from a single original input x. Despite the nonlinear relationship with x, why can this still be fit using the same linear regression machinery (cost function and gradient descent)?",
+    "options": [
+      "The model stays linear in its parameters w1, w2, w3 even though nonlinear in x",
+      "Because x^2 and x^3 are always exactly numerically identical to x after scaling",
+      "Because gradient descent can never be applied to any nonlinear function",
+      "Because the cost function stops being convex once polynomial terms are added"
+    ],
+    "correct": 0,
+    "explanation": "Polynomial regression is nonlinear in the original feature x but remains a linear combination of its parameters, so the same cost function and gradient descent apply unchanged."
+  },
+  {
+    "id": "mlfound-096",
+    "topic": "ml-foundations",
+    "subtopic": "Feature engineering & polynomial regression",
+    "difficulty": "analysis",
+    "q": "When using polynomial features such as x^2 and x^3 alongside the original x, why does feature scaling become especially important?",
+    "options": [
+      "Higher powers of x can span a vastly different numeric range, worsening scale imbalance",
+      "Polynomial features automatically and entirely cancel the need for any scaling",
+      "Feature scaling cannot mathematically ever be applied to polynomial terms at all",
+      "Polynomial regression no longer even uses a cost function, so scaling becomes entirely irrelevant"
+    ],
+    "correct": 0,
+    "explanation": "Raising a feature to a higher power can dramatically widen its numeric range relative to the original feature, so scaling becomes even more important to keep gradient descent efficient."
+  },
+  {
+    "id": "mlfound-097",
+    "topic": "ml-foundations",
+    "subtopic": "Feature engineering & polynomial regression",
+    "difficulty": "application",
+    "q": "A retailer wants to predict sales using 'advertising spend' and 'store footfall'. Instead of using these separately, an analyst creates a new feature 'spend per visitor' by dividing spend by footfall. This is an example of ______.",
+    "options": [
+      "feature engineering, creating a new feature from existing ones using domain knowledge",
+      "feature scaling, which simply normalizes the numeric range of already-existing features",
+      "regularization, which penalizes excessively large model weights",
+      "polynomial regression, which adds higher-order powers of a feature"
+    ],
+    "correct": 0,
+    "explanation": "Deriving a new, domain-motivated feature from existing ones (here, spend divided by footfall) is a standard example of feature engineering."
+  },
+  {
+    "id": "mlfound-098",
+    "topic": "ml-foundations",
+    "subtopic": "Feature engineering & polynomial regression",
+    "difficulty": "recall",
+    "q": "Choosing which engineered features (e.g. interaction terms, ratios, polynomial terms) to include in a regression model primarily relies on ______.",
+    "options": [
+      "domain knowledge and intuition about what is likely predictive, refined through experimentation",
+      "a fixed, fully automatic rule that always adds every single possible pairwise product of features",
+      "the specific numeric value of the learning rate used during training",
+      "the specific programming language chosen to implement the regression model"
+    ],
+    "correct": 0,
+    "explanation": "Feature engineering is driven by domain knowledge about what transformations are likely to be predictive, refined through experimentation."
+  },
+  {
+    "id": "mlfound-099",
+    "topic": "ml-foundations",
+    "subtopic": "Feature engineering & polynomial regression",
+    "difficulty": "analysis",
+    "q": "Why can adding a high-degree polynomial term such as x^6 to a regression model increase the risk of overfitting?",
+    "options": [
+      "High-degree terms add flexibility to bend and fit training noise, not just the true trend",
+      "High-degree polynomial terms make the entire cost function non-differentiable everywhere",
+      "High-degree polynomial terms always drastically reduce the number of training examples available",
+      "High-degree polynomial terms forcibly require the model to use stochastic gradient descent"
+    ],
+    "correct": 0,
+    "explanation": "Very high-degree polynomial terms add enough flexibility that the model can curve through noisy fluctuations in the training data rather than the general trend, increasing overfitting risk."
+  },
+  {
+    "id": "mlfound-100",
+    "topic": "ml-foundations",
+    "subtopic": "Feature engineering & polynomial regression",
+    "difficulty": "application",
+    "q": "A relationship between house size and price appears to curve upward for very large houses. Which modeling choice directly addresses this curvature within the linear regression framework?",
+    "options": [
+      "Adding a polynomial feature such as size^2 to let the model fit the curve",
+      "Rescaling the size feature down to the fixed range [0,1] only",
+      "Switching entirely from batch gradient descent to stochastic gradient descent instead",
+      "Reducing the learning rate used throughout the training process"
+    ],
+    "correct": 0,
+    "explanation": "Adding a polynomial feature like size^2 lets a linear-regression-style model represent curvature that a plain straight line cannot."
+  },
+  {
+    "id": "mlfound-101",
+    "topic": "ml-foundations",
+    "subtopic": "Feature engineering & polynomial regression",
+    "difficulty": "analysis",
+    "q": "What risk does engineering a very large number of new features (e.g. many polynomial and interaction terms) introduce, even before considering overfitting?",
+    "options": [
+      "It increases computational cost and the chance that some engineered features are irrelevant or highly correlated with others",
+      "It guarantees the cost function becomes non-convex",
+      "It removes the need for a bias term in the model",
+      "It automatically improves the model's performance on new, unseen data"
+    ],
+    "correct": 0,
+    "explanation": "Adding many engineered features raises computational cost and the chance of irrelevant or highly correlated features, independent of the separate issue of overfitting."
+  },
+  {
+    "id": "mlfound-102",
+    "topic": "ml-foundations",
+    "subtopic": "Feature engineering & polynomial regression",
+    "difficulty": "application",
+    "q": "An alternative to adding size^2 as a feature to capture curvature could be to add sqrt(size) instead. What does this illustrate about feature engineering in polynomial-style regression?",
+    "options": [
+      "Different transformations of the same original feature can be tried to find one that best matches the shape of the true relationship",
+      "Only even powers of a feature are valid transformations in regression",
+      "Square root transformations can never be combined with gradient descent",
+      "Feature engineering always requires removing the original untransformed feature"
+    ],
+    "correct": 0,
+    "explanation": "Feature engineering is exploratory: different transformations of the same original feature (squares, square roots, logs, etc.) can be tried to best match the data's true shape."
+  },
+  {
+    "id": "mlfound-103",
+    "topic": "ml-foundations",
+    "subtopic": "Feature engineering & polynomial regression",
+    "difficulty": "analysis",
+    "q": "In polynomial regression, if the data's true relationship with the target is actually a straight line, what will likely happen if a high-degree polynomial (e.g. degree 10) is fit anyway?",
+    "options": [
+      "The model risks overfitting, capturing noise in the training data rather than the true simple linear trend",
+      "The model will automatically simplify itself back down to degree 1",
+      "The cost function will fail to converge under any learning rate",
+      "The model will underfit regardless of how it is trained"
+    ],
+    "correct": 0,
+    "explanation": "Fitting an unnecessarily high-degree polynomial to data that is actually linear tends to overfit, chasing noise instead of the true simple trend."
+  },
+  {
+    "id": "mlfound-104",
+    "topic": "ml-foundations",
+    "subtopic": "Feature engineering & polynomial regression",
+    "difficulty": "analysis",
+    "q": "A key reason engineered features like x^2 need the same feature scaling treatment as any other feature is that ______.",
+    "options": [
+      "gradient descent treats every column of the feature matrix the same way, regardless of whether it was engineered or original",
+      "engineered features are not technically considered part of the model's input",
+      "scaling only matters for the original, unmodified features",
+      "polynomial features are already guaranteed to lie in a small range"
+    ],
+    "correct": 0,
+    "explanation": "Gradient descent does not distinguish between original and engineered features; any feature with a wide range relative to others can cause the same convergence problems."
+  },
+  {
+    "id": "mlfound-105",
+    "topic": "ml-foundations",
+    "subtopic": "Feature engineering & polynomial regression",
+    "difficulty": "recall",
+    "q": "What best characterizes the difference between feature scaling and feature engineering?",
+    "options": [
+      "Feature scaling changes the numeric range of existing features, while feature engineering creates new features from existing ones",
+      "Feature scaling creates new features, while feature engineering changes their numeric range",
+      "They are two names for exactly the same preprocessing step",
+      "Feature scaling applies only to classification models, while feature engineering applies only to regression models"
+    ],
+    "correct": 0,
+    "explanation": "Feature scaling rescales existing features into comparable ranges; feature engineering derives new, potentially more predictive features from the existing ones."
+  },
+  {
+    "id": "mlfound-106",
+    "topic": "ml-foundations",
+    "subtopic": "Overfitting & underfitting",
+    "difficulty": "recall",
+    "q": "A regression model achieves high error on both the training set and new unseen data. This situation is best described as ______.",
+    "options": [
+      "underfitting, where the model is too simple to capture the underlying pattern",
+      "overfitting, where the model has memorized the training data",
+      "ideal convergence, since errors are consistent between sets",
+      "a data drift problem caused by changing input distributions"
+    ],
+    "correct": 0,
+    "explanation": "High error on both training and new data indicates the model is too simple to capture the underlying pattern, i.e. underfitting with high bias."
+  },
+  {
+    "id": "mlfound-107",
+    "topic": "ml-foundations",
+    "subtopic": "Overfitting & underfitting",
+    "difficulty": "application",
+    "q": "A model achieves near-zero error on the training data but performs much worse on new, unseen data drawn from the same distribution. This is a classic sign of ______.",
+    "options": [
+      "overfitting, where the model has fit the noise and specific quirks of the training set rather than the general pattern",
+      "underfitting, where the model is too simple",
+      "data drift, where the input distribution has changed over time",
+      "a convergence failure in gradient descent"
+    ],
+    "correct": 0,
+    "explanation": "A large gap between very low training error and much higher error on new data from the same distribution is the textbook signature of overfitting."
+  },
+  {
+    "id": "mlfound-108",
+    "topic": "ml-foundations",
+    "subtopic": "Overfitting & underfitting",
+    "difficulty": "recall",
+    "q": "Which of the following is a direct consequence of underfitting in a regression model?",
+    "options": [
+      "High bias, since the model's assumptions are too restrictive to capture the true relationship even on training data",
+      "High variance, since the model's predictions change drastically with small changes in training data",
+      "Perfect fit on the training set with poor generalization",
+      "A fully converged, near-zero training cost"
+    ],
+    "correct": 0,
+    "explanation": "Underfitting corresponds to high bias: the model is too restrictive to capture the true relationship, leading to high error even on the training data itself."
+  },
+  {
+    "id": "mlfound-109",
+    "topic": "ml-foundations",
+    "subtopic": "Overfitting & underfitting",
+    "difficulty": "application",
+    "q": "A high-degree polynomial regression model is fit to a small training set and achieves extremely low training error, but its predicted curve swings wildly between data points. This behavior is characteristic of ______.",
+    "options": [
+      "overfitting",
+      "underfitting",
+      "proper convergence",
+      "feature scaling failure"
+    ],
+    "correct": 0,
+    "explanation": "Extremely low training error combined with wild, erratic swings between data points is a hallmark of overfitting caused by excessive model flexibility.",
+    "chart": {
+      "type": "bias_variance",
+      "shape": "overfit",
+      "caption": "Figure: a high-degree polynomial fit that swings wildly between training points."
+    }
+  },
+  {
+    "id": "mlfound-110",
+    "topic": "ml-foundations",
+    "subtopic": "Overfitting & underfitting",
+    "difficulty": "application",
+    "q": "Which strategy is commonly used to reduce overfitting in a regression model?",
+    "options": [
+      "Collecting more training data, simplifying the model, or applying regularization",
+      "Increasing the polynomial degree further",
+      "Removing feature scaling",
+      "Decreasing the number of training examples"
+    ],
+    "correct": 0,
+    "explanation": "Common remedies for overfitting include gathering more training data, simplifying the model (e.g. lowering polynomial degree or dropping features), or adding regularization."
+  },
+  {
+    "id": "mlfound-111",
+    "topic": "ml-foundations",
+    "subtopic": "Overfitting & underfitting",
+    "difficulty": "recall",
+    "q": "A straight-line model is fit to data that is clearly curved, and the resulting fit misses the trend both on training data and new data. What term describes this model's problem?",
+    "options": [
+      "Underfitting / high bias",
+      "Overfitting / high variance",
+      "Data drift",
+      "Label noise"
+    ],
+    "correct": 0,
+    "explanation": "A model that misses the clear trend on both training and new data, due to being too restrictive, is underfitting and suffers from high bias.",
+    "chart": {
+      "type": "bias_variance",
+      "shape": "underfit",
+      "caption": "Figure: a straight line fit to clearly curved data."
+    }
+  },
+  {
+    "id": "mlfound-112",
+    "topic": "ml-foundations",
+    "subtopic": "Overfitting & underfitting",
+    "difficulty": "analysis",
+    "q": "Why is a model that perfectly memorizes every training example not necessarily a good model?",
+    "options": [
+      "It may have simply fit the noise specific to that training set, and so may generalize poorly to new examples",
+      "Perfect memorization is mathematically impossible for any regression model",
+      "It guarantees the model has zero bias and zero variance simultaneously",
+      "It means the model used too few features"
+    ],
+    "correct": 0,
+    "explanation": "Perfectly memorizing the training set often means the model has fit noise and idiosyncrasies specific to that sample, which can hurt performance on new data."
+  },
+  {
+    "id": "mlfound-113",
+    "topic": "ml-foundations",
+    "subtopic": "Overfitting & underfitting",
+    "difficulty": "recall",
+    "q": "A model with the right balance of complexity for a given dataset is generally expected to achieve ______.",
+    "options": [
+      "low error on the training set and similarly low error on new, unseen data",
+      "zero error on the training set and much higher error on new data",
+      "high error on both the training set and new data",
+      "zero error on new data and high error on the training set"
+    ],
+    "correct": 0,
+    "explanation": "A well-balanced model generalizes well, achieving low error on both the training set and new data, without the large gap seen in overfitting.",
+    "chart": {
+      "type": "bias_variance",
+      "shape": "good_fit",
+      "caption": "Figure: a model whose fit tracks the underlying trend without chasing noise."
+    }
+  },
+  {
+    "id": "mlfound-114",
+    "topic": "ml-foundations",
+    "subtopic": "Overfitting & underfitting",
+    "difficulty": "analysis",
+    "q": "Comparing a degree-1 (linear), degree-4, and degree-15 polynomial fit to the same moderately curved dataset, which is most likely to overfit?",
+    "options": [
+      "The degree-15 polynomial, since its high flexibility lets it fit noise in addition to the underlying trend",
+      "The degree-1 linear fit, since straight lines always overfit curved data",
+      "The degree-4 polynomial, since it is the most balanced choice regardless of the data",
+      "All three fits are equally likely to overfit"
+    ],
+    "correct": 0,
+    "explanation": "The highest-degree polynomial has the most flexibility and is most prone to fitting noise in the training data rather than the general trend."
+  },
+  {
+    "id": "mlfound-115",
+    "topic": "ml-foundations",
+    "subtopic": "Overfitting & underfitting",
+    "difficulty": "application",
+    "q": "In a manufacturing quality-control model, training error is low but error on next month's production batches is substantially higher, even though the batches come from the same process. Which issue does this most likely reflect?",
+    "options": [
+      "Overfitting to the original training data",
+      "Underfitting due to an overly simple model",
+      "A reduction in the number of input features",
+      "An excessively small learning rate during training"
+    ],
+    "correct": 0,
+    "explanation": "A large gap between low training error and higher error on new, similarly-distributed batches points to overfitting on the original training set."
+  },
+  {
+    "id": "mlfound-116",
+    "topic": "ml-foundations",
+    "subtopic": "Overfitting & underfitting",
+    "difficulty": "application",
+    "q": "Which of the following modeling choices would most likely reduce underfitting in a regression model that currently has high error on both training and test data?",
+    "options": [
+      "Adding more relevant features or increasing model complexity (e.g. a higher-degree polynomial term where justified)",
+      "Reducing the number of training examples",
+      "Increasing the regularization strength further",
+      "Removing informative input features"
+    ],
+    "correct": 0,
+    "explanation": "Underfitting is addressed by increasing the model's capacity to capture the underlying relationship, such as adding relevant features or appropriate higher-order terms."
+  },
+  {
+    "id": "mlfound-117",
+    "topic": "ml-foundations",
+    "subtopic": "Overfitting & underfitting",
+    "difficulty": "analysis",
+    "q": "A simple linear model and a complex high-degree polynomial model are both fit to the same dataset. The linear model has higher error on the training set but similar error to the polynomial model on new data. What does this suggest about the polynomial model?",
+    "options": [
+      "The polynomial model is likely overfitting, trading improved training fit for little or no real generalization benefit",
+      "The polynomial model is clearly the better choice for deployment",
+      "The linear model must have a bug in its cost function",
+      "The polynomial model has lower variance than the linear model"
+    ],
+    "correct": 0,
+    "explanation": "If the more complex model's advantage on training data does not carry over to new data, it is likely overfitting rather than genuinely capturing a better underlying pattern."
+  },
+  {
+    "id": "mlfound-118",
+    "topic": "ml-foundations",
+    "subtopic": "Overfitting & underfitting",
+    "difficulty": "analysis",
+    "q": "What is the key practical reason that test or validation performance, rather than training performance alone, should be used to judge whether a model overfits?",
+    "options": [
+      "Training performance alone cannot reveal whether the model has merely memorized the training data instead of learning a generalizable pattern",
+      "Training performance is always higher than test performance, regardless of overfitting",
+      "Test performance is computed using a different cost function than training performance",
+      "Validation data removes the need for a cost function altogether"
+    ],
+    "correct": 0,
+    "explanation": "Because overfitting means the model does well on training data for the wrong reasons, performance on held-out data is needed to reveal whether it actually generalizes."
+  },
+  {
+    "id": "mlfound-119",
+    "topic": "ml-foundations",
+    "subtopic": "Overfitting & underfitting",
+    "difficulty": "recall",
+    "q": "A dataset is split into a training set and a held-out set that the model never sees during fitting. Comparing error on both sets is primarily useful for ______.",
+    "options": [
+      "diagnosing whether the model overfits (generalizes poorly) or underfits (performs poorly everywhere)",
+      "choosing the number of training examples to collect",
+      "determining the learning rate to use for gradient descent",
+      "deciding whether feature scaling is required"
+    ],
+    "correct": 0,
+    "explanation": "Comparing training and held-out error is the standard way to diagnose overfitting (large gap) versus underfitting (both errors high)."
+  },
+  {
+    "id": "mlfound-120",
+    "topic": "ml-foundations",
+    "subtopic": "Bias-variance tradeoff",
+    "difficulty": "recall",
+    "q": "A model with high bias is best described as one that ______.",
+    "options": [
+      "makes overly simplistic assumptions, causing it to systematically miss the true underlying relationship",
+      "changes drastically in its predictions when trained on slightly different data",
+      "perfectly fits every training example without error",
+      "has too many parameters relative to the amount of training data"
+    ],
+    "correct": 0,
+    "explanation": "High bias arises from a model that is too simple or makes assumptions that are too restrictive, so it systematically underfits the true pattern."
+  },
+  {
+    "id": "mlfound-121",
+    "topic": "ml-foundations",
+    "subtopic": "Bias-variance tradeoff",
+    "difficulty": "recall",
+    "q": "A model with high variance is best described as one that ______.",
+    "options": [
+      "is highly sensitive to the specific training data used, producing very different fits if retrained on a different sample",
+      "consistently underpredicts the target regardless of the training data used",
+      "ignores most of the input features when making predictions",
+      "always converges to the same global minimum regardless of initialization"
+    ],
+    "correct": 0,
+    "explanation": "High variance describes a model whose fitted parameters and predictions change a great deal depending on which particular training sample it saw."
+  },
+  {
+    "id": "mlfound-122",
+    "topic": "ml-foundations",
+    "subtopic": "Bias-variance tradeoff",
+    "difficulty": "recall",
+    "q": "The bias-variance tradeoff describes the general observation that ______.",
+    "options": [
+      "reducing a model's bias (by increasing its complexity) tends to increase its variance, and vice versa",
+      "bias and variance always increase or decrease together in the same direction",
+      "bias only applies to classification models while variance only applies to regression models",
+      "increasing model complexity always reduces both bias and variance simultaneously"
+    ],
+    "correct": 0,
+    "explanation": "The classic tradeoff is that increasing model complexity to reduce bias typically increases sensitivity to the training sample, raising variance, and vice versa."
+  },
+  {
+    "id": "mlfound-123",
+    "topic": "ml-foundations",
+    "subtopic": "Bias-variance tradeoff",
+    "difficulty": "application",
+    "q": "As the degree of a polynomial regression model increases from 1 to a very high value, what typically happens to bias and variance?",
+    "options": [
+      "Bias tends to decrease while variance tends to increase",
+      "Bias tends to increase while variance tends to decrease",
+      "Both bias and variance tend to decrease together",
+      "Both bias and variance remain constant regardless of degree"
+    ],
+    "correct": 0,
+    "explanation": "Higher-degree polynomials can fit the training data more closely (lower bias) but become increasingly sensitive to the particular training sample (higher variance)."
+  },
+  {
+    "id": "mlfound-124",
+    "topic": "ml-foundations",
+    "subtopic": "Bias-variance tradeoff",
+    "difficulty": "application",
+    "q": "A healthcare risk model with very high bias is deployed. Even on the training data used to fit it, its predictions are consistently far from the true outcomes. Which action is most directly aimed at reducing this bias?",
+    "options": [
+      "Increasing model complexity, for example by adding more relevant features or using a higher-degree polynomial",
+      "Collecting more training examples using the exact same simple model",
+      "Increasing the regularization strength further",
+      "Reducing the learning rate used during training"
+    ],
+    "correct": 0,
+    "explanation": "High bias stems from a model that is too restrictive; increasing its capacity, for example with more relevant features, directly addresses this."
+  },
+  {
+    "id": "mlfound-125",
+    "topic": "ml-foundations",
+    "subtopic": "Bias-variance tradeoff",
+    "difficulty": "analysis",
+    "q": "Why does simply collecting more training data tend to help a high-variance model more than a high-bias model?",
+    "options": [
+      "More data constrains a flexible, high-variance model to fit the general pattern rather than the noise, whereas a high-bias model is fundamentally too simple to capture the pattern no matter how much data is added",
+      "More data always increases bias regardless of model type",
+      "A high-bias model always needs less data than a high-variance model",
+      "More training data has no effect on either bias or variance"
+    ],
+    "correct": 0,
+    "explanation": "More data helps a flexible model average out noise and better reveal the true pattern (reducing variance), but it cannot fix a model whose assumptions are fundamentally too restrictive (bias)."
+  },
+  {
+    "id": "mlfound-126",
+    "topic": "ml-foundations",
+    "subtopic": "Bias-variance tradeoff",
+    "difficulty": "analysis",
+    "q": "A model achieves low training error but noticeably higher error on a held-out validation set. In terms of the bias-variance framework, this pattern is most consistent with ______.",
+    "options": [
+      "low bias but high variance",
+      "high bias but low variance",
+      "both low bias and low variance",
+      "both high bias and high variance"
+    ],
+    "correct": 0,
+    "explanation": "Low training error paired with much higher validation error is the classic signature of low bias (fits training well) combined with high variance (poor generalization)."
+  },
+  {
+    "id": "mlfound-127",
+    "topic": "ml-foundations",
+    "subtopic": "Bias-variance tradeoff",
+    "difficulty": "analysis",
+    "q": "A model achieves high error on both training and validation sets, with the two errors being close to each other. In terms of the bias-variance framework, this pattern is most consistent with ______.",
+    "options": [
+      "high bias and relatively low variance",
+      "low bias and high variance",
+      "low bias and low variance",
+      "high bias and high variance, with both errors differing substantially"
+    ],
+    "correct": 0,
+    "explanation": "High, similar error on both sets reflects a model too simple to fit even the training data well (high bias) but consistent across samples (low variance)."
+  },
+  {
+    "id": "mlfound-128",
+    "topic": "ml-foundations",
+    "subtopic": "Bias-variance tradeoff",
+    "difficulty": "recall",
+    "q": "The 'sweet spot' in the bias-variance tradeoff for a given problem refers to ______.",
+    "options": [
+      "the level of model complexity that minimizes overall error on new data by balancing bias and variance",
+      "the point where training error first reaches exactly zero",
+      "the model with the highest possible number of features",
+      "the smallest learning rate that still lets gradient descent converge"
+    ],
+    "correct": 0,
+    "explanation": "The sweet spot is the complexity level that best balances underfitting and overfitting, minimizing expected error on new data."
+  },
+  {
+    "id": "mlfound-129",
+    "topic": "ml-foundations",
+    "subtopic": "Bias-variance tradeoff",
+    "difficulty": "analysis",
+    "q": "In a plot of training error and validation error against model complexity, which pattern is expected if the model is suffering mainly from high variance?",
+    "options": [
+      "Training error is low, while validation error is noticeably higher, and the gap between them is large",
+      "Both training and validation error are high and close together",
+      "Both training and validation error are low and close together",
+      "Training error is high while validation error is low"
+    ],
+    "correct": 0,
+    "explanation": "High variance is reflected by a large gap between low training error and higher validation error, since the model fits training data well but fails to generalize."
+  },
+  {
+    "id": "mlfound-130",
+    "topic": "ml-foundations",
+    "subtopic": "Bias-variance tradeoff",
+    "difficulty": "analysis",
+    "q": "A fraud-detection model with extremely high variance is retrained several times, each time on a different random sample drawn from the same larger dataset. What outcome would be expected?",
+    "options": [
+      "The fitted parameters and predictions would differ substantially between retrainings",
+      "The fitted parameters and predictions would stay nearly identical between retrainings",
+      "The training error would differ substantially while predictions stay the same",
+      "The model would consistently underfit across all retrainings"
+    ],
+    "correct": 0,
+    "explanation": "By definition, a high-variance model is highly sensitive to which particular sample it was trained on, so retraining on different samples would yield substantially different fits."
+  },
+  {
+    "id": "mlfound-131",
+    "topic": "ml-foundations",
+    "subtopic": "Bias-variance tradeoff",
+    "difficulty": "analysis",
+    "q": "Why is reducing bias and reducing variance often described as competing goals rather than complementary ones?",
+    "options": [
+      "Techniques that make a model more flexible to reduce bias (e.g. adding features, increasing polynomial degree) typically also make it more sensitive to the specific training sample, increasing variance",
+      "Because bias and variance are mathematically the exact same quantity measured differently",
+      "Because reducing bias always requires reducing the number of training examples",
+      "Because variance can only be reduced by increasing the learning rate"
+    ],
+    "correct": 0,
+    "explanation": "Increasing model flexibility to reduce bias generally increases sensitivity to the particular training sample, which raises variance, making the two goals competing in practice."
+  },
+  {
+    "id": "mlfound-132",
+    "topic": "ml-foundations",
+    "subtopic": "Bias-variance tradeoff",
+    "difficulty": "analysis",
+    "q": "A regularized linear regression model is compared to the same model without regularization, both trained on identical data. If regularization is set appropriately (not too strong), what is the expected effect on variance?",
+    "options": [
+      "Variance tends to decrease, since regularization discourages the model from fitting noise with overly large parameter values",
+      "Variance tends to increase, since regularization adds more parameters to the model",
+      "Bias tends to decrease to zero regardless of regularization strength",
+      "Neither bias nor variance is affected by regularization"
+    ],
+    "correct": 0,
+    "explanation": "Appropriately applied regularization discourages large parameter values that often arise from fitting noise, which tends to reduce variance."
+  },
+  {
+    "id": "mlfound-133",
+    "topic": "ml-foundations",
+    "subtopic": "Bias-variance tradeoff",
+    "difficulty": "recall",
+    "q": "Which single description best distinguishes bias from variance in a regression model?",
+    "options": [
+      "Bias is error from overly simplistic assumptions about the data; variance is error from excessive sensitivity to the particular training sample",
+      "Bias is error only on the test set; variance is error only on the training set",
+      "Bias and variance both measure the exact same error and differ only in units",
+      "Bias is caused by too much data; variance is caused by too little data"
+    ],
+    "correct": 0,
+    "explanation": "Bias reflects systematic error from overly simple assumptions; variance reflects how much predictions would change if trained on a different sample."
+  },
+  {
+    "id": "mlfound-134",
+    "topic": "ml-foundations",
+    "subtopic": "Regularization basics",
+    "difficulty": "recall",
+    "q": "What is the general purpose of adding a regularization term to the cost function of a linear regression model?",
+    "options": [
+      "To discourage overly large parameter values, which helps reduce overfitting",
+      "To increase the model's flexibility so it can fit more complex patterns",
+      "To replace the need for a learning rate during gradient descent",
+      "To guarantee the model achieves zero training error"
+    ],
+    "correct": 0,
+    "explanation": "Regularization adds a penalty for large weights to the cost function, discouraging the model from relying too heavily on any one feature and helping reduce overfitting."
+  },
+  {
+    "id": "mlfound-135",
+    "topic": "ml-foundations",
+    "subtopic": "Regularization basics",
+    "difficulty": "recall",
+    "q": "In regularized linear regression, the regularization term is typically added as a penalty based on ______.",
+    "options": [
+      "the size (e.g. squared magnitude) of the model's weight parameters",
+      "the number of training examples used",
+      "the value of the learning rate",
+      "the number of iterations gradient descent has run"
+    ],
+    "correct": 0,
+    "explanation": "The regularization penalty is typically the sum of squared weights (or similar), scaled by a regularization strength, discouraging large parameter values."
+  },
+  {
+    "id": "mlfound-136",
+    "topic": "ml-foundations",
+    "subtopic": "Regularization basics",
+    "difficulty": "application",
+    "q": "What effect does increasing the regularization strength (often called lambda) have on a linear regression model's fitted weights, all else equal?",
+    "options": [
+      "It shrinks the weights toward smaller values, reducing the model's sensitivity to individual features",
+      "It increases the weights, making the model more sensitive to individual features",
+      "It has no effect on the weights, only on the bias term",
+      "It converts the weights into probabilities"
+    ],
+    "correct": 0,
+    "explanation": "A larger regularization strength more heavily penalizes large weights, shrinking them toward smaller values and reducing sensitivity to any single feature."
+  },
+  {
+    "id": "mlfound-137",
+    "topic": "ml-foundations",
+    "subtopic": "Regularization basics",
+    "difficulty": "analysis",
+    "q": "If the regularization strength lambda is set far too high in a regularized regression model, what is the most likely outcome?",
+    "options": [
+      "The weights are pushed so close to zero that the model underfits, barely reacting to the input features",
+      "The model will overfit even more severely than without regularization",
+      "The cost function will become non-convex",
+      "The learning rate will automatically increase to compensate"
+    ],
+    "correct": 0,
+    "explanation": "Excessive regularization shrinks weights so aggressively toward zero that the model loses the ability to react to the input features, causing underfitting."
+  },
+  {
+    "id": "mlfound-138",
+    "topic": "ml-foundations",
+    "subtopic": "Regularization basics",
+    "difficulty": "application",
+    "q": "A high-degree polynomial regression model is overfitting a small training set. Besides reducing model complexity or gathering more data, what is another common way to address this?",
+    "options": [
+      "Apply regularization to penalize large weights without removing the higher-order features entirely",
+      "Increase the learning rate until the training cost reaches zero",
+      "Switch exclusively to stochastic gradient descent",
+      "Remove feature scaling from the pipeline"
+    ],
+    "correct": 0,
+    "explanation": "Regularization offers a middle path: it keeps the higher-order features in the model but discourages them from taking on extreme values that cause overfitting."
+  },
+  {
+    "id": "mlfound-139",
+    "topic": "ml-foundations",
+    "subtopic": "Regularization basics",
+    "difficulty": "analysis",
+    "q": "Why is the bias term b typically excluded from the regularization penalty in regularized linear regression?",
+    "options": [
+      "The bias simply shifts the model's output and does not contribute to the overfitting caused by large feature weights, so convention leaves it unpenalized",
+      "Including the bias in the penalty would make the cost function undefined",
+      "The bias term is always exactly zero in regularized models",
+      "Regularization cannot mathematically be applied to any additive constant"
+    ],
+    "correct": 0,
+    "explanation": "Because the bias term only shifts predictions rather than scaling any feature, it is conventionally left out of the regularization penalty, which targets the weights."
+  },
+  {
+    "id": "mlfound-140",
+    "topic": "ml-foundations",
+    "subtopic": "Regularization basics",
+    "difficulty": "recall",
+    "q": "Setting the regularization strength lambda to exactly zero in a regularized linear regression model is equivalent to ______.",
+    "options": [
+      "ordinary (unregularized) linear regression",
+      "a model that ignores all input features",
+      "a model that can no longer be trained using gradient descent",
+      "a model guaranteed to overfit regardless of its complexity"
+    ],
+    "correct": 0,
+    "explanation": "With lambda set to zero, the regularization penalty vanishes and the cost function reduces to the ordinary squared-error cost of unregularized linear regression."
+  },
+  {
+    "id": "mlfound-141",
+    "topic": "ml-foundations",
+    "subtopic": "Regularization basics",
+    "difficulty": "application",
+    "q": "A credit scoring model regularizes its weights to prevent a small number of unusual applicants in the training data from having an outsized effect on the fitted parameters. This illustrates regularization's role in ______.",
+    "options": [
+      "reducing variance by discouraging the model from fitting noise or idiosyncrasies in the training sample",
+      "reducing bias by making the model more flexible",
+      "increasing the number of features automatically",
+      "guaranteeing convergence in a single gradient descent iteration"
+    ],
+    "correct": 0,
+    "explanation": "By discouraging large weights driven by a few unusual examples, regularization reduces the model's sensitivity to the particular training sample, i.e. reduces variance."
+  },
+  {
+    "id": "mlfound-142",
+    "topic": "ml-foundations",
+    "subtopic": "Regularization basics",
+    "difficulty": "application",
+    "q": "Choosing an appropriate regularization strength lambda typically involves ______.",
+    "options": [
+      "trying a range of values and comparing performance on a validation set to find a good balance between bias and variance",
+      "always setting lambda as large as mathematically possible",
+      "setting lambda equal to the learning rate used in gradient descent",
+      "setting lambda equal to the number of training examples"
+    ],
+    "correct": 0,
+    "explanation": "Lambda is typically tuned by trying several candidate values and comparing validation performance to find a good tradeoff between underfitting and overfitting."
+  },
+  {
+    "id": "mlfound-143",
+    "topic": "ml-foundations",
+    "subtopic": "Regularization basics",
+    "difficulty": "analysis",
+    "q": "How does the gradient descent update rule change when a regularization term is added to the cost function, compared to unregularized linear regression?",
+    "options": [
+      "An extra term proportional to the weight itself (scaled by lambda) is added to the gradient, which shrinks the weight slightly at every update",
+      "The update rule is identical, since regularization only changes the final reported cost, not the gradient",
+      "The learning rate is automatically replaced by lambda",
+      "The update rule skips the bias term's gradient entirely, even without regularization"
+    ],
+    "correct": 0,
+    "explanation": "Adding a weight-penalty term to the cost introduces an additional gradient term proportional to the weight, which causes each update to also shrink the weight slightly."
+  },
+  {
+    "id": "mlfound-144",
+    "topic": "ml-foundations",
+    "subtopic": "Regularization basics",
+    "difficulty": "application",
+    "q": "Which scenario would benefit most from increasing regularization strength?",
+    "options": [
+      "A high-degree polynomial model that fits the training data almost perfectly but performs much worse on validation data",
+      "A simple linear model that performs poorly on both training and validation data",
+      "A model whose training and validation errors are both low and close together",
+      "A model that has not yet been trained with gradient descent"
+    ],
+    "correct": 0,
+    "explanation": "A large gap between near-perfect training fit and much worse validation performance signals overfitting, which increased regularization is designed to address."
+  },
+  {
+    "id": "mlfound-145",
+    "topic": "ml-foundations",
+    "subtopic": "Regularization basics",
+    "difficulty": "analysis",
+    "q": "Why is regularization often described as a tool for managing the bias-variance tradeoff rather than purely 'fixing overfitting'?",
+    "options": [
+      "Too little regularization can leave variance high, while too much regularization can introduce excessive bias, so an appropriate middle value must be chosen",
+      "Regularization only ever affects bias and never affects variance",
+      "Regularization removes the bias-variance tradeoff from consideration entirely",
+      "Regularization is only relevant to classification, not regression"
+    ],
+    "correct": 0,
+    "explanation": "Regularization strength must be tuned carefully: too little leaves variance high (overfitting), while too much introduces excessive bias (underfitting)."
+  },
+  {
+    "id": "mlfound-146",
+    "topic": "ml-foundations",
+    "subtopic": "Regularization basics",
+    "difficulty": "application",
+    "q": "A dataset with very few training examples relative to the number of features is especially prone to overfitting. Which technique directly helps control this by penalizing complexity rather than requiring additional data?",
+    "options": [
+      "Regularization",
+      "Increasing the learning rate",
+      "Switching to batch gradient descent from mini-batch",
+      "Removing feature scaling"
+    ],
+    "correct": 0,
+    "explanation": "Regularization controls overfitting by penalizing large weights directly in the cost function, which is especially useful when collecting more data is not feasible."
+  },
+  {
+    "id": "mlfound-147",
+    "topic": "ml-foundations",
+    "subtopic": "Multiple features, vectorization & normal equation",
+    "difficulty": "recall",
+    "q": "In multiple linear regression with n input features, the model is typically written as f(x) = w1*x1 + w2*x2 + ... + wn*xn + b. What does each wj represent?",
+    "options": [
+      "The weight associated with the j-th feature, reflecting its contribution to the prediction",
+      "The value of the j-th training example",
+      "The number of iterations used to train the j-th parameter",
+      "The regularization strength applied to the j-th feature only"
+    ],
+    "correct": 0,
+    "explanation": "Each wj scales the contribution of the j-th feature to the model's prediction, analogous to the single weight w in univariate linear regression."
+  },
+  {
+    "id": "mlfound-148",
+    "topic": "ml-foundations",
+    "subtopic": "Multiple features, vectorization & normal equation",
+    "difficulty": "analysis",
+    "q": "Why is vectorized implementation (using matrix/vector operations) generally preferred over writing an explicit loop over features when computing predictions in multiple linear regression?",
+    "options": [
+      "Vectorized operations are typically much faster in practice, since they can exploit optimized numerical libraries and parallel hardware",
+      "Vectorized operations always produce a different, more accurate prediction than a loop",
+      "A loop-based implementation cannot mathematically compute the same result as a vectorized one",
+      "Vectorization removes the need for a cost function"
+    ],
+    "correct": 0,
+    "explanation": "Vectorized operations compute the same mathematical result as an explicit loop but run much faster in practice by leveraging optimized libraries and hardware parallelism."
+  },
+  {
+    "id": "mlfound-149",
+    "topic": "ml-foundations",
+    "subtopic": "Multiple features, vectorization & normal equation",
+    "difficulty": "recall",
+    "q": "The normal equation provides a way to find the optimal parameters for linear regression by ______.",
+    "options": [
+      "directly solving a closed-form equation derived from setting the gradient of the cost function to zero, without iterating",
+      "iteratively updating parameters using a learning rate, exactly like gradient descent",
+      "randomly sampling candidate parameter values until the cost decreases",
+      "requiring the features to first be converted into probabilities"
+    ],
+    "correct": 0,
+    "explanation": "The normal equation solves directly for the parameters that set the cost function's gradient to zero, avoiding the need for iterative updates."
+  },
+  {
+    "id": "mlfound-150",
+    "topic": "ml-foundations",
+    "subtopic": "Multiple features, vectorization & normal equation",
+    "difficulty": "analysis",
+    "q": "What is a key practical limitation of the normal equation compared to gradient descent, especially as the number of features n grows very large?",
+    "options": [
+      "It requires computing a matrix inverse, which becomes computationally expensive as n grows large",
+      "It cannot be used for any dataset with more than one feature",
+      "It requires choosing a learning rate, unlike gradient descent",
+      "It only works correctly when the cost function is non-convex"
+    ],
+    "correct": 0,
+    "explanation": "The normal equation requires inverting an (n x n) matrix, an operation whose cost grows rapidly as the number of features increases, making it impractical for very large n."
+  },
+  {
+    "id": "mlfound-151",
+    "topic": "ml-foundations",
+    "subtopic": "Multiple features, vectorization & normal equation",
+    "difficulty": "recall",
+    "q": "Unlike gradient descent, the normal equation does not require ______.",
+    "options": [
+      "choosing a learning rate or iterating repeatedly until convergence",
+      "a training dataset of labeled examples",
+      "a cost function to be defined at all",
+      "any computation of matrix operations"
+    ],
+    "correct": 0,
+    "explanation": "The normal equation solves for the optimal parameters directly in one step, so unlike gradient descent it needs no learning rate or iterative convergence check."
+  },
+  {
+    "id": "mlfound-152",
+    "topic": "ml-foundations",
+    "subtopic": "Multiple features, vectorization & normal equation",
+    "difficulty": "application",
+    "q": "A dataset has n = 10,000 features. Which training approach is generally more practical in this setting?",
+    "options": [
+      "Gradient descent, since the normal equation's matrix inversion step becomes very costly at this scale",
+      "The normal equation, since it is always faster regardless of the number of features",
+      "Neither approach can be used once n exceeds 1,000 features",
+      "Only stochastic gradient descent with batch size equal to n"
+    ],
+    "correct": 0,
+    "explanation": "With tens of thousands of features, the matrix inversion required by the normal equation becomes very costly, making gradient descent the more practical choice."
+  },
+  {
+    "id": "mlfound-153",
+    "topic": "ml-foundations",
+    "subtopic": "Multiple features, vectorization & normal equation",
+    "difficulty": "recall",
+    "q": "In multiple linear regression, what does vectorization specifically replace?",
+    "options": [
+      "An explicit for-loop over each feature/weight pair with a single matrix or dot-product operation",
+      "The entire cost function with a simplified approximation",
+      "The gradient descent update rule with the normal equation",
+      "The training labels with predicted values"
+    ],
+    "correct": 0,
+    "explanation": "Vectorization replaces an explicit loop summing wj*xj terms with a single dot-product (or matrix) operation computing the same result."
+  },
+  {
+    "id": "mlfound-154",
+    "topic": "ml-foundations",
+    "subtopic": "Multiple features, vectorization & normal equation",
+    "difficulty": "recall",
+    "q": "A dataset has features 'number of bedrooms', 'floor area', 'age of property', and 'distance to city center' used to predict house price. This represents a linear regression problem with how many input features (n)?",
+    "options": [
+      "4",
+      "1",
+      "5",
+      "40"
+    ],
+    "correct": 0,
+    "explanation": "Each listed attribute used as a model input counts as one feature, so there are four input features (n=4) in this example."
+  },
+  {
+    "id": "mlfound-155",
+    "topic": "ml-foundations",
+    "subtopic": "Multiple features, vectorization & normal equation",
+    "difficulty": "analysis",
+    "q": "Why does gradient descent remain useful for linear regression even though the normal equation can solve for the optimal parameters directly in closed form?",
+    "options": [
+      "Gradient descent scales better to problems with a very large number of features and generalizes naturally to other models where no closed-form solution exists",
+      "Gradient descent always finds a more accurate solution than the normal equation",
+      "The normal equation cannot be applied to any linear regression problem",
+      "Gradient descent eliminates the need for a training dataset"
+    ],
+    "correct": 0,
+    "explanation": "Gradient descent avoids the costly matrix inversion required at scale and extends naturally to other models (e.g. with regularization or nonlinearities) that lack a closed-form solution."
+  },
+  {
+    "id": "mlfound-156",
+    "topic": "ml-foundations",
+    "subtopic": "Multiple features, vectorization & normal equation",
+    "difficulty": "recall",
+    "q": "When features are represented as a vector x = [x1, x2, ..., xn] and weights as a vector w = [w1, w2, ..., wn], the prediction f(x) = w1x1 + w2x2 + ... + wnxn + b can be computed efficiently as ______.",
+    "options": [
+      "the dot product of w and x, plus the bias b",
+      "the elementwise maximum of w and x, plus the bias b",
+      "the matrix inverse of w times x",
+      "the sum of all elements in x alone, ignoring w"
+    ],
+    "correct": 0,
+    "explanation": "The weighted sum of feature values is exactly the dot product of the weight vector and feature vector, plus the bias term."
+  },
+  {
+    "id": "mlfound-157",
+    "topic": "ml-foundations",
+    "subtopic": "Multiple features, vectorization & normal equation",
+    "difficulty": "recall",
+    "q": "A dataset's feature matrix X has one row per training example and one column per feature. If X has 200 rows and 6 columns, what does this represent?",
+    "options": [
+      "200 training examples, each described by 6 features",
+      "6 training examples, each described by 200 features",
+      "200 features collected across 6 separate experiments",
+      "6 separate models trained on 200 examples each"
+    ],
+    "correct": 0,
+    "explanation": "By the stated convention, rows correspond to training examples and columns correspond to features, so 200 rows and 6 columns means 200 examples with 6 features each."
+  },
+  {
+    "id": "mlfound-158",
+    "topic": "ml-foundations",
+    "subtopic": "Multiple features, vectorization & normal equation",
+    "difficulty": "application",
+    "q": "A dataset has far more features than can comfortably fit in memory for matrix inversion. Which training method avoids the need to invert a large matrix altogether?",
+    "options": [
+      "Gradient descent",
+      "The normal equation",
+      "Mean normalization",
+      "Z-score standardization"
+    ],
+    "correct": 0,
+    "explanation": "Gradient descent only requires computing gradients at each step and never needs to form or invert a large feature matrix, unlike the normal equation."
+  },
+  {
+    "id": "mlfound-159",
+    "topic": "ml-foundations",
+    "subtopic": "Multiple features, vectorization & normal equation",
+    "difficulty": "recall",
+    "q": "Gradient descent and the normal equation are both methods for finding the parameters of a linear regression model that ______.",
+    "options": [
+      "minimize the squared-error cost function on the training data",
+      "maximize the squared-error cost function on the training data",
+      "minimize the number of features used by the model",
+      "maximize the learning rate used during training"
+    ],
+    "correct": 0,
+    "explanation": "Both methods aim at the same goal: finding the parameters (w,b) that minimize the squared-error cost on the training data, just via different computational approaches."
+  }
+]

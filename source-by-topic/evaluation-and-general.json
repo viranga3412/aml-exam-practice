@@ -1,0 +1,2506 @@
+[
+ {
+  "id": "evalgen-cm-001",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a student-dropout predictor and evaluate it on a held-out set of 333 students. The confusion matrix is shown below. What is the accuracy?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Will drop out",
+    "Predicted Will continue"
+   ],
+   "rows": [
+    [
+     "Actual Will drop out",
+     83,
+     19
+    ],
+    [
+     "Actual Will continue",
+     33,
+     198
+    ]
+   ]
+  },
+  "options": [
+   "0.84",
+   "0.72",
+   "0.25",
+   "0.91"
+  ],
+  "correct": 0,
+  "explanation": "Accuracy = (TP+TN)/(TP+FP+FN+TN) = 0.84 for this matrix (TP=83, FP=33, FN=19, TN=198)."
+ },
+ {
+  "id": "evalgen-cm-002",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a churn-prediction model and evaluate it on a held-out set of 292 customers. The confusion matrix is shown below. What is the precision?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Will churn",
+    "Predicted Will stay"
+   ],
+   "rows": [
+    [
+     "Actual Will churn",
+     69,
+     55
+    ],
+    [
+     "Actual Will stay",
+     10,
+     158
+    ]
+   ]
+  },
+  "options": [
+   "0.87",
+   "0.74",
+   "0.56",
+   "0.94"
+  ],
+  "correct": 0,
+  "explanation": "Precision = TP/(TP+FP) = 0.87 for this matrix (TP=69, FP=10, FN=55, TN=158)."
+ },
+ {
+  "id": "evalgen-cm-003",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a fraud-detection model and evaluate it on a held-out set of 318 transactions. The confusion matrix is shown below. What is the recall (sensitivity)?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Fraudulent",
+    "Predicted Legitimate"
+   ],
+   "rows": [
+    [
+     "Actual Fraudulent",
+     79,
+     21
+    ],
+    [
+     "Actual Legitimate",
+     13,
+     205
+    ]
+   ]
+  },
+  "options": [
+   "0.79",
+   "0.25",
+   "0.94",
+   "0.91"
+  ],
+  "correct": 0,
+  "explanation": "Recall (sensitivity) = TP/(TP+FN) = 0.79 for this matrix (TP=79, FP=13, FN=21, TN=205)."
+ },
+ {
+  "id": "evalgen-cm-004",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a loan-default model and evaluate it on a held-out set of 226 applicants. The confusion matrix is shown below. What is the specificity?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Will default",
+    "Predicted Will repay"
+   ],
+   "rows": [
+    [
+     "Actual Will default",
+     40,
+     30
+    ],
+    [
+     "Actual Will repay",
+     33,
+     123
+    ]
+   ]
+  },
+  "options": [
+   "0.79",
+   "0.57",
+   "0.72",
+   "0.18"
+  ],
+  "correct": 0,
+  "explanation": "Specificity = TN/(TN+FP) = 0.79 for this matrix (TP=40, FP=33, FN=30, TN=123)."
+ },
+ {
+  "id": "evalgen-cm-005",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a churn-prediction model and evaluate it on a held-out set of 352 customers. The confusion matrix is shown below. What is the F1-score?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Will churn",
+    "Predicted Will stay"
+   ],
+   "rows": [
+    [
+     "Actual Will churn",
+     54,
+     18
+    ],
+    [
+     "Actual Will stay",
+     11,
+     269
+    ]
+   ]
+  },
+  "options": [
+   "0.79",
+   "0.83",
+   "0.94",
+   "0.92"
+  ],
+  "correct": 0,
+  "explanation": "F1-score = 2*TP/(2*TP+FP+FN), the harmonic mean of precision and recall = 0.79 for this matrix (TP=54, FP=11, FN=18, TN=269)."
+ },
+ {
+  "id": "evalgen-cm-006",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a credit-card fraud model and evaluate it on a held-out set of 431 transactions. The confusion matrix is shown below. What is the accuracy?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Fraud",
+    "Predicted Genuine"
+   ],
+   "rows": [
+    [
+     "Actual Fraud",
+     92,
+     44
+    ],
+    [
+     "Actual Genuine",
+     33,
+     262
+    ]
+   ]
+  },
+  "options": [
+   "0.82",
+   "0.89",
+   "0.86",
+   "0.68"
+  ],
+  "correct": 0,
+  "explanation": "Accuracy = (TP+TN)/(TP+FP+FN+TN) = 0.82 for this matrix (TP=92, FP=33, FN=44, TN=262)."
+ },
+ {
+  "id": "evalgen-cm-007",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a credit-card fraud model and evaluate it on a held-out set of 334 transactions. The confusion matrix is shown below. What is the precision?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Fraud",
+    "Predicted Genuine"
+   ],
+   "rows": [
+    [
+     "Actual Fraud",
+     80,
+     45
+    ],
+    [
+     "Actual Genuine",
+     43,
+     166
+    ]
+   ]
+  },
+  "options": [
+   "0.65",
+   "0.79",
+   "0.74",
+   "0.64"
+  ],
+  "correct": 0,
+  "explanation": "Precision = TP/(TP+FP) = 0.65 for this matrix (TP=80, FP=43, FN=45, TN=166)."
+ },
+ {
+  "id": "evalgen-cm-008",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a manufacturing defect detector and evaluate it on a held-out set of 247 parts. The confusion matrix is shown below. What is the recall (sensitivity)?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Defective",
+    "Predicted Good"
+   ],
+   "rows": [
+    [
+     "Actual Defective",
+     71,
+     24
+    ],
+    [
+     "Actual Good",
+     46,
+     106
+    ]
+   ]
+  },
+  "options": [
+   "0.75",
+   "0.29",
+   "0.70",
+   "0.72"
+  ],
+  "correct": 0,
+  "explanation": "Recall (sensitivity) = TP/(TP+FN) = 0.75 for this matrix (TP=71, FP=46, FN=24, TN=106)."
+ },
+ {
+  "id": "evalgen-cm-009",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a credit-card fraud model and evaluate it on a held-out set of 358 transactions. The confusion matrix is shown below. What is the specificity?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Fraud",
+    "Predicted Genuine"
+   ],
+   "rows": [
+    [
+     "Actual Fraud",
+     48,
+     35
+    ],
+    [
+     "Actual Genuine",
+     33,
+     242
+    ]
+   ]
+  },
+  "options": [
+   "0.88",
+   "0.59",
+   "0.58",
+   "0.87"
+  ],
+  "correct": 0,
+  "explanation": "Specificity = TN/(TN+FP) = 0.88 for this matrix (TP=48, FP=33, FN=35, TN=242)."
+ },
+ {
+  "id": "evalgen-cm-010",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a loan-default model and evaluate it on a held-out set of 329 applicants. The confusion matrix is shown below. What is the F1-score?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Will default",
+    "Predicted Will repay"
+   ],
+   "rows": [
+    [
+     "Actual Will default",
+     36,
+     48
+    ],
+    [
+     "Actual Will repay",
+     5,
+     240
+    ]
+   ]
+  },
+  "options": [
+   "0.58",
+   "0.88",
+   "0.83",
+   "0.43"
+  ],
+  "correct": 0,
+  "explanation": "F1-score = 2*TP/(2*TP+FP+FN), the harmonic mean of precision and recall = 0.58 for this matrix (TP=36, FP=5, FN=48, TN=240)."
+ },
+ {
+  "id": "evalgen-cm-011",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a loan-default model and evaluate it on a held-out set of 359 applicants. The confusion matrix is shown below. What is the accuracy?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Will default",
+    "Predicted Will repay"
+   ],
+   "rows": [
+    [
+     "Actual Will default",
+     34,
+     37
+    ],
+    [
+     "Actual Will repay",
+     22,
+     266
+    ]
+   ]
+  },
+  "options": [
+   "0.84",
+   "0.48",
+   "0.61",
+   "0.92"
+  ],
+  "correct": 0,
+  "explanation": "Accuracy = (TP+TN)/(TP+FP+FN+TN) = 0.84 for this matrix (TP=34, FP=22, FN=37, TN=266)."
+ },
+ {
+  "id": "evalgen-cm-012",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a credit-card fraud model and evaluate it on a held-out set of 145 transactions. The confusion matrix is shown below. What is the precision?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Fraud",
+    "Predicted Genuine"
+   ],
+   "rows": [
+    [
+     "Actual Fraud",
+     45,
+     25
+    ],
+    [
+     "Actual Genuine",
+     36,
+     39
+    ]
+   ]
+  },
+  "options": [
+   "0.56",
+   "0.58",
+   "0.31",
+   "0.61"
+  ],
+  "correct": 0,
+  "explanation": "Precision = TP/(TP+FP) = 0.56 for this matrix (TP=45, FP=36, FN=25, TN=39)."
+ },
+ {
+  "id": "evalgen-cm-013",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a loan-default model and evaluate it on a held-out set of 208 applicants. The confusion matrix is shown below. What is the recall (sensitivity)?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Will default",
+    "Predicted Will repay"
+   ],
+   "rows": [
+    [
+     "Actual Will default",
+     28,
+     55
+    ],
+    [
+     "Actual Will repay",
+     5,
+     120
+    ]
+   ]
+  },
+  "options": [
+   "0.34",
+   "0.96",
+   "0.71",
+   "0.13"
+  ],
+  "correct": 0,
+  "explanation": "Recall (sensitivity) = TP/(TP+FN) = 0.34 for this matrix (TP=28, FP=5, FN=55, TN=120)."
+ },
+ {
+  "id": "evalgen-cm-014",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a fraud-detection model and evaluate it on a held-out set of 413 transactions. The confusion matrix is shown below. What is the specificity?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Fraudulent",
+    "Predicted Legitimate"
+   ],
+   "rows": [
+    [
+     "Actual Fraudulent",
+     83,
+     46
+    ],
+    [
+     "Actual Legitimate",
+     32,
+     252
+    ]
+   ]
+  },
+  "options": [
+   "0.89",
+   "0.85",
+   "0.20",
+   "0.72"
+  ],
+  "correct": 0,
+  "explanation": "Specificity = TN/(TN+FP) = 0.89 for this matrix (TP=83, FP=32, FN=46, TN=252)."
+ },
+ {
+  "id": "evalgen-cm-015",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a fraud-detection model and evaluate it on a held-out set of 316 transactions. The confusion matrix is shown below. What is the F1-score?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Fraudulent",
+    "Predicted Legitimate"
+   ],
+   "rows": [
+    [
+     "Actual Fraudulent",
+     51,
+     58
+    ],
+    [
+     "Actual Legitimate",
+     40,
+     167
+    ]
+   ]
+  },
+  "options": [
+   "0.51",
+   "0.47",
+   "0.81",
+   "0.74"
+  ],
+  "correct": 0,
+  "explanation": "F1-score = 2*TP/(2*TP+FP+FN), the harmonic mean of precision and recall = 0.51 for this matrix (TP=51, FP=40, FN=58, TN=167)."
+ },
+ {
+  "id": "evalgen-cm-016",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a disease-screening model and evaluate it on a held-out set of 281 patients. The confusion matrix is shown below. What is the accuracy?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Disease present",
+    "Predicted Disease absent"
+   ],
+   "rows": [
+    [
+     "Actual Disease present",
+     78,
+     39
+    ],
+    [
+     "Actual Disease absent",
+     19,
+     145
+    ]
+   ]
+  },
+  "options": [
+   "0.79",
+   "0.67",
+   "0.28",
+   "0.88"
+  ],
+  "correct": 0,
+  "explanation": "Accuracy = (TP+TN)/(TP+FP+FN+TN) = 0.79 for this matrix (TP=78, FP=19, FN=39, TN=145)."
+ },
+ {
+  "id": "evalgen-cm-017",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a student-dropout predictor and evaluate it on a held-out set of 273 students. The confusion matrix is shown below. What is the precision?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Will drop out",
+    "Predicted Will continue"
+   ],
+   "rows": [
+    [
+     "Actual Will drop out",
+     46,
+     59
+    ],
+    [
+     "Actual Will continue",
+     10,
+     158
+    ]
+   ]
+  },
+  "options": [
+   "0.82",
+   "0.94",
+   "0.17",
+   "0.73"
+  ],
+  "correct": 0,
+  "explanation": "Precision = TP/(TP+FP) = 0.82 for this matrix (TP=46, FP=10, FN=59, TN=158)."
+ },
+ {
+  "id": "evalgen-cm-018",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a student-dropout predictor and evaluate it on a held-out set of 247 students. The confusion matrix is shown below. What is the recall (sensitivity)?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Will drop out",
+    "Predicted Will continue"
+   ],
+   "rows": [
+    [
+     "Actual Will drop out",
+     45,
+     41
+    ],
+    [
+     "Actual Will continue",
+     60,
+     101
+    ]
+   ]
+  },
+  "options": [
+   "0.52",
+   "0.18",
+   "0.59",
+   "0.63"
+  ],
+  "correct": 0,
+  "explanation": "Recall (sensitivity) = TP/(TP+FN) = 0.52 for this matrix (TP=45, FP=60, FN=41, TN=101)."
+ },
+ {
+  "id": "evalgen-cm-019",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a fraud-detection model and evaluate it on a held-out set of 301 transactions. The confusion matrix is shown below. What is the specificity?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Fraudulent",
+    "Predicted Legitimate"
+   ],
+   "rows": [
+    [
+     "Actual Fraudulent",
+     94,
+     40
+    ],
+    [
+     "Actual Legitimate",
+     40,
+     127
+    ]
+   ]
+  },
+  "options": [
+   "0.76",
+   "0.73",
+   "0.70",
+   "0.31"
+  ],
+  "correct": 0,
+  "explanation": "Specificity = TN/(TN+FP) = 0.76 for this matrix (TP=94, FP=40, FN=40, TN=127)."
+ },
+ {
+  "id": "evalgen-cm-020",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a disease-screening model and evaluate it on a held-out set of 383 patients. The confusion matrix is shown below. What is the F1-score?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Disease present",
+    "Predicted Disease absent"
+   ],
+   "rows": [
+    [
+     "Actual Disease present",
+     73,
+     24
+    ],
+    [
+     "Actual Disease absent",
+     14,
+     272
+    ]
+   ]
+  },
+  "options": [
+   "0.79",
+   "0.84",
+   "0.95",
+   "0.90"
+  ],
+  "correct": 0,
+  "explanation": "F1-score = 2*TP/(2*TP+FP+FN), the harmonic mean of precision and recall = 0.79 for this matrix (TP=73, FP=14, FN=24, TN=272)."
+ },
+ {
+  "id": "evalgen-cm-021",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a credit-card fraud model and evaluate it on a held-out set of 251 transactions. The confusion matrix is shown below. What is the accuracy?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Fraud",
+    "Predicted Genuine"
+   ],
+   "rows": [
+    [
+     "Actual Fraud",
+     50,
+     45
+    ],
+    [
+     "Actual Genuine",
+     45,
+     111
+    ]
+   ]
+  },
+  "options": [
+   "0.64",
+   "0.20",
+   "0.71",
+   "0.53"
+  ],
+  "correct": 0,
+  "explanation": "Accuracy = (TP+TN)/(TP+FP+FN+TN) = 0.64 for this matrix (TP=50, FP=45, FN=45, TN=111)."
+ },
+ {
+  "id": "evalgen-cm-022",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a disease-screening model and evaluate it on a held-out set of 405 patients. The confusion matrix is shown below. What is the precision?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Disease present",
+    "Predicted Disease absent"
+   ],
+   "rows": [
+    [
+     "Actual Disease present",
+     51,
+     38
+    ],
+    [
+     "Actual Disease absent",
+     55,
+     261
+    ]
+   ]
+  },
+  "options": [
+   "0.48",
+   "0.77",
+   "0.13",
+   "0.57"
+  ],
+  "correct": 0,
+  "explanation": "Precision = TP/(TP+FP) = 0.48 for this matrix (TP=51, FP=55, FN=38, TN=261)."
+ },
+ {
+  "id": "evalgen-cm-023",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a fraud-detection model and evaluate it on a held-out set of 185 transactions. The confusion matrix is shown below. What is the recall (sensitivity)?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Fraudulent",
+    "Predicted Legitimate"
+   ],
+   "rows": [
+    [
+     "Actual Fraudulent",
+     37,
+     59
+    ],
+    [
+     "Actual Legitimate",
+     40,
+     49
+    ]
+   ]
+  },
+  "options": [
+   "0.39",
+   "0.20",
+   "0.46",
+   "0.55"
+  ],
+  "correct": 0,
+  "explanation": "Recall (sensitivity) = TP/(TP+FN) = 0.39 for this matrix (TP=37, FP=40, FN=59, TN=49)."
+ },
+ {
+  "id": "evalgen-cm-024",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a manufacturing defect detector and evaluate it on a held-out set of 131 parts. The confusion matrix is shown below. What is the specificity?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Defective",
+    "Predicted Good"
+   ],
+   "rows": [
+    [
+     "Actual Defective",
+     38,
+     24
+    ],
+    [
+     "Actual Good",
+     29,
+     40
+    ]
+   ]
+  },
+  "options": [
+   "0.58",
+   "0.62",
+   "0.29",
+   "0.60"
+  ],
+  "correct": 0,
+  "explanation": "Specificity = TN/(TN+FP) = 0.58 for this matrix (TP=38, FP=29, FN=24, TN=40)."
+ },
+ {
+  "id": "evalgen-cm-025",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a credit-card fraud model and evaluate it on a held-out set of 193 transactions. The confusion matrix is shown below. What is the F1-score?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Fraud",
+    "Predicted Genuine"
+   ],
+   "rows": [
+    [
+     "Actual Fraud",
+     93,
+     59
+    ],
+    [
+     "Actual Genuine",
+     18,
+     23
+    ]
+   ]
+  },
+  "options": [
+   "0.71",
+   "0.60",
+   "0.48",
+   "0.28"
+  ],
+  "correct": 0,
+  "explanation": "F1-score = 2*TP/(2*TP+FP+FN), the harmonic mean of precision and recall = 0.71 for this matrix (TP=93, FP=18, FN=59, TN=23)."
+ },
+ {
+  "id": "evalgen-cm-026",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a spam filter and evaluate it on a held-out set of 204 emails. The confusion matrix is shown below. What is the accuracy?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Spam",
+    "Predicted Not spam"
+   ],
+   "rows": [
+    [
+     "Actual Spam",
+     94,
+     6
+    ],
+    [
+     "Actual Not spam",
+     52,
+     52
+    ]
+   ]
+  },
+  "options": [
+   "0.72",
+   "0.90",
+   "0.50",
+   "0.94"
+  ],
+  "correct": 0,
+  "explanation": "Accuracy = (TP+TN)/(TP+FP+FN+TN) = 0.72 for this matrix (TP=94, FP=52, FN=6, TN=52)."
+ },
+ {
+  "id": "evalgen-cm-027",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a spam filter and evaluate it on a held-out set of 443 emails. The confusion matrix is shown below. What is the precision?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Spam",
+    "Predicted Not spam"
+   ],
+   "rows": [
+    [
+     "Actual Spam",
+     87,
+     42
+    ],
+    [
+     "Actual Not spam",
+     30,
+     284
+    ]
+   ]
+  },
+  "options": [
+   "0.74",
+   "0.20",
+   "0.90",
+   "0.84"
+  ],
+  "correct": 0,
+  "explanation": "Precision = TP/(TP+FP) = 0.74 for this matrix (TP=87, FP=30, FN=42, TN=284)."
+ },
+ {
+  "id": "evalgen-cm-028",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a credit-card fraud model and evaluate it on a held-out set of 245 transactions. The confusion matrix is shown below. What is the recall (sensitivity)?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Fraud",
+    "Predicted Genuine"
+   ],
+   "rows": [
+    [
+     "Actual Fraud",
+     88,
+     40
+    ],
+    [
+     "Actual Genuine",
+     11,
+     106
+    ]
+   ]
+  },
+  "options": [
+   "0.69",
+   "0.73",
+   "0.89",
+   "0.91"
+  ],
+  "correct": 0,
+  "explanation": "Recall (sensitivity) = TP/(TP+FN) = 0.69 for this matrix (TP=88, FP=11, FN=40, TN=106)."
+ },
+ {
+  "id": "evalgen-cm-029",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a loan-default model and evaluate it on a held-out set of 407 applicants. The confusion matrix is shown below. What is the specificity?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Will default",
+    "Predicted Will repay"
+   ],
+   "rows": [
+    [
+     "Actual Will default",
+     67,
+     38
+    ],
+    [
+     "Actual Will repay",
+     54,
+     248
+    ]
+   ]
+  },
+  "options": [
+   "0.82",
+   "0.64",
+   "0.55",
+   "0.87"
+  ],
+  "correct": 0,
+  "explanation": "Specificity = TN/(TN+FP) = 0.82 for this matrix (TP=67, FP=54, FN=38, TN=248)."
+ },
+ {
+  "id": "evalgen-cm-030",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a churn-prediction model and evaluate it on a held-out set of 159 customers. The confusion matrix is shown below. What is the F1-score?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Will churn",
+    "Predicted Will stay"
+   ],
+   "rows": [
+    [
+     "Actual Will churn",
+     50,
+     26
+    ],
+    [
+     "Actual Will stay",
+     9,
+     74
+    ]
+   ]
+  },
+  "options": [
+   "0.74",
+   "0.85",
+   "0.78",
+   "0.66"
+  ],
+  "correct": 0,
+  "explanation": "F1-score = 2*TP/(2*TP+FP+FN), the harmonic mean of precision and recall = 0.74 for this matrix (TP=50, FP=9, FN=26, TN=74)."
+ },
+ {
+  "id": "evalgen-cm-031",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a loan-default model and evaluate it on a held-out set of 286 applicants. The confusion matrix is shown below. What is the accuracy?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Will default",
+    "Predicted Will repay"
+   ],
+   "rows": [
+    [
+     "Actual Will default",
+     93,
+     37
+    ],
+    [
+     "Actual Will repay",
+     30,
+     126
+    ]
+   ]
+  },
+  "options": [
+   "0.77",
+   "0.33",
+   "0.72",
+   "0.76"
+  ],
+  "correct": 0,
+  "explanation": "Accuracy = (TP+TN)/(TP+FP+FN+TN) = 0.77 for this matrix (TP=93, FP=30, FN=37, TN=126)."
+ },
+ {
+  "id": "evalgen-cm-032",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a churn-prediction model and evaluate it on a held-out set of 296 customers. The confusion matrix is shown below. What is the precision?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Will churn",
+    "Predicted Will stay"
+   ],
+   "rows": [
+    [
+     "Actual Will churn",
+     87,
+     7
+    ],
+    [
+     "Actual Will stay",
+     60,
+     142
+    ]
+   ]
+  },
+  "options": [
+   "0.59",
+   "0.95",
+   "0.70",
+   "0.93"
+  ],
+  "correct": 0,
+  "explanation": "Precision = TP/(TP+FP) = 0.59 for this matrix (TP=87, FP=60, FN=7, TN=142)."
+ },
+ {
+  "id": "evalgen-cm-033",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a fraud-detection model and evaluate it on a held-out set of 416 transactions. The confusion matrix is shown below. What is the recall (sensitivity)?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Fraudulent",
+    "Predicted Legitimate"
+   ],
+   "rows": [
+    [
+     "Actual Fraudulent",
+     95,
+     26
+    ],
+    [
+     "Actual Legitimate",
+     6,
+     289
+    ]
+   ]
+  },
+  "options": [
+   "0.79",
+   "0.94",
+   "0.23",
+   "0.92"
+  ],
+  "correct": 0,
+  "explanation": "Recall (sensitivity) = TP/(TP+FN) = 0.79 for this matrix (TP=95, FP=6, FN=26, TN=289)."
+ },
+ {
+  "id": "evalgen-cm-034",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a loan-default model and evaluate it on a held-out set of 267 applicants. The confusion matrix is shown below. What is the specificity?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Will default",
+    "Predicted Will repay"
+   ],
+   "rows": [
+    [
+     "Actual Will default",
+     84,
+     9
+    ],
+    [
+     "Actual Will repay",
+     36,
+     138
+    ]
+   ]
+  },
+  "options": [
+   "0.79",
+   "0.94",
+   "0.70",
+   "0.90"
+  ],
+  "correct": 0,
+  "explanation": "Specificity = TN/(TN+FP) = 0.79 for this matrix (TP=84, FP=36, FN=9, TN=138)."
+ },
+ {
+  "id": "evalgen-cm-035",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a spam filter and evaluate it on a held-out set of 351 emails. The confusion matrix is shown below. What is the F1-score?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Spam",
+    "Predicted Not spam"
+   ],
+   "rows": [
+    [
+     "Actual Spam",
+     83,
+     40
+    ],
+    [
+     "Actual Not spam",
+     39,
+     189
+    ]
+   ]
+  },
+  "options": [
+   "0.68",
+   "0.24",
+   "0.77",
+   "0.83"
+  ],
+  "correct": 0,
+  "explanation": "F1-score = 2*TP/(2*TP+FP+FN), the harmonic mean of precision and recall = 0.68 for this matrix (TP=83, FP=39, FN=40, TN=189)."
+ },
+ {
+  "id": "evalgen-cm-036",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a fraud-detection model and evaluate it on a held-out set of 416 transactions. The confusion matrix is shown below. What is the accuracy?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Fraudulent",
+    "Predicted Legitimate"
+   ],
+   "rows": [
+    [
+     "Actual Fraudulent",
+     24,
+     56
+    ],
+    [
+     "Actual Legitimate",
+     40,
+     296
+    ]
+   ]
+  },
+  "options": [
+   "0.77",
+   "0.88",
+   "0.84",
+   "0.38"
+  ],
+  "correct": 0,
+  "explanation": "Accuracy = (TP+TN)/(TP+FP+FN+TN) = 0.77 for this matrix (TP=24, FP=40, FN=56, TN=296)."
+ },
+ {
+  "id": "evalgen-cm-037",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a loan-default model and evaluate it on a held-out set of 335 applicants. The confusion matrix is shown below. What is the precision?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Will default",
+    "Predicted Will repay"
+   ],
+   "rows": [
+    [
+     "Actual Will default",
+     95,
+     47
+    ],
+    [
+     "Actual Will repay",
+     13,
+     180
+    ]
+   ]
+  },
+  "options": [
+   "0.88",
+   "0.93",
+   "0.82",
+   "0.28"
+  ],
+  "correct": 0,
+  "explanation": "Precision = TP/(TP+FP) = 0.88 for this matrix (TP=95, FP=13, FN=47, TN=180)."
+ },
+ {
+  "id": "evalgen-cm-038",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a student-dropout predictor and evaluate it on a held-out set of 343 students. The confusion matrix is shown below. What is the recall (sensitivity)?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Will drop out",
+    "Predicted Will continue"
+   ],
+   "rows": [
+    [
+     "Actual Will drop out",
+     88,
+     20
+    ],
+    [
+     "Actual Will continue",
+     9,
+     226
+    ]
+   ]
+  },
+  "options": [
+   "0.81",
+   "0.96",
+   "0.92",
+   "0.91"
+  ],
+  "correct": 0,
+  "explanation": "Recall (sensitivity) = TP/(TP+FN) = 0.81 for this matrix (TP=88, FP=9, FN=20, TN=226)."
+ },
+ {
+  "id": "evalgen-cm-039",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a student-dropout predictor and evaluate it on a held-out set of 372 students. The confusion matrix is shown below. What is the specificity?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Will drop out",
+    "Predicted Will continue"
+   ],
+   "rows": [
+    [
+     "Actual Will drop out",
+     83,
+     23
+    ],
+    [
+     "Actual Will continue",
+     33,
+     233
+    ]
+   ]
+  },
+  "options": [
+   "0.88",
+   "0.72",
+   "0.78",
+   "0.85"
+  ],
+  "correct": 0,
+  "explanation": "Specificity = TN/(TN+FP) = 0.88 for this matrix (TP=83, FP=33, FN=23, TN=233)."
+ },
+ {
+  "id": "evalgen-cm-040",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a loan-default model and evaluate it on a held-out set of 290 applicants. The confusion matrix is shown below. What is the F1-score?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Will default",
+    "Predicted Will repay"
+   ],
+   "rows": [
+    [
+     "Actual Will default",
+     78,
+     32
+    ],
+    [
+     "Actual Will repay",
+     18,
+     162
+    ]
+   ]
+  },
+  "options": [
+   "0.76",
+   "0.27",
+   "0.71",
+   "0.90"
+  ],
+  "correct": 0,
+  "explanation": "F1-score = 2*TP/(2*TP+FP+FN), the harmonic mean of precision and recall = 0.76 for this matrix (TP=78, FP=18, FN=32, TN=162)."
+ },
+ {
+  "id": "evalgen-cm-041",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a spam filter and evaluate it on a held-out set of 182 emails. The confusion matrix is shown below. What is the accuracy?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Spam",
+    "Predicted Not spam"
+   ],
+   "rows": [
+    [
+     "Actual Spam",
+     17,
+     43
+    ],
+    [
+     "Actual Not spam",
+     49,
+     73
+    ]
+   ]
+  },
+  "options": [
+   "0.49",
+   "0.63",
+   "0.60",
+   "0.26"
+  ],
+  "correct": 0,
+  "explanation": "Accuracy = (TP+TN)/(TP+FP+FN+TN) = 0.49 for this matrix (TP=17, FP=49, FN=43, TN=73)."
+ },
+ {
+  "id": "evalgen-cm-042",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a loan-default model and evaluate it on a held-out set of 347 applicants. The confusion matrix is shown below. What is the precision?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Will default",
+    "Predicted Will repay"
+   ],
+   "rows": [
+    [
+     "Actual Will default",
+     64,
+     36
+    ],
+    [
+     "Actual Will repay",
+     54,
+     193
+    ]
+   ]
+  },
+  "options": [
+   "0.54",
+   "0.74",
+   "0.84",
+   "0.18"
+  ],
+  "correct": 0,
+  "explanation": "Precision = TP/(TP+FP) = 0.54 for this matrix (TP=64, FP=54, FN=36, TN=193)."
+ },
+ {
+  "id": "evalgen-cm-043",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a credit-card fraud model and evaluate it on a held-out set of 228 transactions. The confusion matrix is shown below. What is the recall (sensitivity)?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Fraud",
+    "Predicted Genuine"
+   ],
+   "rows": [
+    [
+     "Actual Fraud",
+     89,
+     24
+    ],
+    [
+     "Actual Genuine",
+     58,
+     57
+    ]
+   ]
+  },
+  "options": [
+   "0.79",
+   "0.39",
+   "0.64",
+   "0.70"
+  ],
+  "correct": 0,
+  "explanation": "Recall (sensitivity) = TP/(TP+FN) = 0.79 for this matrix (TP=89, FP=58, FN=24, TN=57)."
+ },
+ {
+  "id": "evalgen-cm-044",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a manufacturing defect detector and evaluate it on a held-out set of 381 parts. The confusion matrix is shown below. What is the specificity?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Defective",
+    "Predicted Good"
+   ],
+   "rows": [
+    [
+     "Actual Defective",
+     33,
+     34
+    ],
+    [
+     "Actual Good",
+     37,
+     277
+    ]
+   ]
+  },
+  "options": [
+   "0.88",
+   "0.09",
+   "0.49",
+   "0.47"
+  ],
+  "correct": 0,
+  "explanation": "Specificity = TN/(TN+FP) = 0.88 for this matrix (TP=33, FP=37, FN=34, TN=277)."
+ },
+ {
+  "id": "evalgen-cm-045",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a disease-screening model and evaluate it on a held-out set of 204 patients. The confusion matrix is shown below. What is the F1-score?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Disease present",
+    "Predicted Disease absent"
+   ],
+   "rows": [
+    [
+     "Actual Disease present",
+     94,
+     40
+    ],
+    [
+     "Actual Disease absent",
+     48,
+     22
+    ]
+   ]
+  },
+  "options": [
+   "0.68",
+   "0.46",
+   "0.35",
+   "0.31"
+  ],
+  "correct": 0,
+  "explanation": "F1-score = 2*TP/(2*TP+FP+FN), the harmonic mean of precision and recall = 0.68 for this matrix (TP=94, FP=48, FN=40, TN=22)."
+ },
+ {
+  "id": "evalgen-cm-046",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a spam filter and evaluate it on a held-out set of 202 emails. The confusion matrix is shown below. What is the accuracy?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Spam",
+    "Predicted Not spam"
+   ],
+   "rows": [
+    [
+     "Actual Spam",
+     58,
+     57
+    ],
+    [
+     "Actual Not spam",
+     39,
+     48
+    ]
+   ]
+  },
+  "options": [
+   "0.52",
+   "0.29",
+   "0.46",
+   "0.50"
+  ],
+  "correct": 0,
+  "explanation": "Accuracy = (TP+TN)/(TP+FP+FN+TN) = 0.52 for this matrix (TP=58, FP=39, FN=57, TN=48)."
+ },
+ {
+  "id": "evalgen-cm-047",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a manufacturing defect detector and evaluate it on a held-out set of 100 parts. The confusion matrix is shown below. What is the precision?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Defective",
+    "Predicted Good"
+   ],
+   "rows": [
+    [
+     "Actual Defective",
+     28,
+     32
+    ],
+    [
+     "Actual Good",
+     20,
+     20
+    ]
+   ]
+  },
+  "options": [
+   "0.58",
+   "0.38",
+   "0.50",
+   "0.47"
+  ],
+  "correct": 0,
+  "explanation": "Precision = TP/(TP+FP) = 0.58 for this matrix (TP=28, FP=20, FN=32, TN=20)."
+ },
+ {
+  "id": "evalgen-cm-048",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a disease-screening model and evaluate it on a held-out set of 398 patients. The confusion matrix is shown below. What is the recall (sensitivity)?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Disease present",
+    "Predicted Disease absent"
+   ],
+   "rows": [
+    [
+     "Actual Disease present",
+     71,
+     19
+    ],
+    [
+     "Actual Disease absent",
+     33,
+     275
+    ]
+   ]
+  },
+  "options": [
+   "0.79",
+   "0.94",
+   "0.89",
+   "0.68"
+  ],
+  "correct": 0,
+  "explanation": "Recall (sensitivity) = TP/(TP+FN) = 0.79 for this matrix (TP=71, FP=33, FN=19, TN=275)."
+ },
+ {
+  "id": "evalgen-cm-049",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a loan-default model and evaluate it on a held-out set of 282 applicants. The confusion matrix is shown below. What is the specificity?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Will default",
+    "Predicted Will repay"
+   ],
+   "rows": [
+    [
+     "Actual Will default",
+     86,
+     27
+    ],
+    [
+     "Actual Will repay",
+     43,
+     126
+    ]
+   ]
+  },
+  "options": [
+   "0.75",
+   "0.67",
+   "0.76",
+   "0.30"
+  ],
+  "correct": 0,
+  "explanation": "Specificity = TN/(TN+FP) = 0.75 for this matrix (TP=86, FP=43, FN=27, TN=126)."
+ },
+ {
+  "id": "evalgen-cm-050",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a fraud-detection model and evaluate it on a held-out set of 401 transactions. The confusion matrix is shown below. What is the F1-score?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Fraudulent",
+    "Predicted Legitimate"
+   ],
+   "rows": [
+    [
+     "Actual Fraudulent",
+     90,
+     57
+    ],
+    [
+     "Actual Legitimate",
+     39,
+     215
+    ]
+   ]
+  },
+  "options": [
+   "0.65",
+   "0.22",
+   "0.85",
+   "0.61"
+  ],
+  "correct": 0,
+  "explanation": "F1-score = 2*TP/(2*TP+FP+FN), the harmonic mean of precision and recall = 0.65 for this matrix (TP=90, FP=39, FN=57, TN=215)."
+ },
+ {
+  "id": "evalgen-cm-051",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a credit-card fraud model and evaluate it on a held-out set of 172 transactions. The confusion matrix is shown below. What is the accuracy?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Fraud",
+    "Predicted Genuine"
+   ],
+   "rows": [
+    [
+     "Actual Fraud",
+     73,
+     8
+    ],
+    [
+     "Actual Genuine",
+     31,
+     60
+    ]
+   ]
+  },
+  "options": [
+   "0.77",
+   "0.66",
+   "0.70",
+   "0.90"
+  ],
+  "correct": 0,
+  "explanation": "Accuracy = (TP+TN)/(TP+FP+FN+TN) = 0.77 for this matrix (TP=73, FP=31, FN=8, TN=60)."
+ },
+ {
+  "id": "evalgen-cm-052",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a credit-card fraud model and evaluate it on a held-out set of 229 transactions. The confusion matrix is shown below. What is the precision?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Fraud",
+    "Predicted Genuine"
+   ],
+   "rows": [
+    [
+     "Actual Fraud",
+     72,
+     38
+    ],
+    [
+     "Actual Genuine",
+     51,
+     68
+    ]
+   ]
+  },
+  "options": [
+   "0.59",
+   "0.61",
+   "0.65",
+   "0.31"
+  ],
+  "correct": 0,
+  "explanation": "Precision = TP/(TP+FP) = 0.59 for this matrix (TP=72, FP=51, FN=38, TN=68)."
+ },
+ {
+  "id": "evalgen-cm-053",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a loan-default model and evaluate it on a held-out set of 227 applicants. The confusion matrix is shown below. What is the recall (sensitivity)?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Will default",
+    "Predicted Will repay"
+   ],
+   "rows": [
+    [
+     "Actual Will default",
+     37,
+     22
+    ],
+    [
+     "Actual Will repay",
+     17,
+     151
+    ]
+   ]
+  },
+  "options": [
+   "0.63",
+   "0.69",
+   "0.90",
+   "0.83"
+  ],
+  "correct": 0,
+  "explanation": "Recall (sensitivity) = TP/(TP+FN) = 0.63 for this matrix (TP=37, FP=17, FN=22, TN=151)."
+ },
+ {
+  "id": "evalgen-cm-054",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a fraud-detection model and evaluate it on a held-out set of 354 transactions. The confusion matrix is shown below. What is the specificity?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Fraudulent",
+    "Predicted Legitimate"
+   ],
+   "rows": [
+    [
+     "Actual Fraudulent",
+     62,
+     30
+    ],
+    [
+     "Actual Legitimate",
+     58,
+     204
+    ]
+   ]
+  },
+  "options": [
+   "0.78",
+   "0.52",
+   "0.18",
+   "0.67"
+  ],
+  "correct": 0,
+  "explanation": "Specificity = TN/(TN+FP) = 0.78 for this matrix (TP=62, FP=58, FN=30, TN=204)."
+ },
+ {
+  "id": "evalgen-cm-055",
+  "topic": "evaluation-and-general",
+  "subtopic": "Confusion-matrix calculations",
+  "difficulty": "application",
+  "q": "You deploy a disease-screening model and evaluate it on a held-out set of 314 patients. The confusion matrix is shown below. What is the F1-score?",
+  "table": {
+   "headers": [
+    "",
+    "Predicted Disease present",
+    "Predicted Disease absent"
+   ],
+   "rows": [
+    [
+     "Actual Disease present",
+     61,
+     45
+    ],
+    [
+     "Actual Disease absent",
+     9,
+     199
+    ]
+   ]
+  },
+  "options": [
+   "0.69",
+   "0.58",
+   "0.82",
+   "0.83"
+  ],
+  "correct": 0,
+  "explanation": "F1-score = 2*TP/(2*TP+FP+FN), the harmonic mean of precision and recall = 0.69 for this matrix (TP=61, FP=9, FN=45, TN=199)."
+ },
+ {
+  "id": "evalgen-chart-001",
+  "topic": "evaluation-and-general",
+  "subtopic": "ROC curve reading",
+  "difficulty": "application",
+  "q": "A fraud-detection model's ROC curve lies almost exactly on the diagonal line from (0,0) to (1,1), with AUC close to 0.50. What does this indicate about the model?",
+  "chart": {
+   "type": "roc",
+   "shape": "random",
+   "caption": "Figure: ROC curve"
+  },
+  "options": [
+   "It is barely better than random guessing at ranking positives above negatives",
+   "It is an excellent classifier with near-perfect separation between classes across most thresholds",
+   "It is badly overfitting the training data and memorizing noise patterns",
+   "Its predicted probabilities are perfectly calibrated to true outcome rates"
+  ],
+  "correct": 0,
+  "explanation": "An AUC near 0.5 means the ROC curve tracks the diagonal, which is exactly what a random classifier produces — the model has essentially no discriminative ability between the two classes."
+ },
+ {
+  "id": "evalgen-chart-002",
+  "topic": "evaluation-and-general",
+  "subtopic": "ROC curve reading",
+  "difficulty": "analysis",
+  "q": "Two fraud models are compared on the same test set. Model A's ROC curve sits consistently above and to the left of Model B's curve across the whole range of thresholds. Which model should be selected for deployment, and why?",
+  "chart": {
+   "type": "roc",
+   "shape": "good",
+   "caption": "Figure: ROC curve comparison, Model A vs Model B"
+  },
+  "options": [
+   "Model A, since it gives a higher true-positive rate at every false-positive rate",
+   "Model B, since a curve closer to the diagonal is always the safer choice for production deployment",
+   "Either model, since ROC curves can't be used to compare two classifiers",
+   "Model A, since a dominant curve always means more training data was used"
+  ],
+  "correct": 0,
+  "explanation": "A ROC curve dominating another (closer to the top-left corner) means it achieves a better true-positive/false-positive trade-off at every operating threshold, so it's the stronger classifier regardless of which threshold is eventually chosen."
+ },
+ {
+  "id": "evalgen-chart-003",
+  "topic": "evaluation-and-general",
+  "subtopic": "Precision-Recall curve reading",
+  "difficulty": "analysis",
+  "q": "A model trained on a severely imbalanced dataset (rare positive class) shows a Precision-Recall curve that drops sharply from high precision to low precision as recall increases past a moderate value. Which deployment scenario is this model riskiest for?",
+  "chart": {
+   "type": "pr",
+   "shape": "steep_drop",
+   "caption": "Figure: Precision-Recall curve (imbalanced classification)"
+  },
+  "options": [
+   "A disease-screening system, where missing real positive cases is very costly",
+   "A movie-recommendation system, where a wrong suggestion carries no real safety or financial cost",
+   "An A/B test analysis that involves no classification decision at all",
+   "A product-rating prediction task with a continuous numeric target"
+  ],
+  "correct": 0,
+  "explanation": "A steep precision drop as recall increases means pushing for higher recall quickly tanks precision (many false positives) — in a safety-critical screening context, this forces an uncomfortable trade-off between missing real cases and raising too many false alarms, making the model risky when recall matters most."
+ },
+ {
+  "id": "evalgen-chart-004",
+  "topic": "evaluation-and-general",
+  "subtopic": "Feature-importance chart reading",
+  "difficulty": "analysis",
+  "q": "A loan-default model's feature-importance chart shows one feature, \"Previous Default Flag\", with an importance score far higher than every other feature combined. What should this prompt the data science team to investigate first?",
+  "chart": {
+   "type": "bar",
+   "labels": [
+    "Age",
+    "Income",
+    "Loan Amount",
+    "Previous Default Flag",
+    "Credit Score"
+   ],
+   "values": [
+    0.04,
+    0.03,
+    0.05,
+    0.68,
+    0.2
+   ],
+   "caption": "Figure: Feature importance"
+  },
+  "options": [
+   "Whether that feature is a proxy for the label, i.e. target leakage",
+   "Whether the model needs a larger learning rate to converge faster during retraining",
+   "Whether more raw data rows need to be collected and labelled",
+   "Whether the kernel function should be switched to polynomial"
+  ],
+  "correct": 0,
+  "explanation": "One feature overwhelmingly dominating importance is a classic symptom of data leakage — the feature may encode or closely correlate with the target itself, which would make the model unreliable once that shortcut isn't available at serving time."
+ },
+ {
+  "id": "evalgen-chart-005",
+  "topic": "evaluation-and-general",
+  "subtopic": "Feature-importance chart reading",
+  "difficulty": "application",
+  "q": "A churn-prediction model's feature-importance chart shows five features with reasonably balanced, moderate importance scores and no single feature dominating. What does this suggest about the model's behaviour?",
+  "chart": {
+   "type": "bar",
+   "labels": [
+    "Tenure",
+    "Monthly Bill",
+    "Complaints",
+    "Usage",
+    "Contract Type"
+   ],
+   "values": [
+    0.24,
+    0.19,
+    0.22,
+    0.17,
+    0.18
+   ],
+   "caption": "Figure: Feature importance"
+  },
+  "options": [
+   "It is drawing on a healthy spread of signals, not one dominant feature",
+   "It has definitely failed to learn anything useful from the data",
+   "The underlying dataset must contain many duplicate rows",
+   "It needs to be retrained immediately with fewer input features before further testing"
+  ],
+  "correct": 0,
+  "explanation": "A balanced importance spread across several genuinely predictive features is generally a healthy sign — it suggests the model is combining multiple real signals rather than depending on one feature that might be a leakage shortcut."
+ },
+ {
+  "id": "evalgen-chart-006",
+  "topic": "evaluation-and-general",
+  "subtopic": "Bias-variance curve reading",
+  "difficulty": "application",
+  "q": "A model's training error stays low across all tested complexity levels, while its validation error is high at low complexity, decreases, reaches a minimum, and then rises again sharply as complexity keeps increasing. What does the rising validation error at high complexity indicate?",
+  "chart": {
+   "type": "bias_variance",
+   "shape": "overfit",
+   "caption": "Figure: Error vs model complexity"
+  },
+  "options": [
+   "Overfitting — the model is fitting noise specific to the training set",
+   "Underfitting at every complexity level shown on the chart",
+   "Perfect generalization achieved at the highest complexity level tested so far",
+   "A data-leakage problem rather than a bias-variance issue"
+  ],
+  "correct": 0,
+  "explanation": "A widening gap between low training error and rising validation error as complexity increases is the textbook signature of overfitting — the model is memorizing training-set-specific noise instead of generalizable patterns."
+ },
+ {
+  "id": "evalgen-chart-007",
+  "topic": "evaluation-and-general",
+  "subtopic": "Bias-variance curve reading",
+  "difficulty": "application",
+  "q": "Both training error and validation error are high and close to each other across all tested model complexities, with neither improving much as complexity increases. What does this pattern most likely indicate?",
+  "chart": {
+   "type": "bias_variance",
+   "shape": "underfit",
+   "caption": "Figure: Error vs model complexity"
+  },
+  "options": [
+   "Underfitting — the model is too simple (high bias) for the pattern",
+   "Overfitting, since training error is never exactly zero",
+   "High variance between the cross-validation folds used",
+   "A labelling error affecting only the validation set, not the training set"
+  ],
+  "correct": 0,
+  "explanation": "High error on both training and validation data, with little improvement, is the signature of underfitting / high bias — the model lacks the capacity or features to capture the underlying relationship, so adding more data won't help; adding complexity or features will."
+ },
+ {
+  "id": "evalgen-metric-001",
+  "topic": "evaluation-and-general",
+  "subtopic": "Choosing the right metric",
+  "difficulty": "application",
+  "q": "A cancer-screening classifier will be used to decide who gets referred for further testing. Missing an actual cancer case is far more costly than an unnecessary referral. Which metric should be prioritized when tuning the decision threshold?",
+  "options": [
+   "Recall for the positive (cancer-present) class",
+   "Overall accuracy across both classes",
+   "Precision for the negative (healthy) class",
+   "Specificity alone, while ignoring recall entirely"
+  ],
+  "correct": 0,
+  "explanation": "When false negatives (missed real cases) are far costlier than false positives, the threshold should be tuned to maximize recall for the positive class, even at some cost to precision."
+ },
+ {
+  "id": "evalgen-metric-002",
+  "topic": "evaluation-and-general",
+  "subtopic": "Choosing the right metric",
+  "difficulty": "application",
+  "q": "An email provider wants to minimize the chance that a legitimate email is ever wrongly sent to the spam folder, even if that means a few spam emails slip through. Which metric should be prioritized for the spam class?",
+  "options": [
+   "Precision for the spam class",
+   "Recall for the spam class",
+   "Specificity for the spam class",
+   "Raw count of true positives alone"
+  ],
+  "correct": 0,
+  "explanation": "Prioritizing precision for the spam class means being conservative about labelling something spam, which directly minimizes false positives — legitimate emails wrongly flagged as spam."
+ },
+ {
+  "id": "evalgen-metric-003",
+  "topic": "evaluation-and-general",
+  "subtopic": "Choosing the right metric",
+  "difficulty": "recall",
+  "q": "Which evaluation metric is threshold-independent, summarizing performance across every possible decision threshold at once?",
+  "options": [
+   "ROC-AUC",
+   "Precision at a fixed 0.5 threshold",
+   "Accuracy at a fixed 0.5 threshold",
+   "F1-score at a fixed 0.5 threshold"
+  ],
+  "correct": 0,
+  "explanation": "ROC-AUC is computed by sweeping across all thresholds, so it summarizes ranking quality independent of any single chosen cutoff, unlike precision, accuracy, or F1 which are evaluated at one fixed threshold."
+ },
+ {
+  "id": "evalgen-metric-004",
+  "topic": "evaluation-and-general",
+  "subtopic": "Choosing the right metric",
+  "difficulty": "application",
+  "q": "A customer-churn model is evaluated on a dataset where only 4% of customers actually churn. The team reports 96% accuracy and considers the model excellent. What is the flaw in this conclusion?",
+  "options": [
+   "A trivial always-predict-\"no churn\" model also scores ~96% accuracy",
+   "96% accuracy is mathematically impossible on any real dataset",
+   "Accuracy can only ever be computed for regression tasks",
+   "Accuracy here was, by definition, computed only on the training set used"
+  ],
+  "correct": 0,
+  "explanation": "With a 96%/4% class split, a trivial always-predict-majority-class model reaches ~96% accuracy without learning anything, which is exactly why accuracy is a misleading metric for imbalanced classification."
+ },
+ {
+  "id": "evalgen-metric-005",
+  "topic": "evaluation-and-general",
+  "subtopic": "Choosing the right metric",
+  "difficulty": "recall",
+  "q": "F1-score is defined as which combination of precision and recall?",
+  "options": [
+   "Their harmonic mean",
+   "Their simple arithmetic mean",
+   "Their class-size-weighted geometric mean",
+   "The larger of the two values"
+  ],
+  "correct": 0,
+  "explanation": "F1 = 2 * (precision * recall) / (precision + recall), which is the harmonic mean — it penalizes a large gap between precision and recall more heavily than a simple average would."
+ },
+ {
+  "id": "evalgen-gen-001",
+  "topic": "evaluation-and-general",
+  "subtopic": "Cross-validation and data splits",
+  "difficulty": "recall",
+  "q": "Why is k-fold cross-validation generally preferred over a single train/validation split when data is limited?",
+  "options": [
+   "Every example gets used for validation at some point, giving a steadier estimate",
+   "It guarantees that the model will never overfit the training data",
+   "It removes the need for ever holding out a separate test set",
+   "It is always computationally faster than running a single train/test split would be"
+  ],
+  "correct": 0,
+  "explanation": "By rotating which fold is held out, cross-validation uses all the data for validation at some point, averaging out the noise of any single lucky or unlucky split and giving a more stable performance estimate."
+ },
+ {
+  "id": "evalgen-gen-002",
+  "topic": "evaluation-and-general",
+  "subtopic": "Cross-validation and data splits",
+  "difficulty": "application",
+  "q": "A team tunes hyperparameters by repeatedly checking performance on their single held-out test set and picking whichever configuration scores highest on it. What is the main risk in this practice?",
+  "options": [
+   "The test set effectively leaks into tuning, inflating the reported score",
+   "Hyperparameter tuning of any kind is never a valid practice",
+   "Model performance will be identical no matter how it's tuned",
+   "This slows training down somewhat but leaves the reported accuracy completely unbiased"
+  ],
+  "correct": 0,
+  "explanation": "Repeatedly selecting based on test-set performance turns the test set into a de facto validation set — the final reported number no longer reflects performance on truly unseen data, a classic form of leakage."
+ },
+ {
+  "id": "evalgen-gen-003",
+  "topic": "evaluation-and-general",
+  "subtopic": "Cross-validation and data splits",
+  "difficulty": "application",
+  "q": "A medical dataset has 92% healthy patients and 8% patients with a rare condition. When splitting into train and test sets, why would a stratified split be preferred over a plain random split?",
+  "options": [
+   "It keeps the same class proportions in both the train and test sets",
+   "It always produces a noticeably larger training set than random splitting",
+   "It removes the need for any evaluation metric besides raw accuracy",
+   "It guarantees the trained model will reach 100% recall on the rare class"
+  ],
+  "correct": 0,
+  "explanation": "With a severe class imbalance, a plain random split can by chance leave the test set with very few (or disproportionately many) rare-class examples; stratifying ensures both splits mirror the original class balance."
+ },
+ {
+  "id": "evalgen-gen-004",
+  "topic": "evaluation-and-general",
+  "subtopic": "Data leakage and preprocessing order",
+  "difficulty": "analysis",
+  "q": "A team scales all features (e.g. using StandardScaler) on the entire dataset before splitting into train and test sets, then trains and evaluates the model. What is the problem with this order of operations?",
+  "options": [
+   "Test-set statistics leak into training, inflating the reported evaluation",
+   "Feature scaling never affects any model's performance either way",
+   "This exact order is strictly required for every tree-based model to run at all",
+   "This order only slows training down without biasing the results"
+  ],
+  "correct": 0,
+  "explanation": "Fitting the scaler on the full dataset lets test-set statistics influence the transformation applied to training data — a subtle form of data leakage. The scaler should be fit on the training split only, then applied to the test split."
+ },
+ {
+  "id": "evalgen-gen-005",
+  "topic": "evaluation-and-general",
+  "subtopic": "General ML knowledge",
+  "difficulty": "recall",
+  "q": "In the bias-variance decomposition of prediction error, which term represents the error that remains even for the best possible model, due to inherent noise in the data-generating process?",
+  "options": [
+   "Irreducible error",
+   "Bias error",
+   "Variance error",
+   "Regularization error"
+  ],
+  "correct": 0,
+  "explanation": "Irreducible error (noise) is the portion of error no model can eliminate, independent of bias (systematic underfitting error) and variance (sensitivity to the particular training sample)."
+ },
+ {
+  "id": "evalgen-gen-006",
+  "topic": "evaluation-and-general",
+  "subtopic": "General ML knowledge",
+  "difficulty": "application",
+  "q": "A retail company has 40,000 customer records with 200 features, non-linear relationships, multicollinearity, and imbalanced classes. Which general modelling strategy is most appropriate as a starting point?",
+  "options": [
+   "A tree-based ensemble, which tolerates non-linearity and correlated features well",
+   "A single linear regression model, since it is always the safest default",
+   "K-means clustering, since the task already has labels available",
+   "A plain Naive Bayes classifier, since feature correlation never affects its predictions"
+  ],
+  "correct": 0,
+  "explanation": "Tree-based ensembles naturally capture non-linear relationships and are far more robust to multicollinearity and unscaled features than linear models, making them a strong default for this kind of messy tabular data."
+ },
+ {
+  "id": "evalgen-gen-007",
+  "topic": "evaluation-and-general",
+  "subtopic": "General ML knowledge",
+  "difficulty": "recall",
+  "q": "What is the main purpose of a validation set that is separate from both the training set and the final test set?",
+  "options": [
+   "To tune hyperparameters without touching the final test evaluation",
+   "To increase the total amount of labeled data available for training runs",
+   "To replace the need for cross-validation entirely",
+   "To store a backup copy of the raw training data"
+  ],
+  "correct": 0,
+  "explanation": "The validation set is where iterative decisions (hyperparameters, early stopping, model choice) get made, keeping the test set reserved as a single, unbiased final check on generalization."
+ },
+ {
+  "id": "evalgen-gen-008",
+  "topic": "evaluation-and-general",
+  "subtopic": "General ML knowledge",
+  "difficulty": "application",
+  "q": "A hospital wants a model that not only predicts readmission risk but can also justify each prediction to clinicians and regulators. Beyond raw predictive accuracy, which additional property should weigh heavily in model selection?",
+  "options": [
+   "Interpretability of individual predictions, not just overall accuracy",
+   "The total number of hyperparameters that the chosen model happens to expose",
+   "Whether the model happened to be trained using a GPU",
+   "The raw size, in gigabytes, of the training dataset used"
+  ],
+  "correct": 0,
+  "explanation": "In regulated, high-stakes domains like healthcare, the ability to explain why a prediction was made (via inherently interpretable models or post-hoc tools like SHAP/LIME) is often as important as raw accuracy."
+ },
+ {
+  "id": "evalgen-gen-009",
+  "topic": "evaluation-and-general",
+  "subtopic": "General ML knowledge",
+  "difficulty": "recall",
+  "q": "What does \"early stopping\" refer to during model training?",
+  "options": [
+   "Halting training once validation performance stops improving",
+   "Stopping data collection before enough rows have been gathered",
+   "Using only the first few training examples in every single epoch",
+   "Skipping the final test-set evaluation step after training ends"
+  ],
+  "correct": 0,
+  "explanation": "Early stopping monitors validation performance during training and stops once it plateaus or degrades, preventing the model from continuing to fit training-set noise."
+ },
+ {
+  "id": "evalgen-gen-010",
+  "topic": "evaluation-and-general",
+  "subtopic": "General ML knowledge",
+  "difficulty": "application",
+  "q": "A team is choosing between several candidate models that all score similarly on the validation metric. Which additional factor is a reasonable tie-breaker in a real production setting?",
+  "options": [
+   "Inference latency and interpretability in the deployment environment",
+   "Whichever candidate model happens to expose the most tunable hyperparameters",
+   "Whichever candidate model's name sorts first alphabetically",
+   "Whichever candidate model took the longest time to train"
+  ],
+  "correct": 0,
+  "explanation": "When validation performance is statistically tied, practical deployment concerns — speed, explainability, resource cost, ease of maintenance — are legitimate, commonly used tie-breakers."
+ },
+ {
+  "id": "evalgen-chart-008",
+  "topic": "evaluation-and-general",
+  "subtopic": "ROC curve reading",
+  "difficulty": "application",
+  "q": "A credit-scoring model's ROC curve rises very steeply near the origin, reaching a true-positive rate above 0.9 while the false-positive rate is still below 0.1, before flattening out toward (1,1). What does this curve shape indicate?",
+  "chart": {
+   "type": "roc",
+   "shape": "excellent",
+   "caption": "Figure: ROC curve"
+  },
+  "options": [
+   "Strong separation between classes, with few false alarms for most true positives caught",
+   "Performance no better than a random coin-flip classifier",
+   "Overfitting, with no other evidence needed to reach that conclusion",
+   "That the data was never actually split into train and test sets"
+  ],
+  "correct": 0,
+  "explanation": "A curve that hugs the top-left corner (high TPR at low FPR) corresponds to a high AUC and strong class separation — the hallmark of a well-performing classifier at that operating point."
+ },
+ {
+  "id": "evalgen-chart-009",
+  "topic": "evaluation-and-general",
+  "subtopic": "Precision-Recall curve reading",
+  "difficulty": "application",
+  "q": "For a rare-disease-detection model, a colleague suggests using the ROC-AUC alone to judge performance. Given that positives are only 2% of the data, why might a Precision-Recall curve be a more informative companion chart?",
+  "chart": {
+   "type": "pr",
+   "shape": "gradual",
+   "caption": "Figure: Precision-Recall curve"
+  },
+  "options": [
+   "ROC-AUC can look deceptively high on severe imbalance, while PR stays sensitive to the minority class",
+   "ROC curves simply cannot be plotted at all when classes are imbalanced",
+   "Precision-Recall curves are the only curves that ignore the decision threshold",
+   "ROC-AUC and PR-AUC are always numerically identical values"
+  ],
+  "correct": 0,
+  "explanation": "With heavy imbalance, the huge number of true negatives keeps the false-positive rate low even when false positives are numerous relative to the rare positives, inflating ROC-AUC; PR curves, built from precision and recall, stay sensitive to minority-class performance."
+ },
+ {
+  "id": "evalgen-chart-010",
+  "topic": "evaluation-and-general",
+  "subtopic": "Feature-importance chart reading",
+  "difficulty": "application",
+  "q": "A hiring-screening model's feature-importance chart shows \"Postal Code\" ranked as the third most important feature, despite not being an explicit job qualification. What should this prompt the team to check?",
+  "chart": {
+   "type": "bar",
+   "labels": [
+    "Years Experience",
+    "Education Level",
+    "Postal Code",
+    "Interview Score",
+    "Certifications"
+   ],
+   "values": [
+    0.3,
+    0.22,
+    0.18,
+    0.21,
+    0.09
+   ],
+   "caption": "Figure: Feature importance"
+  },
+  "options": [
+   "Whether postal code is acting as a proxy for a protected attribute",
+   "Whether the model's learning rate has simply been set too high",
+   "Whether the available dataset has too few rows to train on",
+   "Whether the kernel trick was somehow applied incorrectly here"
+  ],
+  "correct": 0,
+  "explanation": "A geographic feature contributing meaningfully to a hiring decision is a red flag for proxy discrimination — postal codes often correlate with protected demographic attributes, so this warrants a fairness audit, not just a performance check."
+ },
+ {
+  "id": "evalgen-chart-011",
+  "topic": "evaluation-and-general",
+  "subtopic": "Bias-variance curve reading",
+  "difficulty": "application",
+  "q": "A plot of training and validation error against model complexity shows both curves decreasing together and converging to a low, similar error value, then staying flat as complexity increases further. What does this represent?",
+  "chart": {
+   "type": "bias_variance",
+   "shape": "good_fit",
+   "caption": "Figure: Error vs model complexity"
+  },
+  "options": [
+   "A well-fit model, balancing bias and variance at that complexity",
+   "A severely overfit model despite the converging error curves",
+   "A severely underfit model despite the low converged error",
+   "Clear evidence the dataset contains many duplicate rows"
+  ],
+  "correct": 0,
+  "explanation": "Training and validation error converging to a low, similar value is the signature of a good bias-variance balance — the model is complex enough to capture the pattern without fitting noise."
+ },
+ {
+  "id": "evalgen-metric-006",
+  "topic": "evaluation-and-general",
+  "subtopic": "Choosing the right metric",
+  "difficulty": "recall",
+  "q": "In classification terminology, a false positive corresponds to which kind of statistical error?",
+  "options": [
+   "A Type I error, wrongly flagging a negative case as positive",
+   "A Type II error, wrongly letting a positive case pass as negative",
+   "An irreducible error, inherent to the data-generating process",
+   "A sampling error, caused by how the test set was collected"
+  ],
+  "correct": 0,
+  "explanation": "A false positive wrongly flags a negative case as positive, which corresponds to a Type I error; a false negative (missing a real positive) corresponds to a Type II error."
+ },
+ {
+  "id": "evalgen-metric-007",
+  "topic": "evaluation-and-general",
+  "subtopic": "Choosing the right metric",
+  "difficulty": "application",
+  "q": "Macro-averaged F1 across three classes gives each class's F1 score equal weight regardless of how many examples that class has, while micro-averaged F1 effectively weights by sample count. On a dataset where one class is far rarer than the others, which would reveal poor performance on the rare class more clearly?",
+  "options": [
+   "Macro-averaged F1, since frequent classes can't drown out the rare one",
+   "Micro-averaged F1, since it always penalizes rare classes more heavily",
+   "Both behave exactly the same regardless of the class balance",
+   "Neither of the two averages is affected by class frequency at all"
+  ],
+  "correct": 0,
+  "explanation": "Macro-averaging treats every class equally when combining per-class scores, so a rare class performing poorly pulls the macro average down noticeably, whereas micro-averaging is dominated by the frequent classes."
+ },
+ {
+  "id": "evalgen-gen-011",
+  "topic": "evaluation-and-general",
+  "subtopic": "Handling imbalanced data",
+  "difficulty": "application",
+  "q": "A fraud dataset has only 0.5% positive (fraud) cases. Besides changing the evaluation metric, which technique directly addresses the imbalance during model training?",
+  "options": [
+   "Oversampling the minority class (e.g. SMOTE) or using class weights",
+   "Simply reducing the total number of input features used",
+   "Increasing the optimizer's learning rate during training",
+   "Switching entirely to an unsupervised clustering approach"
+  ],
+  "correct": 0,
+  "explanation": "Techniques like SMOTE (synthetic oversampling) or class-weighted loss functions directly counteract imbalance during training, rather than just changing how performance is measured afterward."
+ },
+ {
+  "id": "evalgen-gen-012",
+  "topic": "evaluation-and-general",
+  "subtopic": "General ML knowledge",
+  "difficulty": "recall",
+  "q": "Which of these is an example of a hyperparameter, as opposed to a parameter learned during training?",
+  "options": [
+   "The learning rate used by a gradient-descent optimizer",
+   "The weight vector fitted by a linear regression model",
+   "The support vectors identified after training an SVM",
+   "The split thresholds chosen inside a trained decision tree"
+  ],
+  "correct": 0,
+  "explanation": "Hyperparameters (like learning rate, K in KNN, or C in SVM) are set before training and control the learning process itself, whereas parameters (weights, split thresholds, support vectors) are learned from the data during training."
+ },
+ {
+  "id": "evalgen-gen-013",
+  "topic": "evaluation-and-general",
+  "subtopic": "General ML knowledge",
+  "difficulty": "application",
+  "q": "A dataset contains a categorical feature \"City\" with 500 distinct values. One-hot encoding this feature directly would create 500 new columns. What is the main practical concern with doing this naively?",
+  "options": [
+   "A large jump in dimensionality and sparsity that hurts distance-based models",
+   "One-hot encoding being mathematically impossible past ten total categories in any dataset",
+   "The resulting model being guaranteed to underfit the data",
+   "The target variable's class imbalance being fixed automatically"
+  ],
+  "correct": 0,
+  "explanation": "High-cardinality categorical one-hot encoding blows up dimensionality and sparsity, which is especially harmful for distance-based methods like KNN or SVM with certain kernels, and increases training cost generally."
+ },
+ {
+  "id": "evalgen-gen-014",
+  "topic": "evaluation-and-general",
+  "subtopic": "General ML knowledge",
+  "difficulty": "application",
+  "q": "A dataset has several numeric features on wildly different scales (e.g. age in years, income in hundreds of thousands). For which type of model is feature scaling LEAST likely to change the result?",
+  "options": [
+   "A decision tree, since each split only looks at one feature's threshold",
+   "K-Nearest Neighbors, since it relies directly on pairwise distance calculations",
+   "A Support Vector Machine using an RBF kernel",
+   "K-means clustering, since it relies directly on distance calculations"
+  ],
+  "correct": 0,
+  "explanation": "Tree-based models split on one feature's threshold at a time and don't compare magnitudes across features directly, so they are largely invariant to monotonic feature scaling — unlike distance- or margin-based methods such as KNN, SVM, or K-means."
+ },
+ {
+  "id": "evalgen-gen-015",
+  "topic": "evaluation-and-general",
+  "subtopic": "General ML knowledge",
+  "difficulty": "recall",
+  "q": "What is the main difference between parametric and non-parametric machine learning models?",
+  "options": [
+   "Parametric models fix their parameter count; non-parametric ones can grow with data",
+   "Parametric models can only ever be used for regression tasks",
+   "Non-parametric models never require any training data whatsoever",
+   "Parametric models always outperform non-parametric ones on large data"
+  ],
+  "correct": 0,
+  "explanation": "Parametric models (e.g. linear/logistic regression) fix the number of parameters regardless of dataset size; non-parametric models (e.g. KNN, decision trees) can effectively grow in complexity as more data becomes available."
+ },
+ {
+  "id": "evalgen-gen-016",
+  "topic": "evaluation-and-general",
+  "subtopic": "General ML knowledge",
+  "difficulty": "application",
+  "q": "A dataset has 5% missing values scattered across several numeric columns, with no apparent pattern to which rows are missing. Which strategy is a reasonable default for handling this before modelling?",
+  "options": [
+   "Impute the missing values rather than silently dropping those rows",
+   "Always drop every row with any missing value, no matter the cost",
+   "Fill every missing value with zero without checking if that's valid",
+   "Ignore the missing values, trusting libraries to handle them silently"
+  ],
+  "correct": 0,
+  "explanation": "When missingness appears to be random and data is limited, imputation (median/mean for numeric, or a more sophisticated model-based approach) typically preserves more signal than dropping rows outright, and is safer than an arbitrary fill value like zero."
+ },
+ {
+  "id": "evalgen-gen-017",
+  "topic": "evaluation-and-general",
+  "subtopic": "General ML knowledge",
+  "difficulty": "recall",
+  "q": "What does \"model drift\" broadly refer to, as a general ML concept (independent of whether it's data drift or concept drift)?",
+  "options": [
+   "A deployed model's performance degrading as its real-world conditions change",
+   "The random variation in predictions caused only by different random seeds each run",
+   "A bug where model weights change at inference time without retraining",
+   "The ordinary decrease in training loss seen during gradient descent"
+  ],
+  "correct": 0,
+  "explanation": "Model drift describes the general phenomenon of a deployed model's accuracy declining as the environment it operates in evolves away from the conditions present during training — whether the input distribution changes (data drift) or the underlying relationship changes (concept drift)."
+ },
+ {
+  "id": "evalgen-gen-018",
+  "topic": "evaluation-and-general",
+  "subtopic": "General ML knowledge",
+  "difficulty": "application",
+  "q": "A team wants to compare two models' accuracy scores (91.2% vs 91.8%) measured on the same, fairly small test set. What should they check before concluding the second model is meaningfully better?",
+  "options": [
+   "Whether that gap is statistically significant given the test-set size",
+   "Whether the two model names happen to be in alphabetical order",
+   "Whether both models used exactly the same number of hyperparameters",
+   "Nothing else — any positive numeric gap is automatically meaningful"
+  ],
+  "correct": 0,
+  "explanation": "On a small test set, a 0.6 percentage-point gap can easily be noise; a proper comparison checks whether the difference is statistically significant (e.g. via a paired test or confidence interval) before declaring one model superior."
+ }
+]

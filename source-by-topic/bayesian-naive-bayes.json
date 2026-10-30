@@ -1,0 +1,1502 @@
+[
+  {
+    "id": "bayes-001",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Bayes' Theorem Fundamentals",
+    "difficulty": "recall",
+    "q": "In Bayesian reasoning, the ______ represents what is believed about a hypothesis before any data is observed, while the ______ represents the updated belief after the data is taken into account.",
+    "options": [
+      "prior; posterior",
+      "posterior; prior",
+      "likelihood; evidence",
+      "evidence; likelihood"
+    ],
+    "correct": 0,
+    "explanation": "The prior encodes belief before seeing data, and the posterior is the revised belief after incorporating that data via Bayes' theorem."
+  },
+  {
+    "id": "bayes-002",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Bayes' Theorem Fundamentals",
+    "difficulty": "recall",
+    "q": "A hospital wants to estimate the probability that a patient has a rare disease after observing a positive test result. Which term in Bayes' theorem corresponds to \"the probability of testing positive given that the patient truly has the disease\"?",
+    "options": [
+      "Likelihood",
+      "The prior",
+      "The posterior",
+      "The evidence"
+    ],
+    "correct": 0,
+    "explanation": "The likelihood is the probability of the observed data (a positive test) given a fixed hypothesis (having the disease)."
+  },
+  {
+    "id": "bayes-003",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Bayes' Theorem Fundamentals",
+    "difficulty": "application",
+    "q": "A spam filter maintainer already knows that 2% of all incoming email is spam before looking at any content. This fixed baseline rate corresponds to which Bayesian term when the filter later examines an email's words?",
+    "options": [
+      "The prior probability of the spam class",
+      "The posterior probability of the spam class",
+      "The likelihood of the words given spam",
+      "The evidence term for the words observed"
+    ],
+    "correct": 0,
+    "explanation": "A baseline rate known before examining any features is the prior; it gets updated into a posterior once the email's words are observed."
+  },
+  {
+    "id": "bayes-004",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Bayes' Theorem Fundamentals",
+    "difficulty": "analysis",
+    "q": "In Bayes' theorem, the denominator (the evidence term) acts as a normalizing constant so that posterior probabilities over all possible classes sum to one. Which statement about this term is correct?",
+    "options": [
+      "It does not depend on which class is being evaluated, so it can often be dropped when comparing classes to find the most probable one",
+      "It must be recomputed separately and differently for every class being compared in the calculation",
+      "It always equals the product of all the class priors multiplied together across the dataset",
+      "It represents the probability that the chosen hypothesis or class label is correct"
+    ],
+    "correct": 0,
+    "explanation": "The evidence term is constant across all classes for a given observation, so comparing the unnormalized products of prior and likelihood is enough to find the most probable class."
+  },
+  {
+    "id": "bayes-005",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Bayes' Theorem Fundamentals",
+    "difficulty": "analysis",
+    "q": "A fraud-detection model computes the posterior probability of fraud using a small prior fraud rate (0.1%) multiplied by a strong likelihood for the observed transaction pattern given fraud. A colleague argues that because the likelihood is very high, the transaction must almost certainly be fraud. Why is this reasoning incomplete?",
+    "options": [
+      "The posterior depends on both the likelihood and the prior, so a very small prior can pull it down even when the likelihood is high",
+      "Likelihood values must always exceed the corresponding prior values for Bayesian reasoning to apply at all",
+      "Posterior probability is determined solely by the likelihood once any evidence has been observed at all",
+      "The prior only matters for the calculation whenever the observed likelihood value happens to fall below 0.5"
+    ],
+    "correct": 0,
+    "explanation": "Posterior probability is proportional to likelihood times prior, so a very low base rate can keep the posterior modest even when the likelihood of the evidence under the hypothesis is high."
+  },
+  {
+    "id": "bayes-006",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Bayes' Theorem Fundamentals",
+    "difficulty": "analysis",
+    "q": "As a particular piece of evidence becomes very common across all possible hypotheses, rather than being specific to just one, that evidence becomes ______ informative about which hypothesis is true.",
+    "options": [
+      "less",
+      "more",
+      "equally",
+      "infinitely"
+    ],
+    "correct": 0,
+    "explanation": "Evidence that is almost equally likely regardless of the hypothesis carries little discriminating power, so it provides less support for any single hypothesis."
+  },
+  {
+    "id": "bayes-007",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Bayes' Theorem Fundamentals",
+    "difficulty": "recall",
+    "q": "In the relationship posterior proportional to likelihood times prior, what does this proportionality mean in practice when comparing two candidate hypotheses?",
+    "options": [
+      "The hypothesis with the larger likelihood-times-prior product also has the larger posterior, since both share the same denominator",
+      "The hypothesis with the larger prior alone always wins the comparison, regardless of its likelihood value",
+      "The posterior equals the likelihood divided by the prior for each hypothesis under comparison",
+      "The two hypotheses must always have identical posteriors whenever their prior probabilities are equal"
+    ],
+    "correct": 0,
+    "explanation": "Since the evidence term is shared across hypotheses for the same observation, ranking hypotheses by likelihood times prior gives the same ranking as ranking them by posterior probability."
+  },
+  {
+    "id": "bayes-008",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Bayes' Theorem Fundamentals",
+    "difficulty": "application",
+    "q": "A loan-default predictor updates its belief about a customer's creditworthiness after reviewing their repayment history. Before seeing the history, the model assumed a 5% default rate based on the customer's income bracket. What role does that 5% figure play?",
+    "options": [
+      "It is the prior belief that gets revised once the repayment-history evidence is incorporated",
+      "It is the posterior probability that the model will ultimately output for this particular customer",
+      "It is the likelihood of observing this specific repayment history pattern given the class",
+      "It is the evidence term used only to normalize probabilities across all other customers in the batch"
+    ],
+    "correct": 0,
+    "explanation": "A belief held before examining the specific evidence (repayment history) is the prior, which is then updated into a posterior."
+  },
+  {
+    "id": "bayes-009",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Bayes' Theorem Fundamentals",
+    "difficulty": "recall",
+    "q": "Which of the following best describes the \"evidence\" term in Bayes' theorem?",
+    "options": [
+      "The overall probability of observing the data, averaged across all possible hypotheses or classes",
+      "The probability that the chosen hypothesis turns out to be the correct one overall, independent of any data observed",
+      "The conditional probability of the hypothesis given the observed data itself",
+      "A fixed value of exactly one that can always be safely ignored in practice"
+    ],
+    "correct": 0,
+    "explanation": "The evidence term marginalizes the data's probability over every hypothesis, serving as the normalizing constant in Bayes' theorem."
+  },
+  {
+    "id": "bayes-010",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Bayes' Theorem Fundamentals",
+    "difficulty": "analysis",
+    "q": "Two diagnostic tests for a disease have identical likelihoods (the probability of a positive result given disease is the same for both), but Test A is applied to a population with disease prevalence 1% and Test B is applied to a population with prevalence 20%. Why might the posterior probability of disease given a positive result differ substantially between the two populations?",
+    "options": [
+      "The priors differ between populations, and the posterior is shaped by both the prior and the likelihood, not the likelihood alone",
+      "The evidence term is identical in both cases, so the two posteriors must also turn out identical",
+      "Likelihood is the only factor that ever determines the posterior in Bayes' theorem",
+      "Prevalence only ever affects the evidence term, never the posterior probability itself"
+    ],
+    "correct": 0,
+    "explanation": "Even with identical likelihoods, a higher prior prevalence of disease pushes the posterior probability of disease upward after a positive result, since the posterior combines both terms."
+  },
+  {
+    "id": "bayes-011",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Bayes' Theorem Fundamentals",
+    "difficulty": "recall",
+    "q": "Bayesian updating can be described as a process where each new piece of ______ incrementally shifts belief in a hypothesis up or down, rather than immediately accepting or rejecting it outright.",
+    "options": [
+      "evidence",
+      "prior knowledge",
+      "classification",
+      "variance"
+    ],
+    "correct": 0,
+    "explanation": "Each observation nudges the posterior up or down rather than eliminating hypotheses outright, which is a defining feature of Bayesian learning."
+  },
+  {
+    "id": "bayes-012",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Bayes' Theorem Fundamentals",
+    "difficulty": "application",
+    "q": "A weather model starts with a 30% prior chance of rain tomorrow. After observing a sudden drop in atmospheric pressure, a sign strongly associated with rain, the updated probability becomes 75%. What is this updated 75% value called?",
+    "options": [
+      "The posterior probability",
+      "The prior probability",
+      "The likelihood value observed",
+      "The evidence term computed"
+    ],
+    "correct": 0,
+    "explanation": "The probability after incorporating new evidence (the pressure drop) is the posterior probability."
+  },
+  {
+    "id": "bayes-013",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Bayes' Theorem Fundamentals",
+    "difficulty": "analysis",
+    "q": "Which scenario best illustrates why Bayesian reasoning is described as self-correcting as more data arrives?",
+    "options": [
+      "A medical diagnosis model's confidence in a rare condition drops toward zero after several independent negative test results",
+      "A model's prior probability for a hypothesis is permanently fixed and never changes regardless of how many new test results arrive",
+      "A model discards all of its previously observed evidence every single time a new data point arrives",
+      "A model's posterior always stays identical to its prior, confirming that new evidence has no effect at all"
+    ],
+    "correct": 0,
+    "explanation": "Repeated disconfirming evidence progressively lowers the posterior probability of a hypothesis, illustrating how Bayesian updating responds to accumulating evidence."
+  },
+  {
+    "id": "bayes-014",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "MAP vs MLE",
+    "difficulty": "recall",
+    "q": "The Maximum Likelihood Estimate (MLE) chooses the parameter value that ______, while the Maximum A Posteriori (MAP) estimate also factors in ______.",
+    "options": [
+      "maximizes the probability of the data; a prior belief about the parameter",
+      "minimizes the probability of the observed data entirely; the evidence term only",
+      "maximizes the prior probability; the likelihood term only",
+      "minimizes training error; the total number of input features"
+    ],
+    "correct": 0,
+    "explanation": "MLE maximizes the likelihood of the data alone, while MAP maximizes the product of the likelihood and a prior over the parameter."
+  },
+  {
+    "id": "bayes-015",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "MAP vs MLE",
+    "difficulty": "application",
+    "q": "An analyst estimates the probability that a coin lands heads purely from the observed proportion of heads in 500 flips, with no assumption about the coin's fairness made beforehand. This is an example of:",
+    "options": [
+      "Maximum Likelihood Estimation",
+      "Maximum A Posteriori estimation with an informative prior",
+      "Bayesian model averaging over multiple hypotheses",
+      "Laplace smoothing of the estimate"
+    ],
+    "correct": 0,
+    "explanation": "Using only the observed data proportion, with no prior belief incorporated, is the defining feature of maximum likelihood estimation."
+  },
+  {
+    "id": "bayes-016",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "MAP vs MLE",
+    "difficulty": "application",
+    "q": "A manufacturing quality-control team has strong prior reason to believe defect rates are usually below 2%, based on years of historical data. When new inspection data suggests a defect rate of 1.8%, incorporating that prior alongside the data to produce a final estimate corresponds to:",
+    "options": [
+      "MAP estimation",
+      "Pure maximum likelihood estimation",
+      "Ignoring the likelihood entirely",
+      "Computing the evidence term alone"
+    ],
+    "correct": 0,
+    "explanation": "Combining prior historical belief with newly observed data to produce an estimate is exactly what MAP estimation does."
+  },
+  {
+    "id": "bayes-017",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "MAP vs MLE",
+    "difficulty": "recall",
+    "q": "Under which condition does the MAP estimate become numerically identical to the MLE estimate?",
+    "options": [
+      "When the prior distribution is uniform across all candidate parameter values",
+      "When the dataset is infinitely large, regardless of which particular prior distribution is used",
+      "When the likelihood function happens to be perfectly symmetric",
+      "When the posterior is impossible to compute exactly at all"
+    ],
+    "correct": 0,
+    "explanation": "A uniform prior contributes the same constant factor to every hypothesis, so maximizing likelihood times prior reduces to maximizing likelihood alone, matching MLE."
+  },
+  {
+    "id": "bayes-018",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "MAP vs MLE",
+    "difficulty": "analysis",
+    "q": "An email classifier has a strong prior belief, built from years of labeled mail, that almost no legitimate business correspondence contains the phrase \"wire transfer urgently,\" even though a handful of legitimate emails in a newly observed batch happen to contain it. A colleague argues the classifier should simply trust the new batch's raw word frequencies and ignore the prior. What is the risk of following that advice?",
+    "options": [
+      "Relying purely on raw frequencies abandons the prior in favor of likelihood maximization, making the estimate overly sensitive to the new batch",
+      "There is no risk at all, because MLE and MAP always converge to the exact same estimate no matter the sample size",
+      "The prior can never be meaningfully combined with new data once any data has already been observed at all",
+      "Ignoring the prior always produces the estimate with the lowest possible variance in every situation"
+    ],
+    "correct": 0,
+    "explanation": "Discarding the prior in favor of pure MLE makes the estimate rely entirely on the new batch, which can be unstable if that batch is small or unrepresentative."
+  },
+  {
+    "id": "bayes-019",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "MAP vs MLE",
+    "difficulty": "recall",
+    "q": "Maximum Likelihood Estimation can be viewed as a special case of Maximum A Posteriori estimation where the prior is ______.",
+    "options": [
+      "uniform (non-informative), giving no preference among parameter values",
+      "always Gaussian with a mean of zero and a fixed unit variance term",
+      "exactly equal to the posterior distribution itself",
+      "undefined for any possible parameter value at all"
+    ],
+    "correct": 0,
+    "explanation": "With a uniform, non-informative prior, the MAP objective reduces exactly to the MLE objective, since the prior term no longer favors any particular value."
+  },
+  {
+    "id": "bayes-020",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "MAP vs MLE",
+    "difficulty": "application",
+    "q": "A rare-disease screening tool incorporates the fact that the disease affects only 1 in 10,000 people into its probability calculations, rather than relying solely on the current batch of test results. Which estimation approach does this best reflect?",
+    "options": [
+      "MAP estimation, since the low base rate acts as an informative prior",
+      "MLE, since only the test results themselves are used",
+      "Bayesian model selection performed entirely without any prior probability at all",
+      "Laplace smoothing applied directly to the likelihood term"
+    ],
+    "correct": 0,
+    "explanation": "Incorporating a known base rate as an informative prior alongside the test-result likelihood is characteristic of MAP estimation."
+  },
+  {
+    "id": "bayes-021",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "MAP vs MLE",
+    "difficulty": "analysis",
+    "q": "Two data scientists train the same type of probabilistic classifier on the same small dataset. One uses MLE and the other uses MAP with a strongly informative prior favoring simpler, smoother parameter values. Whose estimate is more likely to be less sensitive to noise in the limited data?",
+    "options": [
+      "The MAP estimate, because the prior regularizes the estimate toward values favored before seeing the data",
+      "The MLE estimate, because it always converges fastest regardless of how small or noisy the sample is",
+      "Both estimates will turn out completely identical regardless of the sample size used",
+      "Neither method is affected at all by the amount of training data available"
+    ],
+    "correct": 0,
+    "explanation": "A strong, reasonable prior pulls the MAP estimate toward stable values and dampens the influence of noisy data, which is especially useful with small samples."
+  },
+  {
+    "id": "bayes-022",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "MAP vs MLE",
+    "difficulty": "recall",
+    "q": "Which statement correctly contrasts what MLE and MAP each optimize?",
+    "options": [
+      "MLE maximizes the likelihood of the data given the parameter, while MAP maximizes that likelihood times a prior over the parameter",
+      "MLE maximizes only the prior probability, while MAP maximizes only the likelihood",
+      "MLE and MAP both ignore the likelihood and only differ in how they treat the evidence term",
+      "MAP requires no probabilistic model of any kind at all, unlike MLE"
+    ],
+    "correct": 0,
+    "explanation": "MLE optimizes the likelihood term only, whereas MAP optimizes the likelihood weighted by a prior over the parameter."
+  },
+  {
+    "id": "bayes-023",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "MAP vs MLE",
+    "difficulty": "analysis",
+    "q": "A startup building a churn-prediction model has almost no historical customer data yet. An engineer proposes using MAP estimation with a prior derived from industry-wide churn statistics, rather than MLE based solely on the startup's own handful of observations. What is the main justification for this choice?",
+    "options": [
+      "With very little data, MLE estimates can be highly unstable, so incorporating an external prior through MAP can produce more reliable estimates",
+      "MAP estimation requires less data than MLE by definition, since it ignores the likelihood when sample sizes are small",
+      "MLE cannot be computed at all unless the dataset contains at least several thousand observations",
+      "Industry-wide priors automatically become true posteriors once combined with any amount of internal data"
+    ],
+    "correct": 0,
+    "explanation": "When data is scarce, MLE estimates have high variance; blending in an external, reasonable prior through MAP stabilizes the estimate."
+  },
+  {
+    "id": "bayes-024",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "MAP vs MLE",
+    "difficulty": "recall",
+    "q": "As the amount of observed data grows very large, the influence of the prior on the MAP estimate typically ______ relative to the influence of the likelihood.",
+    "options": [
+      "shrinks",
+      "grows without bound",
+      "stays exactly constant regardless of sample size",
+      "becomes undefined"
+    ],
+    "correct": 0,
+    "explanation": "As data accumulates, the likelihood term dominates the posterior more and more, so the prior's relative contribution diminishes."
+  },
+  {
+    "id": "bayes-025",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "MAP vs MLE",
+    "difficulty": "application",
+    "q": "A credit-scoring model built with a strongly opinionated prior continues to output nearly the same parameter estimates even after being retrained on a million new loan records. What does this suggest about how the prior and likelihood are interacting?",
+    "options": [
+      "The prior may still be exerting unusually strong influence relative to what a large dataset's likelihood would normally justify",
+      "This is simply the expected, ideal behavior for any Bayesian model regardless of its dataset size",
+      "MLE and MAP must therefore be producing exactly identical results in this particular case",
+      "The likelihood term has become irrelevant to all Bayesian estimation once any prior is specified"
+    ],
+    "correct": 0,
+    "explanation": "With a million new records, the likelihood should normally dominate; estimates barely moving suggests the prior is disproportionately strong for the amount of data available."
+  },
+  {
+    "id": "bayes-026",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes Conditional Independence Assumption",
+    "difficulty": "recall",
+    "q": "The Naive Bayes classifier earns the label \"naive\" because it assumes that all features are ______ given the class label.",
+    "options": [
+      "conditionally independent",
+      "always perfectly correlated",
+      "always normally distributed",
+      "irrelevant to classification"
+    ],
+    "correct": 0,
+    "explanation": "The defining assumption of Naive Bayes is that features are conditionally independent of one another once the class is known."
+  },
+  {
+    "id": "bayes-027",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes Conditional Independence Assumption",
+    "difficulty": "recall",
+    "q": "Which assumption allows Naive Bayes to compute the joint probability of all features given a class as a simple product of individual per-feature probabilities?",
+    "options": [
+      "The assumption that features are conditionally independent given the class",
+      "The assumption that all features are strictly categorical in nature",
+      "The assumption that the overall class distribution is always perfectly uniform across categories",
+      "The assumption that there are no missing values anywhere in the dataset"
+    ],
+    "correct": 0,
+    "explanation": "Conditional independence is precisely what lets the joint likelihood factor into a product of simple per-feature terms."
+  },
+  {
+    "id": "bayes-028",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes Conditional Independence Assumption",
+    "difficulty": "application",
+    "q": "A medical diagnosis system treats \"elevated blood pressure,\" \"elevated cholesterol,\" and \"age over 50\" as independent indicators of heart disease risk once the patient's disease status is fixed, even though these three factors are known to influence one another biologically. This is a direct example of:",
+    "options": [
+      "The conditional independence assumption underlying Naive Bayes",
+      "The MAP estimation principle applied directly to this particular scenario",
+      "The zero-probability problem arising from unseen data",
+      "Laplace smoothing applied to the feature counts"
+    ],
+    "correct": 0,
+    "explanation": "Treating correlated clinical factors as independent given the class is exactly the simplifying assumption Naive Bayes makes."
+  },
+  {
+    "id": "bayes-029",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes Conditional Independence Assumption",
+    "difficulty": "analysis",
+    "q": "In a loan-default model, \"income\" and \"debt-to-income ratio\" are highly correlated since one is partly derived from the other, yet a Naive Bayes classifier treats them as if knowing one tells it nothing extra about the other once the default outcome is fixed. What practical consequence does this typically have?",
+    "options": [
+      "The model may double-count the evidence from these two correlated features, skewing the posterior toward whichever class their signal favors",
+      "The model becomes unable to process either feature and must drop both of them from training",
+      "The model automatically detects the correlation between the two features and corrects for it",
+      "The model's prior probabilities become completely undefined as a direct result"
+    ],
+    "correct": 0,
+    "explanation": "Multiplying two strongly correlated features as if independent lets the same underlying signal contribute twice to the posterior, overstating confidence."
+  },
+  {
+    "id": "bayes-030",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes Conditional Independence Assumption",
+    "difficulty": "recall",
+    "q": "In which situation is the conditional independence assumption of Naive Bayes most clearly violated?",
+    "options": [
+      "When two input features are strongly correlated with each other even after conditioning on the class",
+      "When the dataset happens to contain more than two possible output classes",
+      "When the prior probabilities assigned to the classes happen to be unequal",
+      "When the training set happens to contain several thousand labeled examples"
+    ],
+    "correct": 0,
+    "explanation": "The independence assumption is violated specifically when features remain correlated even after the class is fixed, not merely by class count or sample size."
+  },
+  {
+    "id": "bayes-031",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes Conditional Independence Assumption",
+    "difficulty": "analysis",
+    "q": "A spam filter uses the presence of the words \"free,\" \"win,\" and \"prize\" as separate independent signals of spam, even though these words frequently appear together in the same promotional emails. Despite this violation of independence, the filter still often classifies correctly. What is the most accurate explanation for this?",
+    "options": [
+      "Naive Bayes only needs the correct class to score highest, not perfectly calibrated probabilities, so moderate violations rarely change the decision",
+      "The words \"free,\" \"win,\" and \"prize\" are, in fact, proven to be statistically independent in every real dataset",
+      "Naive Bayes automatically detects and silently removes correlated features before any training begins",
+      "Spam filtering tasks are completely immune to the conditional independence assumption in every case"
+    ],
+    "correct": 0,
+    "explanation": "Because classification only depends on which class scores highest, not on exact probability values, moderate correlation among features often fails to flip the decision."
+  },
+  {
+    "id": "bayes-032",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes Conditional Independence Assumption",
+    "difficulty": "recall",
+    "q": "Naive Bayes computes the probability of the features given the class as the ______ of the individual per-feature conditional probabilities.",
+    "options": [
+      "product",
+      "summation",
+      "maximum",
+      "average"
+    ],
+    "correct": 0,
+    "explanation": "Conditional independence lets the joint likelihood be written as a product of individual per-feature likelihoods."
+  },
+  {
+    "id": "bayes-033",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes Conditional Independence Assumption",
+    "difficulty": "analysis",
+    "q": "A phishing-detection system uses sender-domain reputation, number of hyperlinks, and email length as features. Sender-domain reputation and number of hyperlinks tend to move together, since untrustworthy domains also tend to flood emails with links, and email length is heavily skewed rather than bell-shaped. Which of these two facts most directly undermines the conditional independence assumption specifically?",
+    "options": [
+      "The correlation between sender-domain reputation and hyperlink count",
+      "The heavily skewed, non-bell-shaped email-length distribution pattern",
+      "Neither fact affects Naive Bayes, since it has no assumptions about feature relationships",
+      "Both facts only affect the prior probability estimate, not the likelihood terms"
+    ],
+    "correct": 0,
+    "explanation": "Correlation between two features given the class directly violates conditional independence, whereas a skewed distribution is a separate issue concerning a distributional assumption."
+  },
+  {
+    "id": "bayes-034",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes Conditional Independence Assumption",
+    "difficulty": "recall",
+    "q": "Why is the independence assumption in Naive Bayes considered a simplification rather than a realistic description of most data?",
+    "options": [
+      "Because real-world features are frequently correlated with one another in ways the model does not explicitly capture",
+      "Because real-world features are always perfectly independent, making the assumption trivially and exactly true in every real dataset",
+      "Because the assumption only applies to continuous numeric features, never to any categorical ones",
+      "Because it requires every single feature to be measured on exactly the same numeric scale"
+    ],
+    "correct": 0,
+    "explanation": "Most real datasets have correlated features, so the independence assumption is a convenient approximation rather than an exact description of reality."
+  },
+  {
+    "id": "bayes-035",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes Conditional Independence Assumption",
+    "difficulty": "application",
+    "q": "A document classifier assumes the occurrence of the word \"refund\" and the word \"invoice\" in a customer email are conditionally independent given the email's category (complaint vs. inquiry). In reality, these words tend to co-occur in billing-related complaints specifically. What is the likely effect on the classifier's confidence scores?",
+    "options": [
+      "The model may overstate its confidence in a class when correlated words appear together, since their shared signal gets multiplied as if independent",
+      "The model's confidence scores remain perfectly calibrated no matter how correlated the words are",
+      "The model will completely refuse to classify any document containing both of these words",
+      "The correlation between the two words causes the prior probability to become exactly zero"
+    ],
+    "correct": 0,
+    "explanation": "Multiplying two correlated word likelihoods as if independent inflates the combined score, overstating the model's confidence in that class."
+  },
+  {
+    "id": "bayes-036",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes Conditional Independence Assumption",
+    "difficulty": "recall",
+    "q": "Despite its name, Naive Bayes is considered ______ because it still performs well in practice on many real-world classification tasks even when its core assumption is only approximately true.",
+    "options": [
+      "highly practical",
+      "theoretically invalid",
+      "purely academic",
+      "largely obsolete"
+    ],
+    "correct": 0,
+    "explanation": "Naive Bayes remains a widely used, practical classifier precisely because it performs well even when the independence assumption is only approximately satisfied."
+  },
+  {
+    "id": "bayes-037",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes Conditional Independence Assumption",
+    "difficulty": "analysis",
+    "q": "Which of the following would most strongly indicate that conditional independence is a reasonable approximation for a given feature set?",
+    "options": [
+      "Features that remain largely uncorrelated once the class is fixed, even if each relates to the outcome",
+      "Features that are perfectly collinear with one another regardless of the class label or the amount of training data",
+      "Features that are deterministic functions of one another in every single case",
+      "Features that were engineered by combining several other existing features together"
+    ],
+    "correct": 0,
+    "explanation": "Conditional independence is satisfied when features are uncorrelated given the class, even though each may individually relate to the outcome."
+  },
+  {
+    "id": "bayes-038",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes Conditional Independence Assumption",
+    "difficulty": "application",
+    "q": "A credit card fraud-detection model includes both \"transaction amount\" and \"transaction amount rounded to the nearest hundred\" as two separate features. Why is this a poor design choice specifically for a Naive Bayes classifier?",
+    "options": [
+      "The two features are almost perfectly dependent, so treating them as independent double-counts the same underlying signal",
+      "Naive Bayes cannot process any numeric features of any kind under any circumstances at all",
+      "Rounding a feature to the nearest hundred always violates the Gaussian assumption needed for every single Naive Bayes variant",
+      "Including two features derived from the exact same source always drives the prior probability to zero"
+    ],
+    "correct": 0,
+    "explanation": "Since the rounded value is almost entirely determined by the original amount, treating them as independent double-counts the same information in the likelihood product."
+  },
+  {
+    "id": "bayes-039",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes Variants (Gaussian/Multinomial/Bernoulli)",
+    "difficulty": "recall",
+    "q": "Which Naive Bayes variant assumes that each continuous feature, conditioned on the class, follows a normal distribution?",
+    "options": [
+      "Gaussian Naive Bayes",
+      "Multinomial Naive Bayes",
+      "Bernoulli Naive Bayes",
+      "Categorical Naive Bayes only"
+    ],
+    "correct": 0,
+    "explanation": "Gaussian Naive Bayes models each continuous feature's class-conditional distribution as a normal (Gaussian) distribution."
+  },
+  {
+    "id": "bayes-040",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes Variants (Gaussian/Multinomial/Bernoulli)",
+    "difficulty": "application",
+    "q": "A hospital builds a model to classify patients as diabetic or non-diabetic using continuous lab measurements such as blood glucose level and body-mass index, both of which are roughly bell-shaped within each class. Which Naive Bayes variant is the natural fit?",
+    "options": [
+      "Gaussian Naive Bayes",
+      "Multinomial Naive Bayes",
+      "Bernoulli Naive Bayes",
+      "None, since Naive Bayes cannot use continuous features at all"
+    ],
+    "correct": 0,
+    "explanation": "Continuous, roughly normally distributed lab measurements fit the assumptions of Gaussian Naive Bayes well."
+  },
+  {
+    "id": "bayes-041",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes Variants (Gaussian/Multinomial/Bernoulli)",
+    "difficulty": "recall",
+    "q": "Which Naive Bayes variant is most commonly used for text classification based on word count frequencies within a document?",
+    "options": [
+      "Multinomial Naive Bayes",
+      "Gaussian Naive Bayes",
+      "Bernoulli Naive Bayes",
+      "k-Nearest Neighbors Naive Bayes"
+    ],
+    "correct": 0,
+    "explanation": "Multinomial Naive Bayes directly models word count frequencies and is the standard choice for count-based text classification."
+  },
+  {
+    "id": "bayes-042",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes Variants (Gaussian/Multinomial/Bernoulli)",
+    "difficulty": "application",
+    "q": "A spam filter represents each email only as a set of binary indicators, whether each vocabulary word is present or absent, ignoring how many times each word appears. Which Naive Bayes variant matches this representation?",
+    "options": [
+      "Bernoulli Naive Bayes",
+      "Multinomial Naive Bayes",
+      "Gaussian Naive Bayes",
+      "Poisson Naive Bayes"
+    ],
+    "correct": 0,
+    "explanation": "Bernoulli Naive Bayes models each feature as a binary presence/absence indicator, matching this representation exactly."
+  },
+  {
+    "id": "bayes-043",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes Variants (Gaussian/Multinomial/Bernoulli)",
+    "difficulty": "analysis",
+    "q": "A news-article classifier currently uses Multinomial Naive Bayes based on raw word counts, but a colleague suggests switching to Bernoulli Naive Bayes for the same vocabulary. What is the key practical difference this switch would introduce?",
+    "options": [
+      "The model stops distinguishing a word appearing once versus many times, modeling only presence or absence",
+      "The model would require all of its input features to become continuous rather than staying in their original discrete form",
+      "The model would no longer make use of any class prior at all in its predictions",
+      "The model would become mathematically identical in every way to Gaussian Naive Bayes"
+    ],
+    "correct": 0,
+    "explanation": "Bernoulli Naive Bayes only records whether a word occurred at all, discarding the frequency information that Multinomial Naive Bayes retains."
+  },
+  {
+    "id": "bayes-044",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes Variants (Gaussian/Multinomial/Bernoulli)",
+    "difficulty": "recall",
+    "q": "Gaussian Naive Bayes estimates, for each class and each feature, the ______ needed to describe a normal distribution.",
+    "options": [
+      "mean and variance",
+      "count and vocabulary size",
+      "smoothing constant and prior",
+      "median and mode only"
+    ],
+    "correct": 0,
+    "explanation": "A normal distribution is fully specified by its mean and variance, which Gaussian Naive Bayes estimates per class and feature."
+  },
+  {
+    "id": "bayes-045",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes Variants (Gaussian/Multinomial/Bernoulli)",
+    "difficulty": "application",
+    "q": "A sentiment analysis system for product reviews uses the frequency of each word in the review text, for example \"excellent\" appearing three times, as a feature. Which Naive Bayes variant is most appropriate?",
+    "options": [
+      "Multinomial Naive Bayes, since it models word count frequencies directly",
+      "Gaussian Naive Bayes, since word counts always follow a normal distribution",
+      "Bernoulli Naive Bayes, since it is designed specifically for repeated word counts",
+      "None of the three Naive Bayes variants can use word frequency as a feature at all"
+    ],
+    "correct": 0,
+    "explanation": "Multinomial Naive Bayes is designed to model count data such as how many times each word appears in a document."
+  },
+  {
+    "id": "bayes-046",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes Variants (Gaussian/Multinomial/Bernoulli)",
+    "difficulty": "recall",
+    "q": "Which of the following correctly matches a Naive Bayes variant to the data type it is designed for?",
+    "options": [
+      "Bernoulli Naive Bayes — binary presence/absence features",
+      "Gaussian Naive Bayes — binary presence/absence features",
+      "Multinomial Naive Bayes — continuous bell-shaped features",
+      "Bernoulli Naive Bayes — continuous bell-shaped features"
+    ],
+    "correct": 0,
+    "explanation": "Bernoulli Naive Bayes is specifically designed for binary, presence/absence style features."
+  },
+  {
+    "id": "bayes-047",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes Variants (Gaussian/Multinomial/Bernoulli)",
+    "difficulty": "analysis",
+    "q": "An analyst applies Gaussian Naive Bayes to a feature such as \"annual household income,\" which is heavily right-skewed rather than symmetric, with a long tail of very high incomes. What is the likely consequence?",
+    "options": [
+      "The Gaussian assumption poorly fits the shape of the distribution, which can distort likelihood estimates and hurt accuracy",
+      "Gaussian Naive Bayes automatically transforms skewed features into a normal shape before training",
+      "Skewed continuous features always improve the accuracy of Gaussian Naive Bayes in practice",
+      "Gaussian Naive Bayes cannot process skewed features at all and will throw an error immediately"
+    ],
+    "correct": 0,
+    "explanation": "When a feature's true distribution departs substantially from normal, the Gaussian likelihood estimates become a poor approximation, hurting classification quality."
+  },
+  {
+    "id": "bayes-048",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes Variants (Gaussian/Multinomial/Bernoulli)",
+    "difficulty": "application",
+    "q": "A document classifier needs to distinguish between short error-log messages where only the presence of specific error codes matters, not how often each appears, since each code typically appears at most once per message anyway. Which variant best matches this use case?",
+    "options": [
+      "Bernoulli Naive Bayes",
+      "Multinomial Naive Bayes",
+      "Gaussian Naive Bayes",
+      "Logistic Naive Bayes"
+    ],
+    "correct": 0,
+    "explanation": "When only presence or absence of a feature matters and counts rarely exceed one, Bernoulli Naive Bayes is the appropriate model."
+  },
+  {
+    "id": "bayes-049",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes Variants (Gaussian/Multinomial/Bernoulli)",
+    "difficulty": "recall",
+    "q": "Choosing the right Naive Bayes variant primarily depends on the ______ of the input features.",
+    "options": [
+      "type and distribution",
+      "alphabetical order",
+      "total count observed",
+      "correlation with output"
+    ],
+    "correct": 0,
+    "explanation": "Whether features are continuous and bell-shaped, counts, or binary indicators determines whether Gaussian, Multinomial, or Bernoulli Naive Bayes is appropriate."
+  },
+  {
+    "id": "bayes-050",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes Variants (Gaussian/Multinomial/Bernoulli)",
+    "difficulty": "analysis",
+    "q": "A dataset mixes continuous lab measurements with binary symptom flags (present/absent) for a diagnosis task. Which approach is most consistent with how Naive Bayes variants are typically combined for mixed feature types?",
+    "options": [
+      "Modeling continuous features with a Gaussian likelihood and binary features with a Bernoulli likelihood, combined under conditional independence",
+      "Converting every feature into word counts and then applying Multinomial Naive Bayes uniformly across all of them",
+      "Discarding either the continuous or the binary features, since Naive Bayes cannot use more than one feature type at once",
+      "Applying Bernoulli Naive Bayes only to the continuous features while ignoring the binary ones entirely"
+    ],
+    "correct": 0,
+    "explanation": "Different feature types can each use the likelihood form that fits them, since the independence assumption only requires the per-feature likelihoods to be multiplied together."
+  },
+  {
+    "id": "bayes-051",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes Variants (Gaussian/Multinomial/Bernoulli)",
+    "difficulty": "application",
+    "q": "An email classifier originally built using Multinomial Naive Bayes on word counts performs poorly on very short messages where almost every word count is 0 or 1 anyway. A teammate suggests the count-based model is providing little extra benefit over a presence/absence model for this dataset. What is this teammate essentially suggesting?",
+    "options": [
+      "Switching to Bernoulli Naive Bayes might be more appropriate, since the data rarely contains repeated word occurrences to exploit",
+      "Switching to Gaussian Naive Bayes, since short messages are best modeled as a normal distribution",
+      "Abandoning Naive Bayes entirely, since none of its variants can handle very short text messages",
+      "Increasing the Laplace smoothing constant without bound in order to compensate for this"
+    ],
+    "correct": 0,
+    "explanation": "When word counts rarely exceed one, a presence/absence model like Bernoulli Naive Bayes captures essentially the same information as a count-based model, suggesting the simpler variant may fit as well or better."
+  },
+  {
+    "id": "bayes-052",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Zero-Probability Problem and Laplace Smoothing",
+    "difficulty": "recall",
+    "q": "The zero-probability problem in Naive Bayes occurs when a feature value never appears in the training data for a given class, causing its estimated conditional probability to be exactly ______.",
+    "options": [
+      "zero",
+      "unity",
+      "undefined, not zero",
+      "equal to the prior"
+    ],
+    "correct": 0,
+    "explanation": "An unseen feature value receives a raw count of zero, so its unsmoothed conditional probability estimate is exactly zero."
+  },
+  {
+    "id": "bayes-053",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Zero-Probability Problem and Laplace Smoothing",
+    "difficulty": "application",
+    "q": "A spam filter has never seen the word \"cryptocurrency\" in any legitimate (non-spam) training email. When a new legitimate email containing that word arrives, the filter's unsmoothed estimate of that word's probability given not-spam is zero, which collapses the entire product for the not-spam class to zero. What problem does this illustrate?",
+    "options": [
+      "The zero-probability problem, where one unseen feature value overrides all other evidence in the product",
+      "The conditional independence assumption breaking down due to strongly correlated, overlapping evidence features in the model",
+      "The MAP estimate simply reducing to the ordinary MLE estimate in this case",
+      "Overfitting caused specifically by using too large a vocabulary size"
+    ],
+    "correct": 0,
+    "explanation": "Because Naive Bayes multiplies per-feature probabilities, a single zero probability for an unseen word forces the whole class score to zero, regardless of other evidence."
+  },
+  {
+    "id": "bayes-054",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Zero-Probability Problem and Laplace Smoothing",
+    "difficulty": "recall",
+    "q": "What does Laplace (additive) smoothing do to address the zero-probability problem?",
+    "options": [
+      "It adds a small constant to every feature count before computing probabilities, so no estimate is exactly zero",
+      "It simply removes any feature that ever has a zero count from the model entirely",
+      "It multiplies every nonzero probability by a fixed smoothing factor greater than one",
+      "It replaces the class prior entirely with a smoothed, uniform distribution"
+    ],
+    "correct": 0,
+    "explanation": "Laplace smoothing adds a small positive constant, typically one, to every count so that no probability estimate ever becomes exactly zero."
+  },
+  {
+    "id": "bayes-055",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Zero-Probability Problem and Laplace Smoothing",
+    "difficulty": "application",
+    "q": "In a document classifier, the word \"subpoena\" occurs 0 times among 50 total word tokens in the \"personal\" email training class, and the vocabulary has 1000 unique words. Using Laplace smoothing with a smoothing constant of 1, what is the smoothed estimate of the probability of \"subpoena\" given personal?",
+    "options": [
+      "1 / (50 + 1000)",
+      "0 / (50 + 0)",
+      "1 / (50 + 0)",
+      "1 / (50 + 1000 + 1)"
+    ],
+    "correct": 0,
+    "explanation": "Laplace smoothing adds 1 to the numerator count (0+1) and the vocabulary size to the denominator (50+1000), giving 1/1050."
+  },
+  {
+    "id": "bayes-056",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Zero-Probability Problem and Laplace Smoothing",
+    "difficulty": "recall",
+    "q": "Laplace smoothing is also commonly known as ______ smoothing.",
+    "options": [
+      "additive",
+      "multiplicative",
+      "logarithmic",
+      "exponential"
+    ],
+    "correct": 0,
+    "explanation": "Laplace smoothing works by adding a constant to counts, which is why it is also called additive smoothing."
+  },
+  {
+    "id": "bayes-057",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Zero-Probability Problem and Laplace Smoothing",
+    "difficulty": "analysis",
+    "q": "A fraud-detection analyst notices that increasing the Laplace smoothing constant from 1 to a very large value causes all class-conditional probability estimates to become nearly identical regardless of the observed feature counts. Why does this happen?",
+    "options": [
+      "A very large smoothing constant dominates both the numerator and denominator, pulling every estimate toward a similar, uniform value",
+      "A very large smoothing constant has no effect on probability estimates beyond what a constant of 1 already achieves, no matter how large it grows",
+      "Increasing the smoothing constant always increases classification accuracy without any limit",
+      "Laplace smoothing becomes completely undefined once the constant exceeds a value of one"
+    ],
+    "correct": 0,
+    "explanation": "When the added constant is much larger than the actual observed counts, it dominates the formula and washes out the differences the data would otherwise produce."
+  },
+  {
+    "id": "bayes-058",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Zero-Probability Problem and Laplace Smoothing",
+    "difficulty": "recall",
+    "q": "Why is vocabulary size (or the number of possible feature values) added to the denominator in the Laplace smoothing formula, alongside the total count?",
+    "options": [
+      "Because a small constant is added to every feature value's count, that total added mass must also appear in the denominator so probabilities sum to one",
+      "Because vocabulary size alone determines the prior probability assigned to each class",
+      "Because larger vocabularies always require using a smaller smoothing constant to stay valid",
+      "Because without vocabulary size in the denominator, Naive Bayes cannot compute any likelihood value at all"
+    ],
+    "correct": 0,
+    "explanation": "Since the smoothing constant is added to every feature value's count, the denominator must grow by the smoothing constant times the vocabulary size to keep the probabilities properly normalized."
+  },
+  {
+    "id": "bayes-059",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Zero-Probability Problem and Laplace Smoothing",
+    "difficulty": "application",
+    "q": "A customer-support ticket classifier is trained to distinguish \"billing\" from \"technical\" tickets. A brand-new product name that never appeared during training shows up in a new ticket. Without any smoothing, how would a standard Naive Bayes classifier most likely handle this?",
+    "options": [
+      "It could assign a probability of exactly zero to whichever class never saw that word, even if every other word favors that class",
+      "It would simply ignore the new word automatically without needing any smoothing at all",
+      "It would default to predicting a uniform probability across all available classes",
+      "It would treat the unseen word as the single strongest piece of evidence available"
+    ],
+    "correct": 0,
+    "explanation": "Without smoothing, an unseen word's zero count produces a zero probability that nullifies the entire class score during the product computation."
+  },
+  {
+    "id": "bayes-060",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Zero-Probability Problem and Laplace Smoothing",
+    "difficulty": "recall",
+    "q": "Without smoothing, a single unseen feature value can cause the entire class-conditional likelihood product to become zero because Naive Bayes combines per-feature probabilities by ______ them together.",
+    "options": [
+      "multiplying",
+      "totalling",
+      "averaging",
+      "concatenating"
+    ],
+    "correct": 0,
+    "explanation": "Since per-feature probabilities are multiplied, any single zero factor forces the entire product to zero."
+  },
+  {
+    "id": "bayes-061",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Zero-Probability Problem and Laplace Smoothing",
+    "difficulty": "analysis",
+    "q": "A rare-disease diagnostic model never observed a particular, very uncommon symptom combination in its training data for the \"healthy\" class. A clinician worries that any new patient presenting that exact combination will automatically be diagnosed as diseased, regardless of other evidence, if no smoothing is applied. Is this concern well-founded?",
+    "options": [
+      "Yes, because an unsmoothed zero probability for healthy given that combination would zero out the entire healthy-class score",
+      "No, because Naive Bayes always ignores symptom combinations that were never observed during training",
+      "No, because the prior probability alone determines the diagnosis whenever a zero likelihood occurs",
+      "Yes, but only if the disease class also happens to have a zero probability for that same combination"
+    ],
+    "correct": 0,
+    "explanation": "An unsmoothed zero likelihood for the healthy class collapses its entire score to zero, so the disease class would win by default regardless of its own evidence strength."
+  },
+  {
+    "id": "bayes-062",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Zero-Probability Problem and Laplace Smoothing",
+    "difficulty": "recall",
+    "q": "What is the typical default value used for the Laplace smoothing constant in practice?",
+    "options": [
+      "1",
+      "0",
+      "The size of the training set",
+      "The number of classes"
+    ],
+    "correct": 0,
+    "explanation": "A smoothing constant of 1 is the standard default used in Laplace (additive) smoothing."
+  },
+  {
+    "id": "bayes-063",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Zero-Probability Problem and Laplace Smoothing",
+    "difficulty": "application",
+    "q": "Comparing two feature counts smoothed with a smoothing constant of 1 over a vocabulary of 10: one feature appeared 2 times out of 6 total tokens in its class, and another appeared 0 times out of the same 6 total tokens. Which smoothed probability will be larger?",
+    "options": [
+      "The feature that appeared 2 times, since its smoothed numerator (2+1) exceeds the unseen feature's numerator (0+1) with the same denominator",
+      "Both features will end up with completely identical smoothed probabilities regardless of their observed counts",
+      "The unseen feature, with 0 occurrences, will end up with a larger smoothed probability than the observed one",
+      "Smoothing removes any and all difference between observed and unobserved feature counts entirely"
+    ],
+    "correct": 0,
+    "explanation": "Smoothing preserves the relative ordering between observed and unobserved counts; the feature actually seen twice still ends up with a larger smoothed probability."
+  },
+  {
+    "id": "bayes-064",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Zero-Probability Problem and Laplace Smoothing",
+    "difficulty": "analysis",
+    "q": "Why does Laplace smoothing only slightly perturb probability estimates for features with already-large counts, while having a much larger relative effect on features with zero or very small counts?",
+    "options": [
+      "Adding a fixed small constant changes a small count disproportionately more, in relative terms, than it changes a large count",
+      "Laplace smoothing applies a proportionally larger constant to features that already have larger counts",
+      "Smoothing is only mathematically defined for features with exactly zero counts and has no other effect",
+      "The smoothing constant automatically scales up in proportion to the feature's own observed count"
+    ],
+    "correct": 0,
+    "explanation": "A fixed additive constant represents a much larger relative change for a small count than for a large one, so smoothing affects rare or unseen features far more than common ones."
+  },
+  {
+    "id": "bayes-065",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes for Text Classification",
+    "difficulty": "recall",
+    "q": "Naive Bayes is widely used for text classification largely because treating words as conditionally independent given the document's class turns an intractable joint word-probability estimation problem into a set of simple ______ to estimate.",
+    "options": [
+      "per-word probabilities",
+      "pairwise word correlations",
+      "neural network weights",
+      "kernel function values"
+    ],
+    "correct": 0,
+    "explanation": "The independence assumption reduces the problem to estimating one probability per word per class, rather than modeling the full joint distribution over all words."
+  },
+  {
+    "id": "bayes-066",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes for Text Classification",
+    "difficulty": "application",
+    "q": "A news aggregator wants to automatically tag articles as \"sports,\" \"politics,\" or \"technology\" using the words that appear in each article. Why does Naive Bayes scale comfortably to this problem even with a vocabulary of tens of thousands of words?",
+    "options": [
+      "Because it only estimates each word's probability given each class, not the full joint distribution over combinations",
+      "Because it converts every single word into a dense numerical embedding before classification begins",
+      "Because it automatically reduces the vocabulary down to the ten most informative words before training on the labeled documents begins",
+      "Because it requires labeled training data for only one of the three target categories"
+    ],
+    "correct": 0,
+    "explanation": "The independence assumption avoids the combinatorial explosion of modeling joint word probabilities, letting Naive Bayes scale efficiently to large vocabularies."
+  },
+  {
+    "id": "bayes-067",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes for Text Classification",
+    "difficulty": "recall",
+    "q": "Which of the following is a standard way to represent a document's text before applying Naive Bayes classification?",
+    "options": [
+      "A bag-of-words representation, where word order is ignored and only occurrence or frequency is kept",
+      "A representation that preserves the exact grammatical structure and word order of the sentence or document as a whole",
+      "A representation requiring that every document contain exactly the same number of words",
+      "A representation based solely on the document's total file size measured in bytes"
+    ],
+    "correct": 0,
+    "explanation": "The bag-of-words representation, which discards word order and keeps only occurrence or frequency counts, is the standard input format for Naive Bayes text classification."
+  },
+  {
+    "id": "bayes-068",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes for Text Classification",
+    "difficulty": "analysis",
+    "q": "A customer-review classifier predicts a review's sentiment class using a Naive Bayes model trained on word frequencies, achieving strong accuracy despite ignoring word order and most grammatical structure entirely. What best explains why this crude representation is often still effective for this kind of task?",
+    "options": [
+      "Which specific words appear is often more informative than their order, so bag-of-words captures most of the signal",
+      "Word order never carries any information whatsoever in natural language under any circumstances",
+      "Naive Bayes secretly reconstructs word order internally using the conditional independence assumption",
+      "Sentiment can only be determined by punctuation, which bag-of-words representations specifically preserve in every single case"
+    ],
+    "correct": 0,
+    "explanation": "Which words appear is often enough signal for topic or sentiment classification, which is why bag-of-words with Naive Bayes performs reasonably well despite ignoring order."
+  },
+  {
+    "id": "bayes-069",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes for Text Classification",
+    "difficulty": "recall",
+    "q": "In text classification with Naive Bayes, the vocabulary refers to the set of ______ considered as possible features across the training documents.",
+    "options": [
+      "distinct words",
+      "distinct classes",
+      "distinct documents",
+      "distinct authors"
+    ],
+    "correct": 0,
+    "explanation": "The vocabulary is the set of unique words observed across the training corpus, each treated as a potential feature."
+  },
+  {
+    "id": "bayes-070",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes for Text Classification",
+    "difficulty": "analysis",
+    "q": "A topic classifier for news articles is trained once on articles from 2015 and deployed without retraining on articles from 2024, where new slang, brand names, and topical terms frequently appear. What problem is this scenario most likely to trigger?",
+    "options": [
+      "The zero-probability problem, since many 2024-era words never appeared in the 2015 training vocabulary",
+      "The conditional independence assumption failing specifically because of the mere passage of time between training and deployment",
+      "An invalid prior, since priors must always be recalculated fresh every single calendar year",
+      "A violation of the Gaussian distribution assumption required for all text classification"
+    ],
+    "correct": 0,
+    "explanation": "Words absent from the original training vocabulary produce zero (or, with smoothing, weakly informative) likelihoods, which is the zero-probability problem showing up as vocabulary drift over time."
+  },
+  {
+    "id": "bayes-071",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes for Text Classification",
+    "difficulty": "application",
+    "q": "Two classifiers are compared on a document classification task: one models raw word counts, and another only models whether each word is present at all. For long, information-dense documents, the first approach is often preferable. Why?",
+    "options": [
+      "A word repeating often in a long document can be more informative than merely noting it appeared",
+      "Word counts are always entirely irrelevant once a word has appeared in the document at least once",
+      "Presence/absence features always outperform count-based features specifically on long documents",
+      "Document length has no bearing whatsoever on which representation ends up being preferable"
+    ],
+    "correct": 0,
+    "explanation": "In long documents, how often a word repeats can be meaningfully informative, which a count-based (Multinomial) model captures but a presence/absence (Bernoulli) model discards."
+  },
+  {
+    "id": "bayes-072",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes for Text Classification",
+    "difficulty": "recall",
+    "q": "Why does the Naive Bayes conditional independence assumption, despite being unrealistic for natural language since word choices are often correlated, still allow strong performance on text classification tasks?",
+    "options": [
+      "Because the classifier only needs the correct class to score highest, not perfectly calibrated probabilities",
+      "Because natural language words are, in fact, statistically independent of one another in every corpus ever studied",
+      "Because text classification tasks never involve more than two possible output classes at all",
+      "Because Naive Bayes automatically learns word order through its per-feature likelihood terms"
+    ],
+    "correct": 0,
+    "explanation": "Decision correctness only requires the right class to score highest, which tolerates a fair amount of independence-assumption violation without changing the outcome."
+  },
+  {
+    "id": "bayes-073",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes for Text Classification",
+    "difficulty": "application",
+    "q": "A legal-document classifier distinguishes \"contracts\" from \"memos\" using the frequency of domain-specific terms like \"indemnification,\" \"hereinafter,\" and \"whereas.\" Which Naive Bayes variant would typically be chosen for this count-based representation?",
+    "options": [
+      "Multinomial Naive Bayes",
+      "Gaussian Naive Bayes",
+      "Bernoulli Naive Bayes",
+      "k-means style Naive Bayes"
+    ],
+    "correct": 0,
+    "explanation": "Since the features are raw term frequencies, Multinomial Naive Bayes is the standard, natural fit."
+  },
+  {
+    "id": "bayes-074",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes for Text Classification",
+    "difficulty": "recall",
+    "q": "Among the main strengths of Naive Bayes for text classification is that it remains computationally efficient even with ______ dimensional feature spaces such as large vocabularies.",
+    "options": [
+      "very high",
+      "extremely low",
+      "exactly two",
+      "negative"
+    ],
+    "correct": 0,
+    "explanation": "Naive Bayes scales well to very high-dimensional feature spaces because it only needs per-feature statistics rather than modeling feature interactions."
+  },
+  {
+    "id": "bayes-075",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes for Text Classification",
+    "difficulty": "analysis",
+    "q": "A spam classifier trained predominantly on English-language emails is deployed on a mixed corpus containing many short emails in a different language, where almost every word is entirely new to its vocabulary. What is the most likely consequence, even with Laplace smoothing applied?",
+    "options": [
+      "Nearly every word becomes an unseen, weakly informative, smoothed feature, leaving little useful signal",
+      "Laplace smoothing fully eliminates any degradation regardless of how much of the vocabulary turns out to be unseen",
+      "The classifier automatically detects and translates the new language before classification begins",
+      "The conditional independence assumption specifically fails only when text is non-English"
+    ],
+    "correct": 0,
+    "explanation": "Smoothing prevents zero probabilities but does not restore genuine signal; a flood of unseen words still leaves the model with little meaningful information to distinguish classes."
+  },
+  {
+    "id": "bayes-076",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Naive Bayes for Text Classification",
+    "difficulty": "recall",
+    "q": "Which property of text data makes the per-feature independence assumption in Naive Bayes a convenient, if imperfect, simplification?",
+    "options": [
+      "Modeling the full joint dependency structure over very large word-feature sets is impractical",
+      "Text data always has fewer than ten possible word features in any given document",
+      "Words in natural language are mathematically proven to be entirely independent",
+      "Text classification tasks never require any form of probabilistic reasoning at all, regardless of vocabulary size"
+    ],
+    "correct": 0,
+    "explanation": "With thousands of possible word features, modeling exact joint dependencies is infeasible, making the independence assumption a practical simplification."
+  },
+  {
+    "id": "bayes-077",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Difficulties with Bayesian Methods",
+    "difficulty": "recall",
+    "q": "One practical difficulty with Bayesian methods in general is that they often require specifying ______ that may not be easy to estimate from available knowledge.",
+    "options": [
+      "prior probabilities",
+      "gradient descent learning rates",
+      "neural network architectures",
+      "decision tree depths"
+    ],
+    "correct": 0,
+    "explanation": "Choosing reasonable prior probabilities, especially without strong background knowledge, is one of the central practical difficulties of Bayesian methods."
+  },
+  {
+    "id": "bayes-078",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Difficulties with Bayesian Methods",
+    "difficulty": "application",
+    "q": "A team building a Bayesian model for predicting equipment failure struggles to decide what prior probability to assign to a brand-new failure mode that has never been observed before. What core difficulty of Bayesian methods does this illustrate?",
+    "options": [
+      "The challenge of choosing an appropriate prior when little or no background knowledge is available",
+      "The computational cost of inverting a very large covariance matrix repeatedly",
+      "The zero-probability problem specific to Naive Bayes text classifiers only",
+      "The conditional independence assumption breaking down between strongly correlated clinical or symptom features"
+    ],
+    "correct": 0,
+    "explanation": "Deciding on a reasonable prior for an unprecedented scenario, with no historical data to draw on, is a direct instance of the prior-selection difficulty in Bayesian methods."
+  },
+  {
+    "id": "bayes-079",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Difficulties with Bayesian Methods",
+    "difficulty": "recall",
+    "q": "Why can exact Bayesian inference become computationally expensive as the hypothesis space grows large or continuous?",
+    "options": [
+      "Because computing or approximating the full posterior may require summing over a huge or infinite number of hypotheses",
+      "Because Bayesian inference requires retraining a neural network from scratch for every single new incoming data point",
+      "Because every single hypothesis must be separately tested on its own dedicated held-out dataset",
+      "Because Bayesian methods cannot be implemented using any standard programming language at all"
+    ],
+    "correct": 0,
+    "explanation": "A large or continuous hypothesis space means the normalizing constant and posterior require summing or integrating over many possibilities, which quickly becomes computationally expensive."
+  },
+  {
+    "id": "bayes-080",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Difficulties with Bayesian Methods",
+    "difficulty": "application",
+    "q": "A genomics research team wants to compute an exact posterior distribution over millions of possible gene-interaction models given observed expression data. Directly summing over every possible model turns out to be computationally infeasible. What is a common practical response to this difficulty?",
+    "options": [
+      "Using approximate methods, such as Monte Carlo sampling, instead of computing the exact posterior",
+      "Abandoning probabilistic reasoning entirely in favor of a single fixed hypothesis chosen arbitrarily",
+      "Reducing the dataset to a single observation so the posterior becomes trivial to compute",
+      "Assuming the likelihood is always equal to one for every single hypothesis considered"
+    ],
+    "correct": 0,
+    "explanation": "When exact posterior computation is intractable, approximate techniques like Monte Carlo sampling are the standard practical workaround."
+  },
+  {
+    "id": "bayes-081",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Difficulties with Bayesian Methods",
+    "difficulty": "recall",
+    "q": "Monte Carlo methods are often used in Bayesian learning to ______ quantities, such as the normalizing constant, that are too difficult to compute exactly.",
+    "options": [
+      "approximate",
+      "eliminate entirely",
+      "multiply by zero",
+      "set equal to the prior"
+    ],
+    "correct": 0,
+    "explanation": "Monte Carlo sampling is used to approximate intractable quantities like the normalizing constant, rather than computing them exactly."
+  },
+  {
+    "id": "bayes-082",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Difficulties with Bayesian Methods",
+    "difficulty": "analysis",
+    "q": "A startup wants to apply full Bayesian model averaging, combining the predictions of every plausible hypothesis weighted by posterior probability, to a recommendation system with millions of candidate models, but their engineering team concludes this is impractical to run at scale in production. What trade-off does this best illustrate?",
+    "options": [
+      "Bayesian methods are theoretically optimal but computationally demanding, pushing toward single-hypothesis simplifications",
+      "Bayesian model averaging is always cheaper computationally than choosing a single hypothesis",
+      "Recommendation systems are the one domain where exact Bayesian inference is always fully tractable",
+      "Posterior probabilities become completely undefined once more than one candidate model exists"
+    ],
+    "correct": 0,
+    "explanation": "Full Bayesian combination across many hypotheses is often the theoretically best approach but too costly in practice, which is why single-hypothesis approximations like MAP are common."
+  },
+  {
+    "id": "bayes-083",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Difficulties with Bayesian Methods",
+    "difficulty": "recall",
+    "q": "Despite being computationally difficult in many realistic settings, why are Bayesian methods still considered a valuable theoretical benchmark?",
+    "options": [
+      "They represent the standard of optimal decision-making other approximate methods are measured against",
+      "They always run significantly faster than any non-Bayesian alternative method in practice, even on very large datasets",
+      "They eliminate the need for any training data whatsoever in every single case",
+      "They guarantee perfectly accurate predictions on every dataset regardless of its size"
+    ],
+    "correct": 0,
+    "explanation": "Even when intractable in practice, Bayesian methods provide an optimal decision-making standard that other practical approaches can be measured against."
+  },
+  {
+    "id": "bayes-084",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Difficulties with Bayesian Methods",
+    "difficulty": "application",
+    "q": "A weather-forecasting team debates between a subjective prior based on an expert meteorologist's judgment and a flat, non-informative prior with no particular belief favored. Which difficulty of Bayesian methods does this debate most directly reflect?",
+    "options": [
+      "The difficulty of selecting an appropriate prior, since reasonable people can disagree on prior knowledge",
+      "The zero-probability problem, since experts can only ever assign probabilities of exactly zero or one with no in-between values",
+      "The conditional independence assumption required specifically for weather-related variables",
+      "The complete inability of Bayesian methods to use any expert knowledge at all"
+    ],
+    "correct": 0,
+    "explanation": "Disagreement over what prior to use, subjective expert judgment versus a non-informative default, is a direct example of the prior-selection difficulty."
+  },
+  {
+    "id": "bayes-085",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Difficulties with Bayesian Methods",
+    "difficulty": "recall",
+    "q": "A key difficulty of Bayesian learning, distinct from the difficulty of choosing a prior, is the ______ required to compute an exact posterior in realistically sized problems.",
+    "options": [
+      "significant computational cost",
+      "complete absence of any closed-form likelihood",
+      "requirement for exactly two competing hypotheses",
+      "need for infinite training data"
+    ],
+    "correct": 0,
+    "explanation": "Besides choosing a prior, the computational cost of exact Bayesian inference over large hypothesis spaces is a separate, well-known difficulty."
+  },
+  {
+    "id": "bayes-086",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Difficulties with Bayesian Methods",
+    "difficulty": "analysis",
+    "q": "An insurance actuary needs to combine prior actuarial tables with a growing stream of new claims data, but recomputing the exact posterior over all possible risk models after every new claim is too slow to be practical. Which approach would most directly address this specific computational-cost difficulty, as opposed to the difficulty of prior selection?",
+    "options": [
+      "Adopting approximate or incremental updating techniques that avoid recomputing the full exact posterior every time",
+      "Switching to a prior that assigns exactly equal probability to every possible risk model",
+      "Removing the likelihood term from the Bayesian update formula entirely and permanently",
+      "Treating every new claim as independent evidence that overrides all prior actuarial knowledge"
+    ],
+    "correct": 0,
+    "explanation": "Incremental or approximate updating methods directly target the computational-cost problem, rather than addressing how the prior itself is chosen."
+  },
+  {
+    "id": "bayes-087",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Difficulties with Bayesian Methods",
+    "difficulty": "recall",
+    "q": "Which of the following is NOT typically listed as a core difficulty of applying Bayesian methods in practice?",
+    "options": [
+      "Bayesian methods cannot be used for any classification task",
+      "Specifying the prior probabilities needed for the model",
+      "The computational cost of computing or approximating an exact posterior over a large hypothesis space",
+      "Deciding how much weight unfamiliar or sparse prior knowledge should receive"
+    ],
+    "correct": 0,
+    "explanation": "Bayesian methods, including Naive Bayes and the Bayes optimal classifier, are routinely used for classification, so this claim is false; the genuine difficulties are prior selection and computational cost."
+  },
+  {
+    "id": "bayes-088",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Difficulties with Bayesian Methods",
+    "difficulty": "application",
+    "q": "A manager asks why the data science team doesn't simply always use the theoretically optimal, fully Bayesian combination of every hypothesis instead of a single best model, given that it is described as the gold standard. What's the most accurate answer?",
+    "options": [
+      "Exact Bayesian combination over a full hypothesis space is often intractable, so simpler approximations are used",
+      "Fully Bayesian combination is prohibited by definition once more than one hypothesis exists",
+      "Simpler single-hypothesis models always outperform Bayesian combination in every scenario",
+      "The theoretically optimal method has no relevance to production machine learning systems"
+    ],
+    "correct": 0,
+    "explanation": "The gold-standard Bayesian combination is often too costly to compute exactly at scale, which is why practitioners fall back on tractable approximations."
+  },
+  {
+    "id": "bayes-089",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Real-World Application and Limitations",
+    "difficulty": "application",
+    "q": "A hospital builds an automated triage tool that flags patients as high-risk using Naive Bayes over symptoms like fever, cough, and fatigue, treating each symptom as independent given the diagnosis. Which of the following would most undermine the validity of this model?",
+    "options": [
+      "Fever and fatigue being strongly correlated symptoms that co-occur regardless of diagnosis",
+      "Discovering that the dataset includes more than three distinct, independently measured symptom features",
+      "Discovering that the model includes a prior probability for each diagnosis",
+      "Discovering that the model was trained on more than 1,000 patient records"
+    ],
+    "correct": 0,
+    "explanation": "Strong correlation between two symptoms given the diagnosis directly violates the conditional independence assumption the model relies on."
+  },
+  {
+    "id": "bayes-090",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Real-World Application and Limitations",
+    "difficulty": "analysis",
+    "q": "An e-commerce platform uses Naive Bayes to flag potentially fraudulent transactions using features including transaction amount, time of day, device fingerprint, and shipping-billing address mismatch. The platform notices device fingerprint and address mismatch are rarely independent in practice, since fraudulent actors who spoof devices also tend to use mismatched addresses. Which two issues should the team specifically investigate regarding Naive Bayes here?",
+    "options": [
+      "Whether correlated features are inflating the fraud posterior, and whether unseen device/address combinations are producing zero probabilities",
+      "Whether the model requires gradient descent to be retrained, and whether the dataset has been properly normalized to unit variance before training begins",
+      "Whether the classifier has too few distinct classes to be useful, and whether its decision boundary is linear or curved",
+      "Whether the model can process categorical features at all, and whether Gaussian Naive Bayes is mathematically valid for this task"
+    ],
+    "correct": 0,
+    "explanation": "The described scenario raises both a conditional-independence concern (correlated features double-counting evidence) and a zero-probability concern (unseen feature combinations), which are the two issues directly relevant to Naive Bayes here."
+  },
+  {
+    "id": "bayes-091",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Real-World Application and Limitations",
+    "difficulty": "recall",
+    "q": "Which real-world application is most commonly cited as a strong use case for Naive Bayes, due to high dimensionality and reasonable feature independence?",
+    "options": [
+      "Email spam filtering based on word occurrence",
+      "Predicting stock prices from autocorrelated time-series data",
+      "Modeling the exact physical trajectory of a projectile",
+      "Rendering fully photorealistic 3D computer graphics"
+    ],
+    "correct": 0,
+    "explanation": "Spam filtering based on word occurrence is a classic, well-suited application for Naive Bayes given its high-dimensional, reasonably independent word features."
+  },
+  {
+    "id": "bayes-092",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Real-World Application and Limitations",
+    "difficulty": "application",
+    "q": "A manufacturing company wants to classify defective versus non-defective products using sensor readings such as temperature, vibration, and pressure, all of which are physically linked by the same underlying mechanical process and therefore highly correlated with one another. Which concern should most influence their decision of whether to use Naive Bayes?",
+    "options": [
+      "Strong correlation among sensor readings conflicts with the conditional independence assumption it relies on",
+      "Naive Bayes cannot process more than two sensor readings at the same time at all",
+      "Sensor data is never numeric in nature, so no Naive Bayes variant can be applied",
+      "Naive Bayes requires the overall defect rate to be exactly 50 percent to function"
+    ],
+    "correct": 0,
+    "explanation": "Physically linked, correlated sensor readings directly violate the independence assumption, which is the main concern to weigh before applying Naive Bayes here."
+  },
+  {
+    "id": "bayes-093",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Real-World Application and Limitations",
+    "difficulty": "analysis",
+    "q": "A bank is deciding between Naive Bayes and a more complex model that explicitly captures feature interactions for credit-risk scoring, where income, debt, and credit utilization are all interrelated. The bank has limited labeled data and needs fast, interpretable results. What is a reasonable trade-off to highlight?",
+    "options": [
+      "Naive Bayes may sacrifice some accuracy from ignored correlations, but still gives a fast, interpretable baseline with limited data",
+      "Naive Bayes is guaranteed to outperform any model that captures feature interactions, regardless of data size",
+      "Naive Bayes cannot produce any calibrated probability estimates at all, only hard class labels",
+      "Naive Bayes requires far more labeled training data than virtually any other available classifier"
+    ],
+    "correct": 0,
+    "explanation": "Naive Bayes trades some accuracy from ignored correlations for speed, interpretability, and good performance even with limited labeled data, making it a reasonable baseline choice."
+  },
+  {
+    "id": "bayes-094",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Real-World Application and Limitations",
+    "difficulty": "analysis",
+    "q": "A company wants to automatically detect phishing emails using features like suspicious keywords, sender-domain reputation, presence of attachments, number of hyperlinks, email length, and tone score. Sender reputation is strongly correlated with hyperlink count, and email length is not normally distributed. Which pair of concerns should the team raise about applying Naive Bayes directly here?",
+    "options": [
+      "The correlated features violate conditional independence, and the non-normal email length undermines the Gaussian assumption if modeled that way",
+      "Naive Bayes cannot output a probability of phishing, only a binary label, and it requires exactly six input features to function",
+      "Naive Bayes requires sender reputation and hyperlink count to be merged into a single feature before training, and tone score must always be discarded",
+      "Naive Bayes cannot be applied to email data of any kind whatsoever, regardless of feature correlation or distribution shape"
+    ],
+    "correct": 0,
+    "explanation": "The correlated features violate the independence assumption, and the non-normal continuous feature undermines the Gaussian distributional assumption, both of which are genuine limitations to raise."
+  },
+  {
+    "id": "bayes-095",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Real-World Application and Limitations",
+    "difficulty": "recall",
+    "q": "Naive Bayes is often chosen as a baseline model in applied machine learning projects because it is simple, fast to train, and requires relatively ______ data to produce reasonable estimates compared to many more complex models.",
+    "options": [
+      "little",
+      "an extremely large amount of",
+      "perfectly balanced",
+      "continuously streaming"
+    ],
+    "correct": 0,
+    "explanation": "Naive Bayes can produce reasonable estimates even from relatively small amounts of labeled data, which contributes to its popularity as a quick baseline model."
+  },
+  {
+    "id": "bayes-096",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Real-World Application and Limitations",
+    "difficulty": "application",
+    "q": "A customer-service chatbot routes incoming messages to \"billing,\" \"technical support,\" or \"general inquiry\" using a Naive Bayes text classifier. After deployment, the team notices that many misrouted messages contain rare technical jargon never seen during training. Which issue is most directly responsible?",
+    "options": [
+      "The zero-probability problem, since unseen jargon words receive only a weakly informative smoothed probability",
+      "The conditional independence assumption, since jargon words are always independent of the correct routing category",
+      "An incorrectly chosen prior that assigns negative probability to the technical-support category",
+      "A violation of the Gaussian assumption, since word features must always be treated as continuous"
+    ],
+    "correct": 0,
+    "explanation": "Words never seen in training contribute little useful information even after smoothing, which is a direct symptom of the zero-probability problem showing up as vocabulary gaps."
+  },
+  {
+    "id": "bayes-097",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Real-World Application and Limitations",
+    "difficulty": "analysis",
+    "q": "A university admissions office uses Naive Bayes to predict likely dropout risk from features including high school GPA, standardized test score, and family income, where test scores and GPA are moderately correlated. Despite this, the model performs reasonably well in practice at ranking students by relative risk. What best explains this outcome?",
+    "options": [
+      "Correlated features violating independence can still yield a useful ranking if the correlation doesn't flip the class scores",
+      "The correlation between GPA and test scores has no mathematical bearing on Naive Bayes whatsoever, since both are numeric features",
+      "Naive Bayes automatically detects and silently removes all correlated features from its likelihood computation",
+      "The model's strong performance proves that GPA and test scores must actually be statistically independent"
+    ],
+    "correct": 0,
+    "explanation": "Naive Bayes only needs relative class scores to be ordered correctly, so moderate correlation that does not flip the ranking still allows useful, if imperfectly calibrated, predictions."
+  },
+  {
+    "id": "bayes-098",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Real-World Application and Limitations",
+    "difficulty": "recall",
+    "q": "Which limitation of Naive Bayes is most relevant when deploying it on a dataset where several features are engineered as combinations or transformations of each other, such as ratios or totals?",
+    "options": [
+      "Engineered features derived from one another tend to be strongly correlated, conflicting with conditional independence",
+      "Engineered features always cause the zero-probability problem no matter how much Laplace smoothing is applied afterward",
+      "Engineered features can only ever be used together with Gaussian Naive Bayes, never other variants",
+      "Engineered features eliminate the need for any class prior probability whatsoever in the model"
+    ],
+    "correct": 0,
+    "explanation": "Features derived from one another are typically highly correlated, which directly conflicts with the conditional independence assumption Naive Bayes depends on."
+  },
+  {
+    "id": "bayes-099",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Real-World Application and Limitations",
+    "difficulty": "application",
+    "q": "A retail chain uses Naive Bayes to predict which customers will respond to a marketing email based on past purchase category, time since last purchase, and loyalty tier, where loyalty tier is itself partly calculated from past purchase category. Before deployment, what should the data team specifically check regarding Naive Bayes assumptions?",
+    "options": [
+      "Whether loyalty tier and past purchase category are redundant, correlated signals that would be double-counted under the independence assumption",
+      "Whether the marketing email was received before or after the purchase, since Naive Bayes requires strict temporal ordering of all features",
+      "Whether the customer base includes at least two distinct loyalty tiers represented, since Naive Bayes cannot handle single-tier populations",
+      "Whether time since last purchase was converted into a categorical feature, since Naive Bayes cannot use any numeric feature under any variant at all"
+    ],
+    "correct": 0,
+    "explanation": "Since loyalty tier is partly derived from purchase category, the two features are likely correlated, risking the same double-counting problem that violates conditional independence."
+  },
+  {
+    "id": "bayes-100",
+    "topic": "bayesian-naive-bayes",
+    "subtopic": "Real-World Application and Limitations",
+    "difficulty": "analysis",
+    "q": "A content moderation team using Naive Bayes to flag toxic comments observes strong overall accuracy, but notices particularly poor performance on sarcastic comments where individual words appear mild despite the overall sentiment being hostile. What does this best illustrate about Naive Bayes' limitations?",
+    "options": [
+      "Naive Bayes evaluates words largely independently of context, so it struggles to capture meaning from word combinations like sarcasm",
+      "Naive Bayes cannot process textual data of any kind, which explains the poor performance uniformly across all comments, sarcastic or not",
+      "The poor performance is caused entirely by an incorrectly chosen prior probability for the toxic class label",
+      "Naive Bayes requires exactly balanced class distributions in order to detect sarcasm correctly"
+    ],
+    "correct": 0,
+    "explanation": "Because the independence assumption evaluates words in isolation from context, Naive Bayes struggles with meaning that depends on how words combine, such as sarcasm, even though overall accuracy may remain high."
+  }
+]

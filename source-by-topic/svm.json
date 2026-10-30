@@ -1,0 +1,1757 @@
+[
+  {
+    "id": "svm-001",
+    "topic": "svm",
+    "subtopic": "Max-margin intuition & support vectors",
+    "difficulty": "recall",
+    "q": "In a trained SVM, the training points that lie exactly on the margin boundary and determine the position of the decision boundary are known as ______.",
+    "options": [
+      "support vectors",
+      "centroid points",
+      "pivot features",
+      "boundary residuals"
+    ],
+    "correct": 0,
+    "explanation": "Support vectors are the (typically few) points closest to the decision boundary; they alone determine the orientation and position of the separating hyperplane."
+  },
+  {
+    "id": "svm-002",
+    "topic": "svm",
+    "subtopic": "Max-margin intuition & support vectors",
+    "difficulty": "analysis",
+    "q": "A fraud-detection team trains a linear SVM on transaction data, then discovers that one training transaction lies well inside the correctly classified region, far from the decision boundary. If that single transaction is removed and the SVM is retrained on the rest of the data, what is the most likely effect on the boundary?",
+    "options": [
+      "The boundary stays essentially unchanged, since points far from the margin have no influence on its position",
+      "The boundary shifts noticeably toward the class of the removed transaction, since every point is a support vector",
+      "The boundary always becomes undefined once any single training point is removed from the dataset",
+      "The margin width is forced to shrink regardless of which particular point happens to be removed"
+    ],
+    "correct": 0,
+    "explanation": "Only support vectors (points on or inside the margin) affect the boundary; a point far from the margin can be removed without changing the solution."
+  },
+  {
+    "id": "svm-003",
+    "topic": "svm",
+    "subtopic": "Max-margin intuition & support vectors",
+    "difficulty": "analysis",
+    "q": "Two different straight lines both separate a training set of two classes perfectly, but one has a much wider margin than the other. Why would the wider-margin line typically be preferred for an unseen, borderline test point?",
+    "options": [
+      "A wider margin leaves more room before a nearby new point would cross to the wrong side, so it tends to generalize better",
+      "A wider margin always corresponds to a smaller number of support vectors, which makes training noticeably faster in practical deployments",
+      "A wider margin guarantees zero training error no matter how heavily the two classes happen to overlap",
+      "A wider margin means the kernel function being used must be linear rather than some non-linear kernel"
+    ],
+    "correct": 0,
+    "explanation": "Among boundaries that fit the training data equally well, the widest-margin one is the most robust to small perturbations in new data."
+  },
+  {
+    "id": "svm-004",
+    "topic": "svm",
+    "subtopic": "Max-margin intuition & support vectors",
+    "difficulty": "recall",
+    "q": "What best describes the 'margin' in a support vector machine?",
+    "options": [
+      "The width of the gap between the decision boundary and the nearest points of each class",
+      "The total number of misclassified points recorded across the whole training set once training has finished",
+      "The angle formed between the decision boundary and each original feature axis",
+      "The average distance measured between every possible pair of training points"
+    ],
+    "correct": 0,
+    "explanation": "The margin is the empty corridor separating the two classes; SVM chooses the boundary that makes this corridor as wide as possible."
+  },
+  {
+    "id": "svm-005",
+    "topic": "svm",
+    "subtopic": "Max-margin intuition & support vectors",
+    "difficulty": "application",
+    "q": "An email spam filter built with SVM classifies a borderline email that lands just inside the margin, close to the decision boundary, rather than far on the 'spam' side. What does this position suggest about the model's confidence in that particular prediction?",
+    "options": [
+      "The model is relatively unconfident about this email, since it sits close to the boundary separating the two classes",
+      "The model is certain the email is spam, since any classification inside the margin is treated as maximum confidence",
+      "The email automatically becomes a permanent support vector, even once the model is retrained later",
+      "The prediction is invalid, since any point that falls inside the margin cannot be classified at all"
+    ],
+    "correct": 0,
+    "explanation": "Distance from the decision boundary is commonly read as a proxy for confidence; points near the boundary are the most ambiguous cases."
+  },
+  {
+    "id": "svm-006",
+    "topic": "svm",
+    "subtopic": "Max-margin intuition & support vectors",
+    "difficulty": "analysis",
+    "q": "After training an SVM on 2,000 labeled loan applications, only 40 of them turn out to be support vectors. What does this indicate about the remaining 1,960 applications?",
+    "options": [
+      "They lie safely on the correct side of the margin and do not influence the position of the decision boundary",
+      "They were effectively discarded and ignored entirely throughout the training algorithm's execution without exception",
+      "They are all misclassified loan applications sitting on the wrong side of the boundary",
+      "They had to be manually removed before the kernel trick could even be applied to the data"
+    ],
+    "correct": 0,
+    "explanation": "Only points on or violating the margin become support vectors; the rest are classified comfortably and play no role in defining the boundary."
+  },
+  {
+    "id": "svm-007",
+    "topic": "svm",
+    "subtopic": "Max-margin intuition & support vectors",
+    "difficulty": "recall",
+    "q": "In a trained SVM, what determines the exact position and orientation of the decision boundary?",
+    "options": [
+      "A weighted combination of only the support vectors, not every training point",
+      "A simple average taken across every training point, regardless of its class",
+      "The single training point that is farthest from the center of its class",
+      "The total count of features used to numerically describe each training point and nothing else"
+    ],
+    "correct": 0,
+    "explanation": "The weight vector defining the boundary is built from the support vectors alone; all other points could be removed without changing the solution."
+  },
+  {
+    "id": "svm-008",
+    "topic": "svm",
+    "subtopic": "Max-margin intuition & support vectors",
+    "difficulty": "application",
+    "q": "In a gene-expression classification task separating cancerous from healthy tissue samples, a handful of borderline samples end up as support vectors while the rest of the samples sit far from the boundary. If ten new, unambiguous healthy samples are added far from the boundary and the model is retrained, what is most likely to happen to the decision boundary?",
+    "options": [
+      "It remains essentially the same, since the new points are not close enough to the margin to become support vectors",
+      "It shifts substantially to accommodate the ten new, unambiguous healthy samples that were just added",
+      "It always redraws itself so that it sits exactly centered between every single point in the dataset",
+      "It automatically becomes a hard-margin boundary the moment any additional training data is added"
+    ],
+    "correct": 0,
+    "explanation": "Points that are not near the margin do not become support vectors, so adding clearly-classified points typically leaves the boundary unchanged."
+  },
+  {
+    "id": "svm-009",
+    "topic": "svm",
+    "subtopic": "Max-margin intuition & support vectors",
+    "difficulty": "analysis",
+    "q": "A dataset contains one especially influential support vector near the decision boundary. A practitioner adds an exact duplicate of this point to the training set and retrains. What is the most likely outcome?",
+    "options": [
+      "The decision boundary stays very similar, since the duplicate reinforces a position the boundary already accounted for",
+      "The boundary rotates sharply away from that region entirely, treating the duplicate as conflicting evidence in every case",
+      "Training fails outright and throws an error, because SVM cannot mathematically handle duplicate points",
+      "The margin width necessarily doubles in size to compensate for the newly duplicated support vector"
+    ],
+    "correct": 0,
+    "explanation": "Duplicating a support vector does not introduce new information about the class boundary, so the solution changes little, if at all."
+  },
+  {
+    "id": "svm-010",
+    "topic": "svm",
+    "subtopic": "Max-margin intuition & support vectors",
+    "difficulty": "recall",
+    "q": "The decision boundary learned by a maximum-margin classifier is chosen to be as far as possible from the ______ of each class.",
+    "options": [
+      "nearest points",
+      "class centroids",
+      "class outliers",
+      "feature means"
+    ],
+    "correct": 0,
+    "explanation": "Maximum-margin classification is defined relative to the closest points of each class (the support vectors), not the class centroid or mean."
+  },
+  {
+    "id": "svm-011",
+    "topic": "svm",
+    "subtopic": "Max-margin intuition & support vectors",
+    "difficulty": "application",
+    "q": "A retailer trains an SVM to separate customers likely to churn from those who are not, based on purchase history. Why might the support vectors in this model correspond to the most 'ambiguous' customers rather than the clearly loyal or clearly disengaged ones?",
+    "options": [
+      "Support vectors are the points closest to the decision boundary, which are exactly the hardest, most borderline cases to classify",
+      "Support vectors are simply the customers whose purchase history happens to contain the most missing data points",
+      "Support vectors are chosen completely at random before the training optimization process has even begun its search for every dataset",
+      "Support vectors are always exactly the customers who have accumulated the highest total historical spending"
+    ],
+    "correct": 0,
+    "explanation": "Because support vectors sit on or near the margin, they correspond to the cases the model finds hardest to separate confidently."
+  },
+  {
+    "id": "svm-012",
+    "topic": "svm",
+    "subtopic": "Max-margin intuition & support vectors",
+    "difficulty": "analysis",
+    "q": "Why is 'maximum margin' considered a better selection criterion than simply 'any boundary that separates the training classes with zero error'?",
+    "options": [
+      "Among many boundaries with zero training error, maximizing the margin picks the one least sensitive to small shifts in new data",
+      "Maximum margin is only a cosmetic tie-breaking rule with no real effect on prediction accuracy in practice",
+      "Zero-training-error boundaries are mathematically impossible to compute, so margin maximization is required instead",
+      "Maximum margin guarantees that the kernel trick will always be completely unnecessary for any dataset"
+    ],
+    "correct": 0,
+    "explanation": "Many separators can achieve zero training error; the margin criterion selects among them the one most robust to new, nearby data points."
+  },
+  {
+    "id": "svm-013",
+    "topic": "svm",
+    "subtopic": "Max-margin intuition & support vectors",
+    "difficulty": "recall",
+    "q": "In a dataset with more than two features, what does the SVM decision boundary become, instead of a simple 2D line?",
+    "options": [
+      "A hyperplane in the higher-dimensional feature space",
+      "A single point representing the class centroid",
+      "A circular boundary centered on the coordinate origin",
+      "An undefined shape, since SVM only works with two features"
+    ],
+    "correct": 0,
+    "explanation": "A line generalizes to a hyperplane once the feature space has more than two dimensions; the max-margin idea applies the same way."
+  },
+  {
+    "id": "svm-014",
+    "topic": "svm",
+    "subtopic": "Max-margin intuition & support vectors",
+    "difficulty": "application",
+    "q": "A manufacturing quality-control system uses SVM to flag defective parts from sensor readings. Engineers notice that parts clearly within normal operating ranges are never support vectors, while borderline parts near the accept/reject threshold usually are. What does this confirm about how SVM builds its decision rule?",
+    "options": [
+      "The decision boundary is shaped mainly by the points nearest the class boundary, not by the clearly 'easy' points",
+      "The decision boundary is shaped equally by every single data point ever collected in the training set",
+      "Support vectors are chosen based purely on the order in which the sensor data was originally collected rather than any model logic",
+      "Borderline parts are excluded from the training set entirely as soon as engineers first identify them"
+    ],
+    "correct": 0,
+    "explanation": "This matches the core property of SVM: only the points nearest the boundary (support vectors) determine where that boundary sits."
+  },
+  {
+    "id": "svm-015",
+    "topic": "svm",
+    "subtopic": "Soft margin & the C parameter",
+    "difficulty": "recall",
+    "q": "Why was the soft-margin SVM formulation introduced as an extension of the original (hard-margin) version?",
+    "options": [
+      "To allow some points to violate the margin or be misclassified when the data isn't perfectly separable",
+      "To completely remove the need for ever computing a decision boundary during model training",
+      "To guarantee that a single unique global optimum exists for absolutely every possible dataset",
+      "To allow SVM to be trained successfully without requiring any labeled training data whatsoever for any kind of classification task"
+    ],
+    "correct": 0,
+    "explanation": "Soft-margin SVM introduces controlled tolerance for margin violations, letting it handle data that hard-margin SVM could never find a feasible boundary for."
+  },
+  {
+    "id": "svm-016",
+    "topic": "svm",
+    "subtopic": "Soft margin & the C parameter",
+    "difficulty": "application",
+    "q": "A hospital's dataset of patient vitals has two diagnostic classes with a small number of genuinely overlapping cases that no straight boundary can perfectly separate. Which SVM formulation should be used, and why?",
+    "options": [
+      "Soft-margin SVM, since it tolerates some margin violations instead of requiring perfect separation",
+      "Hard-margin SVM, since it always finds a feasible solution no matter how much the classes overlap",
+      "Either formulation performs exactly identically whenever the training data contains overlap",
+      "Neither formulation applies; overlapping classes require logistic regression specifically"
+    ],
+    "correct": 0,
+    "explanation": "Hard-margin SVM has no mechanism for overlap and becomes infeasible; soft-margin SVM exists precisely to handle such cases."
+  },
+  {
+    "id": "svm-017",
+    "topic": "svm",
+    "subtopic": "Soft margin & the C parameter",
+    "difficulty": "recall",
+    "q": "In soft-margin SVM, what trade-off does the parameter C control?",
+    "options": [
+      "How strongly margin violations are penalized versus how wide the margin is kept",
+      "How many of the original input features end up being included in training every time",
+      "Which specific kernel function the trained model is permitted to use",
+      "How many total iterations the training algorithm is allowed to run for"
+    ],
+    "correct": 0,
+    "explanation": "C weights the penalty for margin violations against the goal of keeping the margin wide, directly shaping the bias-variance trade-off."
+  },
+  {
+    "id": "svm-018",
+    "topic": "svm",
+    "subtopic": "Soft margin & the C parameter",
+    "difficulty": "application",
+    "q": "A credit-risk model trained with a very small C value ends up with a wide margin but several misclassified training applicants. What does this setting of C prioritize?",
+    "options": [
+      "Tolerating some misclassification in exchange for a simpler, wider-margin boundary that may generalize better",
+      "Eliminating every single possible misclassification, no matter how narrow the margin becomes",
+      "Switching automatically to a non-linear kernel in order to fix the remaining misclassifications regardless of margin width",
+      "Disabling the regularization term entirely so that violations are never penalized at all"
+    ],
+    "correct": 0,
+    "explanation": "Small C lightly penalizes violations, so the optimizer favors a wide, simple margin even at the cost of some training errors."
+  },
+  {
+    "id": "svm-019",
+    "topic": "svm",
+    "subtopic": "Soft margin & the C parameter",
+    "difficulty": "analysis",
+    "q": "A team increases C to a very large value on a noisy customer-complaint dataset and notices training accuracy rises sharply while validation accuracy drops. What does this pattern suggest about the chosen C?",
+    "options": [
+      "C is too large, causing the model to fit the training noise too tightly and overfit",
+      "C is too small, causing the model to underfit nearly every training example it sees",
+      "C has no relationship to overfitting in SVM, so something else is responsible",
+      "The kernel function must be the sole cause of this pattern, independent of C entirely"
+    ],
+    "correct": 0,
+    "explanation": "Large C heavily penalizes any violation, pushing the boundary to fit training points (including noise) tightly, a classic overfitting signature."
+  },
+  {
+    "id": "svm-020",
+    "topic": "svm",
+    "subtopic": "Soft margin & the C parameter",
+    "difficulty": "analysis",
+    "q": "A data scientist evaluates an SVM at several C values (0.01, 1, 100) and plots training versus validation accuracy for each. What is this process most likely intended to diagnose?",
+    "options": [
+      "Where on the underfitting-to-overfitting spectrum the model performs best on unseen data",
+      "Whether the dataset still contains missing values that still need imputing first",
+      "Which particular programming library produces the fastest training time overall",
+      "Whether the class labels have already been encoded correctly as 0 and 1 values"
+    ],
+    "correct": 0,
+    "explanation": "Sweeping C is the standard way to explore the trade-off it controls, searching for the setting that generalizes best."
+  },
+  {
+    "id": "svm-021",
+    "topic": "svm",
+    "subtopic": "Soft margin & the C parameter",
+    "difficulty": "recall",
+    "q": "In soft-margin SVM, a slack value assigned to a training point measures ______.",
+    "options": [
+      "how far that point violates its required margin constraint",
+      "how many total features that particular point has in the dataset",
+      "how similar that point is to the nearest support vector",
+      "how early that point appeared in the training sequence"
+    ],
+    "correct": 0,
+    "explanation": "Slack is a per-point measure of constraint violation: zero means no violation, and larger values mean deeper intrusion into or past the margin."
+  },
+  {
+    "id": "svm-022",
+    "topic": "svm",
+    "subtopic": "Soft margin & the C parameter",
+    "difficulty": "application",
+    "q": "In a trained soft-margin SVM, one applicant's data point has zero slack, while another applicant's point has a slack value indicating it has crossed the decision boundary. What does this difference tell us about the two applicants?",
+    "options": [
+      "The first applicant fully satisfies the margin requirement, while the second is actually misclassified",
+      "Both applicants end up being treated in exactly the same way by the final trained model no matter the slack values",
+      "The first applicant was excluded entirely from training, unlike the second applicant",
+      "Slack values only ever apply to points that were never considered support vectors"
+    ],
+    "correct": 0,
+    "explanation": "Zero slack means a point meets the original hard-margin condition; a large enough slack means the point has crossed to the wrong side entirely."
+  },
+  {
+    "id": "svm-023",
+    "topic": "svm",
+    "subtopic": "Soft margin & the C parameter",
+    "difficulty": "recall",
+    "q": "Which statement best describes the regularization parameter C in soft-margin SVM?",
+    "options": [
+      "It is a hyperparameter the practitioner must tune, balancing margin width against training violations",
+      "It is automatically computed from the number of features and never needs tuning",
+      "It only ever matters in situations where a non-linear kernel such as RBF is used for any dataset whatsoever",
+      "It represents the exact number of support vectors the model will produce"
+    ],
+    "correct": 0,
+    "explanation": "C is a user-set hyperparameter, typically tuned via cross-validation, and applies regardless of which kernel is chosen."
+  },
+  {
+    "id": "svm-024",
+    "topic": "svm",
+    "subtopic": "Soft margin & the C parameter",
+    "difficulty": "application",
+    "q": "An e-commerce fraud team trains an SVM with a very high C on a dataset where a few transactions are mislabeled due to human error. What risk does this setting introduce?",
+    "options": [
+      "The model may bend its boundary sharply to accommodate the mislabeled points, hurting generalization to new transactions",
+      "The model will automatically detect and silently remove the mislabeled transactions before fitting begins",
+      "The model becomes completely immune to mislabeled data no matter how high C ends up being set",
+      "The kernel function automatically switches itself to RBF specifically in order to compensate for this"
+    ],
+    "correct": 0,
+    "explanation": "High C penalizes violations heavily, so the model will distort its boundary to avoid even the violations caused by label noise."
+  },
+  {
+    "id": "svm-025",
+    "topic": "svm",
+    "subtopic": "Soft margin & the C parameter",
+    "difficulty": "recall",
+    "q": "Which description correctly matches a 'low C' setting in soft-margin SVM to its effect?",
+    "options": [
+      "Strong regularization, prioritizing a wide margin over fitting every training point",
+      "Weak regularization, prioritizing fitting every training point over margin width",
+      "No regularization at all, equivalent to removing the margin concept entirely",
+      "A setting that only ever affects which kernel function can be selected for training and never anything else"
+    ],
+    "correct": 0,
+    "explanation": "Low C makes violations cheap, so the optimizer leans toward a wide, simpler margin rather than fitting every point exactly."
+  },
+  {
+    "id": "svm-026",
+    "topic": "svm",
+    "subtopic": "Soft margin & the C parameter",
+    "difficulty": "analysis",
+    "q": "Two SVMs are trained on the same churn dataset: Model X uses a small C and scores 85% on both training and validation sets; Model Y uses a very large C and scores 99% on training but only 80% on validation. What does this comparison most likely indicate about Model Y?",
+    "options": [
+      "Model Y has overfit the training data by penalizing margin violations too aggressively",
+      "Model Y underfit the data badly due to applying too much regularization overall on this churn dataset",
+      "Model Y's kernel choice, not its C value, explains the accuracy gap",
+      "The comparison is inconclusive because C does not affect generalization"
+    ],
+    "correct": 0,
+    "explanation": "A large train-validation gap after raising C is the hallmark of overfitting caused by too little tolerance for margin violations."
+  },
+  {
+    "id": "svm-027",
+    "topic": "svm",
+    "subtopic": "Soft margin & the C parameter",
+    "difficulty": "application",
+    "q": "A team labeling medical images for an SVM classifier expects a small percentage of labeling mistakes in their training set. Why might they deliberately choose a smaller C rather than a very large one?",
+    "options": [
+      "A smaller C tolerates a few margin violations without drastically distorting the boundary around mislabeled points",
+      "A smaller C guarantees that every single mislabeled image gets automatically corrected during training",
+      "A smaller C forces the model to exclusively use a linear kernel, ruling out every other option",
+      "A smaller C entirely removes any need to validate the trained model on held-out data afterward"
+    ],
+    "correct": 0,
+    "explanation": "A smaller C keeps the boundary smooth and less reactive to individual noisy or mislabeled points, which is desirable when some label noise is expected."
+  },
+  {
+    "id": "svm-028",
+    "topic": "svm",
+    "subtopic": "Soft margin & the C parameter",
+    "difficulty": "recall",
+    "q": "Which statement correctly contrasts hard-margin and soft-margin SVM?",
+    "options": [
+      "Hard-margin requires perfect separation with no tolerance for violations, while soft-margin allows controlled violations",
+      "Hard-margin and soft-margin formulations always end up producing exactly identical decision boundaries in every practical scenario",
+      "Soft-margin removes the entire concept of a margin from the optimization problem completely",
+      "Hard-margin SVM formulations are only ever usable when paired with non-linear kernels"
+    ],
+    "correct": 0,
+    "explanation": "Hard-margin SVM has no slack mechanism and becomes infeasible on overlapping data, which is exactly the gap soft-margin SVM fills."
+  },
+  {
+    "id": "svm-029",
+    "topic": "svm",
+    "subtopic": "Soft margin & the C parameter",
+    "difficulty": "analysis",
+    "q": "A practitioner tunes C using cross-validation and finds that both very small and very large values perform worse than a middle value on held-out data. What general lesson does this illustrate about C?",
+    "options": [
+      "C has a sweet spot; both extremes push the model toward underfitting or overfitting respectively",
+      "C should always be set as high as possible to guarantee the best possible accuracy",
+      "C should always be set as low as possible in order to avoid any risk of overfitting at all",
+      "Cross-validation can never meaningfully evaluate the effect that the C parameter actually has in this situation"
+    ],
+    "correct": 0,
+    "explanation": "This is the expected bias-variance pattern for C: too low underfits, too high overfits, and the best setting usually lies in between."
+  },
+  {
+    "id": "svm-030",
+    "topic": "svm",
+    "subtopic": "Soft margin & the C parameter",
+    "difficulty": "recall",
+    "q": "Which of the following best completes this statement: 'In soft-margin SVM, a higher C means mistakes on the training set are treated as ______.'",
+    "options": [
+      "more costly, pushing the model to avoid them even at the expense of a narrower margin",
+      "irrelevant, since C is commonly said to only affect which kernel function is used",
+      "treated as far less costly, which would end up encouraging a much wider margin instead",
+      "impossible, since a high enough C supposedly guarantees zero training errors always"
+    ],
+    "correct": 0,
+    "explanation": "Larger C increases the weight of the slack-penalty term, making the model more averse to any margin violation."
+  },
+  {
+    "id": "svm-031",
+    "topic": "svm",
+    "subtopic": "Kernel trick (linear/polynomial/RBF)",
+    "difficulty": "recall",
+    "q": "The kernel trick in SVM allows the model to ______.",
+    "options": [
+      "implicitly map data into a higher-dimensional space without explicitly computing the transformation",
+      "automatically select the single optimal value of C without requiring any manual tuning",
+      "directly reduce the total number of features present in the original dataset itself",
+      "skip the training process entirely and classify new points by raw distance alone"
+    ],
+    "correct": 0,
+    "explanation": "Because training only needs dot products, replacing them with a kernel function implicitly computes dot products in a higher-dimensional space, enabling non-linear boundaries without ever constructing that space directly."
+  },
+  {
+    "id": "svm-032",
+    "topic": "svm",
+    "subtopic": "Kernel trick (linear/polynomial/RBF)",
+    "difficulty": "recall",
+    "q": "Which kernel is generally the best default choice when a dataset's true decision boundary has an unknown, non-linear shape?",
+    "options": [
+      "RBF (Gaussian) kernel",
+      "Standard linear kernel",
+      "Degree-10 polynomial kernel",
+      "Cosine similarity kernel"
+    ],
+    "correct": 0,
+    "explanation": "The RBF kernel maps into a very high (effectively infinite) dimensional space and is the most widely used default for capturing unknown non-linear structure."
+  },
+  {
+    "id": "svm-033",
+    "topic": "svm",
+    "subtopic": "Kernel trick (linear/polynomial/RBF)",
+    "difficulty": "application",
+    "q": "A dataset forms two concentric rings — one class inside, the other forming a ring around it — and no straight line in the original 2D space can separate them. What is the standard SVM approach for this situation?",
+    "options": [
+      "Apply a non-linear kernel such as RBF so the data becomes separable after an implicit higher-dimensional mapping",
+      "Increase the value of C until the plain linear boundary eventually manages to fit the rings",
+      "Simply remove the entire inner-ring class from the dataset before any training begins at all to avoid dealing with it",
+      "Switch to a hard-margin formulation, which is said to handle ring-shaped data natively"
+    ],
+    "correct": 0,
+    "explanation": "This is the classic motivating example for the kernel trick: a non-linear kernel can make concentric-ring data linearly separable in an implicit higher-dimensional space."
+  },
+  {
+    "id": "svm-034",
+    "topic": "svm",
+    "subtopic": "Kernel trick (linear/polynomial/RBF)",
+    "difficulty": "recall",
+    "q": "When is the linear kernel typically the most sensible choice for an SVM?",
+    "options": [
+      "When the data is already close to linearly separable in its original feature space",
+      "When the dataset happens to contain fewer than ten total training examples",
+      "When every single feature in the dataset is categorical rather than numeric without exception",
+      "When the two classes happen to be arranged as a pair of concentric rings"
+    ],
+    "correct": 0,
+    "explanation": "The linear kernel is equivalent to no transformation at all; it is the right default exactly when the data doesn't need non-linear flexibility."
+  },
+  {
+    "id": "svm-035",
+    "topic": "svm",
+    "subtopic": "Kernel trick (linear/polynomial/RBF)",
+    "difficulty": "application",
+    "q": "A spam-detection system represents each email as a 20,000-dimension TF-IDF vector, where most entries are zero. Which kernel is generally most suitable for this kind of high-dimensional, sparse data?",
+    "options": [
+      "The linear kernel, since high-dimensional sparse data is often already linearly separable and a linear kernel avoids unnecessary complexity",
+      "A high-degree polynomial kernel, since more feature dimensions are always assumed to need more non-linearity",
+      "The RBF kernel, since it is supposedly always the single strongest possible choice for any text classification data",
+      "No kernel at all remains usable once the raw text data has been converted into TF-IDF vectors"
+    ],
+    "correct": 0,
+    "explanation": "High-dimensional sparse text representations are frequently already linearly separable, so a linear kernel is the standard, efficient choice."
+  },
+  {
+    "id": "svm-036",
+    "topic": "svm",
+    "subtopic": "Kernel trick (linear/polynomial/RBF)",
+    "difficulty": "recall",
+    "q": "What is the general purpose of the polynomial kernel in SVM?",
+    "options": [
+      "To implicitly capture interactions between features up to a chosen degree, enabling curved decision boundaries",
+      "To reduce the entire input dataset down to only its single most important feature",
+      "To automatically convert every categorical feature into a numeric representation",
+      "To guarantee that the resulting margin is wider than with any other possible kernel no matter the dataset or task at hand"
+    ],
+    "correct": 0,
+    "explanation": "The polynomial kernel implicitly works in the space of degree-k combinations of the original features, letting the boundary curve according to feature interactions."
+  },
+  {
+    "id": "svm-037",
+    "topic": "svm",
+    "subtopic": "Kernel trick (linear/polynomial/RBF)",
+    "difficulty": "application",
+    "q": "A bioinformatics team is classifying protein sequences where the relationship between sequence features and function is known to be highly non-linear and complex. Which kernel choice would most directly address this?",
+    "options": [
+      "A non-linear kernel such as RBF, which can model complex curved boundaries",
+      "A linear kernel, since biological data is always linearly separable",
+      "No kernel at all, relying purely on raw untransformed feature distances and nothing else",
+      "A kernel is unnecessary since SVM cannot model non-linear relationships"
+    ],
+    "correct": 0,
+    "explanation": "When the true relationship is known to be non-linear and complex, a flexible non-linear kernel like RBF is the appropriate choice."
+  },
+  {
+    "id": "svm-038",
+    "topic": "svm",
+    "subtopic": "Kernel trick (linear/polynomial/RBF)",
+    "difficulty": "recall",
+    "q": "What is the key computational advantage of the kernel trick over explicitly transforming every data point into a higher-dimensional space?",
+    "options": [
+      "It never requires explicitly constructing the higher-dimensional feature vectors, only computing a kernel value",
+      "It always produces a strictly smaller number of features than the original dataset had",
+      "It completely eliminates any need to ever choose a value for the C hyperparameter at all",
+      "It guarantees that the resulting transformed space always has exactly two dimensions"
+    ],
+    "correct": 0,
+    "explanation": "The kernel trick replaces an explicit, possibly infeasible transformation with a single scalar kernel computation that is equivalent to the dot product in that space."
+  },
+  {
+    "id": "svm-039",
+    "topic": "svm",
+    "subtopic": "Kernel trick (linear/polynomial/RBF)",
+    "difficulty": "analysis",
+    "q": "A team keeps increasing the degree of a polynomial kernel on a small training set and finds training accuracy keeps rising while validation accuracy falls. What does this suggest about overly high polynomial degrees?",
+    "options": [
+      "Very high-degree polynomial kernels can produce an overly complex boundary that overfits the training data",
+      "Polynomial degree is said to have no effect whatsoever on model complexity in SVM",
+      "The drop in validation accuracy must be caused by mislabeled data, not kernel degree in this particular experiment",
+      "Higher polynomial degree always improves generalization regardless of dataset size"
+    ],
+    "correct": 0,
+    "explanation": "Increasing polynomial degree increases model flexibility; past a point this starts fitting training noise rather than real structure."
+  },
+  {
+    "id": "svm-040",
+    "topic": "svm",
+    "subtopic": "Kernel trick (linear/polynomial/RBF)",
+    "difficulty": "recall",
+    "q": "Conceptually, how does the RBF kernel measure similarity between two data points?",
+    "options": [
+      "As a value that decreases smoothly the farther apart the two points are",
+      "As a fixed constant that does not depend on the distance between points at all",
+      "As the raw dot product of the two points, with no distance component",
+      "As simply the number of features the two points happen to share in common"
+    ],
+    "correct": 0,
+    "explanation": "The RBF kernel is a Gaussian function of distance, so similarity is highest for nearby points and fades smoothly with distance."
+  },
+  {
+    "id": "svm-041",
+    "topic": "svm",
+    "subtopic": "Kernel trick (linear/polynomial/RBF)",
+    "difficulty": "application",
+    "q": "A fraud-detection model trained with a linear kernel performs poorly because fraudulent and legitimate transactions form a complex, curved boundary in feature space. What is the most direct fix within the SVM framework?",
+    "options": [
+      "Switch to a non-linear kernel such as RBF or polynomial to better fit the curved boundary",
+      "Reduce the regularization parameter C all the way down to exactly zero instead",
+      "Simply remove all of the support vectors identified by the original linear kernel entirely before retraining",
+      "Convert every single feature into a categorical one before retraining the model"
+    ],
+    "correct": 0,
+    "explanation": "A linear kernel cannot represent curved boundaries; switching to a non-linear kernel directly addresses that mismatch."
+  },
+  {
+    "id": "svm-042",
+    "topic": "svm",
+    "subtopic": "Kernel trick (linear/polynomial/RBF)",
+    "difficulty": "recall",
+    "q": "Why can't just any similarity function be used as a valid SVM kernel?",
+    "options": [
+      "A valid kernel must correspond to an actual inner product in some (possibly implicit) feature space",
+      "Any function that returns a positive number automatically qualifies as a valid kernel",
+      "Only functions that are written as a sum of squares can ever qualify as valid kernels",
+      "Kernels must always output numeric values restricted strictly between negative one and zero"
+    ],
+    "correct": 0,
+    "explanation": "A function only works as a kernel if it is mathematically equivalent to a dot product after some feature mapping; not every similarity measure satisfies this."
+  },
+  {
+    "id": "svm-043",
+    "topic": "svm",
+    "subtopic": "Kernel trick (linear/polynomial/RBF)",
+    "difficulty": "application",
+    "q": "A retailer's customer segments form curved, overlapping clusters in feature space rather than being separated by a straight line. Which type of SVM kernel is best suited to this shape of data?",
+    "options": [
+      "A non-linear kernel such as RBF",
+      "The ordinary plain linear kernel",
+      "No kernel, since SVM cannot handle any curved boundary",
+      "A kernel is irrelevant since clustering problems don't apply to SVM"
+    ],
+    "correct": 0,
+    "explanation": "Curved, overlapping class shapes call for a non-linear kernel capable of bending the decision boundary to match that structure."
+  },
+  {
+    "id": "svm-044",
+    "topic": "svm",
+    "subtopic": "Kernel trick (linear/polynomial/RBF)",
+    "difficulty": "analysis",
+    "q": "Given two candidate datasets — one with many features and relatively few samples that looks close to linearly separable, and another with few features but a clearly curved class boundary — how should the kernel choice typically differ between them?",
+    "options": [
+      "Use a linear kernel for the first dataset and a non-linear kernel like RBF for the second",
+      "Use the RBF kernel for both datasets regardless of their underlying data structure without ever checking first",
+      "Use a linear kernel for both datasets regardless of their underlying structure",
+      "The kernel choice should depend only on the number of classes, not the data shape"
+    ],
+    "correct": 0,
+    "explanation": "Kernel choice should match the actual separability of the data: linear when the boundary is already roughly linear, non-linear when it clearly is not."
+  },
+  {
+    "id": "svm-045",
+    "topic": "svm",
+    "subtopic": "Kernel trick (linear/polynomial/RBF)",
+    "difficulty": "recall",
+    "q": "Compared to the linear, polynomial, and RBF kernels, the sigmoid kernel has the notable caveat that ______.",
+    "options": [
+      "it is only guaranteed to behave like a valid kernel for certain parameter settings",
+      "it cannot ever be mathematically computed for ordinary, real-valued numeric data under any parameter setting",
+      "it is the only kernel that works with categorical features directly",
+      "it always produces a noticeably wider margin than any of the other three kernels"
+    ],
+    "correct": 0,
+    "explanation": "Unlike the other named kernels, the sigmoid kernel does not always satisfy the mathematical conditions required of a valid kernel, so it is only usable for some parameter choices."
+  },
+  {
+    "id": "svm-046",
+    "topic": "svm",
+    "subtopic": "Kernel trick (linear/polynomial/RBF)",
+    "difficulty": "application",
+    "q": "A computer-vision team trains an SVM directly on raw pixel intensities for a small image classification task, where the true boundary between classes is expected to be complex and non-linear. Which kernel is the most commonly recommended starting point?",
+    "options": [
+      "RBF, since it can flexibly capture the non-linear structure",
+      "it cannot ever be computed for real-valued data",
+      "it is the only kernel that works with categorical features directly",
+      "A kernel designed exclusively for purely categorical input data"
+    ],
+    "correct": 0,
+    "explanation": "When a complex non-linear boundary is expected, RBF is the typical starting point due to its flexibility in modeling non-linear structure."
+  },
+  {
+    "id": "svm-047",
+    "topic": "svm",
+    "subtopic": "Kernel trick (linear/polynomial/RBF)",
+    "difficulty": "recall",
+    "q": "Why is the kernel trick especially valuable when the implicit feature mapping would be extremely high- or infinite-dimensional, as with the RBF kernel?",
+    "options": [
+      "It lets the model work in that space using only kernel values, avoiding ever representing such a huge vector explicitly",
+      "It always caps the implicit dimensionality at exactly two dimensions, no matter the kernel chosen",
+      "It completely removes the need for any decision boundary at all within that transformed space",
+      "It forces the resulting dimensionality to match the number of training examples exactly every time"
+    ],
+    "correct": 0,
+    "explanation": "Without the kernel trick, working in an infinite-dimensional space would be computationally impossible; the trick sidesteps this by only ever needing scalar kernel values."
+  },
+  {
+    "id": "svm-048",
+    "topic": "svm",
+    "subtopic": "Kernel trick (linear/polynomial/RBF)",
+    "difficulty": "analysis",
+    "q": "An SVM with a linear kernel is applied to a dataset where the two classes form a clearly curved, non-linear boundary, and the model performs poorly on both training and test data. What is the most likely explanation?",
+    "options": [
+      "The linear kernel is too simple to capture the curved boundary, causing the model to underfit",
+      "The value of C must be set incorrectly, since kernel choice cannot cause underfitting and nothing else could explain it",
+      "The dataset must simply contain too few samples for any kernel choice to work",
+      "The linear kernel always outperforms non-linear kernels, so some other bug must exist"
+    ],
+    "correct": 0,
+    "explanation": "Poor performance on both training and test data is the signature of underfitting; here it stems from the kernel being too simple for the true boundary shape."
+  },
+  {
+    "id": "svm-049",
+    "topic": "svm",
+    "subtopic": "The gamma parameter",
+    "difficulty": "recall",
+    "q": "In an RBF-kernel SVM, what does the gamma parameter control?",
+    "options": [
+      "How far the influence of a single training point reaches in shaping the decision boundary",
+      "The trade-off between margin width and misclassification, replacing C entirely",
+      "It determines the exact number of support vectors that the model will end up producing every single time",
+      "It determines whether the kernel function itself remains mathematically valid"
+    ],
+    "correct": 0,
+    "explanation": "Gamma scales the RBF kernel's distance term, controlling how localized or far-reaching each training point's influence is."
+  },
+  {
+    "id": "svm-050",
+    "topic": "svm",
+    "subtopic": "The gamma parameter",
+    "difficulty": "analysis",
+    "q": "A hospital readmission model uses an RBF-kernel SVM with a very large gamma value. The resulting decision boundary wraps tightly around individual training patients and performs poorly on new patients. What does this illustrate?",
+    "options": [
+      "Very large gamma makes the boundary highly localized and prone to overfitting individual training points",
+      "Very large gamma is supposed to always improve generalization to brand-new patients",
+      "Gamma supposedly has no effect at all on how tightly the boundary fits the training data",
+      "The poor performance must be caused by C, since gamma cannot affect overfitting"
+    ],
+    "correct": 0,
+    "explanation": "Large gamma narrows each point's influence, letting the boundary curve tightly around individual points — an overfitting risk analogous to large C."
+  },
+  {
+    "id": "svm-051",
+    "topic": "svm",
+    "subtopic": "The gamma parameter",
+    "difficulty": "application",
+    "q": "An RBF-kernel SVM trained with a very small gamma produces an almost straight, overly simple decision boundary that fails to capture real class structure in the data. What does this setting of gamma correspond to?",
+    "options": [
+      "Each training point's influence reaches very far, smoothing the boundary toward something close to linear",
+      "Each training point's influence instead becomes extremely narrow and tightly localized in space despite the small gamma value used here",
+      "Gamma has effectively been disabled entirely, so the kernel no longer behaves like RBF at all",
+      "The model has automatically switched itself over to using a polynomial kernel instead"
+    ],
+    "correct": 0,
+    "explanation": "Small gamma makes each point's influence broad and far-reaching, which smooths the boundary and can push it toward underfitting."
+  },
+  {
+    "id": "svm-052",
+    "topic": "svm",
+    "subtopic": "The gamma parameter",
+    "difficulty": "recall",
+    "q": "When using the RBF kernel, which two hyperparameters are typically tuned together via cross-validation to balance underfitting and overfitting?",
+    "options": [
+      "C and gamma",
+      "The kernel degree and the number of classes",
+      "The learning rate and batch size",
+      "The number of support vectors and the margin width"
+    ],
+    "correct": 0,
+    "explanation": "C and gamma jointly control model complexity for RBF-kernel SVM and are commonly tuned together, often via grid search."
+  },
+  {
+    "id": "svm-053",
+    "topic": "svm",
+    "subtopic": "The gamma parameter",
+    "difficulty": "analysis",
+    "q": "A team runs a grid search over gamma values (0.001, 0.1, 1, 10, 100) for an RBF SVM and records validation accuracy at each. What is this search primarily trying to find?",
+    "options": [
+      "The gamma value that balances a boundary flexible enough to fit real structure without overfitting individual points",
+      "Whether the entire dataset needs to first be converted into some different file format",
+      "The optimal total number of original features that should be dropped from the dataset entirely ahead of model training",
+      "Which particular value of gamma eliminates the need for any cross-validation afterward"
+    ],
+    "correct": 0,
+    "explanation": "Searching across gamma values is a standard way to locate the complexity level that generalizes best, avoiding both over- and under-fitting."
+  },
+  {
+    "id": "svm-054",
+    "topic": "svm",
+    "subtopic": "The gamma parameter",
+    "difficulty": "application",
+    "q": "A fraud-detection SVM trained with a very high gamma achieves near-perfect training accuracy but performs much worse on new, unseen transactions. What is the most likely cause?",
+    "options": [
+      "The high gamma value let the model fit narrow regions around individual training transactions, overfitting noise",
+      "The high gamma value forced the model to abandon RBF and use a linear kernel instead",
+      "Gamma only affects training speed, not accuracy, so something else caused this",
+      "The model must instead have been trained using too small a value of the C parameter"
+    ],
+    "correct": 0,
+    "explanation": "This is the classic overfitting signature of excessive gamma: the boundary memorizes narrow regions around training points rather than generalizing."
+  },
+  {
+    "id": "svm-055",
+    "topic": "svm",
+    "subtopic": "The gamma parameter",
+    "difficulty": "recall",
+    "q": "Which description best matches the effect of a very small gamma in an RBF-kernel SVM?",
+    "options": [
+      "A smooth, far-reaching influence from each point, producing a simpler boundary",
+      "A sharp, narrow influence from each point, producing a highly wiggly boundary",
+      "No influence at all is exerted by any training point on the final boundary shape",
+      "A boundary that depends only on the value of C, while completely ignoring gamma"
+    ],
+    "correct": 0,
+    "explanation": "Small gamma stretches each point's influence over a wide region, smoothing the boundary and reducing model complexity."
+  },
+  {
+    "id": "svm-056",
+    "topic": "svm",
+    "subtopic": "The gamma parameter",
+    "difficulty": "application",
+    "q": "An RBF-kernel SVM for handwriting digit recognition performs poorly, misclassifying many clearly distinguishable digits, when gamma is set extremely low. What change would most directly address this specific symptom?",
+    "options": [
+      "Increase gamma so the boundary can capture finer, more localized structure in the data",
+      "Decrease the gamma value even further in order to simplify the boundary even more instead of raising it",
+      "Switch the digit labels from numeric values into one-hot encoded vectors instead",
+      "Remove the RBF kernel entirely and switch to a hard-margin linear SVM instead"
+    ],
+    "correct": 0,
+    "explanation": "If gamma is so low that the boundary underfits even clearly distinguishable classes, raising gamma restores needed flexibility."
+  },
+  {
+    "id": "svm-057",
+    "topic": "svm",
+    "subtopic": "The gamma parameter",
+    "difficulty": "recall",
+    "q": "Why does the gamma hyperparameter not apply when using a plain linear kernel in SVM?",
+    "options": [
+      "Gamma specifically scales the distance term used by kernels like RBF, which the linear kernel does not have",
+      "Gamma is actually a required parameter for every kernel, including the linear kernel",
+      "The linear kernel automatically sets its internal gamma value exactly equal to C",
+      "Gamma only ever controls the number of output classes, entirely unrelated to kernel choice and nothing else at all"
+    ],
+    "correct": 0,
+    "explanation": "Gamma is a parameter of distance-based kernels such as RBF; the linear kernel is a plain dot product with no such distance term to scale."
+  },
+  {
+    "id": "svm-058",
+    "topic": "svm",
+    "subtopic": "The gamma parameter",
+    "difficulty": "analysis",
+    "q": "The same dataset is used to train two RBF SVMs: one with gamma=0.01 and one with gamma=100. The first produces a smooth boundary that underfits, and the second produces a jagged boundary that overfits. What does this pair of results demonstrate about gamma?",
+    "options": [
+      "Gamma behaves like a complexity dial — too low oversimplifies the boundary, too high overcomplicates it",
+      "Gamma has one single fixed optimal value that works equally well for every possible dataset",
+      "Gamma only ever matters in cases where the dataset has fewer than 100 total examples",
+      "Gamma and C are said to always produce exactly identical effects on the decision boundary"
+    ],
+    "correct": 0,
+    "explanation": "This mirrors the general bias-variance trade-off: gamma too low underfits, gamma too high overfits, with a reasonable middle ground in between."
+  },
+  {
+    "id": "svm-059",
+    "topic": "svm",
+    "subtopic": "The gamma parameter",
+    "difficulty": "application",
+    "q": "A customer-churn SVM with a very high gamma predicts almost every training customer correctly but fails to generalize to a new quarter's customer data. Which adjustment is most likely to help?",
+    "options": [
+      "Lower the gamma value to let the boundary generalize beyond individual training customers",
+      "Raise the gamma value even further still to capture even more fine-grained detail instead of lowering it",
+      "Switch over entirely to a purely categorical feature representation instead",
+      "Remove the regularization term C entirely from the trained model altogether"
+    ],
+    "correct": 0,
+    "explanation": "Lowering gamma widens each point's influence, producing a smoother boundary less prone to memorizing individual training examples."
+  },
+  {
+    "id": "svm-060",
+    "topic": "svm",
+    "subtopic": "The gamma parameter",
+    "difficulty": "recall",
+    "q": "A high gamma value in an RBF-kernel SVM means that each training point's influence is ______.",
+    "options": [
+      "narrow and localized, affecting only nearby regions of feature space",
+      "wide and far-reaching, affecting distant regions of feature space regardless of how high or low gamma actually is",
+      "completely removed from any influence over the decision boundary",
+      "automatically converted into an entirely new support vector"
+    ],
+    "correct": 0,
+    "explanation": "High gamma concentrates each point's influence into a small neighborhood, which can make the boundary wiggly and prone to overfitting."
+  },
+  {
+    "id": "svm-061",
+    "topic": "svm",
+    "subtopic": "Why feature scaling matters for SVM",
+    "difficulty": "application",
+    "q": "An SVM is trained without feature scaling on a dataset containing one feature ranging 0-1 and another ranging 0-10,000. What is the most likely consequence?",
+    "options": [
+      "The decision boundary becomes biased toward the larger-range feature, distorting the margin",
+      "There is no effect at all, since SVM is considered scale-invariant by design",
+      "The kernel function fails entirely to compute, causing the training process to crash",
+      "Training converges noticeably faster simply because of the much wider numeric range"
+    ],
+    "correct": 0,
+    "explanation": "Because the margin and kernel computations are distance-based, a feature with a much larger numeric range dominates unless all features are first standardized."
+  },
+  {
+    "id": "svm-062",
+    "topic": "svm",
+    "subtopic": "Why feature scaling matters for SVM",
+    "difficulty": "recall",
+    "q": "Why does feature scaling matter specifically for SVM, beyond being generally good practice?",
+    "options": [
+      "SVM's margin and kernel computations are distance-based, so unscaled large-range features dominate the result",
+      "SVM simply cannot run at all on unscaled data and will throw a training error",
+      "Scaling actually changes which kernel functions are mathematically valid to use at all for every possible dataset",
+      "Scaling is said to only ever be relevant when specifically using the polynomial kernel"
+    ],
+    "correct": 0,
+    "explanation": "Margin geometry and dot products both depend directly on raw feature magnitudes, so mismatched scales distort the boundary unless corrected."
+  },
+  {
+    "id": "svm-063",
+    "topic": "svm",
+    "subtopic": "Why feature scaling matters for SVM",
+    "difficulty": "application",
+    "q": "A loan-default SVM uses 'annual income' (ranging from 10,000 to 500,000) and 'number of dependents' (ranging from 0 to 5) as features, without any scaling. What problem is this model most likely to face?",
+    "options": [
+      "The income feature will dominate the distance-based margin calculation, overshadowing the dependents feature",
+      "The model will instead end up ignoring the income feature entirely throughout the whole training process without exception",
+      "The kernel trick supposedly becomes completely unusable once features have different ranges",
+      "The model will automatically normalize all of the features internally during training itself"
+    ],
+    "correct": 0,
+    "explanation": "A feature on a much larger numeric scale dominates dot-product and distance calculations unless features are standardized first."
+  },
+  {
+    "id": "svm-064",
+    "topic": "svm",
+    "subtopic": "Why feature scaling matters for SVM",
+    "difficulty": "analysis",
+    "q": "A churn-prediction SVM trained on raw, unscaled features performs poorly, but after standardizing all features to zero mean and unit variance, performance improves substantially. What does this improvement demonstrate?",
+    "options": [
+      "Feature scaling was the missing preprocessing step needed for the distance-based margin to reflect genuine class separation",
+      "Standardization must have somehow fixed an underlying labeling error present in the training data",
+      "Standardization somehow changed the total number of classes the model was able to separate",
+      "Standardization entirely replaced the need for ever choosing any kernel function at all here"
+    ],
+    "correct": 0,
+    "explanation": "The clear improvement after standardizing points to the original problem: an unscaled, dominant feature was distorting the margin calculation."
+  },
+  {
+    "id": "svm-065",
+    "topic": "svm",
+    "subtopic": "Why feature scaling matters for SVM",
+    "difficulty": "recall",
+    "q": "How does the importance of feature scaling for SVM compare to algorithms like decision trees?",
+    "options": [
+      "Feature scaling is essential for SVM because its margin is distance-based, whereas decision trees split on thresholds and are largely scale-invariant",
+      "Feature scaling matters equally little for both, since neither algorithm is said to depend on numeric feature ranges at all",
+      "Feature scaling is said to matter only for decision trees, and is claimed to never matter at all for SVM's distance-based margin under typical preprocessing pipelines",
+      "Feature scaling is said to be irrelevant to both algorithms, since both supposedly rely purely on categorical splits"
+    ],
+    "correct": 0,
+    "explanation": "Tree-based splits only compare one feature's raw values to a threshold, so rescaling does not change the splits, unlike SVM's distance-based margin."
+  },
+  {
+    "id": "svm-066",
+    "topic": "svm",
+    "subtopic": "Why feature scaling matters for SVM",
+    "difficulty": "application",
+    "q": "A predictive-maintenance SVM uses sensor readings measured in different physical units (temperature in Celsius, vibration in micrometers, pressure in pascals) without any scaling. What is the most appropriate fix before training?",
+    "options": [
+      "Standardize or normalize all sensor features onto a comparable numeric scale",
+      "Convert all of the sensor readings into one-hot encoded categorical bins",
+      "Remove every sensor feature except the one with the largest numeric range to simplify preprocessing",
+      "Train separate SVMs for each unit system and average their predictions"
+    ],
+    "correct": 0,
+    "explanation": "Mixing units with very different natural ranges requires standardization so no single sensor dominates the margin calculation purely due to its units."
+  },
+  {
+    "id": "svm-067",
+    "topic": "svm",
+    "subtopic": "Why feature scaling matters for SVM",
+    "difficulty": "analysis",
+    "q": "Why is it said that SVM 'needs' feature scaling in a way that some other models, such as decision trees, do not?",
+    "options": [
+      "SVM's objective involves distances and dot products between feature vectors, while tree splits simply compare one feature's value against a threshold",
+      "Decision trees are said to be completely unable to process numeric features at all, handling only categorical variables instead",
+      "SVM is supposedly the only existing machine learning model that can ever make use of the kernel trick, which is what requires scaling",
+      "Scaling is actually claimed to be entirely unnecessary for SVM, and said to matter only when training neural network models instead"
+    ],
+    "correct": 0,
+    "explanation": "The structural difference between distance-based and threshold-based decision rules explains why scaling matters much more for SVM."
+  },
+  {
+    "id": "svm-068",
+    "topic": "svm",
+    "subtopic": "Why feature scaling matters for SVM",
+    "difficulty": "application",
+    "q": "A text-classification SVM uses TF-IDF vectors, where values are already naturally bounded within a similar small range across features. Why might feature scaling be less of a pressing concern here compared to raw sensor or financial data?",
+    "options": [
+      "TF-IDF values are already roughly comparable in scale across features, unlike raw features with wildly different natural ranges",
+      "Feature scaling is flatly claimed to never be needed at all for any high-dimensional dataset whatsoever",
+      "TF-IDF vectors are claimed to automatically disable the margin computation, making scaling irrelevant",
+      "Text data is considered purely categorical in nature, so the scaling concern supposedly does not apply at all for any text classification task"
+    ],
+    "correct": 0,
+    "explanation": "The underlying reason scaling matters is mismatched numeric ranges; TF-IDF values are already fairly uniform, so this particular risk is reduced."
+  },
+  {
+    "id": "svm-069",
+    "topic": "svm",
+    "subtopic": "Why feature scaling matters for SVM",
+    "difficulty": "recall",
+    "q": "Failing to scale features before training an SVM mainly risks letting ______ dominate the computation of the margin.",
+    "options": [
+      "the feature(s) with the largest numeric range",
+      "the feature(s) that appear earliest in the dataset",
+      "the feature(s) with the most missing values",
+      "the feature(s) with the fewest unique values"
+    ],
+    "correct": 0,
+    "explanation": "Because the margin computation involves raw feature magnitudes, whichever feature has the largest numeric range tends to dominate it."
+  },
+  {
+    "id": "svm-070",
+    "topic": "svm",
+    "subtopic": "Why feature scaling matters for SVM",
+    "difficulty": "application",
+    "q": "Two features are standardized before SVM training: one originally ranged from 0 to 1,000,000 and the other from 0 to 1. Compared to training on the raw, unscaled features, what effect should standardization have on the resulting margin?",
+    "options": [
+      "The margin becomes shaped by genuine separation in both features rather than being dominated by one",
+      "Standardization is claimed to have no measurable effect at all on the computed margin",
+      "The margin becomes driven entirely by the originally smaller-range feature instead",
+      "Standardization is said to only change the predicted class labels, never the margin itself under every circumstance"
+    ],
+    "correct": 0,
+    "explanation": "Standardization puts both features on a comparable scale, so the margin reflects real class separation rather than one feature's raw numeric range."
+  },
+  {
+    "id": "svm-071",
+    "topic": "svm",
+    "subtopic": "Why feature scaling matters for SVM",
+    "difficulty": "recall",
+    "q": "In which situation is feature scaling for SVM the least urgent concern?",
+    "options": [
+      "When all features are already naturally confined to a similar, comparable numeric range",
+      "When one feature ranges in the millions and another ranges between 0 and 1",
+      "When using the RBF kernel specifically, since it is immune to feature scale",
+      "When the dataset simply happens to contain more than two distinct output classes"
+    ],
+    "correct": 0,
+    "explanation": "The underlying risk is mismatched feature ranges; when ranges are already similar, scaling has less practical impact (though it is still generally good practice)."
+  },
+  {
+    "id": "svm-072",
+    "topic": "svm",
+    "subtopic": "Why feature scaling matters for SVM",
+    "difficulty": "application",
+    "q": "A fraud-detection dataset includes 'transaction amount' (ranging up to hundreds of thousands) alongside several binary flags encoded as 0/1. Without scaling, which outcome is most likely?",
+    "options": [
+      "Transaction amount will dominate the distance-based calculations, effectively drowning out the binary flags' contribution",
+      "The binary flags will somehow dominate the calculation regardless of the transaction amount's huge range no matter what the actual amounts are",
+      "SVM will automatically treat the binary flags and the transaction amount as equally weighted features",
+      "The model will simply fail to train at all because binary and continuous features cannot be mixed"
+    ],
+    "correct": 0,
+    "explanation": "A large-range continuous feature will dominate the margin calculation over small-range binary flags unless features are placed on comparable scales."
+  },
+  {
+    "id": "svm-073",
+    "topic": "svm",
+    "subtopic": "Choosing SVM for a given dataset shape",
+    "difficulty": "application",
+    "q": "A dataset has 300 features created by converting text documents into TF-IDF vectors, and the classes are expected to be separable by a roughly linear boundary. Which SVM configuration is most suitable?",
+    "options": [
+      "A linear-kernel SVM, which handles high-dimensional sparse data efficiently and matches the expected linear structure",
+      "An RBF-kernel SVM, since more features always call for a more powerful non-linear kernel",
+      "A degree-5 polynomial kernel SVM, in order to capture every conceivable feature interaction",
+      "SVM is said to be entirely unsuitable for any text classification task, regardless of kernel choice even for simple linear boundaries"
+    ],
+    "correct": 0,
+    "explanation": "High-dimensional sparse text data with an expected linear boundary is a textbook case for a linear-kernel SVM, which is efficient and avoids unnecessary complexity."
+  },
+  {
+    "id": "svm-074",
+    "topic": "svm",
+    "subtopic": "Choosing SVM for a given dataset shape",
+    "difficulty": "application",
+    "q": "A clinic has a dataset of 800 patients with 15 clinical measurements each, used to predict a binary diagnosis. Why might SVM be a reasonable model choice here?",
+    "options": [
+      "SVM tends to perform well on small-to-medium sized tabular datasets with a moderate number of features",
+      "SVM requires datasets with at least hundreds of thousands of rows to function at all",
+      "SVM is said to only be applicable to text or image data, never to clinical measurements",
+      "SVM supposedly guarantees better accuracy than every other model, regardless of dataset size"
+    ],
+    "correct": 0,
+    "explanation": "SVM is well suited to small-to-medium tabular datasets, where its training cost is manageable and the margin-based approach can perform strongly."
+  },
+  {
+    "id": "svm-075",
+    "topic": "svm",
+    "subtopic": "Choosing SVM for a given dataset shape",
+    "difficulty": "analysis",
+    "q": "An SVM performs very well on a near-linearly-separable medical dataset but underperforms logistic regression on a noisier, less separable one. What lesson does this illustrate about choosing between the two models?",
+    "options": [
+      "Model choice should be guided by how well the data's actual structure matches each model's assumptions, not by perceived sophistication",
+      "SVM should always be preferred over logistic regression, no matter what the dataset looks like",
+      "Logistic regression is flatly claimed to never be able to outperform SVM on any real-world dataset at all even when the data is cleanly separable",
+      "The choice between the two models should depend only on dataset size, and never on separability"
+    ],
+    "correct": 0,
+    "explanation": "A 'simpler-sounding' model can beat SVM when the data's structure doesn't suit SVM's strengths; the right lesson is to fit the tool to the data."
+  },
+  {
+    "id": "svm-076",
+    "topic": "svm",
+    "subtopic": "Choosing SVM for a given dataset shape",
+    "difficulty": "recall",
+    "q": "For which type of task is SVM especially popular, alongside being noted for strong accuracy on well-structured data?",
+    "options": [
+      "Text classification and other high-dimensional classification tasks",
+      "Time-series forecasting with continuous-valued targets",
+      "Unsupervised clustering tasks that involve no labels at all on completely unlabeled data",
+      "Image generation starting from purely random noise vectors"
+    ],
+    "correct": 0,
+    "explanation": "SVM is widely used and especially popular for text classification and other high-dimensional classification problems."
+  },
+  {
+    "id": "svm-077",
+    "topic": "svm",
+    "subtopic": "Choosing SVM for a given dataset shape",
+    "difficulty": "analysis",
+    "q": "A company has a dataset of 50 million customer records and wants near-real-time retraining. Why might SVM be a less practical choice compared to other classifiers here?",
+    "options": [
+      "SVM training time and memory use scale poorly with very large datasets, making frequent retraining costly",
+      "SVM supposedly cannot process more than 1,000 rows of data under any circumstances",
+      "SVM is said to be unable to handle binary classification tasks at this scale at all",
+      "SVM supposedly requires all of the data to be stored exclusively in image format"
+    ],
+    "correct": 0,
+    "explanation": "Kernelized SVM training cost grows steeply with dataset size, which conflicts with a need for fast, frequent retraining on tens of millions of rows."
+  },
+  {
+    "id": "svm-078",
+    "topic": "svm",
+    "subtopic": "Choosing SVM for a given dataset shape",
+    "difficulty": "application",
+    "q": "A genomics study has only 150 patient samples but 20,000 gene-expression features per sample. Why is SVM often considered for this type of 'wide' dataset?",
+    "options": [
+      "SVM handles high-dimensional feature spaces well, even when the number of samples is relatively small",
+      "SVM requires the number of features to be smaller than the number of samples to work at all",
+      "SVM supposedly cannot be applied at all unless the data is first reduced down to two dimensions before any model can be fit",
+      "SVM is said to perform worse than other models specifically whenever features outnumber samples"
+    ],
+    "correct": 0,
+    "explanation": "SVM is known to cope well with datasets where features outnumber samples, which is common in genomics, text, and similar high-dimensional domains."
+  },
+  {
+    "id": "svm-079",
+    "topic": "svm",
+    "subtopic": "Choosing SVM for a given dataset shape",
+    "difficulty": "analysis",
+    "q": "On a near-linearly-separable diagnostic dataset, SVM outperforms a decision tree, which trails at a somewhat lower accuracy. What should NOT be concluded from this single comparison?",
+    "options": [
+      "That SVM is unconditionally better than decision trees on every possible dataset",
+      "That SVM happened to suit this particular dataset's structure reasonably well here",
+      "That the decision tree still performed reasonably, just not as well here",
+      "That model comparisons should be treated as dataset-specific rather than universal"
+    ],
+    "correct": 0,
+    "explanation": "A single comparison should never be generalized into a blanket ranking; performance is dataset-dependent, as shown by cases where other models beat SVM."
+  },
+  {
+    "id": "svm-080",
+    "topic": "svm",
+    "subtopic": "Choosing SVM for a given dataset shape",
+    "difficulty": "application",
+    "q": "A retail dataset is dominated by categorical features (product category, store region, payment type) with only a few numeric ones. What extra step must be completed before this data can be used with SVM, unlike with some tree-based models?",
+    "options": [
+      "The categorical features must be numerically encoded, since SVM's distance and kernel computations require real-valued vectors",
+      "No extra preprocessing step is needed at all, since SVM supposedly processes categorical strings natively without any preprocessing step",
+      "The numeric features must instead be removed entirely, keeping only the raw categorical ones intact",
+      "The entire dataset must first be reduced down to a single feature before SVM can ever be applied"
+    ],
+    "correct": 0,
+    "explanation": "SVM relies on dot products and distances over real-valued vectors, so categorical attributes must first be encoded, e.g. via one-hot encoding."
+  },
+  {
+    "id": "svm-081",
+    "topic": "svm",
+    "subtopic": "Choosing SVM for a given dataset shape",
+    "difficulty": "recall",
+    "q": "How is SVM's approach to finding a decision boundary typically contrasted with logistic regression's approach?",
+    "options": [
+      "SVM maximizes the geometric margin between classes, while logistic regression directly optimizes a probabilistic loss function",
+      "SVM and logistic regression are claimed to use mathematically identical objective functions throughout",
+      "SVM supposedly requires no optimization procedure at all to fit, unlike logistic regression",
+      "Logistic regression is said to only ever be usable for multi-class problems, unlike standard SVM"
+    ],
+    "correct": 0,
+    "explanation": "SVM is driven by a geometric, margin-maximizing objective, while logistic regression is framed around minimizing a probability-based loss."
+  },
+  {
+    "id": "svm-082",
+    "topic": "svm",
+    "subtopic": "Choosing SVM for a given dataset shape",
+    "difficulty": "application",
+    "q": "A spam-filtering system has thousands of sparse text features and a largely linear separation between spam and non-spam. Why is this scenario often cited as a strong fit for SVM?",
+    "options": [
+      "High-dimensional, sparse, linearly structured data plays to SVM's strengths, especially with a linear kernel",
+      "Spam filtering is said to always require a non-linear kernel, which SVM cannot provide",
+      "SVM is flatly said to be completely unable to process sparse feature vectors of any kind at all no matter how the features are encoded",
+      "Text data must first be converted entirely into images before SVM can be applied"
+    ],
+    "correct": 0,
+    "explanation": "This exact combination — many sparse features, near-linear separability — is where linear-kernel SVM is typically most effective and efficient."
+  },
+  {
+    "id": "svm-083",
+    "topic": "svm",
+    "subtopic": "Choosing SVM for a given dataset shape",
+    "difficulty": "analysis",
+    "q": "A dataset is large, noisy, and only weakly separable, and the team wants well-calibrated probability estimates for each prediction, not just class labels. Why might logistic regression be preferred over a standard SVM here?",
+    "options": [
+      "Logistic regression naturally outputs calibrated probabilities, while standard SVM output is not inherently probabilistic",
+      "Logistic regression is said to be the only existing model capable of binary classification tasks",
+      "SVM is flatly said to be completely untrainable on noisy data under any circumstances whatsoever",
+      "SVM is said to always require strictly more total features than logistic regression needs to function regardless of how many samples exist"
+    ],
+    "correct": 0,
+    "explanation": "Standard SVM produces a signed distance from the boundary rather than a calibrated probability, so when probabilities are the goal, logistic regression is often preferred."
+  },
+  {
+    "id": "svm-084",
+    "topic": "svm",
+    "subtopic": "Choosing SVM for a given dataset shape",
+    "difficulty": "application",
+    "q": "A rare-disease diagnostic task has only 120 well-labeled patient records available. Why might SVM be a reasonable candidate model despite the small dataset size?",
+    "options": [
+      "SVM can perform well on smaller datasets since its decision boundary depends only on a handful of support vectors, not huge volumes of data",
+      "SVM strictly and always requires at least tens of thousands of well-labeled records in order to train at all",
+      "SVM cannot be evaluated in any statistically meaningful way unless the dataset contains more than 10,000 rows",
+      "SVM is said to perform exactly identically regardless of how much training data happens to be available at all"
+    ],
+    "correct": 0,
+    "explanation": "Because the solution depends on support vectors rather than the whole dataset, SVM can be effective even on fairly small, well-labeled datasets."
+  },
+  {
+    "id": "svm-085",
+    "topic": "svm",
+    "subtopic": "Choosing SVM for a given dataset shape",
+    "difficulty": "recall",
+    "q": "SVM with a linear kernel is typically the best fit when the underlying classes ______.",
+    "options": [
+      "are already close to linearly separable in the original feature space",
+      "form several tightly nested, non-linear concentric rings",
+      "have absolutely no numeric features present of any kind",
+      "contain more output classes than available training examples, regardless of scale"
+    ],
+    "correct": 0,
+    "explanation": "The linear kernel is a direct match for data that is already (or close to) linearly separable, without adding unneeded non-linear complexity."
+  },
+  {
+    "id": "svm-086",
+    "topic": "svm",
+    "subtopic": "Choosing SVM for a given dataset shape",
+    "difficulty": "application",
+    "q": "A team is deciding between SVM and a convolutional neural network for a large image classification task with millions of labeled images. Which practical factor most favors the neural network over SVM here?",
+    "options": [
+      "SVM scales poorly in training time and memory with very large, high-volume datasets compared to deep learning approaches tailored for images",
+      "SVM is flatly and incorrectly said to be mathematically unable to process raw pixel values of any kind at all",
+      "Neural networks are incorrectly said to be completely untrainable on any kind of image data at all",
+      "SVM is said to always achieve perfect accuracy on every image dataset, making any comparison entirely unnecessary on every single image benchmark tested"
+    ],
+    "correct": 0,
+    "explanation": "At very large scale, SVM's computational cost becomes a practical bottleneck compared to architectures designed for large-scale image data."
+  },
+  {
+    "id": "svm-087",
+    "topic": "svm",
+    "subtopic": "Choosing SVM for a given dataset shape",
+    "difficulty": "analysis",
+    "q": "A dataset has several hundred features, and a k-nearest-neighbors classifier performs poorly due to distances becoming less meaningful in high dimensions. Why might an SVM with an appropriate kernel do better here?",
+    "options": [
+      "SVM learns an explicit decision boundary rather than relying purely on raw neighbor distances in the full feature space",
+      "SVM is said to not rely on distances or kernels at all, which supposedly avoids this issue entirely",
+      "k-NN is said to always outperform SVM in every high-dimensional setting, regardless of kernel choice",
+      "SVM is said to require strictly fewer input features than k-NN in order to produce any prediction at all"
+    ],
+    "correct": 0,
+    "explanation": "SVM fits a margin-maximizing boundary using an appropriate kernel, which can be more robust in high dimensions than relying purely on raw neighbor distances as k-NN does."
+  },
+  {
+    "id": "svm-088",
+    "topic": "svm",
+    "subtopic": "Overfitting risk in SVM",
+    "difficulty": "recall",
+    "q": "Which two hyperparameter settings most directly increase the risk of an SVM overfitting its training data?",
+    "options": [
+      "A very large C combined with a very large gamma (when using the RBF kernel)",
+      "A very small C paired together with an equally small gamma value applied simultaneously during training",
+      "The particular choice of random seed used to initialize training",
+      "The order in which training examples are presented to the model"
+    ],
+    "correct": 0,
+    "explanation": "Both a very large C and a very large gamma push the model toward tightly fitting individual training points, compounding overfitting risk."
+  },
+  {
+    "id": "svm-089",
+    "topic": "svm",
+    "subtopic": "Overfitting risk in SVM",
+    "difficulty": "analysis",
+    "q": "An RBF-kernel SVM achieves 99.8% training accuracy but only 72% accuracy on a held-out validation set. Training and validation data are confirmed to come from the same distribution. What is the most likely cause?",
+    "options": [
+      "The model's gamma and/or C are set too high, producing an overly complex boundary that memorizes the training data",
+      "The validation set must simply contain corrupted labels, since SVM is said to be unable to overfit in this scenario",
+      "The kernel chosen must be linear, since only linear kernels are said to be able to overfit at all",
+      "The model must simply have far too few support vectors to make any accurate predictions at all"
+    ],
+    "correct": 0,
+    "explanation": "A large train-validation accuracy gap is the classic signature of overfitting, most often traced to excessive C and/or gamma with the RBF kernel."
+  },
+  {
+    "id": "svm-090",
+    "topic": "svm",
+    "subtopic": "Overfitting risk in SVM",
+    "difficulty": "recall",
+    "q": "All else equal, what does a very large number of support vectors (relative to the training set size) often suggest about an SVM model?",
+    "options": [
+      "The boundary may be complex and tightly fit to the training data, a sign of possible overfitting",
+      "The model is definitely underfitting the training data in this particular situation",
+      "The model has simply failed to converge properly at all during the training process",
+      "The chosen kernel function itself must somehow be a mathematically invalid one"
+    ],
+    "correct": 0,
+    "explanation": "When most training points become support vectors, the model is likely fitting the data very closely, which can indicate overfitting."
+  },
+  {
+    "id": "svm-091",
+    "topic": "svm",
+    "subtopic": "Overfitting risk in SVM",
+    "difficulty": "analysis",
+    "q": "A team notices their SVM scores very high on the training set but its performance fluctuates wildly across different cross-validation folds. What does this instability most likely indicate?",
+    "options": [
+      "The model is overfitting the particular training folds rather than learning a stable, generalizable boundary",
+      "Cross-validation itself must be fundamentally broken and cannot be trusted for SVM models at all in this case",
+      "The model is underfitting the data badly and needs a noticeably more complex kernel",
+      "The instability is unrelated to model complexity and purely due to hardware"
+    ],
+    "correct": 0,
+    "explanation": "High training performance paired with unstable validation results across folds typically points to an overfit model that hasn't learned a stable, generalizable rule."
+  },
+  {
+    "id": "svm-092",
+    "topic": "svm",
+    "subtopic": "Overfitting risk in SVM",
+    "difficulty": "application",
+    "q": "An SVM is clearly overfitting a small fraud dataset. Which combination of changes is most likely to reduce this overfitting?",
+    "options": [
+      "Lower C, lower gamma (if using RBF), and/or gather more diverse training data",
+      "Raise both C and gamma even further to fit the data even more closely",
+      "Switch to a higher-degree polynomial kernel to add more flexibility",
+      "Remove all regularization entirely so the model can fit completely freely with no exceptions"
+    ],
+    "correct": 0,
+    "explanation": "Reducing C and gamma both decrease model complexity, and more diverse data helps the model learn a more generalizable boundary rather than noise."
+  },
+  {
+    "id": "svm-093",
+    "topic": "svm",
+    "subtopic": "Overfitting risk in SVM",
+    "difficulty": "recall",
+    "q": "Which pair of symptoms is most characteristic of an overfit SVM, as opposed to an underfit one?",
+    "options": [
+      "Near-perfect training accuracy paired with noticeably lower validation accuracy",
+      "Low accuracy on both the training set and the validation set",
+      "Identical accuracy on training and validation sets, both high",
+      "Training accuracy that ends up lower than the validation accuracy"
+    ],
+    "correct": 0,
+    "explanation": "Overfitting is specifically characterized by a large gap where training accuracy is much higher than validation accuracy."
+  },
+  {
+    "id": "svm-094",
+    "topic": "svm",
+    "subtopic": "Overfitting risk in SVM",
+    "difficulty": "application",
+    "q": "A diagnostic SVM trained with a very high gamma perfectly separates the training patients but performs no better than chance on a completely new patient cohort. What is the underlying problem?",
+    "options": [
+      "The high-gamma boundary learned narrow, patient-specific patterns rather than a generalizable diagnostic rule",
+      "The new cohort must simply have been mislabeled entirely, since high gamma cannot cause this kind of failure here",
+      "The model's kernel choice is irrelevant to this outcome",
+      "The problem here must instead be caused entirely by inadequate or missing feature scaling alone"
+    ],
+    "correct": 0,
+    "explanation": "Excessively high gamma localizes influence so tightly that the boundary memorizes individual patients instead of learning a generalizable rule."
+  },
+  {
+    "id": "svm-095",
+    "topic": "svm",
+    "subtopic": "Overfitting risk in SVM",
+    "difficulty": "analysis",
+    "q": "In terms of the bias-variance trade-off, how should increasing both C and gamma together typically be understood for an RBF-kernel SVM?",
+    "options": [
+      "It shifts the model toward lower bias but higher variance, raising overfitting risk",
+      "It shifts the model toward lower variance but higher bias, raising underfitting risk",
+      "It is said to have absolutely no effect on the bias-variance trade-off at all",
+      "It is said to only ever affect the training time, never the model's complexity"
+    ],
+    "correct": 0,
+    "explanation": "Raising both C and gamma increases model flexibility and reduces bias, but at the cost of higher variance and greater overfitting risk."
+  },
+  {
+    "id": "svm-096",
+    "topic": "svm",
+    "subtopic": "Overfitting risk in SVM",
+    "difficulty": "application",
+    "q": "A team plots an SVM's accuracy against increasing training set size and sees the gap between training and validation accuracy shrink as more data is added. What does this trend suggest about the original overfitting?",
+    "options": [
+      "The original overfitting was partly due to insufficient data relative to the model's complexity, which more data helps resolve",
+      "The model was apparently never overfitting the training data at all, since the shrinking train-validation gap must simply be a measurement artifact, not a real effect",
+      "Adding more training data is flatly said to always make the overfitting problem worse, never better at all",
+      "The observed trend only reflects some unrelated change in the kernel, not the increase in data size at all"
+    ],
+    "correct": 0,
+    "explanation": "A shrinking train-validation gap as data increases is a classic sign that part of the overfitting stemmed from too little data for the model's complexity."
+  },
+  {
+    "id": "svm-097",
+    "topic": "svm",
+    "subtopic": "Overfitting risk in SVM",
+    "difficulty": "recall",
+    "q": "An SVM configured with excessive flexibility (e.g., very high gamma or very high polynomial degree) is most at risk of ______.",
+    "options": [
+      "overfitting the training data and generalizing poorly to new examples",
+      "underfitting the training data due to being far too simple",
+      "failing to run at all, regardless of the dataset provided",
+      "ignoring the regularization parameter C entirely during training"
+    ],
+    "correct": 0,
+    "explanation": "Excess flexibility lets the boundary fit training idiosyncrasies too closely, which is the definition of overfitting."
+  },
+  {
+    "id": "svm-098",
+    "topic": "svm",
+    "subtopic": "Multiclass SVM extension",
+    "difficulty": "recall",
+    "q": "What is a fundamental limitation of the standard SVM formulation?",
+    "options": [
+      "It is inherently a binary classifier, designed to separate exactly two classes",
+      "It cannot be trained on datasets with fewer than 10,000 examples no matter how it is configured",
+      "It cannot ever use any kernel function other than the linear one",
+      "It requires that class labels already be given as probabilities"
+    ],
+    "correct": 0,
+    "explanation": "The core SVM optimization is built around separating two classes (labeled +1/-1); more than two classes requires an extension on top of this base formulation."
+  },
+  {
+    "id": "svm-099",
+    "topic": "svm",
+    "subtopic": "Multiclass SVM extension",
+    "difficulty": "recall",
+    "q": "What is the standard strategy used to extend binary SVM to handle more than two classes?",
+    "options": [
+      "One-vs-rest: train one binary SVM per class against all the others combined",
+      "Average the kernel values across all classes into a single combined model",
+      "Replace the decision function entirely with a softmax inside one SVM model as a built-in layer",
+      "Train a single SVM using only the mean feature vector of each class"
+    ],
+    "correct": 0,
+    "explanation": "One-vs-rest trains one binary classifier per class (that class versus everything else), repeating the SVM optimization once per class."
+  },
+  {
+    "id": "svm-100",
+    "topic": "svm",
+    "subtopic": "Multiclass SVM extension",
+    "difficulty": "application",
+    "q": "A retailer wants to classify customers into one of five loyalty tiers using one-vs-rest SVM. How many separate binary SVM models must be trained?",
+    "options": [
+      "Five - one for each tier versus all the other tiers combined",
+      "Ten total - one trained model for each unique pair of loyalty tiers",
+      "Twenty-five - one for every possible combination of two tiers",
+      "One - SVM natively handles five classes in a single optimization"
+    ],
+    "correct": 0,
+    "explanation": "One-vs-rest trains exactly one binary classifier per class, so five classes require five separate SVM optimizations."
+  },
+  {
+    "id": "svm-101",
+    "topic": "svm",
+    "subtopic": "Multiclass SVM extension",
+    "difficulty": "recall",
+    "q": "Besides one-vs-rest, what is another common strategy for extending SVM to multiple classes?",
+    "options": [
+      "One-vs-one: train a separate binary SVM for every pair of classes",
+      "All-vs-all-at-once: train a single SVM across all classes simultaneously using one shared boundary",
+      "Majority-vote clustering: group classes using k-means before training any SVM",
+      "Label-averaging: merge all class labels into a single continuous score"
+    ],
+    "correct": 0,
+    "explanation": "One-vs-one is the other standard multiclass extension, training a binary classifier for every possible pair of classes."
+  },
+  {
+    "id": "svm-102",
+    "topic": "svm",
+    "subtopic": "Multiclass SVM extension",
+    "difficulty": "application",
+    "q": "After running one-vs-rest SVM with several binary classifiers on a new, unlabeled data point, how is the final predicted class typically chosen?",
+    "options": [
+      "The class whose binary classifier produces the most confident positive score",
+      "The class whose binary classifier simply happened to be trained first in sequence",
+      "Every binary classifier must unanimously agree, or no prediction is made",
+      "The class is chosen at random among all classifiers that output a positive score"
+    ],
+    "correct": 0,
+    "explanation": "Since each one-vs-rest SVM outputs an independent score for 'its' class versus the rest, the typical rule picks the class whose classifier is most confidently positive."
+  },
+  {
+    "id": "svm-103",
+    "topic": "svm",
+    "subtopic": "Multiclass SVM extension",
+    "difficulty": "analysis",
+    "q": "For a six-class diagnostic problem, how many binary SVMs would one-vs-one require, compared to one-vs-rest?",
+    "options": [
+      "One-vs-one requires fifteen models (one per pair), versus six for one-vs-rest",
+      "One-vs-one requires exactly six models total, the same as one-vs-rest",
+      "One-vs-one requires thirty-six models, while one-vs-rest requires six",
+      "One-vs-one requires only one model total, fewer than one-vs-rest"
+    ],
+    "correct": 0,
+    "explanation": "One-vs-one trains one model per unique class pair: for six classes that is 6*5/2 = 15 models, versus 6 models for one-vs-rest."
+  },
+  {
+    "id": "svm-104",
+    "topic": "svm",
+    "subtopic": "Multiclass SVM extension",
+    "difficulty": "application",
+    "q": "A news-article classifier must assign each article to exactly one of eight topic categories using SVM. Why can't a single, standard SVM optimization handle this directly?",
+    "options": [
+      "Standard SVM is formulated around separating only two classes at a time, so multiple binary models (or an equivalent scheme) are needed",
+      "SVM can supposedly only ever output a single fixed class label of 'positive', regardless of the task",
+      "SVM is incorrectly said to strictly require the number of classes to exactly match the number of input features for every possible classification task",
+      "SVM is flatly and incorrectly said to be entirely unusable for any text data under any circumstances"
+    ],
+    "correct": 0,
+    "explanation": "Because the base SVM formulation is inherently binary, multi-class problems require an extension scheme like one-vs-rest or one-vs-one."
+  },
+  {
+    "id": "svm-105",
+    "topic": "svm",
+    "subtopic": "Multiclass SVM extension",
+    "difficulty": "recall",
+    "q": "Which statement correctly compares the computational trade-off between one-vs-rest and one-vs-one multiclass SVM strategies as the number of classes grows large?",
+    "options": [
+      "One-vs-one trains more models overall, but each one is trained on a smaller subset of the data",
+      "One-vs-rest always trains more models overall than one-vs-one for any number of classes",
+      "Both strategies are said to always train the exact same total number of models",
+      "Neither strategy's total training cost is said to depend on the number of classes at all once training actually begins"
+    ],
+    "correct": 0,
+    "explanation": "One-vs-one's model count grows quadratically with the number of classes, though each pairwise model only uses data from two classes at a time."
+  },
+  {
+    "id": "svm-106",
+    "topic": "svm",
+    "subtopic": "Multiclass SVM extension",
+    "difficulty": "application",
+    "q": "A handwritten-digit recognizer (0 through 9) is built using one-vs-rest SVM. How many binary classifiers does this require, and what does each one distinguish?",
+    "options": [
+      "Ten classifiers, each distinguishing one digit from all the other nine digits combined",
+      "Ten classifiers, each distinguishing one digit from exactly one other specific digit",
+      "Forty-five separate classifiers, each one distinguishing a single pair of digits",
+      "One single classifier that directly outputs all ten digit probabilities"
+    ],
+    "correct": 0,
+    "explanation": "One-vs-rest trains one classifier per class versus the rest, so ten digit classes require ten classifiers, each separating one digit from all others."
+  },
+  {
+    "id": "svm-107",
+    "topic": "svm",
+    "subtopic": "Multiclass SVM extension",
+    "difficulty": "recall",
+    "q": "Because the core SVM optimization is built around separating exactly two classes, applying it to a multi-class problem always requires ______.",
+    "options": [
+      "some extension scheme, such as one-vs-rest or one-vs-one, built on top of multiple binary SVMs",
+      "converting every single class label into one continuous numeric target value",
+      "reducing the entire dataset down to only two classes before training even begins beforehand without exception",
+      "replacing the margin-based objective with a clustering objective instead"
+    ],
+    "correct": 0,
+    "explanation": "Multi-class SVM is achieved by combining multiple binary SVMs trained under a scheme like one-vs-rest or one-vs-one, not by changing the base formulation itself."
+  },
+  {
+    "id": "svm-108",
+    "topic": "svm",
+    "subtopic": "Computational cost and scalability",
+    "difficulty": "recall",
+    "q": "What is the most common reason for slow training time in SVMs?",
+    "options": [
+      "The model ends up relying on a very large number of support vectors",
+      "The learning rate itself has been set much too high",
+      "The overall training dataset happens to be too small",
+      "The kernel parameter gamma has been set to exactly zero by default every time"
+    ],
+    "correct": 0,
+    "explanation": "Training and prediction cost scale with the number of support vectors; a very large number of them is the most common source of slow SVM training and inference."
+  },
+  {
+    "id": "svm-109",
+    "topic": "svm",
+    "subtopic": "Computational cost and scalability",
+    "difficulty": "analysis",
+    "q": "A team wants to train a kernelized SVM on a dataset with 10 million transactions. What practical challenge are they most likely to run into?",
+    "options": [
+      "Training time and memory requirements grow steeply, making standard kernel SVM impractical at this scale",
+      "SVM cannot mathematically process more than one million rows under any circumstances",
+      "The model is said to automatically subsample the data without requiring any input at all",
+      "Kernel SVM scales linearly and trains just as fast as logistic regression at any size"
+    ],
+    "correct": 0,
+    "explanation": "Kernelized SVM training cost grows faster than linearly with dataset size, making very large datasets impractical without approximations or alternative methods."
+  },
+  {
+    "id": "svm-110",
+    "topic": "svm",
+    "subtopic": "Computational cost and scalability",
+    "difficulty": "recall",
+    "q": "Why does training a kernelized SVM become increasingly expensive as the number of training examples grows?",
+    "options": [
+      "The kernel computation effectively involves comparing every pair of training points, which grows with the square of the dataset size",
+      "Each additional training example is incorrectly said to double the number of classes the model must separate",
+      "Kernel computations are incorrectly said to become steadily cheaper, not more expensive, as more data is added which runs counter to how kernels actually scale",
+      "The computational cost is said to depend only on the number of features, never on the number of examples"
+    ],
+    "correct": 0,
+    "explanation": "Kernel methods typically need pairwise comparisons between training points, so cost scales roughly quadratically (or worse) with the number of examples."
+  },
+  {
+    "id": "svm-111",
+    "topic": "svm",
+    "subtopic": "Computational cost and scalability",
+    "difficulty": "application",
+    "q": "A fraud-detection system needs to score incoming transactions in real time using a trained kernel SVM with thousands of support vectors. What operational cost does this scale of support vectors create at prediction time?",
+    "options": [
+      "Each new prediction requires computing the kernel between the new point and every support vector, which adds latency as the support-vector count grows",
+      "Prediction time is flatly and incorrectly claimed to be completely unaffected by the total number of support vectors at all even as the model grows larger over time",
+      "A larger number of support vectors is flatly and incorrectly said to always make prediction faster, never slower at all",
+      "The model is flatly and incorrectly said to require complete retraining for every single new transaction that gets scored"
+    ],
+    "correct": 0,
+    "explanation": "Prediction with a kernel SVM requires evaluating the kernel against each support vector, so more support vectors directly increase prediction-time cost."
+  },
+  {
+    "id": "svm-112",
+    "topic": "svm",
+    "subtopic": "Computational cost and scalability",
+    "difficulty": "analysis",
+    "q": "For a very large, high-dimensional, sparse text classification dataset, why is a linear-kernel SVM often preferred over an RBF-kernel SVM purely on computational grounds?",
+    "options": [
+      "Linear SVM has specialized, highly efficient solvers that scale much better to large sparse datasets than general kernel methods",
+      "Linear SVM is incorrectly said to always achieve higher accuracy than RBF SVM, regardless of computational cost",
+      "RBF SVM is flatly and incorrectly said to be completely unable to process any sparse data whatsoever at all",
+      "Kernel computations are flatly and incorrectly said to become entirely free once the underlying data is sparse"
+    ],
+    "correct": 0,
+    "explanation": "Linear SVM solvers are specifically optimized for large sparse feature spaces, giving them a major scalability advantage over general kernel methods like RBF."
+  },
+  {
+    "id": "svm-113",
+    "topic": "svm",
+    "subtopic": "Computational cost and scalability",
+    "difficulty": "application",
+    "q": "A deployed SVM model has become too slow for real-time scoring due to a very large number of support vectors. Which general strategy would most directly reduce prediction-time cost?",
+    "options": [
+      "Retrain with settings (such as a different C or gamma) that yield a simpler model with fewer support vectors",
+      "Simply add even more raw training data without changing any of the existing hyperparameters at all",
+      "Increase the gamma value even further still to add more fine-grained detail to the boundary",
+      "Switch over to a much higher-degree polynomial kernel in order to simplify the computation involved every single time"
+    ],
+    "correct": 0,
+    "explanation": "Prediction cost scales with the number of support vectors, so hyperparameter choices that produce a simpler model with fewer support vectors directly reduce that cost."
+  },
+  {
+    "id": "svm-114",
+    "topic": "svm",
+    "subtopic": "Computational cost and scalability",
+    "difficulty": "recall",
+    "q": "Which general statement about SVM scalability is accurate?",
+    "options": [
+      "Non-linear kernel SVMs typically scale worse with dataset size than linear SVMs",
+      "Non-linear kernel SVMs always scale better with dataset size than linear SVMs",
+      "All SVM variants are said to scale completely identically regardless of kernel choice",
+      "SVM scalability depends only on the number of classes, never the kernel"
+    ],
+    "correct": 0,
+    "explanation": "Non-linear kernels require pairwise kernel evaluations across the dataset and lack the specialized linear solvers, so they generally scale worse with size."
+  },
+  {
+    "id": "svm-115",
+    "topic": "svm",
+    "subtopic": "Computational cost and scalability",
+    "difficulty": "application",
+    "q": "A company compares training times for an SVM and a gradient-boosted tree model on several million labeled records. The SVM takes dramatically longer to train. What does this most likely reflect about SVM at this scale?",
+    "options": [
+      "Kernel SVM training cost grows steeply with dataset size, unlike many tree-based methods designed for large tabular data",
+      "SVM is flatly and incorrectly said to always train faster than tree-based models, regardless of dataset size on tabular data specifically",
+      "The comparison itself is said to be meaningless, since SVM supposedly cannot be trained on tabular data",
+      "Gradient-boosted trees are flatly and incorrectly said to be inapplicable to any large dataset at all"
+    ],
+    "correct": 0,
+    "explanation": "This reflects SVM's well-known scalability limitation compared to tree-based ensembles, which are commonly engineered for large tabular datasets."
+  },
+  {
+    "id": "svm-116",
+    "topic": "svm",
+    "subtopic": "Computational cost and scalability",
+    "difficulty": "recall",
+    "q": "As training set size grows very large, a key practical drawback of kernelized SVM compared to many other classifiers is ______.",
+    "options": [
+      "its training time and memory use scale poorly, often faster than linearly",
+      "its accuracy is said to always drop below random guessing",
+      "it supposedly becomes unable to separate more than two classes",
+      "it supposedly requires categorical rather than numeric input features"
+    ],
+    "correct": 0,
+    "explanation": "Kernelized SVM's training cost grows faster than linearly with dataset size, which becomes a practical bottleneck at very large scale."
+  },
+  {
+    "id": "svm-117",
+    "topic": "svm",
+    "subtopic": "Computational cost and scalability",
+    "difficulty": "application",
+    "q": "A team facing slow SVM training on a huge dataset decides to train on a representative random subsample of the data instead of the full set. What is this approach primarily trading off?",
+    "options": [
+      "Faster, more tractable training in exchange for potentially losing some information present only in the excluded data",
+      "Nothing is traded off; subsampling always improves both speed and accuracy equally",
+      "Subsampling is flatly and incorrectly said to eliminate the need for any kernel function entirely",
+      "Subsampling is flatly and incorrectly said to always guarantee a wider margin than training on the full dataset every single time"
+    ],
+    "correct": 0,
+    "explanation": "Subsampling reduces the quadratic-ish training cost at the price of potentially missing patterns only represented in the excluded portion of the data."
+  }
+]

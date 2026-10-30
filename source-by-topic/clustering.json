@@ -1,0 +1,1412 @@
+[
+  {
+    "id": "cluster-001",
+    "topic": "clustering",
+    "subtopic": "Clustering fundamentals",
+    "difficulty": "recall",
+    "q": "Clustering is fundamentally a form of ______ learning, because the algorithm is never given labeled examples during training.",
+    "options": [
+      "unsupervised",
+      "supervised",
+      "reinforcement",
+      "semi-supervised"
+    ],
+    "correct": 0,
+    "explanation": "Clustering groups data using only the structure of the features themselves, with no target labels provided, which is the definition of unsupervised learning."
+  },
+  {
+    "id": "cluster-002",
+    "topic": "clustering",
+    "subtopic": "Clustering fundamentals",
+    "difficulty": "application",
+    "q": "An online retailer wants to split its customers into groups based on purchase history, without having any predefined category labels for the customers. Which type of task is this?",
+    "options": [
+      "Clustering",
+      "Classification",
+      "Regression",
+      "Reinforcement learning"
+    ],
+    "correct": 0,
+    "explanation": "Since there are no predefined labels and the goal is to discover natural groupings, this is a clustering problem rather than classification or regression."
+  },
+  {
+    "id": "cluster-003",
+    "topic": "clustering",
+    "subtopic": "Clustering fundamentals",
+    "difficulty": "recall",
+    "q": "Which of the following best describes the goal of a good clustering solution?",
+    "options": [
+      "High similarity within clusters and low similarity between clusters",
+      "High similarity between clusters and low similarity within clusters",
+      "Equal pairwise distance between every pair of points in the dataset",
+      "Maximizing the total number of clusters formed, ignoring how cohesive each group turns out to be"
+    ],
+    "correct": 0,
+    "explanation": "A good clustering produces cohesive groups (high intra-cluster similarity) that are clearly distinct from one another (low inter-cluster similarity)."
+  },
+  {
+    "id": "cluster-004",
+    "topic": "clustering",
+    "subtopic": "Clustering fundamentals",
+    "difficulty": "analysis",
+    "q": "Which of the following is NOT a typical application of clustering?",
+    "options": [
+      "Predicting the exact numeric sales figure for a specific product next month",
+      "Grouping similar documents together into clusters so that retrieval and browsing become faster",
+      "Segmenting customers into distinct groups based on their recorded purchasing behaviour history",
+      "Flagging unusual transactions that do not resemble normal spending patterns"
+    ],
+    "correct": 0,
+    "explanation": "Predicting a specific continuous numeric value is a regression task, not a clustering task; the other three options are classic unsupervised clustering use cases."
+  },
+  {
+    "id": "cluster-005",
+    "topic": "clustering",
+    "subtopic": "Clustering fundamentals",
+    "difficulty": "recall",
+    "q": "Compared to classification, clustering does not require ______ to be known in advance.",
+    "options": [
+      "class labels for the training examples",
+      "the number of features in the dataset",
+      "any numeric values being present anywhere in the dataset",
+      "a computer powerful enough to run the clustering algorithm on"
+    ],
+    "correct": 0,
+    "explanation": "Classification learns a mapping to predefined labels, while clustering discovers groupings without any labels being supplied beforehand."
+  },
+  {
+    "id": "cluster-006",
+    "topic": "clustering",
+    "subtopic": "Clustering fundamentals",
+    "difficulty": "application",
+    "q": "A biologist wants to organize species into a nested taxonomy (kingdom, phylum, class, order, and so on) without deciding the categories beforehand. Which general class of clustering technique is naturally suited to producing this kind of nested, multi-level grouping?",
+    "options": [
+      "Hierarchical clustering",
+      "K-means clustering method",
+      "Simple linear regression",
+      "DBSCAN clustering method"
+    ],
+    "correct": 0,
+    "explanation": "Hierarchical clustering produces a nested tree of groupings (a dendrogram), which naturally matches a multi-level taxonomy, unlike the flat partitions of K-means or DBSCAN."
+  },
+  {
+    "id": "cluster-007",
+    "topic": "clustering",
+    "subtopic": "Clustering fundamentals",
+    "difficulty": "analysis",
+    "q": "Which statement about the choice of distance or similarity measure in clustering is most accurate?",
+    "options": [
+      "The clustering result can change substantially depending on which distance measure is used",
+      "The distance measure never affects which points end up grouped together, regardless of scaling",
+      "Euclidean distance is the only distance measure that any clustering algorithm is able to use",
+      "Distance measures only matter for supervised learning problems, never for clustering itself"
+    ],
+    "correct": 0,
+    "explanation": "Since clustering groups points by relative closeness, switching between distance measures (e.g., Euclidean vs. Manhattan) can change which points appear 'close' and therefore change the resulting clusters."
+  },
+  {
+    "id": "cluster-008",
+    "topic": "clustering",
+    "subtopic": "Clustering fundamentals",
+    "difficulty": "recall",
+    "q": "A clustering approach that groups points primarily by treating regions of high data concentration as clusters, separated by regions of low concentration, is called a ______ approach.",
+    "options": [
+      "density-based",
+      "partitioning-based",
+      "purely hierarchical",
+      "purely grid-based"
+    ],
+    "correct": 0,
+    "explanation": "Density-based approaches, such as DBSCAN, define clusters as dense regions of points separated by sparser regions, rather than by fixed centroids or nested merges."
+  },
+  {
+    "id": "cluster-009",
+    "topic": "clustering",
+    "subtopic": "K-means: objective and mechanics",
+    "difficulty": "recall",
+    "q": "In K-means clustering, each iteration updates a cluster's centroid to be the ______ of all points currently assigned to that cluster.",
+    "options": [
+      "mean",
+      "median",
+      "mode",
+      "minimum value"
+    ],
+    "correct": 0,
+    "explanation": "K-means recomputes each centroid as the arithmetic mean of the points assigned to its cluster, which is why it works best on continuous numeric features."
+  },
+  {
+    "id": "cluster-010",
+    "topic": "clustering",
+    "subtopic": "K-means: objective and mechanics",
+    "difficulty": "recall",
+    "q": "Which of the following best states the quantity that K-means tries to minimize?",
+    "options": [
+      "The total within-cluster sum of squared distances to each cluster's centroid",
+      "The number of clusters K that the analyst originally decided to use for the run",
+      "The distance between the final cluster centroids themselves, after convergence",
+      "The silhouette coefficient computed for the final clustering solution overall"
+    ],
+    "correct": 0,
+    "explanation": "K-means' objective is to minimize the total squared distance between each point and its assigned cluster's centroid, i.e., to minimize intra-cluster variance."
+  },
+  {
+    "id": "cluster-011",
+    "topic": "clustering",
+    "subtopic": "K-means: objective and mechanics",
+    "difficulty": "application",
+    "q": "A retail analyst runs K-means with K=4 on customer income and spending-score data. Which quantity is guaranteed to never increase from one iteration to the next until the algorithm converges?",
+    "options": [
+      "The total within-cluster sum of squared distances",
+      "The number of clusters K originally chosen by the analyst",
+      "The total number of data points in the whole dataset",
+      "The Euclidean distance between all pairs of centroids"
+    ],
+    "correct": 0,
+    "explanation": "Each K-means iteration (reassigning points, then recomputing centroids) can only decrease or maintain the within-cluster sum of squares, which is why the algorithm is guaranteed to converge."
+  },
+  {
+    "id": "cluster-012",
+    "topic": "clustering",
+    "subtopic": "K-means: objective and mechanics",
+    "difficulty": "recall",
+    "q": "Which of the following best describes the repeating loop inside the standard K-means algorithm?",
+    "options": [
+      "Assign each point to its nearest centroid, then recompute centroids, repeating until assignments stop changing",
+      "Merge the two closest existing clusters together repeatedly until only one single final cluster remains at the end",
+      "Expand a region outward from a core point for as long as local density stays above a fixed threshold",
+      "Recursively split the data based on feature thresholds, in the same manner as a decision tree model"
+    ],
+    "correct": 0,
+    "explanation": "K-means alternates between an assignment step (nearest centroid) and an update step (recompute centroids), stopping once assignments no longer change."
+  },
+  {
+    "id": "cluster-013",
+    "topic": "clustering",
+    "subtopic": "K-means: objective and mechanics",
+    "difficulty": "application",
+    "q": "A data scientist runs K-means twice on the same dataset and the same value of K, but uses a different random seed each time, and gets two visibly different clusterings. What best explains this?",
+    "options": [
+      "K-means can converge to different local optima depending on how the initial centroids happen to be placed",
+      "K-means is fully deterministic in practice, so this particular situation should never actually be observed at all",
+      "K-means always finds the single global optimum no matter how its centroids are initialized",
+      "The dataset must contain several exact duplicate rows for this kind of difference to occur"
+    ],
+    "correct": 0,
+    "explanation": "Because K-means' iterative updates only guarantee convergence to a local optimum, different random initial centroids can lead to different final clusterings."
+  },
+  {
+    "id": "cluster-014",
+    "topic": "clustering",
+    "subtopic": "K-means: objective and mechanics",
+    "difficulty": "recall",
+    "q": "A common strategy for reducing the risk of poor K-means results caused by unlucky initial centroid placement is to use ______, which spreads the initial centroids apart based on distance.",
+    "options": [
+      "K-means++ initialization",
+      "random uniform sampling only",
+      "single-linkage merging",
+      "a fixed grid search over eps"
+    ],
+    "correct": 0,
+    "explanation": "K-means++ chooses initial centroids that are probabilistically spread out, which reduces the chance of poor local optima compared with purely random initialization."
+  },
+  {
+    "id": "cluster-015",
+    "topic": "clustering",
+    "subtopic": "K-means: objective and mechanics",
+    "difficulty": "application",
+    "q": "An engineer wants to compress an image by representing every pixel's color using one of only 16 representative colors chosen from the image itself. Which algorithm is a natural fit for picking those 16 representative colors?",
+    "options": [
+      "K-means clustering on the pixel color values",
+      "DBSCAN clustering on the raw pixel coordinates",
+      "Agglomerative clustering with single linkage",
+      "A decision tree classifier trained on pixel labels"
+    ],
+    "correct": 0,
+    "explanation": "Running K-means with K=16 on pixel color vectors yields 16 centroids that serve as representative colors, a classic use of K-means for color quantization/image compression."
+  },
+  {
+    "id": "cluster-016",
+    "topic": "clustering",
+    "subtopic": "K-means: objective and mechanics",
+    "difficulty": "analysis",
+    "q": "Which of the following is a correct statement about the computational cost of K-means compared with agglomerative hierarchical clustering?",
+    "options": [
+      "K-means' runtime scales roughly with the number of points, clusters, and iterations, making it efficient even on large datasets",
+      "K-means' runtime is quadratic in the number of points, exactly like hierarchical clustering tends to be",
+      "K-means requires building and storing a full pairwise distance matrix at every single iteration of the main optimization loop",
+      "K-means cannot realistically be run on datasets larger than just a few hundred data points total"
+    ],
+    "correct": 0,
+    "explanation": "K-means has roughly linear complexity in the number of points, clusters, and iterations, which is why it scales to much larger datasets than agglomerative clustering, whose complexity is at least quadratic in the number of points."
+  },
+  {
+    "id": "cluster-017",
+    "topic": "clustering",
+    "subtopic": "K-means: limitations and practical considerations",
+    "difficulty": "analysis",
+    "q": "Which of the following is NOT a required input to the standard K-means algorithm?",
+    "options": [
+      "The epsilon (eps) neighborhood radius",
+      "The dataset of feature vectors to cluster",
+      "The number of clusters K to partition the data into",
+      "A stopping or convergence criterion for the loop"
+    ],
+    "correct": 0,
+    "explanation": "Epsilon is a DBSCAN parameter for defining neighborhood radius; K-means instead requires the number of clusters K, the data, and a convergence rule."
+  },
+  {
+    "id": "cluster-018",
+    "topic": "clustering",
+    "subtopic": "K-means: limitations and practical considerations",
+    "difficulty": "application",
+    "q": "Before running K-means on a dataset containing 'annual income in dollars' and 'age in years', an analyst standardizes both features to zero mean and unit variance. Why is this step important?",
+    "options": [
+      "Because K-means relies on distance, and an unscaled feature with a much larger numeric range would dominate the clustering result",
+      "Because K-means cannot process more than a single feature at all unless it has first been scaled",
+      "Because scaling guarantees that the globally optimal clustering solution will always be found",
+      "Because scaling converts the raw feature values directly into final cluster labels automatically"
+    ],
+    "correct": 0,
+    "explanation": "K-means uses distance-based assignment, so a feature with a much larger numeric range (like income in dollars versus age in years) would otherwise dominate the distance calculation and distort the clusters."
+  },
+  {
+    "id": "cluster-019",
+    "topic": "clustering",
+    "subtopic": "K-means: limitations and practical considerations",
+    "difficulty": "recall",
+    "q": "The ______ method for choosing K involves plotting the within-cluster sum of squares against different values of K and looking for the point where the decrease sharply flattens out.",
+    "options": [
+      "elbow",
+      "silhouette",
+      "dendrogram-cutting",
+      "epsilon-tuning"
+    ],
+    "correct": 0,
+    "explanation": "The elbow method identifies a 'knee' in the within-cluster sum-of-squares curve, beyond which adding more clusters gives diminishing improvement."
+  },
+  {
+    "id": "cluster-020",
+    "topic": "clustering",
+    "subtopic": "K-means: limitations and practical considerations",
+    "difficulty": "analysis",
+    "q": "As K is increased from 2 all the way up toward the total number of data points, what happens to the within-cluster sum of squared distances (inertia)?",
+    "options": [
+      "It keeps decreasing, approaching zero as each cluster shrinks toward a single point",
+      "It increases without bound as K keeps on growing larger and larger with each successive iteration",
+      "It stays exactly constant no matter what value K happens to take on",
+      "It oscillates unpredictably from one value of K to the next with no pattern"
+    ],
+    "correct": 0,
+    "explanation": "As K approaches the number of data points, each point can be its own cluster, driving the within-cluster sum of squares toward zero; this monotonic decrease is why the elbow method is needed to pick a reasonable stopping point rather than maximizing K."
+  },
+  {
+    "id": "cluster-021",
+    "topic": "clustering",
+    "subtopic": "K-means: limitations and practical considerations",
+    "difficulty": "recall",
+    "q": "Which statement correctly describes a key limitation of K-means related to cluster shape?",
+    "options": [
+      "K-means tends to perform poorly on non-convex or highly irregular clusters, since it assumes roughly spherical, similarly sized groups",
+      "K-means can perfectly detect clusters of any arbitrary shape or size without any real difficulty",
+      "K-means requires clusters to already be arranged in a predefined hierarchy beforehand to work",
+      "K-means only works correctly when every one of the clusters heavily overlaps one another"
+    ],
+    "correct": 0,
+    "explanation": "Because K-means assigns points to the nearest centroid, it implicitly favors compact, roughly spherical clusters and struggles with elongated or irregularly shaped groups."
+  },
+  {
+    "id": "cluster-022",
+    "topic": "clustering",
+    "subtopic": "K-means: limitations and practical considerations",
+    "difficulty": "application",
+    "q": "A fraud-detection team runs K-means on transaction amounts that include a handful of extreme outlier transactions. What problem is most likely to occur?",
+    "options": [
+      "The extreme values can pull nearby centroids toward them, distorting the resulting clusters",
+      "K-means will automatically detect and exclude the outliers as noise points entirely on its own",
+      "K-means will refuse to run entirely and throw an error on encountering outliers",
+      "The outliers will always form their own clean, well-separated cluster on their own"
+    ],
+    "correct": 0,
+    "explanation": "Since centroids are means of assigned points, a few extreme values can substantially shift a centroid away from the bulk of normal data, which is why K-means is considered sensitive to outliers."
+  },
+  {
+    "id": "cluster-023",
+    "topic": "clustering",
+    "subtopic": "K-means: limitations and practical considerations",
+    "difficulty": "recall",
+    "q": "K-means is generally unsuitable for purely categorical data without modification, mainly because it computes cluster centers using ______, which is not well defined for categorical variables.",
+    "options": [
+      "arithmetic means",
+      "majority mode counts",
+      "density estimates",
+      "pairwise rankings"
+    ],
+    "correct": 0,
+    "explanation": "Since categorical values have no meaningful average, K-means' mean-based centroid update does not directly apply; variants like k-modes or k-prototypes are used instead for categorical or mixed data."
+  },
+  {
+    "id": "cluster-024",
+    "topic": "clustering",
+    "subtopic": "K-means: limitations and practical considerations",
+    "difficulty": "application",
+    "q": "A team wants exactly 5 customer segments and fixes K=5, but gets a noticeably different-looking clustering result every time they rerun the algorithm. Which property of K-means most directly explains this?",
+    "options": [
+      "Sensitivity to the random placement of the initial centroids",
+      "K-means needing a different eps value set on every run",
+      "K-means requiring a dendrogram cut point that was never specified",
+      "K-means detecting a different number of outliers on every run"
+    ],
+    "correct": 0,
+    "explanation": "Because K-means converges to a local optimum that depends on initial centroid placement, repeated runs without a fixed seed can yield different final clusterings even for the same K."
+  },
+  {
+    "id": "cluster-025",
+    "topic": "clustering",
+    "subtopic": "K-means: limitations and practical considerations",
+    "difficulty": "recall",
+    "q": "A silhouette score close to +1 for a clustering solution indicates that, on average, ______.",
+    "options": [
+      "points are well matched to their own cluster and clearly far from neighboring clusters",
+      "points are roughly equally close to their own and to neighboring clusters",
+      "the clustering is essentially random, with absolutely no meaningful structure present at all",
+      "the chosen value of K is definitely much too large for this dataset"
+    ],
+    "correct": 0,
+    "explanation": "The silhouette score ranges from -1 to +1; values near +1 mean points sit much closer to their own cluster than to any other, indicating a strong clustering structure."
+  },
+  {
+    "id": "cluster-026",
+    "topic": "clustering",
+    "subtopic": "K-means: limitations and practical considerations",
+    "difficulty": "application",
+    "q": "After plotting within-cluster sum of squares for K=2 through K=6, an analyst sees a sharp bend at K=3, with the decrease flattening noticeably afterward. What should they conclude?",
+    "options": [
+      "K=3 is a reasonable choice for the number of clusters",
+      "K=6 must be used, since it gives the lowest sum of squares",
+      "The elbow method cannot be meaningfully applied in this case",
+      "The data must have no real cluster structure at all"
+    ],
+    "correct": 0,
+    "explanation": "The elbow method looks for the point where adding more clusters stops producing much improvement; a sharp bend at K=3 suggests that is a good tradeoff between fit and simplicity."
+  },
+  {
+    "id": "cluster-027",
+    "topic": "clustering",
+    "subtopic": "K-means: limitations and practical considerations",
+    "difficulty": "analysis",
+    "q": "Which of the following is NOT a known limitation of the K-means algorithm?",
+    "options": [
+      "It can automatically determine the optimal number of clusters without any user input",
+      "It requires the number of clusters to be specified well in advance of actually running the algorithm",
+      "It is sensitive to the initial random placement of the starting centroids",
+      "It struggles to discover clusters that have non-convex, irregular shapes"
+    ],
+    "correct": 0,
+    "explanation": "K-means cannot determine K on its own; the number of clusters must be supplied by the user, often estimated with heuristics like the elbow method, so this option describes something K-means cannot do."
+  },
+  {
+    "id": "cluster-028",
+    "topic": "clustering",
+    "subtopic": "K-means: limitations and practical considerations",
+    "difficulty": "application",
+    "q": "A geneticist clusters gene-expression samples with K-means, but one gene's values range in the thousands while every other gene's values range between 0 and 1. If the data is not scaled first, what is the most likely consequence?",
+    "options": [
+      "The large-magnitude gene will dominate the distance calculation and skew the clustering",
+      "K-means will automatically detect and entirely exclude that gene during distance calculation",
+      "K-means will throw a runtime error and simply refuse to execute at all",
+      "The clustering result will be unaffected, since K-means is scale-invariant"
+    ],
+    "correct": 0,
+    "explanation": "K-means distances are sensitive to feature magnitude, so an unscaled, large-range feature can dominate the distance calculation and overwhelm the influence of the other features."
+  },
+  {
+    "id": "cluster-029",
+    "topic": "clustering",
+    "subtopic": "K-means: limitations and practical considerations",
+    "difficulty": "recall",
+    "q": "Which pair correctly matches a K-means weakness with an accurate description of it?",
+    "options": [
+      "Sensitivity to outliers: a few extreme points can substantially shift the computed centroids",
+      "Sensitivity to outliers: outliers always speed up K-means' convergence to a solution",
+      "Local optima: K-means always finds the same clustering regardless of initialization",
+      "Fixed K: K-means can automatically discover the correct K purely from the data itself, without any help"
+    ],
+    "correct": 0,
+    "explanation": "Because centroids are computed as means, a small number of extreme outlier values can pull a centroid noticeably away from the bulk of its cluster's points."
+  },
+  {
+    "id": "cluster-030",
+    "topic": "clustering",
+    "subtopic": "K-means: limitations and practical considerations",
+    "difficulty": "analysis",
+    "q": "A manufacturing engineer clusters sensor readings where some normal-operation regions are very dense and tightly packed, while others are spread out and sparse. K-means forces all resulting clusters into roughly similar size and compactness. Which property of K-means explains this behavior?",
+    "options": [
+      "K-means partitions space based on nearest centroid, which implicitly favors roughly spherical, similarly sized clusters",
+      "K-means only ever works correctly on strictly two-dimensional datasets and absolutely nothing else at all",
+      "K-means requires building a full dendrogram first to decide the cluster boundaries",
+      "K-means assigns points to clusters based purely on local density thresholds instead"
+    ],
+    "correct": 0,
+    "explanation": "Since K-means assigns every point to its nearest centroid using Euclidean-style distance, it tends to carve space into roughly equal-sized, spherical regions, regardless of the true underlying density variation."
+  },
+  {
+    "id": "cluster-031",
+    "topic": "clustering",
+    "subtopic": "Hierarchical clustering: agglomerative, divisive, and dendrograms",
+    "difficulty": "recall",
+    "q": "Agglomerative hierarchical clustering builds its hierarchy by repeatedly ______.",
+    "options": [
+      "merging the two most similar existing clusters into one",
+      "splitting the largest existing cluster into two smaller ones",
+      "reassigning points to whichever centroid is currently nearest",
+      "expanding a dense region outward from a randomly chosen seed point"
+    ],
+    "correct": 0,
+    "explanation": "Agglomerative (bottom-up) clustering starts with every point as its own cluster and repeatedly merges the closest pair of clusters until one cluster remains or a stopping condition is met."
+  },
+  {
+    "id": "cluster-032",
+    "topic": "clustering",
+    "subtopic": "Hierarchical clustering: agglomerative, divisive, and dendrograms",
+    "difficulty": "recall",
+    "q": "Which of the following best describes divisive hierarchical clustering?",
+    "options": [
+      "It starts with all points in a single cluster and recursively splits them into smaller clusters",
+      "It starts with each individual point as its own cluster and merges them together step by step",
+      "It assigns points to clusters purely based on local density, like DBSCAN does",
+      "It requires the number of clusters to be fixed in advance before it begins running"
+    ],
+    "correct": 0,
+    "explanation": "Divisive clustering (e.g., DIANA) works top-down, starting with one big cluster containing all points and splitting it recursively, the reverse of the agglomerative approach."
+  },
+  {
+    "id": "cluster-033",
+    "topic": "clustering",
+    "subtopic": "Hierarchical clustering: agglomerative, divisive, and dendrograms",
+    "difficulty": "application",
+    "q": "A news aggregator wants to let users drill down from a few broad story categories to very specific subtopics, without fixing the number of categories in advance. Which technique's natural output, a dendrogram, directly supports this kind of multi-level browsing?",
+    "options": [
+      "Hierarchical clustering",
+      "K-means clustering method",
+      "DBSCAN clustering method",
+      "Simple linear regression"
+    ],
+    "correct": 0,
+    "explanation": "Hierarchical clustering produces a nested tree of groupings at every level of granularity, which can be explored or cut at different heights, unlike the single flat partition produced by K-means."
+  },
+  {
+    "id": "cluster-034",
+    "topic": "clustering",
+    "subtopic": "Hierarchical clustering: agglomerative, divisive, and dendrograms",
+    "difficulty": "recall",
+    "q": "In a dendrogram, cutting the tree at a chosen height produces a clustering in which each connected component below the cut forms ______.",
+    "options": [
+      "one cluster",
+      "one individual data point",
+      "one linkage method",
+      "one outlier"
+    ],
+    "correct": 0,
+    "explanation": "A horizontal cut through a dendrogram separates the tree into disjoint branches; each remaining connected branch below the cut represents one cluster."
+  },
+  {
+    "id": "cluster-035",
+    "topic": "clustering",
+    "subtopic": "Hierarchical clustering: agglomerative, divisive, and dendrograms",
+    "difficulty": "application",
+    "q": "An analyst decides to cut a dendrogram at a lower height than before. What generally happens to the number of resulting clusters?",
+    "options": [
+      "It increases, since a lower cut only allows merges that happened at smaller distances",
+      "It decreases, since fewer merges have already happened by that particular height in the dendrogram",
+      "It always becomes exactly 1, no matter where in the tree the cut is made",
+      "It is completely unaffected by where exactly the cut is made in the tree"
+    ],
+    "correct": 0,
+    "explanation": "Cutting lower in the dendrogram happens before many of the later, larger-distance merges occur, leaving more separate branches and therefore more clusters."
+  },
+  {
+    "id": "cluster-036",
+    "topic": "clustering",
+    "subtopic": "Hierarchical clustering: agglomerative, divisive, and dendrograms",
+    "difficulty": "recall",
+    "q": "Which of the following is a key practical advantage of hierarchical clustering over K-means?",
+    "options": [
+      "It does not require the number of clusters to be specified before the algorithm runs",
+      "It always runs faster than K-means does, even on very large, high-dimensional datasets",
+      "It is completely insensitive to whichever distance metric happens to be chosen",
+      "It guarantees finding the single globally optimal clustering solution every time"
+    ],
+    "correct": 0,
+    "explanation": "Hierarchical clustering builds a full nested hierarchy first, and the number of clusters is only chosen afterward by selecting where to cut the dendrogram, unlike K-means which needs K set upfront."
+  },
+  {
+    "id": "cluster-037",
+    "topic": "clustering",
+    "subtopic": "Hierarchical clustering: agglomerative, divisive, and dendrograms",
+    "difficulty": "analysis",
+    "q": "Which of the following is NOT true about agglomerative clustering?",
+    "options": [
+      "It can undo an earlier merge if a better grouping becomes apparent",
+      "It produces a nested hierarchy of clusters at every level of granularity",
+      "It can be visualized clearly using a tree-shaped dendrogram structure",
+      "Early merge decisions are permanent and strongly influence all later merges"
+    ],
+    "correct": 0,
+    "explanation": "Agglomerative clustering is greedy: once two clusters are merged, that merge can never be undone, which is a well-known structural weakness of the approach."
+  },
+  {
+    "id": "cluster-038",
+    "topic": "clustering",
+    "subtopic": "Hierarchical clustering: agglomerative, divisive, and dendrograms",
+    "difficulty": "application",
+    "q": "An analyst applies agglomerative clustering to 50,000 customer records and finds it takes far longer and uses far more memory than K-means did on the same data. What is the most likely reason?",
+    "options": [
+      "Agglomerative clustering typically has at least quadratic time and memory complexity in the number of points, due to the distance matrix it maintains",
+      "Agglomerative clustering must always end up producing far more final clusters than K-means does",
+      "Agglomerative clustering requires specialized GPU hardware just to compute all of its distances",
+      "Agglomerative clustering repeatedly retrains its centroids the same way K-means does, only far more often"
+    ],
+    "correct": 0,
+    "explanation": "Classic agglomerative clustering computes and updates pairwise distances between clusters, giving it at least O(n^2) time and memory complexity, which scales much worse than K-means' roughly linear cost."
+  },
+  {
+    "id": "cluster-039",
+    "topic": "clustering",
+    "subtopic": "Hierarchical clustering: agglomerative, divisive, and dendrograms",
+    "difficulty": "recall",
+    "q": "A major structural weakness of agglomerative clustering is that merge decisions are ______, meaning an early, possibly suboptimal merge can never be reversed later.",
+    "options": [
+      "greedy and irreversible",
+      "randomly reinitialized at every step",
+      "based purely on local density",
+      "recomputed from scratch at every iteration"
+    ],
+    "correct": 0,
+    "explanation": "Because each merge is made greedily based on current distances and is never revisited, a poor early merge can propagate and affect the quality of the whole resulting hierarchy."
+  },
+  {
+    "id": "cluster-040",
+    "topic": "clustering",
+    "subtopic": "Hierarchical clustering: agglomerative, divisive, and dendrograms",
+    "difficulty": "recall",
+    "q": "Which statement best distinguishes hierarchical clustering from K-means in terms of the output each produces?",
+    "options": [
+      "Hierarchical clustering produces a nested sequence of groupings at different levels, while K-means produces a single flat partition for a fixed K",
+      "K-means produces a dendrogram, while hierarchical clustering produces a single flat partition",
+      "Both algorithms always produce exactly identical results when run on precisely the same dataset",
+      "Hierarchical clustering requires specifying K upfront, while K-means somehow does not need to"
+    ],
+    "correct": 0,
+    "explanation": "Hierarchical clustering's output is a dendrogram representing nested groupings at every distance level, whereas K-means directly produces one flat partition into exactly K clusters."
+  },
+  {
+    "id": "cluster-041",
+    "topic": "clustering",
+    "subtopic": "Hierarchical clustering: agglomerative, divisive, and dendrograms",
+    "difficulty": "application",
+    "q": "A researcher cataloging archaeological artifacts wants both a single grouping into a chosen number of categories and a visual record of which subgroups merged with which, and at what similarity level. Which approach provides both pieces of information from a single run?",
+    "options": [
+      "Hierarchical clustering with a dendrogram",
+      "A single run of plain K-means clustering",
+      "Several runs of K-means with different K",
+      "DBSCAN run once with one fixed value of eps"
+    ],
+    "correct": 0,
+    "explanation": "A single hierarchical clustering run yields a dendrogram showing every merge and its distance, from which any number of flat clusters can later be extracted by cutting at a chosen height."
+  },
+  {
+    "id": "cluster-042",
+    "topic": "clustering",
+    "subtopic": "Hierarchical clustering: agglomerative, divisive, and dendrograms",
+    "difficulty": "recall",
+    "q": "Which of these is an extension designed to improve the scalability of hierarchical-style clustering to large datasets, by first building compact summaries of the data?",
+    "options": [
+      "BIRCH, which incrementally builds a tree of cluster-feature summaries before clustering",
+      "K-means++, which only ever improves how the initial centroids are chosen before clustering begins",
+      "DBSCAN, which clusters points together based purely on local density",
+      "PCA, which only ever reduces the number of input features used"
+    ],
+    "correct": 0,
+    "explanation": "BIRCH builds a compact clustering-feature (CF) tree summarizing the data incrementally, allowing it to scale to much larger datasets than plain agglomerative clustering."
+  },
+  {
+    "id": "cluster-043",
+    "topic": "clustering",
+    "subtopic": "Hierarchical clustering: agglomerative, divisive, and dendrograms",
+    "difficulty": "application",
+    "q": "A team trying to cluster 10 million transaction records on a tight time budget concludes that standard agglomerative clustering is too slow. What is the most direct reason for this?",
+    "options": [
+      "It computes and repeatedly updates distances between pairs of clusters, which scales poorly in time and memory as the number of points grows",
+      "It needs several random restarts to work well, in the same way that K-means does",
+      "It requires fully labeled training data in order to compute distances between clusters",
+      "It always converges to the exact same result as K-means, making it pointless to run"
+    ],
+    "correct": 0,
+    "explanation": "Agglomerative clustering's reliance on a distance matrix that must be updated after every merge gives it at least quadratic complexity, which becomes impractical at the scale of millions of records."
+  },
+  {
+    "id": "cluster-044",
+    "topic": "clustering",
+    "subtopic": "Hierarchical clustering: agglomerative, divisive, and dendrograms",
+    "difficulty": "recall",
+    "q": "Which best describes a 'dendrogram' in the context of hierarchical clustering?",
+    "options": [
+      "A tree diagram recording the order and distances at which clusters were merged or split",
+      "A scatter plot showing only the final positions of the cluster centroids",
+      "A bar chart comparing within-cluster variance across every single different value of K tested",
+      "A simple plot comparing the eps parameter directly against minPts values"
+    ],
+    "correct": 0,
+    "explanation": "A dendrogram is the tree-shaped diagram that visually records the full merge (or split) history of hierarchical clustering, including the distance at which each merge occurred."
+  },
+  {
+    "id": "cluster-045",
+    "topic": "clustering",
+    "subtopic": "Hierarchical clustering: linkage methods",
+    "difficulty": "recall",
+    "q": "The linkage method that defines the distance between two clusters as the distance between their two closest members is called ______.",
+    "options": [
+      "single linkage",
+      "complete linkage",
+      "average linkage",
+      "Ward's method"
+    ],
+    "correct": 0,
+    "explanation": "Single linkage measures inter-cluster distance as the minimum distance between any point in one cluster and any point in the other."
+  },
+  {
+    "id": "cluster-046",
+    "topic": "clustering",
+    "subtopic": "Hierarchical clustering: linkage methods",
+    "difficulty": "recall",
+    "q": "The linkage method that defines the distance between two clusters as the distance between their two farthest members is called ______.",
+    "options": [
+      "complete linkage",
+      "single linkage",
+      "centroid-distance linkage",
+      "average linkage"
+    ],
+    "correct": 0,
+    "explanation": "Complete linkage measures inter-cluster distance as the maximum distance between any point in one cluster and any point in the other."
+  },
+  {
+    "id": "cluster-047",
+    "topic": "clustering",
+    "subtopic": "Hierarchical clustering: linkage methods",
+    "difficulty": "application",
+    "q": "A dataset contains a thin 'chain' of points connecting two otherwise distinct dense groups. Using single-linkage clustering on this data is most likely to result in which outcome?",
+    "options": [
+      "The two groups get merged together early, since single linkage only needs one close pair of points to connect clusters, causing a chaining effect",
+      "The two groups remain perfectly separated no matter how close that connecting chain actually gets",
+      "Single linkage ignores chains of points entirely and simply treats all of them as noise",
+      "The chain points automatically form their own small, completely isolated cluster instead"
+    ],
+    "correct": 0,
+    "explanation": "Because single linkage only requires the single closest pair of points between clusters to decide a merge, a thin bridge of points can cause two otherwise distinct groups to be chained together."
+  },
+  {
+    "id": "cluster-048",
+    "topic": "clustering",
+    "subtopic": "Hierarchical clustering: linkage methods",
+    "difficulty": "application",
+    "q": "An analyst wants a linkage method that is less prone to the 'chaining' problem and tends to produce more compact, similarly sized clusters. Which linkage choice is typically preferred for this?",
+    "options": [
+      "Complete linkage",
+      "Single linkage",
+      "All linkage methods chain equally, so the choice makes no difference",
+      "This behavior is unrelated to the choice of linkage method"
+    ],
+    "correct": 0,
+    "explanation": "Complete linkage requires the worst-case (farthest) pairwise distance to be small before merging, which discourages chaining and tends to yield more compact, balanced clusters than single linkage."
+  },
+  {
+    "id": "cluster-049",
+    "topic": "clustering",
+    "subtopic": "Hierarchical clustering: linkage methods",
+    "difficulty": "recall",
+    "q": "Ward's linkage method merges the pair of clusters that leads to the smallest possible increase in ______ after the merge.",
+    "options": [
+      "total within-cluster variance (sum of squared errors)",
+      "the maximum pairwise distance between any two given data points",
+      "the total number of clusters formed during merging",
+      "the epsilon neighborhood radius used for density"
+    ],
+    "correct": 0,
+    "explanation": "Ward's method chooses merges that minimize the resulting increase in total within-cluster sum of squared errors, which is conceptually similar to the objective K-means minimizes."
+  },
+  {
+    "id": "cluster-050",
+    "topic": "clustering",
+    "subtopic": "Hierarchical clustering: linkage methods",
+    "difficulty": "analysis",
+    "q": "Which statement correctly compares Ward linkage to single and complete linkage?",
+    "options": [
+      "Ward's method tends to produce more balanced, compact clusters by explicitly minimizing the increase in within-cluster variance at each merge",
+      "Ward's method is defined purely by the minimum distance between any two points in different clusters",
+      "Ward's method is defined purely by the minimum distance between points in different clusters",
+      "Ward's method always produces results that are completely identical to single linkage's"
+    ],
+    "correct": 0,
+    "explanation": "Unlike single or complete linkage, which are purely distance-based, Ward's method directly targets minimizing variance growth, which tends to favor compact, evenly sized clusters."
+  },
+  {
+    "id": "cluster-051",
+    "topic": "clustering",
+    "subtopic": "Hierarchical clustering: linkage methods",
+    "difficulty": "application",
+    "q": "A customer segmentation dataset contains a handful of extreme outlier customers. Using single-linkage agglomerative clustering, the analyst notices the outliers get absorbed into existing clusters one at a time instead of forming their own well-separated group. What causes this?",
+    "options": [
+      "Single linkage connects clusters through their single closest pair of points, so an outlier near a cluster's edge can bridge it to other points even indirectly",
+      "Single linkage averages all of the pairwise distances together, which dilutes the effect of any single outlier",
+      "Single linkage recomputes a fresh centroid for each cluster, which makes it inherently robust to outliers",
+      "Single linkage requires every outlier to be manually identified and removed before the algorithm can run"
+    ],
+    "correct": 0,
+    "explanation": "Because single linkage only cares about the nearest pair of points between clusters, an outlier sitting close to the edge of a cluster can act as a bridge, pulling it into that cluster rather than isolating it."
+  },
+  {
+    "id": "cluster-052",
+    "topic": "clustering",
+    "subtopic": "Hierarchical clustering: linkage methods",
+    "difficulty": "recall",
+    "q": "Average linkage computes the distance between two clusters as the ______ of all pairwise distances between points in the two clusters.",
+    "options": [
+      "mean",
+      "minimum",
+      "maximum",
+      "median"
+    ],
+    "correct": 0,
+    "explanation": "Average linkage takes the average of every pairwise distance between members of the two clusters, giving a result that sits between single and complete linkage in sensitivity to outliers."
+  },
+  {
+    "id": "cluster-053",
+    "topic": "clustering",
+    "subtopic": "Hierarchical clustering: linkage methods",
+    "difficulty": "analysis",
+    "q": "Which of the following is NOT true about complete linkage?",
+    "options": [
+      "It is defined using the average of all pairwise distances between two clusters",
+      "It tends to produce noticeably more compact clusters than single linkage does",
+      "It is considerably less prone to the chaining effect than single linkage is",
+      "It uses the maximum pairwise distance between the two clusters to decide merges"
+    ],
+    "correct": 0,
+    "explanation": "Using the average of all pairwise distances describes average linkage, not complete linkage, which instead uses the single largest pairwise distance between clusters."
+  },
+  {
+    "id": "cluster-054",
+    "topic": "clustering",
+    "subtopic": "Hierarchical clustering: linkage methods",
+    "difficulty": "application",
+    "q": "In a document clustering system using single linkage, many unrelated articles end up merged into one giant cluster, connected only by a few coincidentally similar word pairs. Switching to which linkage method would most directly address this by requiring clusters to be dissimilar in their worst-case pairwise distance before merging?",
+    "options": [
+      "Complete linkage",
+      "Single linkage with more iterations",
+      "Single linkage with a smaller eps value",
+      "Single linkage restricted to two clusters"
+    ],
+    "correct": 0,
+    "explanation": "Complete linkage requires even the farthest pair of points between two clusters to be close before merging, which prevents loosely connected groups from being merged just because of one similar pair."
+  },
+  {
+    "id": "cluster-055",
+    "topic": "clustering",
+    "subtopic": "Hierarchical clustering: linkage methods",
+    "difficulty": "application",
+    "q": "A geographic analyst wants to detect elongated, snake-like clusters representing sampling points along a winding river basin, where points connect in a chain-like path. Which linkage method's tendency to 'chain' clusters together is actually useful in this specific scenario?",
+    "options": [
+      "Single linkage",
+      "Complete linkage",
+      "Ward linkage",
+      "Average linkage"
+    ],
+    "correct": 0,
+    "explanation": "Single linkage's chaining behavior, usually seen as a weakness, can correctly follow elongated or snake-like structures that complete or Ward linkage would instead tend to split into more compact, rounder pieces."
+  },
+  {
+    "id": "cluster-056",
+    "topic": "clustering",
+    "subtopic": "Hierarchical clustering: linkage methods",
+    "difficulty": "recall",
+    "q": "Centroid linkage computes the distance between two clusters as the distance between the ______ of each cluster.",
+    "options": [
+      "centroids (mean points)",
+      "medoids only, never centroids",
+      "closest pair of points",
+      "farthest pair of points"
+    ],
+    "correct": 0,
+    "explanation": "Centroid linkage represents each cluster by its mean point (centroid) and measures inter-cluster distance as the distance between these two centroids."
+  },
+  {
+    "id": "cluster-057",
+    "topic": "clustering",
+    "subtopic": "DBSCAN: core concepts and parameters",
+    "difficulty": "recall",
+    "q": "DBSCAN groups points into clusters primarily by identifying regions of high ______ in the feature space.",
+    "options": [
+      "density",
+      "centroid proximity",
+      "hierarchy",
+      "hyperplane separation"
+    ],
+    "correct": 0,
+    "explanation": "DBSCAN (Density-Based Spatial Clustering of Applications with Noise) defines clusters as dense regions of points, separated by regions of lower density."
+  },
+  {
+    "id": "cluster-058",
+    "topic": "clustering",
+    "subtopic": "DBSCAN: core concepts and parameters",
+    "difficulty": "recall",
+    "q": "In DBSCAN, the parameter specifying the radius used to determine which points count as 'neighbors' of a given point is called ______.",
+    "options": [
+      "epsilon (eps)",
+      "minPts threshold",
+      "the value of K",
+      "linkage distance"
+    ],
+    "correct": 0,
+    "explanation": "Epsilon (eps) defines the radius of the neighborhood around each point that is examined when checking whether that point lies in a dense region."
+  },
+  {
+    "id": "cluster-059",
+    "topic": "clustering",
+    "subtopic": "DBSCAN: core concepts and parameters",
+    "difficulty": "recall",
+    "q": "The DBSCAN parameter minPts specifies ______.",
+    "options": [
+      "the minimum number of points required within an eps-radius neighborhood for a point to count as a core point",
+      "the maximum number of clusters that the algorithm is ever allowed to end up producing",
+      "the minimum distance that must always exist between any two separate, distinct clusters",
+      "the number of iterations the algorithm is permitted to run through before it is considered to have finally stopped"
+    ],
+    "correct": 0,
+    "explanation": "minPts sets the density threshold: a point becomes a core point only if at least minPts other points fall within its eps-neighborhood."
+  },
+  {
+    "id": "cluster-060",
+    "topic": "clustering",
+    "subtopic": "DBSCAN: core concepts and parameters",
+    "difficulty": "recall",
+    "q": "Which of the following correctly defines a 'core point' in DBSCAN?",
+    "options": [
+      "A point that has at least minPts other points within its eps-radius neighborhood",
+      "A point that lies exactly at the freshly computed centroid of its cluster",
+      "A point that happens to be exactly equidistant from two different clusters",
+      "Any point at all that simply has not yet been specifically labeled as noise by the algorithm"
+    ],
+    "correct": 0,
+    "explanation": "A core point is one dense enough on its own, meaning it has at least minPts neighbors (including itself, depending on convention) within distance eps."
+  },
+  {
+    "id": "cluster-061",
+    "topic": "clustering",
+    "subtopic": "DBSCAN: core concepts and parameters",
+    "difficulty": "recall",
+    "q": "Which of the following correctly defines a 'border point' in DBSCAN?",
+    "options": [
+      "A point that lies within the eps-neighborhood of a core point but does not itself have enough neighbors to qualify as a core point",
+      "A point used only to initialize the cluster centroids before the algorithm even begins running",
+      "A point with more than minPts neighbors counted within its own eps-neighborhood",
+      "A point with precisely zero neighbors found within its eps-neighborhood radius"
+    ],
+    "correct": 0,
+    "explanation": "A border point sits close enough to a core point to be reachable and included in a cluster, but does not itself have enough neighbors within eps to be a core point."
+  },
+  {
+    "id": "cluster-062",
+    "topic": "clustering",
+    "subtopic": "DBSCAN: core concepts and parameters",
+    "difficulty": "recall",
+    "q": "Which of the following correctly defines a 'noise point' (outlier) in DBSCAN?",
+    "options": [
+      "A point that is neither a core point nor within the eps-neighborhood of any core point",
+      "A point located exactly at the precise geometric center of a cluster",
+      "The single point that has by far the most neighbors in the entire dataset overall",
+      "Any point that simply happens to be assigned to the largest cluster found"
+    ],
+    "correct": 0,
+    "explanation": "Noise points do not belong to any dense region: they are not dense enough themselves (not core points) and are not close enough to any core point (not border points) either."
+  },
+  {
+    "id": "cluster-063",
+    "topic": "clustering",
+    "subtopic": "DBSCAN: core concepts and parameters",
+    "difficulty": "application",
+    "q": "A geophysicist is clustering sensor readings that form arbitrarily curved, non-spherical regions, and the dataset also contains several erroneous readings scattered randomly throughout. Which algorithm is best suited to finding the curved clusters while also flagging the erroneous readings?",
+    "options": [
+      "DBSCAN",
+      "K-means",
+      "Hierarchical clustering with Ward linkage",
+      "Simple linear regression"
+    ],
+    "correct": 0,
+    "explanation": "DBSCAN can trace out arbitrarily shaped dense regions by connecting neighboring points, and it automatically leaves sparse, scattered points unassigned as noise, matching both requirements."
+  },
+  {
+    "id": "cluster-064",
+    "topic": "clustering",
+    "subtopic": "DBSCAN: core concepts and parameters",
+    "difficulty": "analysis",
+    "q": "Which of the following is NOT a characteristic of DBSCAN?",
+    "options": [
+      "It requires the number of clusters K to be specified before the algorithm runs",
+      "It can find clusters of completely arbitrary shape and size without any trouble at all",
+      "It can identify individual points directly as noise or outliers on its own",
+      "Its results are quite sensitive to whichever value of eps gets chosen"
+    ],
+    "correct": 0,
+    "explanation": "DBSCAN does not take K as an input at all; the number of clusters emerges from the data and the chosen eps/minPts values, unlike K-means."
+  },
+  {
+    "id": "cluster-065",
+    "topic": "clustering",
+    "subtopic": "DBSCAN: core concepts and parameters",
+    "difficulty": "application",
+    "q": "A spatial analyst applies DBSCAN to GPS coordinates of delivery stops to find high-activity zones. Unlike K-means on the same data, DBSCAN is able to leave sparsely scattered, isolated stops unassigned to any zone. Which DBSCAN feature explains this?",
+    "options": [
+      "DBSCAN explicitly labels points not part of any dense region as noise, instead of forcing every point into some cluster",
+      "DBSCAN always creates exactly one brand-new cluster for every single data point",
+      "DBSCAN requires every single outlier to be manually identified and removed before the algorithm can even begin to run",
+      "DBSCAN automatically merges every isolated point together into one single extra cluster"
+    ],
+    "correct": 0,
+    "explanation": "DBSCAN's noise label lets it leave sparse points unassigned, whereas K-means has no such option and must assign every point to its nearest centroid regardless of how isolated it is."
+  },
+  {
+    "id": "cluster-066",
+    "topic": "clustering",
+    "subtopic": "DBSCAN: core concepts and parameters",
+    "difficulty": "application",
+    "q": "An analyst sets eps too small when running DBSCAN on a dataset of customer locations. What is the most likely consequence?",
+    "options": [
+      "Most points end up labeled as noise, since few points have enough neighbors within such a small radius",
+      "All of the points end up merged together into just one single giant cluster spanning the whole dataset",
+      "The algorithm automatically adjusts the eps value upward entirely on its own",
+      "The algorithm instead requires the number of clusters K to be specified"
+    ],
+    "correct": 0,
+    "explanation": "A very small eps makes it hard for any point to accumulate minPts neighbors within that radius, so most points fail the density requirement and are labeled noise."
+  },
+  {
+    "id": "cluster-067",
+    "topic": "clustering",
+    "subtopic": "DBSCAN: core concepts and parameters",
+    "difficulty": "application",
+    "q": "An analyst sets eps too large when running DBSCAN. What is the most likely consequence?",
+    "options": [
+      "Distinct clusters may merge together into one large cluster, since more points fall within each other's neighborhoods",
+      "Every single data point in the dataset ends up becoming its own separate cluster",
+      "The algorithm simply refuses to run at all whenever such a large eps value is used",
+      "The minPts parameter gets ignored entirely as soon as eps becomes very large"
+    ],
+    "correct": 0,
+    "explanation": "A large eps makes neighborhoods overlap across what should be separate dense regions, causing clusters that are genuinely distinct to be merged into one."
+  },
+  {
+    "id": "cluster-068",
+    "topic": "clustering",
+    "subtopic": "DBSCAN: core concepts and parameters",
+    "difficulty": "recall",
+    "q": "Which of the following is a known limitation of DBSCAN?",
+    "options": [
+      "It struggles when the true clusters have very different densities, since a single eps/minPts setting may not suit all of them",
+      "It is completely unable to detect any outliers or noise points whatsoever",
+      "It requires the exact number of clusters to be specified well in advance",
+      "It only ever works correctly on datasets that have exactly two input features"
+    ],
+    "correct": 0,
+    "explanation": "Since DBSCAN uses one global eps and minPts setting, it can fail when some true clusters are much denser than others, labeling sparser clusters as noise or merging them incorrectly."
+  },
+  {
+    "id": "cluster-069",
+    "topic": "clustering",
+    "subtopic": "DBSCAN: core concepts and parameters",
+    "difficulty": "recall",
+    "q": "Unlike K-means, DBSCAN does not require the user to pre-specify the ______ of clusters.",
+    "options": [
+      "number",
+      "overall shape",
+      "eps radius",
+      "minPts value"
+    ],
+    "correct": 0,
+    "explanation": "DBSCAN discovers the number of clusters from the density structure of the data itself, given the chosen eps and minPts, rather than requiring K to be fixed in advance."
+  },
+  {
+    "id": "cluster-070",
+    "topic": "clustering",
+    "subtopic": "DBSCAN: core concepts and parameters",
+    "difficulty": "application",
+    "q": "A credit card company wants to flag fraudulent transactions as those that don't fit into any normal spending pattern cluster, without deciding in advance how many 'normal' patterns exist. Which algorithm's built-in outlier labeling makes it a natural fit for this task?",
+    "options": [
+      "DBSCAN",
+      "K-means",
+      "Hierarchical clustering with complete linkage",
+      "None of these algorithms can detect outliers"
+    ],
+    "correct": 0,
+    "explanation": "DBSCAN natively labels points outside any dense region as noise, which directly supports flagging transactions that do not match any normal spending pattern, without requiring the number of patterns to be fixed beforehand."
+  },
+  {
+    "id": "cluster-071",
+    "topic": "clustering",
+    "subtopic": "DBSCAN: core concepts and parameters",
+    "difficulty": "recall",
+    "q": "Which of the following is true about how DBSCAN determines the number of clusters in a dataset?",
+    "options": [
+      "The number of clusters emerges from the density structure of the data and the chosen parameters, rather than being specified upfront",
+      "The number of clusters must be fixed by the analyst before running the algorithm",
+      "The number of clusters is always exactly equal to whatever minPts value was chosen",
+      "The number of clusters is always exactly equal to the chosen eps value instead"
+    ],
+    "correct": 0,
+    "explanation": "DBSCAN never takes a target number of clusters as input; how many dense regions form, and therefore how many clusters result, depends only on the data and the eps/minPts settings."
+  },
+  {
+    "id": "cluster-072",
+    "topic": "clustering",
+    "subtopic": "DBSCAN: core concepts and parameters",
+    "difficulty": "analysis",
+    "q": "Two border points each lie within the eps-neighborhood of two different core points belonging to different clusters. Which outcome is standard in typical DBSCAN implementations for this ambiguous case?",
+    "options": [
+      "The border point is assigned to whichever cluster's core point is encountered first, making the result mildly dependent on point processing order",
+      "The border point is always discarded completely and labeled as noise instead of assigned",
+      "The border point always forms a brand-new, entirely separate cluster all on its own",
+      "The algorithm raises an error immediately and simply cannot proceed any further at all"
+    ],
+    "correct": 0,
+    "explanation": "When a border point is reachable from core points in more than one cluster, most standard DBSCAN implementations assign it to whichever cluster processes it first, which is a known minor source of order-dependence."
+  },
+  {
+    "id": "cluster-073",
+    "topic": "clustering",
+    "subtopic": "DBSCAN: density variation and noise handling",
+    "difficulty": "recall",
+    "q": "A common practical technique for choosing a reasonable eps value in DBSCAN is to plot the distance from each point to its k-th nearest neighbor (the ______ plot) and look for a sharp bend.",
+    "options": [
+      "k-distance",
+      "silhouette",
+      "elbow-inertia",
+      "dendrogram"
+    ],
+    "correct": 0,
+    "explanation": "Sorting and plotting k-nearest-neighbor distances and looking for the 'knee' in the curve is a standard heuristic for picking eps in DBSCAN."
+  },
+  {
+    "id": "cluster-074",
+    "topic": "clustering",
+    "subtopic": "DBSCAN: density variation and noise handling",
+    "difficulty": "application",
+    "q": "Keeping eps fixed, an analyst increases minPts. What effect does this generally have on the resulting DBSCAN clustering?",
+    "options": [
+      "More points tend to be classified as noise, since it becomes harder to satisfy the density requirement for a core point",
+      "Fewer points become noise, since the density requirement becomes easier to satisfy",
+      "The number of clusters always stays exactly the same no matter what happens",
+      "The value of eps is automatically recalculated to compensate for the change"
+    ],
+    "correct": 0,
+    "explanation": "Raising minPts raises the bar for what counts as a dense region, so fewer points qualify as core points and more end up labeled as noise."
+  },
+  {
+    "id": "cluster-075",
+    "topic": "clustering",
+    "subtopic": "DBSCAN: density variation and noise handling",
+    "difficulty": "analysis",
+    "q": "Which of the following is a realistic limitation of DBSCAN in very high-dimensional feature spaces?",
+    "options": [
+      "Distances between points tend to become less meaningful, making a single eps value harder to choose effectively",
+      "DBSCAN simply cannot be implemented at all once there are more than two total input feature dimensions to consider",
+      "DBSCAN requires exclusively categorical features once dimensionality is high",
+      "The minPts parameter becomes completely irrelevant once there are more dimensions"
+    ],
+    "correct": 0,
+    "explanation": "In high dimensions, distances between points tend to concentrate (the 'curse of dimensionality'), which makes a single global eps threshold less able to meaningfully separate dense from sparse regions."
+  },
+  {
+    "id": "cluster-076",
+    "topic": "clustering",
+    "subtopic": "DBSCAN: density variation and noise handling",
+    "difficulty": "application",
+    "q": "A retail chain has an extremely dense urban area with closely spaced stores and a sparse rural area with widely spaced stores. Running DBSCAN with one global eps/minPts setting tuned for the dense urban area causes which problem?",
+    "options": [
+      "The sparse rural stores are likely all labeled as noise, since they don't meet the density threshold tuned for the urban region",
+      "The rural stores automatically end up receiving their own separately tuned eps value",
+      "All of the stores, regardless of region, get merged into one single giant cluster",
+      "DBSCAN requires exactly the same number of stores to exist in every region to function"
+    ],
+    "correct": 0,
+    "explanation": "DBSCAN uses one global density threshold, so parameters tuned to a dense region will typically fail to recognize a genuinely sparser (but still meaningful) cluster, labeling its points as noise instead."
+  },
+  {
+    "id": "cluster-077",
+    "topic": "clustering",
+    "subtopic": "DBSCAN: density variation and noise handling",
+    "difficulty": "analysis",
+    "q": "Which of the following best explains why DBSCAN, unlike K-means, can discover clusters shaped like two interleaving crescents (e.g., a 'two moons' dataset)?",
+    "options": [
+      "DBSCAN grows clusters by connecting neighboring dense points rather than measuring distance to one central point, so it can follow non-convex shapes",
+      "DBSCAN always assumes perfectly spherical clusters, exactly the same way K-means does",
+      "DBSCAN first runs a full K-means pass internally just to initialize its clusters",
+      "DBSCAN requires fixing K equal to the exact number of crescent shapes in advance"
+    ],
+    "correct": 0,
+    "explanation": "Because DBSCAN expands clusters by chaining together nearby dense points rather than comparing distance to a fixed centroid, it can trace out curved or elongated shapes that defeat centroid-based methods like K-means."
+  },
+  {
+    "id": "cluster-078",
+    "topic": "clustering",
+    "subtopic": "DBSCAN: density variation and noise handling",
+    "difficulty": "recall",
+    "q": "DBSCAN is generally considered more robust to ______ than K-means, because it explicitly labels sparse points as noise instead of forcing them into the nearest cluster.",
+    "options": [
+      "outliers",
+      "feature scaling issues",
+      "the number of clusters",
+      "the choice of linkage method"
+    ],
+    "correct": 0,
+    "explanation": "DBSCAN's noise label means isolated, low-density points are excluded from clusters entirely, rather than distorting a centroid the way they can in K-means."
+  },
+  {
+    "id": "cluster-079",
+    "topic": "clustering",
+    "subtopic": "DBSCAN: density variation and noise handling",
+    "difficulty": "application",
+    "q": "An analyst runs DBSCAN twice on the same dataset with identical eps and minPts values. What should they expect about the two results?",
+    "options": [
+      "Essentially identical core-point cluster assignments each time, since DBSCAN's core-point labeling is deterministic for fixed parameters",
+      "A completely different number of clusters produced on every single run",
+      "Results that end up identical to K-means run with the very same number of clusters",
+      "Results that depend heavily on a random initial seed, the same way K-means does"
+    ],
+    "correct": 0,
+    "explanation": "Unlike K-means, DBSCAN does not rely on randomly initialized centroids, so for fixed eps and minPts its core-point-based cluster structure comes out the same each run (aside from minor, well-known ordering effects for border points)."
+  },
+  {
+    "id": "cluster-080",
+    "topic": "clustering",
+    "subtopic": "DBSCAN: density variation and noise handling",
+    "difficulty": "analysis",
+    "q": "Which of the following scenarios is DBSCAN LEAST well suited for, compared to K-means?",
+    "options": [
+      "A dataset with roughly uniform density and no noise, where the goal is a fast, simple partition into a known number of roughly equal-sized groups",
+      "A dataset with an unknown number of irregularly shaped clusters still left to discover",
+      "A dataset containing many scattered outlier points that should not be forced into any cluster",
+      "A dataset where the true underlying cluster shapes are definitely not spherical at all"
+    ],
+    "correct": 0,
+    "explanation": "When the number of clusters is known, density is uniform, and there is no noise to exclude, K-means' simplicity and speed make it a better practical fit than DBSCAN, whose main strengths (shape flexibility, noise handling, no fixed K) aren't needed there."
+  },
+  {
+    "id": "cluster-081",
+    "topic": "clustering",
+    "subtopic": "Clustering algorithm comparison and scenario selection",
+    "difficulty": "application",
+    "q": "A telecom company wants to segment customers into a known, fixed number of pricing tiers based on usage, prioritizing fast computation on millions of records, with roughly compact expected cluster shapes. Which algorithm is the most practical first choice?",
+    "options": [
+      "K-means",
+      "DBSCAN",
+      "Agglomerative clustering with single linkage",
+      "Affinity propagation"
+    ],
+    "correct": 0,
+    "explanation": "With a known target number of clusters, large data volume, and roughly compact expected groups, K-means' speed and simplicity make it the natural first choice over slower or parameter-heavier alternatives."
+  },
+  {
+    "id": "cluster-082",
+    "topic": "clustering",
+    "subtopic": "Clustering algorithm comparison and scenario selection",
+    "difficulty": "application",
+    "q": "A security team wants to find anomalous network traffic events without knowing in advance how many types of normal behavior exist, and expects normal behavior to form irregularly shaped regions with scattered anomalies in between. Which algorithm best fits both requirements?",
+    "options": [
+      "DBSCAN",
+      "K-means",
+      "K-medoids",
+      "Linear regression"
+    ],
+    "correct": 0,
+    "explanation": "DBSCAN does not require a predefined number of clusters, can trace irregularly shaped dense regions, and natively flags sparse points as noise, directly matching the anomaly-detection requirement."
+  },
+  {
+    "id": "cluster-083",
+    "topic": "clustering",
+    "subtopic": "Clustering algorithm comparison and scenario selection",
+    "difficulty": "application",
+    "q": "A museum wants to organize a large artifact collection into a browsable tree of categories and subcategories at multiple levels of detail, without fixing the number of top-level categories beforehand. Which technique is most appropriate?",
+    "options": [
+      "Hierarchical clustering",
+      "K-means clustering method",
+      "DBSCAN clustering method",
+      "Logistic regression model"
+    ],
+    "correct": 0,
+    "explanation": "Hierarchical clustering's dendrogram naturally provides nested categories at every level of granularity, which is exactly the kind of browsable multi-level structure the museum wants."
+  },
+  {
+    "id": "cluster-084",
+    "topic": "clustering",
+    "subtopic": "Clustering algorithm comparison and scenario selection",
+    "difficulty": "recall",
+    "q": "Which of the following correctly matches each algorithm with its core required input?",
+    "options": [
+      "K-means needs K in advance; DBSCAN needs eps and minPts instead of K; hierarchical clustering needs neither K nor eps upfront, only a cut height chosen afterward",
+      "K-means needs eps instead; DBSCAN needs K instead; hierarchical clustering needs minPts upfront",
+      "All three algorithms always require the number of clusters K to be specified beforehand",
+      "None of the three clustering algorithms require any parameters to be set at all beforehand"
+    ],
+    "correct": 0,
+    "explanation": "K-means requires K, DBSCAN replaces K with density parameters (eps, minPts), and hierarchical clustering defers the choice of cluster count to a dendrogram cut made after the algorithm has already run."
+  },
+  {
+    "id": "cluster-085",
+    "topic": "clustering",
+    "subtopic": "Clustering algorithm comparison and scenario selection",
+    "difficulty": "application",
+    "q": "A geography team is clustering earthquake epicenters, which tend to align along irregular, curved fault lines, along with a few isolated 'stray' readings. Which algorithm's cluster-shape flexibility and noise handling make it the best match?",
+    "options": [
+      "DBSCAN",
+      "K-means",
+      "K-medoids",
+      "None of these can handle curved shapes"
+    ],
+    "correct": 0,
+    "explanation": "DBSCAN can trace clusters of arbitrary, curved shape along fault lines and can separately label isolated stray readings as noise, unlike centroid-based methods such as K-means or K-medoids."
+  },
+  {
+    "id": "cluster-086",
+    "topic": "clustering",
+    "subtopic": "Clustering algorithm comparison and scenario selection",
+    "difficulty": "analysis",
+    "q": "Which statement correctly compares K-means and hierarchical clustering in terms of reproducibility?",
+    "options": [
+      "Agglomerative clustering with a fixed linkage and metric gives the same result every run, while K-means varies due to random initialization",
+      "K-means always produces exactly the same result as hierarchical clustering on the same data",
+      "Hierarchical clustering is randomly initialized in exactly the same way that K-means is",
+      "Neither algorithm is reproducible at all when it is run twice on the very same dataset"
+    ],
+    "correct": 0,
+    "explanation": "Agglomerative clustering's merge order depends only on the fixed distances between points, so it is deterministic, while K-means' result depends on randomly initialized centroids and can vary between runs."
+  },
+  {
+    "id": "cluster-087",
+    "topic": "clustering",
+    "subtopic": "Clustering algorithm comparison and scenario selection",
+    "difficulty": "application",
+    "q": "An e-commerce company wants to group product reviews by similarity in word usage, and wants to visually inspect how fine-grained or broad the groupings could be before deciding how many topic groups to keep. Which approach best supports this kind of exploratory, multi-level inspection?",
+    "options": [
+      "Hierarchical clustering with a dendrogram",
+      "A single run of K-means with a fixed K",
+      "DBSCAN run once with a single fixed eps value",
+      "Linear regression applied directly to word counts"
+    ],
+    "correct": 0,
+    "explanation": "A dendrogram from hierarchical clustering lets an analyst inspect groupings at many different levels of granularity before settling on a final number of topic groups, unlike the single fixed partition from K-means or DBSCAN."
+  },
+  {
+    "id": "cluster-088",
+    "topic": "clustering",
+    "subtopic": "Clustering algorithm comparison and scenario selection",
+    "difficulty": "application",
+    "q": "Which of the following is a valid reason to prefer K-means over DBSCAN for a given clustering task?",
+    "options": [
+      "The clusters are expected to be roughly spherical and similarly sized, and the approximate number of clusters is already known",
+      "The clusters are expected to have highly irregular shapes with an unknown number of groups",
+      "The dataset contains many outliers that should be automatically excluded from any cluster",
+      "The dataset's clusters are already known to vary greatly in density from one another"
+    ],
+    "correct": 0,
+    "explanation": "K-means is a good fit when the number of clusters is roughly known and the expected clusters are compact and similarly sized, conditions where its assumptions are well matched to the data."
+  },
+  {
+    "id": "cluster-089",
+    "topic": "clustering",
+    "subtopic": "Clustering algorithm comparison and scenario selection",
+    "difficulty": "application",
+    "q": "Which of the following is a valid reason to prefer DBSCAN over K-means for a given clustering task?",
+    "options": [
+      "The number of clusters is unknown, and the data contains noise that should not be forced into any cluster",
+      "The clusters are already known to be roughly spherical in shape and equally sized",
+      "Fast, simple computation is the top priority on a very large, uniformly dense dataset with no noise present at all",
+      "The analyst specifically wants to see a dendrogram showing the nested groupings"
+    ],
+    "correct": 0,
+    "explanation": "DBSCAN's defining advantages are not needing a predefined K and being able to exclude noise, which directly matches a scenario with an unknown cluster count and meaningful outlier points."
+  },
+  {
+    "id": "cluster-090",
+    "topic": "clustering",
+    "subtopic": "Clustering algorithm comparison and scenario selection",
+    "difficulty": "application",
+    "q": "A hospital wants to group patients by similarity across many clinical measurements to assist diagnosis, and has domain-based reason to believe there are exactly 3 underlying patient profiles. Which setup is most directly aligned with this requirement?",
+    "options": [
+      "K-means with K=3",
+      "DBSCAN with an arbitrarily chosen eps",
+      "Hierarchical clustering without ever cutting the dendrogram",
+      "Leaving the number of clusters completely undefined"
+    ],
+    "correct": 0,
+    "explanation": "Since the number of underlying groups is already known from domain knowledge, K-means with K set to that known value directly matches the requirement, whereas DBSCAN and an uncut dendrogram don't guarantee exactly 3 groups."
+  },
+  {
+    "id": "cluster-091",
+    "topic": "clustering",
+    "subtopic": "Clustering algorithm comparison and scenario selection",
+    "difficulty": "analysis",
+    "q": "Which of the following is NOT a valid distinguishing feature among K-means, hierarchical clustering, and DBSCAN?",
+    "options": [
+      "Only one of the three algorithms can ever be implemented in a standard machine learning library",
+      "K-means requires specifying the value of K well in advance, while DBSCAN does not require this at all",
+      "DBSCAN is able to label points as noise directly, while K-means is not able to do so",
+      "Hierarchical clustering produces a dendrogram, while K-means does not produce one at all"
+    ],
+    "correct": 0,
+    "explanation": "All three algorithms are commonly implemented together in standard libraries (e.g., scikit-learn's KMeans, AgglomerativeClustering, and DBSCAN classes), so this is a false distinguishing feature."
+  },
+  {
+    "id": "cluster-092",
+    "topic": "clustering",
+    "subtopic": "Clustering algorithm comparison and scenario selection",
+    "difficulty": "application",
+    "q": "A company profiling website visitors wants an algorithm that will not be thrown off by a handful of bot-generated sessions that look nothing like real user behavior. Which property should most influence their choice away from plain K-means?",
+    "options": [
+      "K-means assigns every point to some cluster, including outliers, which can distort centroids, whereas DBSCAN can flag such points as noise instead",
+      "K-means already ignores outliers completely and automatically whenever it computes its centroids",
+      "K-means already ignores outliers automatically whenever it computes its centroids",
+      "K-means requires removing bots beforehand, in exactly the same way DBSCAN does"
+    ],
+    "correct": 0,
+    "explanation": "Because K-means forces every point, including unusual bot sessions, into the nearest cluster, it can let those points distort centroids, while DBSCAN's noise label lets such points be excluded entirely."
+  },
+  {
+    "id": "cluster-093",
+    "topic": "clustering",
+    "subtopic": "Clustering algorithm comparison and scenario selection",
+    "difficulty": "analysis",
+    "q": "Which of the following best describes a realistic workflow combining more than one clustering algorithm on the same project?",
+    "options": [
+      "Using K-means or DBSCAN to produce fast exploratory clusters, then applying hierarchical clustering on the resulting cluster summaries for a higher-level view",
+      "Never using more than a single clustering algorithm within any one project under any circumstance",
+      "Always running DBSCAN after K-means specifically in order to undo the K-means clustering",
+      "Treating clustering algorithms as mutually exclusive alternatives that can never be combined"
+    ],
+    "correct": 0,
+    "explanation": "A common practical pattern is to first get fast flat clusters (via K-means or DBSCAN), then apply hierarchical clustering on cluster-level summaries to get a coarser, interpretable grouping on top."
+  },
+  {
+    "id": "cluster-094",
+    "topic": "clustering",
+    "subtopic": "Clustering algorithm comparison and scenario selection",
+    "difficulty": "application",
+    "q": "An analyst must choose between K-means, hierarchical clustering, and DBSCAN to cluster millions of GPS pings into 'stay regions' where people paused, expecting many noisy pings while moving (which should not belong to any region) and regions of irregular, elongated shape following streets. Which algorithm best matches all of these requirements simultaneously?",
+    "options": [
+      "DBSCAN",
+      "K-means",
+      "Hierarchical clustering with Ward linkage",
+      "K-medoids"
+    ],
+    "correct": 0,
+    "explanation": "DBSCAN directly supports excluding noisy in-motion pings as outliers and can trace elongated, irregularly shaped stay regions along streets, while also scaling reasonably to large point datasets, unlike K-means or Ward-linkage hierarchical clustering which both assume more compact, convex clusters."
+  }
+]

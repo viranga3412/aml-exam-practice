@@ -1,0 +1,2364 @@
+[
+  {
+    "id": "ens-001",
+    "topic": "ensembles",
+    "subtopic": "Tree splitting criteria",
+    "difficulty": "recall",
+    "q": "A decision tree algorithm evaluates candidate splits at each node and picks the one that produces child nodes with the least mixed class labels. What general property is being maximized at each split?",
+    "options": [
+      "Impurity reduction",
+      "Variance of the target",
+      "Total leaf count",
+      "Depth of the tree"
+    ],
+    "correct": 0,
+    "explanation": "Splitting rules such as Gini impurity and entropy/information gain both choose the split that most reduces impurity in the resulting child nodes."
+  },
+  {
+    "id": "ens-002",
+    "topic": "ensembles",
+    "subtopic": "Tree splitting criteria",
+    "difficulty": "recall",
+    "q": "In a churn-prediction tree, a node currently contains a 50/50 mix of churned and retained customers. After splitting on 'contract type', one child is 90% retained and the other is 85% churned. Why would a tree-building algorithm favor this split over one that leaves both children close to 50/50?",
+    "options": [
+      "It produces a larger reduction in impurity across the children",
+      "It evaluates fewer candidate features, which only saves computation and does not affect purity",
+      "It produces a shallower tree structure regardless of how mixed the resulting labels are",
+      "It guarantees the identical split will be chosen again at every node beneath it"
+    ],
+    "correct": 0,
+    "explanation": "Splits that separate classes more cleanly reduce impurity more, which is exactly what criteria like Gini and entropy are designed to reward."
+  },
+  {
+    "id": "ens-003",
+    "topic": "ensembles",
+    "subtopic": "Tree splitting criteria",
+    "difficulty": "application",
+    "q": "A fraud-detection tree is being built, and two criteria, Gini impurity and entropy-based information gain, are both available for choosing splits. In practice, how do the trees they produce typically compare?",
+    "options": [
+      "They usually select very similar splits and produce similar-looking trees, differing mainly in computation speed",
+      "Entropy consistently yields a shallower tree than Gini because it penalizes impurity more aggressively",
+      "Gini impurity can only be applied to regression trees, since it cannot handle discrete class labels",
+      "Information gain disregards the class distribution of the child nodes and looks only at sample counts"
+    ],
+    "correct": 0,
+    "explanation": "Gini and entropy are both impurity measures that behave similarly in practice; they occasionally disagree on the single best split but generally lead to comparable trees, with Gini being cheaper to compute since it avoids logarithms."
+  },
+  {
+    "id": "ens-004",
+    "topic": "ensembles",
+    "subtopic": "Tree splitting criteria",
+    "difficulty": "recall",
+    "q": "Which quantity does information gain directly measure when choosing a split in a decision tree?",
+    "options": [
+      "The reduction in entropy achieved by splitting on a given feature",
+      "The absolute difference in sample counts between child nodes",
+      "The correlation between two candidate features being considered for the same split",
+      "The number of distinct unique values that a given feature can possibly take"
+    ],
+    "correct": 0,
+    "explanation": "Information gain is defined as the entropy of the parent node minus the weighted entropy of the child nodes after the split."
+  },
+  {
+    "id": "ens-005",
+    "topic": "ensembles",
+    "subtopic": "Tree splitting criteria",
+    "difficulty": "application",
+    "q": "In a loan-approval tree, a node is perfectly pure (all applicants are in the 'approved' class). What is the impurity of this node under either Gini or entropy, and what does that imply for further splitting?",
+    "options": [
+      "Impurity is zero, so no further split can improve the node and it becomes a leaf",
+      "Impurity is at its theoretical maximum, so the algorithm is forced to search for another split",
+      "Impurity cannot be computed once a node contains only a single class label present",
+      "Impurity equals the total number of training samples routed to that particular node"
+    ],
+    "correct": 0,
+    "explanation": "A node containing only one class has zero impurity by definition, so there is nothing left to gain by splitting it further and it is turned into a leaf."
+  },
+  {
+    "id": "ens-006",
+    "topic": "ensembles",
+    "subtopic": "Tree splitting criteria",
+    "difficulty": "recall",
+    "q": "Which of the following best describes what entropy measures at a node in a classification tree?",
+    "options": [
+      "The amount of disorder or uncertainty in the class labels present at that node",
+      "The average numeric value of the input features for samples reaching that node",
+      "The total count of training samples that happen to reach that particular node",
+      "The depth of that node measured along the path down from the root of the tree"
+    ],
+    "correct": 0,
+    "explanation": "Entropy quantifies how mixed the class labels are; it is 0 for a pure node and maximal when classes are evenly mixed."
+  },
+  {
+    "id": "ens-007",
+    "topic": "ensembles",
+    "subtopic": "Tree splitting criteria",
+    "difficulty": "application",
+    "q": "A manufacturing QC tree splits on 'temperature at production' first, then on 'humidity'. If the algorithm instead evaluated 'humidity' before 'temperature' at the root and found a higher information gain there, what would happen?",
+    "options": [
+      "The tree would split on 'humidity' at the root instead, since it produces the larger impurity reduction",
+      "The tree would still split on 'temperature' first because features are evaluated in input order",
+      "Both features would be combined and used simultaneously within a single multi-way split",
+      "The algorithm would ignore both candidates and instead split on a randomly chosen third feature"
+    ],
+    "correct": 0,
+    "explanation": "Greedy tree induction always picks the feature and threshold that yields the highest impurity reduction (information gain) at each node, regardless of input ordering."
+  },
+  {
+    "id": "ens-008",
+    "topic": "ensembles",
+    "subtopic": "Tree splitting criteria",
+    "difficulty": "recall",
+    "q": "Gini impurity for a node is lowest when ______.",
+    "options": [
+      "all samples at the node belong to a single class",
+      "the node contains an equal mix of all classes",
+      "the node has the maximum possible number of samples",
+      "the feature used to reach the node is continuous rather than categorical"
+    ],
+    "correct": 0,
+    "explanation": "Gini impurity is zero for a pure node (single class) and is highest when classes are evenly mixed, so a single-class node has the lowest possible Gini."
+  },
+  {
+    "id": "ens-009",
+    "topic": "ensembles",
+    "subtopic": "Tree splitting criteria",
+    "difficulty": "analysis",
+    "q": "A credit-scoring tree splits on 'annual income' using a threshold, while a competing split on 'number of credit lines' is rejected. What does this rejection imply about the information-gain comparison between the two candidate splits?",
+    "options": [
+      "The income split produced a larger reduction in node impurity than the credit-lines split",
+      "The credit-lines feature was entirely missing from the dataset used to train this tree",
+      "The income split happened to use a smaller number of training samples at that node",
+      "The algorithm always prefers numeric features over categorical ones regardless of gain"
+    ],
+    "correct": 0,
+    "explanation": "A greedy tree-growing algorithm keeps the split with the highest information gain (or Gini reduction) among all candidates considered at that node; being rejected means it scored lower."
+  },
+  {
+    "id": "ens-010",
+    "topic": "ensembles",
+    "subtopic": "Tree splitting criteria",
+    "difficulty": "recall",
+    "q": "Why do many implementations default to Gini impurity rather than entropy for choosing splits in classification trees?",
+    "options": [
+      "Gini avoids logarithm computations and is faster to evaluate while giving similar results",
+      "Gini is claimed to be the only impurity criterion that supports multi-class classification problems",
+      "Entropy cannot be computed at all when the splitting feature is continuous rather than categorical",
+      "Gini is claimed to guarantee a globally optimal tree, a property entropy supposedly lacks"
+    ],
+    "correct": 0,
+    "explanation": "Gini impurity uses only sums of squared proportions (no logarithms), making it computationally cheaper than entropy while typically producing comparable splits."
+  },
+  {
+    "id": "ens-011",
+    "topic": "ensembles",
+    "subtopic": "Tree splitting criteria",
+    "difficulty": "application",
+    "q": "A retail tree predicting 'will purchase' considers splitting on 'store visits per month'. One threshold yields children with class proportions (80% yes, 20% no) and (30% yes, 70% no); another threshold yields (55% yes, 45% no) and (52% yes, 48% no). Which threshold would a greedy tree-building algorithm choose, and why?",
+    "options": [
+      "The first threshold, because it produces a larger reduction in impurity by separating the classes more clearly",
+      "The second threshold, because it keeps a more even number of samples in each resulting child node",
+      "Both thresholds are equally good since they are candidate splits on the same underlying feature",
+      "Neither threshold is valid, because every split must always produce exactly 50/50 children"
+    ],
+    "correct": 0,
+    "explanation": "The first split creates much purer children than the second, so it yields a larger impurity reduction and would be preferred by the greedy splitting rule."
+  },
+  {
+    "id": "ens-012",
+    "topic": "ensembles",
+    "subtopic": "Tree splitting criteria",
+    "difficulty": "recall",
+    "q": "A decision tree for regression (predicting house prices) cannot use Gini impurity or entropy to choose splits. What does it typically minimize instead?",
+    "options": [
+      "Within-node variance (or mean squared error) of the target variable",
+      "Classification accuracy computed at each resulting leaf node of the tree",
+      "The number of distinct categorical levels present in a candidate feature",
+      "The depth of the resulting subtree below the chosen split point"
+    ],
+    "correct": 0,
+    "explanation": "Regression trees choose splits that minimize the variance (or MSE) of the target values within each resulting child node, since there is no discrete class label to measure impurity over."
+  },
+  {
+    "id": "ens-013",
+    "topic": "ensembles",
+    "subtopic": "Tree splitting criteria",
+    "difficulty": "analysis",
+    "q": "Two candidate splits in a medical-diagnosis tree achieve identical information gain but one splits on 'patient age' and the other on 'resting heart rate'. Does information gain alone determine which split a standard greedy algorithm selects in this tie?",
+    "options": [
+      "No extra preference is defined by information gain itself; implementations break ties by a fixed rule such as feature order",
+      "Information gain is defined to always favor numeric features over categorical ones whenever a tie occurs, regardless of impurity",
+      "Information gain becomes mathematically undefined whenever two candidate splits tie exactly",
+      "The split on whichever feature has more missing values is always automatically preferred in a tie"
+    ],
+    "correct": 0,
+    "explanation": "Information gain only ranks splits by impurity reduction; when two candidates tie exactly, the specific tie-breaking behavior is an implementation detail, not something information gain itself specifies."
+  },
+  {
+    "id": "ens-014",
+    "topic": "ensembles",
+    "subtopic": "Tree splitting criteria",
+    "difficulty": "recall",
+    "q": "Which statement correctly contrasts Gini impurity and information gain (entropy-based)?",
+    "options": [
+      "Both measure node impurity and tend to agree on the best split most of the time, differing in how heavily they penalize mixed classes",
+      "Gini impurity is restricted to use in regression trees only, while entropy applies only to classification trees",
+      "Information gain is computed while completely ignoring the class proportions, whereas Gini relies on them directly at every split in practice",
+      "Gini impurity can take on negative values in some cases, whereas entropy mathematically never can"
+    ],
+    "correct": 0,
+    "explanation": "Both are impurity-based criteria computed from class proportions; they usually select similar splits, though entropy penalizes highly mixed nodes slightly more steeply than Gini."
+  },
+  {
+    "id": "ens-015",
+    "topic": "ensembles",
+    "subtopic": "Overfitting in single trees",
+    "difficulty": "application",
+    "q": "A decision tree trained on hospital readmission records reaches 100% training accuracy but only 65% test accuracy. What most likely explains this gap?",
+    "options": [
+      "The tree was grown deep enough to memorize noise and individual training cases rather than general patterns",
+      "The tree used far too few input features to ever find any real underlying pattern",
+      "The training set contained too few rows for the algorithm to compute any valid splits",
+      "The test set apparently used a different, incompatible set of class labels than the ones used during training"
+    ],
+    "correct": 0,
+    "explanation": "A tree allowed to grow until every leaf is pure will fit noise and idiosyncrasies of the training data, memorizing it rather than generalizing, which shows up as a large train-test accuracy gap."
+  },
+  {
+    "id": "ens-016",
+    "topic": "ensembles",
+    "subtopic": "Overfitting in single trees",
+    "difficulty": "recall",
+    "q": "Which of the following is a direct symptom of an overfit decision tree?",
+    "options": [
+      "Very high training accuracy paired with noticeably lower test accuracy",
+      "Roughly similar accuracy measured on both the training and the test sets",
+      "Low training accuracy despite having a very large labeled dataset available",
+      "A tree consisting of only a single internal node and two leaves"
+    ],
+    "correct": 0,
+    "explanation": "Overfitting is characterized by the model fitting training data (including its noise) almost perfectly while failing to generalize to unseen data."
+  },
+  {
+    "id": "ens-017",
+    "topic": "ensembles",
+    "subtopic": "Overfitting in single trees",
+    "difficulty": "application",
+    "q": "A single decision tree for predicting customer churn is allowed to grow without any depth limit. What is the most likely consequence?",
+    "options": [
+      "The tree keeps splitting until leaves are pure or tiny, memorizing training examples and overfitting",
+      "The tree will automatically halt itself at whatever depth best generalizes to new data",
+      "The tree becomes severely under-fit since unlimited depth reduces its effective parameters",
+      "The tree's eventual predictions become statistically independent of the training data used"
+    ],
+    "correct": 0,
+    "explanation": "Without a stopping rule, greedy tree growth continues splitting until nodes are pure or contain very few samples, which captures noise in the training set and hurts generalization."
+  },
+  {
+    "id": "ens-018",
+    "topic": "ensembles",
+    "subtopic": "Overfitting in single trees",
+    "difficulty": "recall",
+    "q": "Which hyperparameter, if left unconstrained, most directly allows a decision tree to overfit?",
+    "options": [
+      "Maximum tree depth",
+      "The impurity criterion used (Gini vs. entropy)",
+      "The random seed used for data shuffling",
+      "The order in which features appear in the dataset"
+    ],
+    "correct": 0,
+    "explanation": "An unconstrained (unlimited) maximum depth lets the tree keep splitting until it perfectly fits the training data, which is the classic cause of overfitting in a single tree."
+  },
+  {
+    "id": "ens-019",
+    "topic": "ensembles",
+    "subtopic": "Overfitting in single trees",
+    "difficulty": "application",
+    "q": "A credit-risk tree has a leaf containing exactly one training applicant who defaulted, and that leaf predicts 'default' with 100% confidence for any new applicant routed there. What practice would most directly reduce this kind of overfitting?",
+    "options": [
+      "Setting a minimum number of samples required per leaf before allowing a split",
+      "Increasing the number of candidate features considered at every split decision",
+      "Switching the node impurity criterion from Gini to entropy-based information gain",
+      "Training repeatedly on many identical duplicate copies of that same applicant's record"
+    ],
+    "correct": 0,
+    "explanation": "Requiring a minimum sample count per leaf prevents the tree from creating ultra-specific leaves based on a single (possibly noisy) training example."
+  },
+  {
+    "id": "ens-020",
+    "topic": "ensembles",
+    "subtopic": "Overfitting in single trees",
+    "difficulty": "analysis",
+    "q": "A decision tree gives 100% training accuracy but 65% test accuracy, while a random forest trained on the same data gives 82% test accuracy using the same type of base learner. Why is the forest more stable despite using identical base learners?",
+    "options": [
+      "Averaging predictions across many trees, each trained on different bootstrapped data, cancels out individual overfitting",
+      "The forest trains each tree on the full dataset with no randomness, which inherently prevents overfitting",
+      "Random forests use a fundamentally different, overfitting-proof splitting criterion at every single node",
+      "The forest's individual trees are all pruned down to zero depth, which eliminates variance by construction"
+    ],
+    "correct": 0,
+    "explanation": "Each individual tree in a forest can still overfit its own bootstrap sample, but because the trees overfit to different noise, averaging their predictions cancels much of that variance, improving generalization."
+  },
+  {
+    "id": "ens-021",
+    "topic": "ensembles",
+    "subtopic": "Overfitting in single trees",
+    "difficulty": "recall",
+    "q": "Pruning a decision tree after it has been fully grown is primarily intended to ______.",
+    "options": [
+      "remove branches that fit noise, improving generalization at the cost of some training accuracy",
+      "increase the maximum depth the tree is still allowed to grow to",
+      "guarantee that the tree still achieves exactly 100% training accuracy afterward, no matter what",
+      "convert the entire classification tree into a regression-style tree"
+    ],
+    "correct": 0,
+    "explanation": "Pruning removes branches that contribute little predictive value and mainly capture training-set noise, trading a bit of training accuracy for better generalization."
+  },
+  {
+    "id": "ens-022",
+    "topic": "ensembles",
+    "subtopic": "Overfitting in single trees",
+    "difficulty": "application",
+    "q": "A single, deep decision tree used for manufacturing defect detection performs very differently depending on which random subset of the training data it is trained on. What property of decision trees does this illustrate?",
+    "options": [
+      "High variance: small changes in training data can produce very different tree structures",
+      "High bias: the single tree model is far too simple to capture the real pattern",
+      "Perfect generalization, since decision trees behave deterministically given enough data",
+      "Immunity to overfitting, which is guaranteed by the tree's feature importance ranking"
+    ],
+    "correct": 0,
+    "explanation": "Unpruned decision trees are notoriously high-variance models; because splits are chosen greedily, a small change in the training sample can cascade into a very different tree."
+  },
+  {
+    "id": "ens-023",
+    "topic": "ensembles",
+    "subtopic": "Overfitting in single trees",
+    "difficulty": "recall",
+    "q": "Which of the following is NOT a common way to reduce overfitting in a single decision tree?",
+    "options": [
+      "Increasing maximum depth without bound",
+      "Limiting the maximum depth of the tree",
+      "Requiring a minimum number of samples per leaf",
+      "Pruning branches after the tree is fully grown"
+    ],
+    "correct": 0,
+    "explanation": "Increasing maximum depth without bound does the opposite of controlling overfitting; it lets the tree keep splitting until it memorizes the training data."
+  },
+  {
+    "id": "ens-024",
+    "topic": "ensembles",
+    "subtopic": "Overfitting in single trees",
+    "difficulty": "analysis",
+    "q": "In a churn-prediction task, a shallow decision tree (max depth 3) underperforms on both training and test accuracy, while a very deep tree (unlimited depth) gets near-perfect training accuracy but much worse test accuracy. What does this pattern describe?",
+    "options": [
+      "The classic bias-variance tradeoff: the shallow tree underfits while the deep tree overfits",
+      "Both the shallow and the deep tree are overfitting the data to an equal degree",
+      "The shallow tree is overfitting while the deep tree is actually underfitting the signal",
+      "Neither tree's performance is affected by its maximum depth setting at all"
+    ],
+    "correct": 0,
+    "explanation": "A shallow tree is too simple to capture the signal (high bias, underfitting), while an unconstrained tree fits training noise too closely (high variance, overfitting) - exactly the bias-variance tradeoff."
+  },
+  {
+    "id": "ens-025",
+    "topic": "ensembles",
+    "subtopic": "Overfitting in single trees",
+    "difficulty": "recall",
+    "q": "Why are individual, unpruned decision trees commonly described as 'high variance, low bias' models?",
+    "options": [
+      "They can fit training data very closely (low bias), but their structure shifts a lot across samples (high variance)",
+      "They systematically underfit essentially all datasets, regardless of how deep they are grown",
+      "They maintain a fixed, unchanging tree structure no matter what training data they are given",
+      "They are fundamentally incapable of representing any non-linear decision boundary in the data, regardless of depth"
+    ],
+    "correct": 0,
+    "explanation": "Deep trees can approximate complex functions and fit training data almost exactly, giving low bias, but small perturbations to the training set lead to very different trees, giving high variance."
+  },
+  {
+    "id": "ens-026",
+    "topic": "ensembles",
+    "subtopic": "Overfitting in single trees",
+    "difficulty": "application",
+    "q": "A single decision tree used to flag fraudulent transactions achieves excellent accuracy on historical data but repeatedly misses new fraud patterns once deployed. Which ensemble strategy most directly targets the variance problem causing this?",
+    "options": [
+      "Bagging, since it averages many trees trained on different bootstrapped samples to reduce variance",
+      "Increasing the tree's maximum depth further to fit the historical data even more closely",
+      "Removing all remaining regularization constraints from that single decision tree entirely",
+      "Switching that single tree's impurity criterion from Gini over to entropy-based information gain"
+    ],
+    "correct": 0,
+    "explanation": "Bagging directly targets high-variance base learners like unpruned trees by training many of them on different bootstrap samples and averaging, which smooths out the overfitting of any single tree."
+  },
+  {
+    "id": "ens-027",
+    "topic": "ensembles",
+    "subtopic": "Overfitting in single trees",
+    "difficulty": "recall",
+    "q": "A fully grown decision tree with one leaf per unique training sample is an extreme example of ______.",
+    "options": [
+      "overfitting",
+      "underfitting",
+      "regularization",
+      "bootstrap aggregation"
+    ],
+    "correct": 0,
+    "explanation": "A tree with a leaf for every training example has perfectly memorized the training set, the defining extreme case of overfitting."
+  },
+  {
+    "id": "ens-028",
+    "topic": "ensembles",
+    "subtopic": "Bagging fundamentals",
+    "difficulty": "recall",
+    "q": "In bagging (bootstrap aggregating), each base model is trained on ______.",
+    "options": [
+      "a bootstrapped sample drawn with replacement from the original training set",
+      "the exact same full original training set, left completely unchanged each time",
+      "a randomly chosen subset of features only, while every row is kept intact",
+      "only the specific samples that earlier base models happened to misclassify"
+    ],
+    "correct": 0,
+    "explanation": "Bagging draws bootstrap samples (random samples with replacement, same size as the original set) to train each base learner independently."
+  },
+  {
+    "id": "ens-029",
+    "topic": "ensembles",
+    "subtopic": "Bagging fundamentals",
+    "difficulty": "recall",
+    "q": "Bagging primarily reduces ______ in a model's predictions.",
+    "options": [
+      "variance",
+      "bias",
+      "both bias and variance equally",
+      "irreducible error"
+    ],
+    "correct": 0,
+    "explanation": "Averaging predictions from many models trained on different bootstrap samples smooths out fluctuations from any single model, directly reducing variance, while bias stays roughly the same as a single base learner's bias."
+  },
+  {
+    "id": "ens-030",
+    "topic": "ensembles",
+    "subtopic": "Bagging fundamentals",
+    "difficulty": "application",
+    "q": "A dataset has 400 samples. Using bagging with bootstrap sampling, on average how many samples will NOT appear in any given bootstrap sample used to train one tree?",
+    "options": [
+      "~37%",
+      "~63%",
+      "~50%",
+      "0%"
+    ],
+    "correct": 0,
+    "explanation": "As sample size grows, the probability a given sample is never drawn in n draws with replacement converges to (1 - 1/n)^n ~ 1/e ~ 0.368, so about 37% of samples are left out of any one bootstrap sample."
+  },
+  {
+    "id": "ens-031",
+    "topic": "ensembles",
+    "subtopic": "Bagging fundamentals",
+    "difficulty": "recall",
+    "q": "What is the term for the roughly 37% of training samples excluded from a given bootstrap sample in bagging?",
+    "options": [
+      "Out-of-bag samples",
+      "Held-out validation samples",
+      "Bootstrap residuals",
+      "Orphan samples"
+    ],
+    "correct": 0,
+    "explanation": "Samples not selected into a particular bootstrap draw are called out-of-bag (OOB) samples for that base learner, and they can be used to evaluate that learner without a separate validation set."
+  },
+  {
+    "id": "ens-032",
+    "topic": "ensembles",
+    "subtopic": "Bagging fundamentals",
+    "difficulty": "application",
+    "q": "A retail company bags 100 decision trees to predict whether a customer will return an item. Each tree is trained on an independent bootstrap sample of the same size as the original dataset. Why does this scheme reduce variance compared to a single tree trained on the full dataset?",
+    "options": [
+      "Each tree overfits differently to the noise in its bootstrap sample, and averaging predictions cancels much of that noise",
+      "Each tree sees entirely disjoint, non-overlapping training rows, so there is no shared data between any of them",
+      "Bootstrap sampling statistically removes noise from the underlying dataset before any training ever begins",
+      "Each tree is restricted to using only a small handful of features, which by itself eliminates variance"
+    ],
+    "correct": 0,
+    "explanation": "Because each tree is trained on a different resampled version of the data, their individual errors tend to be somewhat independent; averaging many such predictions reduces the overall variance of the ensemble."
+  },
+  {
+    "id": "ens-033",
+    "topic": "ensembles",
+    "subtopic": "Bagging fundamentals",
+    "difficulty": "recall",
+    "q": "How are final predictions typically combined across the individual models trained in a bagging ensemble for a classification task?",
+    "options": [
+      "Majority voting across the base learners' predicted classes",
+      "Taking only the first-trained base learner's prediction as the final answer",
+      "Multiplying all base learners' predicted probabilities together",
+      "Always using the base learner with the smallest training error"
+    ],
+    "correct": 0,
+    "explanation": "In classification, bagging typically aggregates base-learner predictions by majority vote; for regression, predictions are averaged instead."
+  },
+  {
+    "id": "ens-034",
+    "topic": "ensembles",
+    "subtopic": "Bagging fundamentals",
+    "difficulty": "application",
+    "q": "A medical imaging team bags several models to predict whether a scan shows a tumor. Why might bagging be a good fit if the base learner (a deep, unpruned decision tree) is known to be high-variance?",
+    "options": [
+      "Bagging is specifically effective at reducing the variance of high-variance, low-bias base learners through averaging",
+      "Bagging works best with already low-variance, high-bias models since it cannot help reduce variance at all in practice",
+      "Bagging completely eliminates the need for any validation of the resulting final ensemble model",
+      "Bagging automatically converts any classification base learner into a continuous regression model"
+    ],
+    "correct": 0,
+    "explanation": "Bagging is most beneficial when the base learner has high variance (like a deep, unpruned tree), since averaging many such models directly attacks the variance component of error."
+  },
+  {
+    "id": "ens-035",
+    "topic": "ensembles",
+    "subtopic": "Bagging fundamentals",
+    "difficulty": "recall",
+    "q": "Which statement about the base learners used in classic bagging is correct?",
+    "options": [
+      "Base learners are trained independently of one another and can, in principle, be trained in parallel",
+      "Base learners must be trained sequentially, each correcting the previous one's errors",
+      "Base learners must each be trained on a disjoint, completely non-overlapping subset of rows",
+      "Base learners in classic bagging are required to always be simple linear regression models"
+    ],
+    "correct": 0,
+    "explanation": "Unlike boosting, bagging trains all base learners independently on their own bootstrap samples, so training can be fully parallelized."
+  },
+  {
+    "id": "ens-036",
+    "topic": "ensembles",
+    "subtopic": "Bagging fundamentals",
+    "difficulty": "analysis",
+    "q": "A data scientist bags 50 identical linear regression models, each trained on a different bootstrap sample of a dataset with a strongly non-linear relationship between features and target. Why does bagging provide little benefit here?",
+    "options": [
+      "Linear regression has low variance but high bias on non-linear data, and bagging mainly reduces variance, not bias",
+      "Linear regression models cannot be meaningfully bootstrapped or resampled at all for this purpose",
+      "Bagging is claimed to only work with classification models, never with regression tasks like this",
+      "Bootstrap sampling somehow removes the underlying non-linearity from the data before training starts"
+    ],
+    "correct": 0,
+    "explanation": "Bagging is most useful for high-variance base learners; a linear model underfitting a non-linear relationship suffers mainly from bias, which averaging many similar biased models does not fix."
+  },
+  {
+    "id": "ens-037",
+    "topic": "ensembles",
+    "subtopic": "Bagging fundamentals",
+    "difficulty": "recall",
+    "q": "In bagging, what happens to the size of each bootstrap sample relative to the original training set?",
+    "options": [
+      "Each bootstrap sample is the same size as the original training set, drawn with replacement",
+      "Each bootstrap sample contains exactly half of the rows in the original training set",
+      "Each bootstrap sample is drawn to be strictly larger in size than the original dataset",
+      "Each bootstrap sample is restricted to containing only unique, non-repeated rows"
+    ],
+    "correct": 0,
+    "explanation": "A standard bootstrap sample is drawn with replacement to the same size as the original dataset, which means some original rows appear multiple times and others are left out."
+  },
+  {
+    "id": "ens-038",
+    "topic": "ensembles",
+    "subtopic": "Bagging fundamentals",
+    "difficulty": "application",
+    "q": "Why can out-of-bag (OOB) samples serve as a built-in validation mechanism in a bagging ensemble, without setting aside a separate validation set?",
+    "options": [
+      "Each base learner can be evaluated on the samples it never saw in training (its OOB samples), giving an unbiased estimate",
+      "OOB samples are actually treated as a separate dataset that only gets collected once training has fully completed, independent of the original data",
+      "OOB samples are simply defined as the samples associated with the highest feature importance scores",
+      "OOB evaluation actually requires completely re-training every single base learner from scratch again"
+    ],
+    "correct": 0,
+    "explanation": "Because roughly 37% of samples are excluded from each bootstrap draw, those out-of-bag samples act as a natural holdout for that specific tree, allowing OOB error estimation without a dedicated validation split."
+  },
+  {
+    "id": "ens-039",
+    "topic": "ensembles",
+    "subtopic": "Bagging fundamentals",
+    "difficulty": "analysis",
+    "q": "A team bags 200 decision trees on a dataset of 1,000 rows. If they increase the number of trees from 200 to 2,000 while keeping bootstrap sample size fixed, what is the most likely effect on the ensemble's variance and training time?",
+    "options": [
+      "Variance continues to decrease (with diminishing returns) while training time increases roughly proportionally",
+      "Variance increases substantially, since adding far more trees inevitably causes significantly more overfitting to occur",
+      "Training time stays roughly constant no matter how many additional trees are added",
+      "Variance drops all the way to exactly zero once more than 1,000 trees are used"
+    ],
+    "correct": 0,
+    "explanation": "Adding more independently trained trees to a bagged ensemble generally keeps reducing variance with diminishing returns, at the cost of roughly proportional increases in training and prediction time."
+  },
+  {
+    "id": "ens-040",
+    "topic": "ensembles",
+    "subtopic": "Bagging fundamentals",
+    "difficulty": "recall",
+    "q": "Bagging is best described as a technique that builds an ensemble by ______.",
+    "options": [
+      "training multiple base learners in parallel on bootstrapped samples and aggregating their outputs",
+      "training a single strong learner on the entire dataset with very heavy regularization applied",
+      "training base learners sequentially, each one focusing on the previous model's errors",
+      "selecting the single best-performing model out of several candidates and discarding the rest"
+    ],
+    "correct": 0,
+    "explanation": "Bagging stands for bootstrap aggregating: training several base learners in parallel on bootstrap-resampled data, then combining (aggregating) their predictions."
+  },
+  {
+    "id": "ens-041",
+    "topic": "ensembles",
+    "subtopic": "Out-of-bag error",
+    "difficulty": "recall",
+    "q": "What does the out-of-bag (OOB) error of a random forest estimate?",
+    "options": [
+      "Generalization error, estimated using each tree's predictions only on samples it did not see during training",
+      "Training error, computed using only the samples that each individual tree directly saw during its own training",
+      "The error of just one single, fully pruned decision tree chosen at random",
+      "The error rate attributable only to the feature-selection step of the pipeline"
+    ],
+    "correct": 0,
+    "explanation": "OOB error aggregates, for each training sample, the predictions of only the trees that did not include that sample in their bootstrap draw, giving an estimate of generalization performance."
+  },
+  {
+    "id": "ens-042",
+    "topic": "ensembles",
+    "subtopic": "Out-of-bag error",
+    "difficulty": "application",
+    "q": "A bank builds a random forest for credit default prediction and reports an OOB error alongside a separate test-set error. Why do these two numbers often turn out to be close to one another?",
+    "options": [
+      "Both estimate the same thing, generalization error, just computed on different held-out portions of the data",
+      "OOB error is always computed on the training set, so it is expected to be identical to training error",
+      "The test set and the OOB samples are mathematically required to always contain exactly the same rows",
+      "OOB error is said to only apply to regression tasks, which would make this comparison meaningless"
+    ],
+    "correct": 0,
+    "explanation": "Because OOB predictions are made only on samples each tree never saw, OOB error behaves like a built-in cross-validation estimate of generalization error, which is why it tends to track a genuine held-out test error."
+  },
+  {
+    "id": "ens-043",
+    "topic": "ensembles",
+    "subtopic": "Out-of-bag error",
+    "difficulty": "application",
+    "q": "A team wants to tune the number of trees in a random forest without setting aside an explicit validation set, since their labeled data is scarce. What built-in mechanism lets them estimate generalization performance anyway?",
+    "options": [
+      "Out-of-bag error, computed from the predictions each tree makes only on the samples excluded from its own bootstrap sample",
+      "Manually running k-fold cross-validation on the entire training set again after training has already fully finished anyway",
+      "Simply using the raw training accuracy directly as a proxy for genuine test accuracy",
+      "Randomly discarding half of the trained trees and then testing only on the other half"
+    ],
+    "correct": 0,
+    "explanation": "OOB error gives a free, built-in estimate of how well the forest generalizes, since every sample has some trees that never saw it during training, removing the need for a separate validation split."
+  },
+  {
+    "id": "ens-044",
+    "topic": "ensembles",
+    "subtopic": "Out-of-bag error",
+    "difficulty": "recall",
+    "q": "Approximately what fraction of the training data is available, on average, as out-of-bag samples for any single tree in a large bagging ensemble?",
+    "options": [
+      "About 37%",
+      "About 63%",
+      "About 10%",
+      "About 90%"
+    ],
+    "correct": 0,
+    "explanation": "Each bootstrap sample includes about 63% of unique rows on average, leaving roughly 37% of rows out-of-bag for that tree."
+  },
+  {
+    "id": "ens-045",
+    "topic": "ensembles",
+    "subtopic": "Out-of-bag error",
+    "difficulty": "analysis",
+    "q": "A random forest with only 5 trees reports an OOB error, but the estimate is noticeably unstable (it changes a lot if the forest is retrained with a different random seed). Why is this expected with so few trees?",
+    "options": [
+      "With few trees, each sample has very few out-of-bag trees voting on it, so its OOB prediction rests on a small, noisy subset",
+      "OOB error is mathematically undefined unless the forest contains at least 100 individual trees total",
+      "Having very few trees in the forest always produces an OOB error of exactly zero",
+      "OOB error is claimed to only work for classification problems and never for regression, explaining the observed instability here"
+    ],
+    "correct": 0,
+    "explanation": "OOB error for each sample is computed only from trees that excluded it from training; with few total trees, that subset is small, making the resulting OOB estimate noisier and more seed-dependent."
+  },
+  {
+    "id": "ens-046",
+    "topic": "ensembles",
+    "subtopic": "Out-of-bag error",
+    "difficulty": "recall",
+    "q": "Why is OOB error sometimes preferred over a separate train/test split when working with a bagging-based ensemble?",
+    "options": [
+      "It reuses all available data for both training and generalization estimation, without sacrificing a validation split",
+      "It is claimed to always be more accurate than any genuine, properly held-out, truly independent test-set estimate available",
+      "It completely removes the need to ever evaluate the model again after deployment",
+      "It only works correctly when the dataset contains fewer than 100 total rows"
+    ],
+    "correct": 0,
+    "explanation": "OOB error lets every row contribute to training some trees and validating others simultaneously, effectively giving a validation estimate 'for free' without holding out additional data."
+  },
+  {
+    "id": "ens-047",
+    "topic": "ensembles",
+    "subtopic": "Random forest mechanism",
+    "difficulty": "recall",
+    "q": "Beyond bootstrapped row sampling like plain bagging, what additional source of randomness does a random forest introduce at each split?",
+    "options": [
+      "Only a random subset of features is considered as candidates for each split",
+      "Every feature is always considered, but thresholds are chosen at random",
+      "Rows are duplicated exactly once per tree, with sampling done without replacement",
+      "The impurity criterion is randomly swapped between Gini and entropy at each node"
+    ],
+    "correct": 0,
+    "explanation": "Random forests add feature subsampling on top of bootstrap row sampling: at each split, only a random subset of the available features is considered, which decorrelates the trees."
+  },
+  {
+    "id": "ens-048",
+    "topic": "ensembles",
+    "subtopic": "Random forest mechanism",
+    "difficulty": "application",
+    "q": "A dataset has one feature, 'previous default history', that is extremely predictive of loan default, far more than any other feature. If a random forest considered all features at every split (like plain bagging with trees), what problem would likely arise?",
+    "options": [
+      "Nearly every tree would split on that same dominant feature early, making the trees highly correlated and cutting the benefit of averaging",
+      "The trees would end up completely uncorrelated no matter how dominant that one feature is",
+      "The dominant feature would automatically be detected and removed from the dataset entirely",
+      "Training would fail outright, since the algorithm assumes a single feature can never be reused more than once across different trees in the forest"
+    ],
+    "correct": 0,
+    "explanation": "If every tree can always choose the single most predictive feature, most trees end up structurally similar near the root, so their errors become correlated and averaging reduces variance much less."
+  },
+  {
+    "id": "ens-049",
+    "topic": "ensembles",
+    "subtopic": "Random forest mechanism",
+    "difficulty": "recall",
+    "q": "In random forest terminology, what does the parameter commonly called 'm' (or 'max_features') control?",
+    "options": [
+      "The number of features randomly considered as split candidates at each node",
+      "The maximum depth that each individual tree in the forest is allowed to reach",
+      "The total number of individual decision trees included in the forest",
+      "The minimum number of samples required before a node can form a leaf"
+    ],
+    "correct": 0,
+    "explanation": "'m' (max_features) sets how many features are randomly sampled as candidates at each split, controlling the degree of extra randomness and decorrelation introduced in a random forest."
+  },
+  {
+    "id": "ens-050",
+    "topic": "ensembles",
+    "subtopic": "Random forest mechanism",
+    "difficulty": "application",
+    "q": "A dataset has 100 features. Setting the random forest's feature-subsampling parameter m very close to 100 (i.e., almost all features considered at every split) will tend to ______.",
+    "options": [
+      "make the individual trees more similar to each other, reducing the variance-reduction benefit of the forest",
+      "make the individual trees maximally diverse from one another at every split point",
+      "guarantee strictly lower training accuracy than any single standalone decision tree",
+      "force every tree in the forest to use a completely disjoint, non-overlapping feature set each and every time"
+    ],
+    "correct": 0,
+    "explanation": "As m approaches the total number of features, each tree's splits become closer to what a single, deterministic greedy tree would choose, making trees more correlated and reducing the benefit of averaging."
+  },
+  {
+    "id": "ens-051",
+    "topic": "ensembles",
+    "subtopic": "Random forest mechanism",
+    "difficulty": "analysis",
+    "q": "Setting m (features considered per split) very small, such as m=1 out of 50 features, in a random forest will most likely ______.",
+    "options": [
+      "increase diversity between trees but may raise the bias of each tree if useful features are often excluded",
+      "always improve overall model accuracy no matter what the underlying dataset happens to look like",
+      "force every single tree in the forest to end up structurally identical to all the others",
+      "completely eliminate the need for any bootstrap row sampling in the forest whatsoever"
+    ],
+    "correct": 0,
+    "explanation": "A very small m forces more random, less-informed splits in each individual tree (raising each tree's bias), though it also maximizes decorrelation between trees; the right m balances these two effects."
+  },
+  {
+    "id": "ens-052",
+    "topic": "ensembles",
+    "subtopic": "Random forest mechanism",
+    "difficulty": "recall",
+    "q": "Why does a random forest generally perform better than a single decision tree on the same data?",
+    "options": [
+      "It reduces variance by averaging predictions across many decorrelated trees",
+      "It reduces bias instead, by growing a single, much deeper decision tree",
+      "It deliberately increases the variance of the ensemble's predictions on purpose",
+      "It requires collecting a smaller number of input features overall"
+    ],
+    "correct": 0,
+    "explanation": "Random forests combine bootstrap sampling and feature subsampling to grow many decorrelated trees, and averaging their predictions reduces variance substantially compared to any single tree."
+  },
+  {
+    "id": "ens-053",
+    "topic": "ensembles",
+    "subtopic": "Random forest mechanism",
+    "difficulty": "application",
+    "q": "A dataset has two features that are nearly identical copies of each other (e.g., 'annual income in USD' and 'annual income in local currency'). Why does random forest's feature subsampling help the forest handle this redundancy better than a single tree would?",
+    "options": [
+      "Different trees get a chance to split on each duplicate separately instead of always relying on one, spreading their combined importance",
+      "Feature subsampling automatically detects both duplicate columns and reliably removes one of them before training even begins in practice",
+      "Redundant, duplicated features are always assigned exactly zero importance in a random forest",
+      "A single decision tree simply cannot be trained at all whenever duplicate features exist"
+    ],
+    "correct": 0,
+    "explanation": "Because each split only considers a random subset of features, some trees are forced to split on one of the redundant features instead of always defaulting to the same one, which also means their importance gets shared more realistically across both."
+  },
+  {
+    "id": "ens-054",
+    "topic": "ensembles",
+    "subtopic": "Random forest mechanism",
+    "difficulty": "recall",
+    "q": "What best describes the relationship between individual trees in a well-tuned random forest?",
+    "options": [
+      "They are decorrelated from one another due to row and feature randomness, even though each is trained on the same underlying dataset",
+      "They are deliberately forced to be fully identical to one another every time, purely to guarantee exact and perfect reproducibility",
+      "They are trained one after another in sequence, each correcting the previous tree's errors",
+      "They are made to share the exact same bootstrap sample and identical feature subset"
+    ],
+    "correct": 0,
+    "explanation": "The combination of bootstrap row sampling and per-split feature subsampling is specifically designed to decorrelate trees, which is what makes averaging their predictions effective at reducing variance."
+  },
+  {
+    "id": "ens-055",
+    "topic": "ensembles",
+    "subtopic": "Random forest mechanism",
+    "difficulty": "application",
+    "q": "A common default recommendation is to set m (max_features) to roughly the square root of the total number of features for classification tasks. Why would using a much larger m than this default tend to erode one of random forest's main benefits?",
+    "options": [
+      "It lets most trees pick the same strongest features at the top, making them more correlated and weakening the variance benefit",
+      "It makes each tree fully deterministic and identical, so there would be no added benefit from bootstrap sampling in this scenario",
+      "It reduces the total number of training samples made available to each individual tree",
+      "It forces every single tree in the forest to be grown to an identical depth"
+    ],
+    "correct": 0,
+    "explanation": "A large m lets every tree consider nearly all features at every split, so trees tend to converge on similar strong splits, increasing correlation between trees and weakening the variance reduction that feature subsampling is meant to provide."
+  },
+  {
+    "id": "ens-056",
+    "topic": "ensembles",
+    "subtopic": "Random forest mechanism",
+    "difficulty": "recall",
+    "q": "Which two sources of randomness, taken together, define how a random forest differs from simple bagging of decision trees?",
+    "options": [
+      "Bootstrapped rows for each tree plus a random subset of features considered at each split",
+      "Random feature subsets for each tree plus a fixed set of rows shared across all trees",
+      "A fixed subset of rows plus a fixed subset of features, both chosen once for the whole forest",
+      "Randomly shuffled class labels combined with ordinary bootstrapped row sampling"
+    ],
+    "correct": 0,
+    "explanation": "Random forest extends plain bagging (bootstrapped rows) by also randomly restricting the candidate features considered at each split, which further decorrelates the trees."
+  },
+  {
+    "id": "ens-057",
+    "topic": "ensembles",
+    "subtopic": "Random forest mechanism",
+    "difficulty": "analysis",
+    "q": "A random forest trained on tabular manufacturing sensor data performs noticeably better than bagged decision trees (bootstrap rows only, all features considered at each split) trained on the same data. What is the most likely explanation?",
+    "options": [
+      "The added feature subsampling decorrelates the trees further than row bootstrapping alone, giving a larger variance reduction when averaged",
+      "Random forests are claimed to always use a completely different, overfitting-proof splitting criterion than bagged trees ever use at all",
+      "Bagged trees supposedly cannot be evaluated using cross-validation, unlike random forests can",
+      "Random forests are said to not use any bootstrap sampling at all, unlike bagged trees do"
+    ],
+    "correct": 0,
+    "explanation": "The key structural difference between a random forest and plain bagging of trees is the extra random feature subsampling at each split, which reduces inter-tree correlation and typically yields a larger variance-reduction benefit."
+  },
+  {
+    "id": "ens-058",
+    "topic": "ensembles",
+    "subtopic": "Random forest mechanism",
+    "difficulty": "recall",
+    "q": "For a regression random forest, how are the individual trees' predictions typically combined into a final prediction?",
+    "options": [
+      "By averaging the numeric predictions from all trees",
+      "By majority vote among the trees' predicted classes",
+      "By taking only the prediction of the tree with lowest training error",
+      "By summing all trees' predictions without normalization"
+    ],
+    "correct": 0,
+    "explanation": "Regression random forests average the continuous outputs of individual trees, analogous to how classification forests use majority voting over predicted classes."
+  },
+  {
+    "id": "ens-059",
+    "topic": "ensembles",
+    "subtopic": "Feature importance",
+    "difficulty": "recall",
+    "q": "In a random forest, how is a feature's importance typically estimated?",
+    "options": [
+      "By aggregating how much that feature reduces impurity across all the splits where it is used, across all trees",
+      "By counting how many times the feature's name appears in the dataset's column header",
+      "By measuring how strongly the feature's raw values happen to correlate with the dataset's original row index order",
+      "By checking whether the feature was the first column in the original CSV file"
+    ],
+    "correct": 0,
+    "explanation": "Feature importance in tree ensembles is usually computed from the total impurity reduction a feature contributes across all splits where it is used, averaged over all trees in the forest."
+  },
+  {
+    "id": "ens-060",
+    "topic": "ensembles",
+    "subtopic": "Feature importance",
+    "difficulty": "application",
+    "q": "A churn-prediction model's feature-importance chart shows 'customer ID' as by far the most important feature, dwarfing every genuine behavioral feature. What does this most likely indicate?",
+    "options": [
+      "Possible data leakage, since an identifier should have no real predictive relationship with churn",
+      "A perfectly healthy model that appears to be generalizing well to unseen, brand-new customers",
+      "That customer ID should deliberately be given even more weight in future model versions",
+      "That the underlying dataset simply contains far too few rows to train any reliable model on"
+    ],
+    "correct": 0,
+    "explanation": "An identifier dominating feature importance is a classic red flag for data leakage (e.g., IDs correlated with the target through some artifact of how the data was collected or joined) rather than a genuine causal signal."
+  },
+  {
+    "id": "ens-061",
+    "topic": "ensembles",
+    "subtopic": "Feature importance",
+    "difficulty": "application",
+    "q": "A feature-importance chart for a loan-default model shows five features with roughly similar, moderate importance values and none above 25%. What does this pattern most likely suggest?",
+    "options": [
+      "A reasonably healthy model where the prediction is driven by a balanced combination of signals rather than one dominant shortcut",
+      "The model has essentially and completely failed to learn anything useful at all from the training data it was given during training",
+      "Clear evidence of data leakage occurring through one specific, dominant feature",
+      "The model must actually be a single decision tree rather than a full ensemble"
+    ],
+    "correct": 0,
+    "explanation": "Balanced importance spread across several plausible features suggests the model is combining multiple genuine signals rather than relying on one dominant (and potentially leaky or spurious) feature."
+  },
+  {
+    "id": "ens-062",
+    "topic": "ensembles",
+    "subtopic": "Feature importance",
+    "difficulty": "recall",
+    "q": "Why can feature importance scores from a random forest be useful during exploratory data analysis, beyond just improving predictions?",
+    "options": [
+      "They help identify which variables most strongly drive the outcome, supporting feature selection and domain insight",
+      "They guarantee a causal relationship between the top feature and the target",
+      "They entirely and completely replace the need for any domain knowledge whatsoever about the dataset being modeled here",
+      "They are only usable after the model has already been deployed to production"
+    ],
+    "correct": 0,
+    "explanation": "Feature importance gives a ranked view of which inputs the model relies on most, which is useful for feature selection, sanity-checking the model, and generating hypotheses, though it reflects association captured by the model rather than proven causation."
+  },
+  {
+    "id": "ens-063",
+    "topic": "ensembles",
+    "subtopic": "Feature importance",
+    "difficulty": "application",
+    "q": "A manufacturing QC team trains a random forest to predict defective units and finds that 'machine ID' has very high importance, far above sensor readings like temperature and vibration. What should the team investigate first?",
+    "options": [
+      "Whether machine ID is acting as a proxy for a specific faulty machine or batch, which may or may not generalize to future machines",
+      "Whether to immediately deploy the model into production without any further checks, since high importance implies high accuracy",
+      "Whether all of the sensor readings should simply be deleted from the dataset entirely",
+      "Whether every defective unit in the dataset should be re-labeled as non-defective"
+    ],
+    "correct": 0,
+    "explanation": "A categorical identifier like machine ID dominating importance could reflect a genuine effect (one bad machine) or an artifact that will not generalize once new machines are added, so it needs targeted investigation before trusting the model."
+  },
+  {
+    "id": "ens-064",
+    "topic": "ensembles",
+    "subtopic": "Feature importance",
+    "difficulty": "recall",
+    "q": "Which of the following is a known caveat when interpreting tree-based feature importance scores?",
+    "options": [
+      "Highly correlated features can split importance between them, making each look individually less important than it really is",
+      "Feature importance is always identical to the correlation coefficient with the target",
+      "Feature importance scores are guaranteed to sum to exactly 1 only for regression tasks",
+      "Feature importance scores simply cannot ever be computed at all for categorical input features, in any implementation whatsoever"
+    ],
+    "correct": 0,
+    "explanation": "When two features carry similar information, trees may alternate between them across different splits and trees, diluting each one's individual importance score even though together they are highly predictive."
+  },
+  {
+    "id": "ens-065",
+    "topic": "ensembles",
+    "subtopic": "Feature importance",
+    "difficulty": "analysis",
+    "q": "Refer to the feature-importance chart below for a credit card fraud model.",
+    "options": [
+      "This indicates possible data leakage or an over-dominant feature, since one input drives the overwhelming majority of decisions",
+      "This indicates a perfectly balanced and fully trustworthy model with no concerns",
+      "This indicates that the model simply has far too few input features available to ever be useful for anything at all in practice",
+      "This indicates that the model is badly underfitting the available training data"
+    ],
+    "correct": 0,
+    "explanation": "A single feature with importance far above all others is a warning sign worth investigating for leakage (e.g., a feature that encodes the outcome indirectly) rather than evidence of a healthy, generalizable model.",
+    "chart": {
+      "type": "bar",
+      "labels": [
+        "Transaction Amount",
+        "Merchant Category",
+        "Time Since Last Txn",
+        "Account Age",
+        "Prior Chargeback Flag"
+      ],
+      "values": [
+        0.04,
+        0.06,
+        0.05,
+        0.07,
+        0.78
+      ],
+      "caption": "Figure: Feature importance for a fraud-detection model"
+    }
+  },
+  {
+    "id": "ens-066",
+    "topic": "ensembles",
+    "subtopic": "Feature importance",
+    "difficulty": "analysis",
+    "q": "Refer to the feature-importance chart below for a customer-churn model trained on behavioral and account data.",
+    "options": [
+      "The importance is fairly balanced across several plausible churn drivers, suggesting a reasonably healthy model rather than one shortcut",
+      "The chart shows the model is relying entirely on just one single leaked input feature, ignoring all four of the other features entirely",
+      "The chart somehow proves the model will achieve 100% accuracy on brand-new data",
+      "The chart shows that none of the five features matter to the model at all"
+    ],
+    "correct": 0,
+    "explanation": "When importance is spread across multiple sensible features rather than concentrated in one, it is a healthier sign that the model is combining several real signals instead of exploiting a single artifact.",
+    "chart": {
+      "type": "bar",
+      "labels": [
+        "Monthly Spend",
+        "Support Tickets",
+        "Tenure (months)",
+        "Contract Type",
+        "Login Frequency"
+      ],
+      "values": [
+        0.22,
+        0.18,
+        0.24,
+        0.19,
+        0.17
+      ],
+      "caption": "Figure: Feature importance for a churn-prediction model"
+    }
+  },
+  {
+    "id": "ens-067",
+    "topic": "ensembles",
+    "subtopic": "Feature importance",
+    "difficulty": "application",
+    "q": "A hospital readmission model's feature-importance chart shows 'discharge date' as the single most important feature by a wide margin, even though clinically it should have little bearing on readmission risk. What is the most appropriate next step?",
+    "options": [
+      "Investigate whether discharge date is encoding something unintended, such as a seasonal artifact or a leak of future information",
+      "Immediately deploy the model into production since high importance implies strong predictive value",
+      "Retrain the entire model using only discharge date as its single feature",
+      "Conclude that discharge date must be clinically meaningful in some way and publish this finding immediately without question"
+    ],
+    "correct": 0,
+    "explanation": "An implausible feature dominating importance is a strong signal to dig into the data pipeline for leakage or artifacts before trusting the model's predictions."
+  },
+  {
+    "id": "ens-068",
+    "topic": "ensembles",
+    "subtopic": "Feature importance",
+    "difficulty": "recall",
+    "q": "In scikit-learn-style random forest implementations, what do the feature_importances_ values typically sum to across all features?",
+    "options": [
+      "1 (they are normalized to represent relative contribution)",
+      "The total number of individual trees contained in the forest",
+      "The total number of samples present in the training dataset",
+      "0, since importance scores are always mean-centered around zero"
+    ],
+    "correct": 0,
+    "explanation": "Standard implementations normalize feature importances so they sum to 1, representing each feature's relative share of the total impurity reduction across the forest."
+  },
+  {
+    "id": "ens-069",
+    "topic": "ensembles",
+    "subtopic": "Feature importance",
+    "difficulty": "application",
+    "q": "A retail demand-forecasting team notices that 'day of week' has moderate importance in their random forest, while 'store ID' has very high importance. Does high importance for 'store ID' necessarily mean store identity causes demand changes?",
+    "options": [
+      "Not necessarily; importance reflects predictive association captured by the model, not proven causation, so store ID may be a proxy",
+      "Yes, feature importance scores always imply a direct, guaranteed causal relationship",
+      "No, importance scores are entirely and completely meaningless whenever the feature in question is categorical, like store ID is here",
+      "Yes, but this is only true when the model is a single decision tree"
+    ],
+    "correct": 0,
+    "explanation": "Feature importance measures how much a feature helps the model reduce error, which can reflect correlation with underlying causal factors (like store size or location) rather than demonstrating causation itself."
+  },
+  {
+    "id": "ens-070",
+    "topic": "ensembles",
+    "subtopic": "Boosting concept",
+    "difficulty": "recall",
+    "q": "Unlike bagging, boosting builds its ensemble by ______.",
+    "options": [
+      "training models sequentially, with each new model focusing more on the examples the previous models got wrong",
+      "training all models completely independently and in parallel on separate bootstrapped samples each and every time",
+      "training a single model once and simply duplicating it many identical times",
+      "randomly discarding half of the training data before training every single model"
+    ],
+    "correct": 0,
+    "explanation": "Boosting trains base learners one after another, where each new learner is trained to pay more attention to the mistakes of the ensemble built so far."
+  },
+  {
+    "id": "ens-071",
+    "topic": "ensembles",
+    "subtopic": "Boosting concept",
+    "difficulty": "recall",
+    "q": "Boosting primarily aims to reduce ______ compared to a single weak learner.",
+    "options": [
+      "bias",
+      "variance",
+      "irreducible error",
+      "the number of features needed"
+    ],
+    "correct": 0,
+    "explanation": "By sequentially focusing on previously misclassified or poorly predicted examples, boosting mainly drives down bias, turning a collection of weak (high-bias) learners into a strong overall predictor."
+  },
+  {
+    "id": "ens-072",
+    "topic": "ensembles",
+    "subtopic": "Boosting concept",
+    "difficulty": "application",
+    "q": "A churn-prediction system uses AdaBoost. After the first weak learner is trained, which training examples receive increased weight before the second learner is trained?",
+    "options": [
+      "Examples that the first learner misclassified",
+      "Examples that the first learner classified correctly with high confidence",
+      "A random subset of examples, regardless of classification outcome",
+      "Only examples belonging to the majority class"
+    ],
+    "correct": 0,
+    "explanation": "AdaBoost increases the weights of misclassified examples after each round so that the next weak learner is forced to pay more attention to the cases the ensemble is currently getting wrong."
+  },
+  {
+    "id": "ens-073",
+    "topic": "ensembles",
+    "subtopic": "Boosting concept",
+    "difficulty": "recall",
+    "q": "In AdaBoost, how is each weak learner's vote weighted when forming the final prediction?",
+    "options": [
+      "Learners with lower training error are given a larger weight in the final combined vote",
+      "All learners are given exactly equal weight in the vote, regardless of their individual accuracy",
+      "Only the very last learner trained contributes to the final prediction",
+      "Weights are assigned completely at random once training has finished"
+    ],
+    "correct": 0,
+    "explanation": "AdaBoost assigns each weak learner a weight based on its accuracy, so more accurate learners have a stronger say in the final weighted vote."
+  },
+  {
+    "id": "ens-074",
+    "topic": "ensembles",
+    "subtopic": "Boosting concept",
+    "difficulty": "application",
+    "q": "A gradient boosting model for predicting house prices adds a new tree at each stage that is trained to predict the residual errors (differences between actual and predicted prices) of the current ensemble. What is this process designed to achieve?",
+    "options": [
+      "Each new tree incrementally corrects the mistakes of the ensemble so far, gradually reducing overall prediction error",
+      "Each new tree completely and entirely replaces all of the previously trained trees in the ensemble built up thus far",
+      "Each new tree is trained completely independently and ignores prior predictions",
+      "Each new tree is only used to detect outliers, not to improve predictions"
+    ],
+    "correct": 0,
+    "explanation": "Gradient boosting fits each successive weak learner to the current residual errors, so the ensemble's combined prediction steadily improves by correcting prior mistakes."
+  },
+  {
+    "id": "ens-075",
+    "topic": "ensembles",
+    "subtopic": "Boosting concept",
+    "difficulty": "recall",
+    "q": "What is typically true of the individual 'weak learners' used in boosting, such as shallow decision stumps?",
+    "options": [
+      "Each one individually performs only slightly better than random guessing",
+      "Each one individually achieves near-perfect accuracy on its own",
+      "Each one is instead a fully grown, completely unpruned decision tree",
+      "Each one is trained on a bootstrapped sample like in bagging"
+    ],
+    "correct": 0,
+    "explanation": "Boosting is designed to combine many weak learners (slightly better than chance) into a strong overall learner through sequential error correction, unlike bagging which typically combines strong, high-variance learners."
+  },
+  {
+    "id": "ens-076",
+    "topic": "ensembles",
+    "subtopic": "Boosting concept",
+    "difficulty": "analysis",
+    "q": "Why can boosting become more prone to overfitting than bagging if run for too many iterations (too many sequential learners)?",
+    "options": [
+      "Later learners increasingly focus on examples that are hard to predict, including noisy outliers, which can mean fitting noise",
+      "Boosting is wrongly assumed to always train far fewer models than bagging does, so it supposedly cannot ever overfit under any condition",
+      "Boosting uses bootstrap sampling, which guarantees low variance regardless of iteration count",
+      "Boosting's final prediction is claimed to always be an unweighted average, unlike bagging"
+    ],
+    "correct": 0,
+    "explanation": "Because boosting repeatedly emphasizes previously hard-to-predict examples, running it for too many rounds can cause later learners to fit noise in those hard examples, increasing the risk of overfitting."
+  },
+  {
+    "id": "ens-077",
+    "topic": "ensembles",
+    "subtopic": "Boosting concept",
+    "difficulty": "recall",
+    "q": "Which statement correctly contrasts how bagging and boosting combine their base learners' outputs?",
+    "options": [
+      "Bagging typically combines learners with simple averaging or majority vote; boosting uses a weighted vote reflecting each learner's performance",
+      "Bagging uses a weighted vote based on each learner's individual accuracy, while boosting instead uses simple unweighted averaging throughout the entire process",
+      "Both methods are claimed to always use an unweighted majority vote with no exceptions at all",
+      "Bagging supposedly requires a trained meta-learner to combine predictions, while boosting never does"
+    ],
+    "correct": 0,
+    "explanation": "Bagging aggregates independently trained learners by simple averaging or majority vote, whereas boosting weights each sequentially trained learner's contribution by how well it performed."
+  },
+  {
+    "id": "ens-078",
+    "topic": "ensembles",
+    "subtopic": "Boosting concept",
+    "difficulty": "application",
+    "q": "A medical diagnosis model uses gradient boosting, and the team wants it to keep improving by correcting mistakes from the current ensemble at every stage. What must be true about how each new tree is trained?",
+    "options": [
+      "Each new tree is trained on the errors (or loss gradient) left by the ensemble so far, not from scratch on the original labels",
+      "Each new tree is trained on a completely fresh, independent bootstrap sample entirely unrelated to prior trees' performance or errors",
+      "Each new tree is trained with a random subset of features and no reference to prior errors",
+      "Each new tree somehow replaces the need for any loss function in the training process"
+    ],
+    "correct": 0,
+    "explanation": "Gradient boosting's defining mechanism is that each new learner targets the current residual error (or negative gradient of the loss) of the ensemble so far, which is what allows sequential error correction."
+  },
+  {
+    "id": "ens-079",
+    "topic": "ensembles",
+    "subtopic": "Boosting concept",
+    "difficulty": "recall",
+    "q": "Which of these is a well-known boosting algorithm?",
+    "options": [
+      "AdaBoost",
+      "Random Forest",
+      "Bagged decision trees",
+      "k-nearest neighbors"
+    ],
+    "correct": 0,
+    "explanation": "AdaBoost (Adaptive Boosting) is one of the earliest and most well-known boosting algorithms, alongside Gradient Boosting and its modern implementations like XGBoost."
+  },
+  {
+    "id": "ens-080",
+    "topic": "ensembles",
+    "subtopic": "Boosting concept",
+    "difficulty": "analysis",
+    "q": "A fraud-detection team compares a single weak decision stump, an AdaBoost ensemble of 200 stumps, and a bagged ensemble of 200 deep trees on the same data. Which ensemble is most likely to perform well specifically because it reduces bias rather than variance?",
+    "options": [
+      "The AdaBoost ensemble of stumps, since boosting sequentially reduces bias by having each stump correct prior errors",
+      "The bagged ensemble of deep trees, since bagging is explicitly designed to reduce bias",
+      "The single weak decision stump, since it has the lowest bias of the three",
+      "None of the three options actually reduces bias at all in this comparison; all of them only ever reduce variance instead"
+    ],
+    "correct": 0,
+    "explanation": "AdaBoost's sequential error-correction mechanism primarily targets bias, turning many individually weak (high-bias) learners into a strong ensemble, while bagging's main benefit is variance reduction for already-strong, high-variance base learners."
+  },
+  {
+    "id": "ens-081",
+    "topic": "ensembles",
+    "subtopic": "Boosting concept",
+    "difficulty": "recall",
+    "q": "Why does boosting typically require sequential (not parallel) training of its base learners?",
+    "options": [
+      "Each new learner depends on the errors or residuals produced by the ensemble of all previously trained learners",
+      "Sequential training is merely a historical convention here, with no real technical reason behind it",
+      "Parallel training is said to be fundamentally impossible for any tree-based model whatsoever",
+      "Boosting does not use multiple learners at all, only sequential updates to a single learner's weights"
+    ],
+    "correct": 0,
+    "explanation": "Because each boosting round's training target (weighted errors or residuals) depends on the current ensemble's predictions, learners must be added one at a time in sequence."
+  },
+  {
+    "id": "ens-082",
+    "topic": "ensembles",
+    "subtopic": "XGBoost specifics",
+    "difficulty": "recall",
+    "q": "Which of the following is a major reason XGBoost trains faster than many traditional gradient boosting implementations on large datasets?",
+    "options": [
+      "It uses parallelized split-finding and cache-aware algorithms to speed up computation",
+      "It always trains only a single decision tree no matter how large the dataset happens to be",
+      "It avoids using decision trees entirely in favor of linear models",
+      "It requires absolutely no hyperparameter tuning of any kind at all"
+    ],
+    "correct": 0,
+    "explanation": "XGBoost's engineering optimizations, including parallelized computation for split-finding within each tree and cache-aware memory access, make it considerably faster than naive gradient boosting implementations."
+  },
+  {
+    "id": "ens-083",
+    "topic": "ensembles",
+    "subtopic": "XGBoost specifics",
+    "difficulty": "recall",
+    "q": "Why is XGBoost's built-in regularization (L1/L2 penalties on tree complexity) highlighted as an advantage over plain gradient boosting?",
+    "options": [
+      "It helps control model complexity and reduces overfitting, improving generalization to unseen data",
+      "It guarantees that the model will always underfit on the training data provided to it, no matter what",
+      "It entirely removes the need to ever choose a number of boosting trees",
+      "It only applies when the target variable happens to be categorical in nature"
+    ],
+    "correct": 0,
+    "explanation": "By penalizing overly complex trees directly within its objective function, XGBoost discourages overfitting more explicitly than standard gradient boosting, which has no built-in complexity penalty."
+  },
+  {
+    "id": "ens-084",
+    "topic": "ensembles",
+    "subtopic": "XGBoost specifics",
+    "difficulty": "application",
+    "q": "A dataset of patient records has many missing lab values because some tests were not ordered for every patient. Which property of XGBoost most directly reduces the need for the team to manually impute these gaps before training?",
+    "options": [
+      "XGBoost learns an optimal default split direction for missing values at each node during training",
+      "Deeper trees are claimed to always be strictly better, regardless of actual test performance",
+      "XGBoost converts all missing values into the mean of the column automatically before any split is computed",
+      "XGBoost cannot handle missing numeric features under any circumstance"
+    ],
+    "correct": 0,
+    "explanation": "XGBoost has a built-in mechanism that learns, from the training data, which direction (left or right child) missing values should default to at each split, avoiding the need for separate imputation."
+  },
+  {
+    "id": "ens-085",
+    "topic": "ensembles",
+    "subtopic": "XGBoost specifics",
+    "difficulty": "recall",
+    "q": "In XGBoost, increasing the learning rate (sometimes called eta) while keeping the number of trees (n_estimators) fixed generally has what effect?",
+    "options": [
+      "Each tree contributes more strongly to the final prediction, which can speed convergence but risks overshooting and overfitting",
+      "It has no effect on training whatsoever since learning rate is claimed to only ever apply to neural network models specifically",
+      "It automatically reduces the number of trees needed down to exactly one tree",
+      "It forces every single tree to use the exact same split regardless of the data"
+    ],
+    "correct": 0,
+    "explanation": "The learning rate scales how much each new tree's predictions are added to the ensemble; a higher learning rate means faster convergence per tree but increases the risk of overshooting the optimum and overfitting."
+  },
+  {
+    "id": "ens-086",
+    "topic": "ensembles",
+    "subtopic": "XGBoost specifics",
+    "difficulty": "application",
+    "q": "A team doubles XGBoost's max_depth parameter while keeping all other settings fixed, and the model's training accuracy increases sharply while test accuracy drops. What does this trade-off illustrate?",
+    "options": [
+      "Deeper trees can model more complex interactions but are more prone to overfitting, a classic bias-variance trade-off",
+      "max_depth is claimed to have absolutely no effect on model complexity in XGBoost",
+      "The drop in test accuracy must instead be caused entirely by a software bug, not the actual parameter change that was made",
+      "Increasing max_depth always improves both training and test accuracy simultaneously"
+    ],
+    "correct": 0,
+    "explanation": "Allowing deeper individual trees lets each one fit more intricate patterns (lower bias) but increases the risk of fitting noise in the training data (higher variance), which is reflected in worsening test performance."
+  },
+  {
+    "id": "ens-087",
+    "topic": "ensembles",
+    "subtopic": "XGBoost specifics",
+    "difficulty": "recall",
+    "q": "What does the n_estimators parameter control in XGBoost?",
+    "options": [
+      "The total number of boosting rounds (trees) added to the ensemble",
+      "The maximum depth that is allowed for any single individual tree",
+      "The fraction of input features considered as candidates at each split",
+      "The learning rate that gets applied to each tree's individual contribution"
+    ],
+    "correct": 0,
+    "explanation": "n_estimators sets how many sequential trees (boosting rounds) are trained and added to the ensemble; more rounds generally increase model capacity but also the risk of overfitting if unchecked."
+  },
+  {
+    "id": "ens-088",
+    "topic": "ensembles",
+    "subtopic": "XGBoost specifics",
+    "difficulty": "application",
+    "q": "A retail sales forecasting model built with XGBoost is overfitting: training error keeps dropping but validation error has started rising. Which combination of parameter changes would most directly help address this?",
+    "options": [
+      "Lower the learning rate, reduce max_depth, and/or reduce the number of estimators",
+      "Raise the learning rate even further while also increasing max_depth simultaneously",
+      "Remove all of the regularization terms entirely from the training objective function",
+      "Switch from gradient boosting to a single very deep decision tree"
+    ],
+    "correct": 0,
+    "explanation": "Reducing tree depth, lowering the learning rate, limiting the number of boosting rounds, and/or increasing regularization are standard ways to rein in an overfitting gradient boosting model like XGBoost."
+  },
+  {
+    "id": "ens-089",
+    "topic": "ensembles",
+    "subtopic": "XGBoost specifics",
+    "difficulty": "recall",
+    "q": "Which of the following best describes XGBoost's approach to handling missing values during training, compared to needing a separate imputation step?",
+    "options": [
+      "It learns the best default direction to send missing values at each split directly from the training data",
+      "It silently and automatically drops every single row containing any missing value before training even begins at all",
+      "It requires users to replace missing values with zero before fitting the model",
+      "It instead treats missing values as a brand-new, separate target class to predict"
+    ],
+    "correct": 0,
+    "explanation": "Rather than requiring upfront imputation, XGBoost's sparsity-aware split finding learns, during training, which branch (left or right) is optimal for missing entries at each node."
+  },
+  {
+    "id": "ens-090",
+    "topic": "ensembles",
+    "subtopic": "XGBoost specifics",
+    "difficulty": "application",
+    "q": "A fraud-detection team is choosing between a plain gradient boosting implementation and XGBoost for a dataset with 50 million rows that must be trained on a multi-machine cluster. Which XGBoost property most directly supports this requirement?",
+    "options": [
+      "Its scalability and support for distributed, parallelized training across machines",
+      "Its ability to run effectively only on a single CPU core at a time",
+      "Its requirement that all data fit in a single machine's memory",
+      "Its hard restriction to binary classification tasks only, with nothing else supported"
+    ],
+    "correct": 0,
+    "explanation": "XGBoost was specifically engineered to scale to very large datasets, including distributed training across clusters, which plain gradient boosting implementations historically did not support well."
+  },
+  {
+    "id": "ens-091",
+    "topic": "ensembles",
+    "subtopic": "XGBoost specifics",
+    "difficulty": "recall",
+    "q": "Which statement about XGBoost's flexibility is accurate?",
+    "options": [
+      "It supports classification, regression, and ranking tasks through different objective functions",
+      "It can only ever be used for strictly binary classification problems, nothing else at all, under any circumstance",
+      "It can only model linear relationships between features and target",
+      "It requires that the target variable always be a continuous numeric value"
+    ],
+    "correct": 0,
+    "explanation": "XGBoost's objective function can be swapped to support classification, regression, and ranking problems, making it broadly applicable across task types."
+  },
+  {
+    "id": "ens-092",
+    "topic": "ensembles",
+    "subtopic": "XGBoost specifics",
+    "difficulty": "application",
+    "q": "A credit-scoring team sets a very low learning rate (e.g., 0.01) in XGBoost to reduce overfitting risk. What must they typically do to compensate and still reach good performance?",
+    "options": [
+      "Increase the number of boosting rounds (n_estimators) so the ensemble has enough cumulative capacity to fit the data",
+      "Decrease the number of boosting rounds instead, purely to avoid unnecessarily long training times in every possible scenario",
+      "Remove the learning rate parameter entirely, since it is now supposedly redundant",
+      "Switch the objective function over to classification regardless of the actual task"
+    ],
+    "correct": 0,
+    "explanation": "A smaller learning rate means each tree contributes less to the final prediction, so more trees (boosting rounds) are typically needed to reach comparable predictive performance, trading training time for a smoother, less overfitting-prone path."
+  },
+  {
+    "id": "ens-093",
+    "topic": "ensembles",
+    "subtopic": "XGBoost specifics",
+    "difficulty": "recall",
+    "q": "Compared to a standard (non-regularized) gradient boosting implementation, what additional terms does XGBoost's objective function typically include?",
+    "options": [
+      "Regularization terms that penalize tree complexity, such as the number of leaves and leaf weight magnitudes",
+      "An extra term that forces every tree to have exactly one leaf",
+      "A term that completely removes the original loss function from the training objective entirely and permanently for good",
+      "A term that always doubles the learning rate after each round"
+    ],
+    "correct": 0,
+    "explanation": "XGBoost explicitly adds regularization terms (penalizing leaf count and the magnitude of leaf weights) to its objective function, which standard gradient boosting formulations typically omit."
+  },
+  {
+    "id": "ens-094",
+    "topic": "ensembles",
+    "subtopic": "XGBoost specifics",
+    "difficulty": "analysis",
+    "q": "A manufacturing QC team notices that reducing XGBoost's max_depth from 10 to 4 improves test accuracy even though training accuracy drops slightly. What does this suggest about the original setting?",
+    "options": [
+      "The deeper trees were likely overfitting, and the shallower trees generalize better despite slightly higher training error",
+      "Deeper trees are claimed to always be strictly better in every case, no matter what the test performance actually ends up showing",
+      "max_depth is said to have no real effect whatsoever on an XGBoost model's generalization",
+      "The change indicates a bug in the training pipeline, not a genuine effect of tree depth"
+    ],
+    "correct": 0,
+    "explanation": "A drop in training accuracy accompanied by a rise in test accuracy is the signature of reduced overfitting, consistent with shallower trees generalizing better than overly deep ones."
+  },
+  {
+    "id": "ens-095",
+    "topic": "ensembles",
+    "subtopic": "XGBoost specifics",
+    "difficulty": "recall",
+    "q": "Why is XGBoost particularly popular for structured/tabular data problems in industry and competitions?",
+    "options": [
+      "It combines strong predictive performance, speed, built-in regularization, and robust handling of messy real-world data",
+      "It is claimed to be the only algorithm in existence capable of handling tabular data at all, unlike any other method ever devised",
+      "It requires no hyperparameter tuning to achieve state-of-the-art results",
+      "It is said to be exclusively designed for image and text data only"
+    ],
+    "correct": 0,
+    "explanation": "XGBoost's mix of accuracy, computational efficiency, regularization, and practical conveniences like missing-value handling has made it a go-to choice for tabular data tasks across industry and competitions."
+  },
+  {
+    "id": "ens-096",
+    "topic": "ensembles",
+    "subtopic": "Stacking",
+    "difficulty": "recall",
+    "q": "Which statement best describes the stacking ensemble method?",
+    "options": [
+      "It trains a meta-learner using the outputs of the base learners",
+      "It strictly requires that all of the base learners be the same model type",
+      "It is claimed to always underperform compared to ordinary bagging methods",
+      "It can supposedly only ever be implemented using decision tree base learners"
+    ],
+    "correct": 0,
+    "explanation": "Stacking combines heterogeneous base learners by feeding their predictions as input features to a second-level model (the meta-learner), which learns how to best combine them."
+  },
+  {
+    "id": "ens-097",
+    "topic": "ensembles",
+    "subtopic": "Stacking",
+    "difficulty": "recall",
+    "q": "In a stacking ensemble for predicting loan default, the base learners might include a logistic regression, a random forest, and a gradient boosting model. What does the meta-learner take as its input?",
+    "options": [
+      "The predictions (or predicted probabilities) output by each base learner",
+      "The raw original features, completely ignoring the base learners' predictions",
+      "Only the output from the single best-performing base learner alone",
+      "A randomly chosen subset of the original training rows only"
+    ],
+    "correct": 0,
+    "explanation": "The defining feature of stacking is that the meta-learner is trained on the base learners' outputs (predictions or probabilities) rather than directly on the raw input features."
+  },
+  {
+    "id": "ens-098",
+    "topic": "ensembles",
+    "subtopic": "Stacking",
+    "difficulty": "application",
+    "q": "A team builds a stacking ensemble but trains the meta-learner on the base learners' predictions for the very same rows the base learners were trained on. What problem does this introduce?",
+    "options": [
+      "Data leakage, since base learners can nearly memorize their own training rows, making those predictions overly optimistic",
+      "No problem at all, since stacking is specifically and intentionally designed to work exactly this way by default in every implementation",
+      "The meta-learner will inevitably underfit the data as a direct result of this",
+      "The base learners will be forced to completely retrain themselves from scratch"
+    ],
+    "correct": 0,
+    "explanation": "If base learners' in-sample predictions (on data they were trained on) are used to train the meta-learner, those predictions can be unrealistically accurate, leaking information and causing the meta-learner to learn a distorted relationship that will not hold on new data."
+  },
+  {
+    "id": "ens-099",
+    "topic": "ensembles",
+    "subtopic": "Stacking",
+    "difficulty": "recall",
+    "q": "What is the standard remedy for the leakage risk when generating training data for a stacking meta-learner?",
+    "options": [
+      "Using cross-validated (out-of-fold) predictions from the base learners instead of their in-sample predictions",
+      "Training the meta-learner directly on the original raw input features instead of using the base-learner outputs at all",
+      "Reducing the number of base learners down to exactly one single model",
+      "Training all of the base learners on the entire dataset two separate times"
+    ],
+    "correct": 0,
+    "explanation": "Generating out-of-fold predictions, where each row's base-learner prediction comes from a model that did not see that row during training, avoids the optimistic bias that in-sample predictions would introduce."
+  },
+  {
+    "id": "ens-100",
+    "topic": "ensembles",
+    "subtopic": "Stacking",
+    "difficulty": "application",
+    "q": "A data science team uses 5-fold cross-validation to generate base-learner predictions for their stacking ensemble: for each fold, base learners are trained on the other four folds and predict on the held-out fold. Why is this procedure important?",
+    "options": [
+      "It ensures the meta-learner trains on realistic, held-out-style predictions rather than in-sample ones that overstate accuracy",
+      "It supposedly guarantees that the meta-learner will always outperform every single one of the base learners, no matter what happens",
+      "It removes the need to ever evaluate the final stacked model on a separate test set",
+      "It allows the base learners to share exactly the same random seed, improving reproducibility"
+    ],
+    "correct": 0,
+    "explanation": "Out-of-fold predictions mimic how the base learners would perform on genuinely unseen data, giving the meta-learner a realistic training signal instead of an overly optimistic one."
+  },
+  {
+    "id": "ens-101",
+    "topic": "ensembles",
+    "subtopic": "Stacking",
+    "difficulty": "recall",
+    "q": "Which of the following is a key structural difference between stacking and simple majority-vote or averaging ensembles?",
+    "options": [
+      "Stacking learns how to combine base-learner outputs via a trained meta-learner, rather than using a fixed combination rule",
+      "Stacking strictly and absolutely requires that all of its base learners produce exactly identical predictions every single time",
+      "Stacking is claimed to only work for classification tasks, never regression",
+      "Stacking supposedly can never use more than exactly two base learners at once"
+    ],
+    "correct": 0,
+    "explanation": "Unlike a fixed rule like averaging or majority vote, stacking's meta-learner is itself trained to learn the optimal way to weight and combine the base learners' predictions."
+  },
+  {
+    "id": "ens-102",
+    "topic": "ensembles",
+    "subtopic": "Stacking",
+    "difficulty": "application",
+    "q": "A medical diagnosis team stacks a logistic regression, a support vector machine, and a random forest, using a simple logistic regression as the meta-learner. Why might combining such diverse base learner types be advantageous?",
+    "options": [
+      "Different model types capture different patterns in the data, and a meta-learner can exploit their complementary strengths",
+      "All three base learners must make identical predictions for stacking to work at all",
+      "Using diverse base learners is claimed to guarantee the ensemble will have exactly zero bias in every single case imaginable",
+      "Diverse base learners are required so that the meta-learner can be skipped entirely"
+    ],
+    "correct": 0,
+    "explanation": "Stacking is well suited to combining structurally different models (e.g., linear, kernel-based, tree-based) since their errors are less likely to be correlated, giving the meta-learner more complementary signal to combine."
+  },
+  {
+    "id": "ens-103",
+    "topic": "ensembles",
+    "subtopic": "Stacking",
+    "difficulty": "recall",
+    "q": "In a stacking setup, what role does the meta-learner (sometimes called the blender) play?",
+    "options": [
+      "It learns how to weight and combine the base learners' predictions into a final prediction",
+      "It entirely replaces the need to ever train any base learners at all",
+      "It is always a decision tree, regardless of the base learners used",
+      "It is always trained first, before any of the base learners are trained at all in the pipeline"
+    ],
+    "correct": 0,
+    "explanation": "The meta-learner sits on top of the base learners, taking their predictions as inputs and learning the best way to combine them into a final output."
+  },
+  {
+    "id": "ens-104",
+    "topic": "ensembles",
+    "subtopic": "Stacking",
+    "difficulty": "application",
+    "q": "A retail company's stacking ensemble combines three base models' predicted probabilities for 'will purchase', then trains a meta-learner on those three probability columns to produce a final probability. If one base model is consistently uninformative (close to random), what will a well-trained meta-learner likely do?",
+    "options": [
+      "Learn to downweight that base model's contribution relative to the more informative ones",
+      "Still weight all three base models equally regardless of their accuracy",
+      "Fail to train successfully at all simply because of that uninformative model",
+      "Automatically detect, remove, and then retrain the uninformative base model"
+    ],
+    "correct": 0,
+    "explanation": "Because the meta-learner is trained to optimize final predictive performance, it can learn to assign little weight to an uninformative base learner's output while leaning more on the stronger ones."
+  },
+  {
+    "id": "ens-105",
+    "topic": "ensembles",
+    "subtopic": "Stacking",
+    "difficulty": "recall",
+    "q": "Why is stacking sometimes described as a 'two-level' ensemble method?",
+    "options": [
+      "It involves a first level of base learners and a second level (the meta-learner) trained on their outputs",
+      "It is claimed to always use exactly two base learners in total, no more",
+      "It strictly and absolutely requires exactly two rounds of cross-validation and never any more than that, by definition",
+      "It only works at all when there are exactly two classes in classification"
+    ],
+    "correct": 0,
+    "explanation": "Stacking's architecture has two distinct layers: the base learners that produce initial predictions, and the meta-learner that combines those predictions into the final output."
+  },
+  {
+    "id": "ens-106",
+    "topic": "ensembles",
+    "subtopic": "Stacking",
+    "difficulty": "analysis",
+    "q": "A team stacking several models finds that their meta-learner, a complex deep neural network, performs worse on new data than a simple logistic regression meta-learner would. What is a plausible explanation?",
+    "options": [
+      "A complex meta-learner trained on relatively few base-learner output columns can itself overfit, especially with limited out-of-fold data",
+      "Meta-learners are mathematically guaranteed to never overfit regardless of complexity",
+      "Complex meta-learners are claimed to always outperform simple ones regardless of dataset size or how much training data happens to be available",
+      "The choice of meta-learner architecture cannot affect stacking performance at all"
+    ],
+    "correct": 0,
+    "explanation": "Since the meta-learner's input space (one column per base learner) is usually low-dimensional, an overly complex meta-learner can overfit that small input space, especially if there is limited out-of-fold training data, often making simpler meta-learners more robust."
+  },
+  {
+    "id": "ens-107",
+    "topic": "ensembles",
+    "subtopic": "Stacking",
+    "difficulty": "recall",
+    "q": "Which combination of base learners would be a reasonable candidate set for a stacking ensemble predicting customer lifetime value?",
+    "options": [
+      "A linear regression, a random forest, and a gradient boosting model, each capturing the data differently",
+      "Three identical copies of the exact same decision tree trained on the exact same dataset each time around",
+      "A single k-means clustering model used entirely alone, with nothing else",
+      "Only a single base learner, since stacking is claimed to require exactly one"
+    ],
+    "correct": 0,
+    "explanation": "Stacking benefits from diversity among base learners so that their errors are less correlated, making a mix of model families (e.g., linear, bagged trees, boosted trees) a sensible choice."
+  },
+  {
+    "id": "ens-108",
+    "topic": "ensembles",
+    "subtopic": "Bagging vs boosting vs stacking",
+    "difficulty": "recall",
+    "q": "How does model training differ fundamentally between bagging and boosting?",
+    "options": [
+      "Boosting trains models sequentially, each correcting prior errors; bagging trains models independently in parallel",
+      "Bagging trains its models sequentially while boosting instead trains all of them simultaneously in parallel across machines",
+      "Both methods always train strictly sequentially, with absolutely no exceptions ever",
+      "Both methods always train entirely in parallel, with absolutely no exceptions ever"
+    ],
+    "correct": 0,
+    "explanation": "Bagging's base learners are trained independently (and can be parallelized), while boosting's base learners are trained one after another, each depending on the ensemble's current errors."
+  },
+  {
+    "id": "ens-109",
+    "topic": "ensembles",
+    "subtopic": "Bagging vs boosting vs stacking",
+    "difficulty": "recall",
+    "q": "What is the primary statistical focus of bagging versus boosting?",
+    "options": [
+      "Bagging primarily reduces variance; boosting primarily reduces bias",
+      "Bagging primarily reduces bias; boosting primarily reduces variance",
+      "Both techniques primarily reduce bias and never meaningfully affect variance",
+      "Neither technique has any real effect on bias or variance at all"
+    ],
+    "correct": 0,
+    "explanation": "Bagging combines many high-variance, low-bias learners to average out variance, while boosting combines many high-bias, low-variance (weak) learners to sequentially reduce bias."
+  },
+  {
+    "id": "ens-110",
+    "topic": "ensembles",
+    "subtopic": "Bagging vs boosting vs stacking",
+    "difficulty": "application",
+    "q": "A data scientist wants to reduce variance by training many independent strong learners and averaging their outputs. Which ensemble family matches this goal?",
+    "options": [
+      "Bagging",
+      "Boosting",
+      "Stacking with a complex meta-learner only",
+      "None of these reduce variance"
+    ],
+    "correct": 0,
+    "explanation": "Bagging is specifically designed to reduce variance by training multiple strong-but-high-variance learners independently and averaging their predictions."
+  },
+  {
+    "id": "ens-111",
+    "topic": "ensembles",
+    "subtopic": "Bagging vs boosting vs stacking",
+    "difficulty": "application",
+    "q": "A data scientist instead wants to reduce bias by sequentially correcting the mistakes of a chain of weak learners. Which ensemble family matches this goal?",
+    "options": [
+      "Boosting",
+      "Bagging",
+      "Random subsampling of rows with no model training",
+      "Simple averaging of identical models"
+    ],
+    "correct": 0,
+    "explanation": "Boosting's defining mechanism, sequential training where each new learner targets the current ensemble's errors, is specifically aimed at reducing bias."
+  },
+  {
+    "id": "ens-112",
+    "topic": "ensembles",
+    "subtopic": "Bagging vs boosting vs stacking",
+    "difficulty": "recall",
+    "q": "Which family of algorithms is commonly listed under 'boosting'?",
+    "options": [
+      "AdaBoost, Gradient Boosting, and XGBoost",
+      "Random Forest, Extra Trees, and bagged decision trees",
+      "k-means and hierarchical clustering",
+      "Principal Component Analysis and t-SNE"
+    ],
+    "correct": 0,
+    "explanation": "AdaBoost, Gradient Boosting, and XGBoost are classic and modern examples of boosting algorithms built around sequential error correction."
+  },
+  {
+    "id": "ens-113",
+    "topic": "ensembles",
+    "subtopic": "Bagging vs boosting vs stacking",
+    "difficulty": "recall",
+    "q": "Which family of algorithms is commonly listed under 'bagging'?",
+    "options": [
+      "Random Forest and Extra Trees",
+      "AdaBoost, Gradient Boosting, and XGBoost",
+      "Logistic regression and linear regression",
+      "Stacking, blending, and voting ensembles"
+    ],
+    "correct": 0,
+    "explanation": "Random Forest and Extra Trees are both bagging-style ensembles that combine many trees trained on bootstrapped (and, for forests, feature-subsampled) data."
+  },
+  {
+    "id": "ens-114",
+    "topic": "ensembles",
+    "subtopic": "Bagging vs boosting vs stacking",
+    "difficulty": "analysis",
+    "q": "Which statement about overfitting risk correctly compares boosting to bagging in typical practice?",
+    "options": [
+      "Boosting, especially with too many rounds or a high learning rate, can be more overfitting-prone than bagging, which stays fairly robust",
+      "Bagging is claimed to always overfit more than boosting, regardless of settings used",
+      "Neither ensemble method can ever overfit under any possible configuration",
+      "Overfitting risk is identical and completely unaffected by the number of base learners used in these two entirely different ensemble methods"
+    ],
+    "correct": 0,
+    "explanation": "Because boosting keeps fitting residuals (including noise) at later iterations, it can overfit if not regularized (e.g., via early stopping or shrinkage), whereas bagging's variance-reduction mechanism makes it comparatively robust to adding more learners."
+  },
+  {
+    "id": "ens-115",
+    "topic": "ensembles",
+    "subtopic": "Bagging vs boosting vs stacking",
+    "difficulty": "application",
+    "q": "A team wants to combine three structurally different models (a linear model, a tree ensemble, and a neural network) by learning the optimal way to weight their outputs rather than using a fixed averaging rule. Which ensemble technique fits this requirement best?",
+    "options": [
+      "Stacking",
+      "Bagging",
+      "Boosting",
+      "Simple majority voting"
+    ],
+    "correct": 0,
+    "explanation": "Stacking is designed exactly for this situation: combining diverse model types through a trained meta-learner rather than a fixed combination rule like averaging or majority vote."
+  },
+  {
+    "id": "ens-116",
+    "topic": "ensembles",
+    "subtopic": "Bagging vs boosting vs stacking",
+    "difficulty": "recall",
+    "q": "True or false: boosting trains all of its models independently of each other, exactly like bagging does.",
+    "options": [
+      "False, boosting trains sequentially, with each model depending on the errors of prior models",
+      "True, both boosting and bagging always train models fully independently",
+      "True, but this independence supposedly only holds for classification tasks, not regression ones",
+      "False, simply because boosting never actually uses multiple models at all"
+    ],
+    "correct": 0,
+    "explanation": "Boosting's models are explicitly dependent on one another in sequence, which is the opposite of bagging's independent, parallelizable training scheme."
+  },
+  {
+    "id": "ens-117",
+    "topic": "ensembles",
+    "subtopic": "Bagging vs boosting vs stacking",
+    "difficulty": "application",
+    "q": "A credit-scoring team has a single high-variance, overfitting decision tree as their best available base model type. Which ensemble strategy is the most natural first choice to improve generalization, and why?",
+    "options": [
+      "Bagging, since it is specifically effective at reducing variance in high-variance base learners like deep, unpruned trees",
+      "Boosting, since it is specifically and deliberately designed to reduce bias, and the problem described here is variance, not bias",
+      "Stacking with a single base learner, since stacking technically requires at least one model to run",
+      "No ensemble method can help at all, since the base learner already badly overfits"
+    ],
+    "correct": 0,
+    "explanation": "Since the core problem is variance from an overfitting base learner, bagging's variance-reduction mechanism is the most direct fit, which is exactly why random forests build on bagging deep trees."
+  },
+  {
+    "id": "ens-118",
+    "topic": "ensembles",
+    "subtopic": "Bagging vs boosting vs stacking",
+    "difficulty": "recall",
+    "q": "Which of these best summarizes the relationship between bagging, boosting, and stacking as general ensemble strategies?",
+    "options": [
+      "They combine multiple models but differ in how training is structured (parallel vs. sequential) and outputs are combined",
+      "They are three different names for the exact same underlying algorithm",
+      "Only one of the three can be used with decision trees as base learners",
+      "Stacking is supposedly nothing more than bagging performed twice in a row, with no real difference between the two methods at all"
+    ],
+    "correct": 0,
+    "explanation": "All three are ensemble strategies, but bagging trains independently and averages/votes, boosting trains sequentially and uses a weighted combination, and stacking trains a dedicated meta-learner to combine base-learner outputs."
+  },
+  {
+    "id": "ens-119",
+    "topic": "ensembles",
+    "subtopic": "Bagging vs boosting vs stacking",
+    "difficulty": "analysis",
+    "q": "A manufacturing QC team has limited time for sequential training due to real-time retraining requirements, and prefers a method whose base learners can be trained in parallel across machines. Which ensemble family is the most natural fit?",
+    "options": [
+      "Bagging (e.g., random forest), since its base learners are trained independently and can be parallelized",
+      "Boosting, since each learner's sequential training can supposedly be split across machines simultaneously anyway",
+      "Stacking, since the meta-learner must be trained before any base learner",
+      "None of these three ensemble families support any form of parallel training at all"
+    ],
+    "correct": 0,
+    "explanation": "Bagging's defining advantage over boosting is that its base learners do not depend on each other, so they can be trained independently and in parallel, which boosting's sequential dependency structure does not allow."
+  },
+  {
+    "id": "ens-120",
+    "topic": "ensembles",
+    "subtopic": "Bagging vs boosting vs stacking",
+    "difficulty": "recall",
+    "q": "Compared to boosting, what is a typical advantage of bagging in terms of hyperparameter sensitivity?",
+    "options": [
+      "Bagging is generally less sensitive to the number of base learners, since adding more rarely hurts and mainly reduces variance further",
+      "Bagging requires extremely careful, continual tuning of a learning rate parameter, unlike boosting is ever said to require in practice",
+      "Bagging is more prone to overfitting as more learners are added, unlike boosting",
+      "Bagging is claimed to have no hyperparameters at all whatsoever, unlike boosting does"
+    ],
+    "correct": 0,
+    "explanation": "Because each additional bagged learner is trained independently and simply averaged in, adding more learners rarely increases overfitting risk, unlike boosting where parameters like learning rate and number of rounds need careful tuning to avoid overfitting."
+  },
+  {
+    "id": "ens-121",
+    "topic": "ensembles",
+    "subtopic": "Model selection for tree ensembles",
+    "difficulty": "application",
+    "q": "A bank has a tabular dataset of loan applications with a mix of numeric fields (income, loan amount) and categorical fields (employment type, region), along with several highly correlated financial ratios. Why would a tree-based ensemble such as a random forest or XGBoost be a strong default choice here?",
+    "options": [
+      "Tree ensembles naturally handle mixed numeric/categorical features and are robust to multicollinearity, since splits use one feature at a time",
+      "Tree ensembles require every single feature to be carefully scaled to the exact same numeric range before training, unlike linear models always are",
+      "Tree ensembles are claimed to not be usable at all whenever categorical features are present",
+      "Tree ensembles always require far more data than linear models to perform adequately"
+    ],
+    "correct": 0,
+    "explanation": "Tree-based splits threshold one feature at a time and don't rely on a global linear combination of features, so they are naturally robust to multicollinearity and handle a mix of numeric and categorical inputs without special preprocessing like scaling."
+  },
+  {
+    "id": "ens-122",
+    "topic": "ensembles",
+    "subtopic": "Model selection for tree ensembles",
+    "difficulty": "application",
+    "q": "A retailer wants to predict demand using features with complex non-linear interactions (e.g., the effect of price depends heavily on the day of week and the store's region). Why might a gradient boosted tree ensemble outperform a plain linear regression here?",
+    "options": [
+      "Tree-based models automatically capture non-linear relationships and interactions between features without manual feature engineering",
+      "Linear regression always captures feature interactions automatically without ever needing any explicit interaction terms specified by hand",
+      "Gradient boosting is claimed to be unable to model numeric targets, only classification labels",
+      "Linear regression requires no assumptions about the relationship between features and target"
+    ],
+    "correct": 0,
+    "explanation": "Linear regression models a single global linear relationship and needs manually specified interaction terms to capture feature interactions, while tree-based ensembles split on features sequentially and can naturally represent non-linear, interaction-heavy relationships."
+  },
+  {
+    "id": "ens-123",
+    "topic": "ensembles",
+    "subtopic": "Model selection for tree ensembles",
+    "difficulty": "recall",
+    "q": "Why are tree ensembles like random forests and XGBoost often preferred over deep neural networks for small-to-medium tabular datasets?",
+    "options": [
+      "They tend to perform competitively or better with far less data and tuning effort on structured/tabular data",
+      "Neural networks are claimed to be entirely and completely unable to process numeric input features at all, ever",
+      "Tree ensembles always require GPU acceleration, unlike neural networks",
+      "Neural networks are said to be incapable of ever overfitting small datasets"
+    ],
+    "correct": 0,
+    "explanation": "On structured tabular data, tree ensembles frequently match or beat deep learning approaches while needing less data, less tuning, and less specialized infrastructure, which is why they remain a strong default for such problems."
+  },
+  {
+    "id": "ens-124",
+    "topic": "ensembles",
+    "subtopic": "Model selection for tree ensembles",
+    "difficulty": "application",
+    "q": "A manufacturing QC dataset has features measured in wildly different units and scales (temperature in Celsius, vibration in micrometers, pressure in kPa). Why is this less of a concern for a tree-based ensemble than for a distance-based or linear model?",
+    "options": [
+      "Tree-based splits only compare a single feature to a threshold at a time, so differing feature scales do not distort decisions",
+      "Tree-based models are claimed to automatically and perfectly normalize every single feature internally before training even starts",
+      "Tree-based models supposedly cannot make use of any numeric features at all",
+      "Differing feature scales always prevent any model, including tree ensembles, from training successfully"
+    ],
+    "correct": 0,
+    "explanation": "Because each split considers one feature against a threshold rather than combining features in a distance metric or weighted sum, tree-based models are inherently insensitive to the relative scale of different features."
+  },
+  {
+    "id": "ens-125",
+    "topic": "ensembles",
+    "subtopic": "Model selection for tree ensembles",
+    "difficulty": "application",
+    "q": "A healthcare provider wants a model to flag high-risk patients and also needs to explain which factors drove each prediction to clinicians. Why might a random forest with feature importance (or per-prediction explanation tools) be preferred over a black-box deep neural network here?",
+    "options": [
+      "It offers a reasonable balance of predictive power and interpretability through feature importance, aiding clinical trust",
+      "Random forests are claimed to be mathematically and entirely incapable of ever making a single incorrect prediction whatsoever",
+      "Neural networks are said to be inapplicable to healthcare data under any circumstances at all",
+      "Feature importance is only available for linear regression models, not tree ensembles"
+    ],
+    "correct": 0,
+    "explanation": "Tree ensembles offer built-in interpretability tools such as feature importance (and can be paired with methods like SHAP), which supports the explainability often required in clinical decision-support settings, while still capturing non-linear patterns."
+  },
+  {
+    "id": "ens-126",
+    "topic": "ensembles",
+    "subtopic": "Model selection for tree ensembles",
+    "difficulty": "recall",
+    "q": "In which scenario would a tree ensemble generally be a weaker choice compared to a specialized deep learning architecture?",
+    "options": [
+      "Modeling raw image pixels or unstructured sequential text, where learned spatial or sequential representations matter",
+      "Predicting loan default from a spreadsheet full of numeric and categorical applicant feature columns and financial ratios",
+      "Predicting manufacturing defect rates from structured, tabular sensor reading data",
+      "Predicting customer churn from structured account and usage history data"
+    ],
+    "correct": 0,
+    "explanation": "Tree ensembles excel on structured/tabular data but are not naturally suited to raw, high-dimensional unstructured inputs like images or text, where deep learning architectures designed to learn spatial or sequential structure typically perform much better."
+  },
+  {
+    "id": "ens-127",
+    "topic": "ensembles",
+    "subtopic": "Model selection for tree ensembles",
+    "difficulty": "application",
+    "q": "An insurance company's dataset has two financial ratio features that are almost perfectly correlated with each other (multicollinearity). Why does this cause fewer practical problems for a random forest than it would for an ordinary linear regression model?",
+    "options": [
+      "Trees split on one feature at a time and don't estimate coefficients that grow unstable under correlated inputs",
+      "Random forests automatically remove one of the two correlated features before training begins",
+      "Multicollinearity causes identical, equally severe problems in both model types with no difference",
+      "Linear regression is immune to multicollinearity entirely, unlike tree-based ensemble models are"
+    ],
+    "correct": 0,
+    "explanation": "Multicollinearity destabilizes the coefficient estimates of linear models, but tree-based splits simply choose whichever correlated feature reduces impurity more at a given node, without needing to separate their individual linear effects."
+  },
+  {
+    "id": "ens-128",
+    "topic": "ensembles",
+    "subtopic": "Model selection for tree ensembles",
+    "difficulty": "recall",
+    "q": "Which characteristic of real-world business datasets (e.g., customer, financial, or operational records) makes tree ensembles a popular default choice in industry?",
+    "options": [
+      "They often combine mixed data types, non-linear relationships, and messy values, which tree ensembles handle robustly",
+      "They are claimed to always be perfectly clean, fully balanced, and linearly separable in absolutely every single case",
+      "They are said to never contain any categorical variables whatsoever in practice",
+      "They are assumed to always have far more input features than available rows"
+    ],
+    "correct": 0,
+    "explanation": "Business tabular data is often messy, with a mix of categorical and numeric fields, non-linear effects, and missing values, exactly the conditions where tree ensembles like random forests and XGBoost tend to perform reliably with limited preprocessing."
+  },
+  {
+    "id": "ens-129",
+    "topic": "ensembles",
+    "subtopic": "Model selection for tree ensembles",
+    "difficulty": "analysis",
+    "q": "A startup must choose between a random forest and a single, interpretable logistic regression for approving small business loans, where regulations require a clear explanation for every rejection. What is the most balanced way to think about this trade-off?",
+    "options": [
+      "Logistic regression offers simpler, directly interpretable coefficients, while a random forest may trade some of that clarity for better accuracy",
+      "Random forests are claimed to always be entirely and completely illegal to use in any regulated lending decision whatsoever, in every jurisdiction",
+      "Logistic regression can never achieve competitive accuracy on tabular financial data",
+      "There is no trade-off, since both models are equally interpretable by default"
+    ],
+    "correct": 0,
+    "explanation": "Logistic regression's coefficients are directly and simply interpretable, while random forests often predict more accurately on non-linear data but require additional tools (e.g., feature importance, SHAP) to produce comparably clear explanations for regulatory purposes."
+  },
+  {
+    "id": "ens-130",
+    "topic": "ensembles",
+    "subtopic": "Model selection for tree ensembles",
+    "difficulty": "application",
+    "q": "A churn-prediction dataset includes a categorical feature with 50 distinct region codes, plus numeric usage statistics. Why can tree ensembles handle this combination more naturally than a model requiring one-hot encoding of every category into a very wide feature space?",
+    "options": [
+      "Trees can split directly on groups of categorical values at a node, and ensembles handle the added dimensionality reasonably well",
+      "Tree ensembles are claimed to be unable to process categorical features in any form at all",
+      "One-hot encoding is said to be mathematically impossible for categorical features with more than 10 distinct levels or categories at all",
+      "Numeric and categorical features are said to never be able to coexist in one dataset"
+    ],
+    "correct": 0,
+    "explanation": "Tree-based models can work with categorical splits (or robustly handle one-hot encoded versions) and aren't sensitive to the resulting increase in feature count the way distance-based or scale-sensitive models can be."
+  },
+  {
+    "id": "ens-131",
+    "topic": "ensembles",
+    "subtopic": "Model selection for tree ensembles",
+    "difficulty": "recall",
+    "q": "Why do gradient boosted tree ensembles such as XGBoost remain extremely common winning approaches in tabular data competitions?",
+    "options": [
+      "They combine strong predictive accuracy on structured data with fast training and robust handling of real-world data issues",
+      "They are guaranteed to always outperform any other algorithm whatsoever, regardless of the data type or problem being solved",
+      "They require absolutely no validation or hyperparameter tuning to win any competition",
+      "They can supposedly only ever be applied to image classification competitions"
+    ],
+    "correct": 0,
+    "explanation": "XGBoost and similar gradient boosted tree ensembles have a strong track record on structured/tabular competition data due to their accuracy, efficiency, and practical robustness to messy real-world features."
+  },
+  {
+    "id": "ens-132",
+    "topic": "ensembles",
+    "subtopic": "Model selection for tree ensembles",
+    "difficulty": "analysis",
+    "q": "A team is deciding between a random forest and XGBoost for a fraud-detection problem with a large, non-linear, tabular dataset and a tight computational budget for inference latency. Which trade-off is most relevant to this decision?",
+    "options": [
+      "XGBoost's sequential boosting can raise accuracy through bias reduction, while random forests parallelize more easily for training and prediction",
+      "Random forests are claimed to be completely and entirely unusable for fraud detection under any circumstances whatsoever, by design or policy",
+      "XGBoost is said to be entirely incapable of handling tabular data, unlike random forests",
+      "Inference latency is identical for every tree-based ensemble regardless of structure"
+    ],
+    "correct": 0,
+    "explanation": "Both are strong tabular-data choices, but the sequential nature of boosting versus the independent, parallelizable structure of bagging-based forests can matter for training and inference time trade-offs, alongside their differing bias/variance profiles."
+  },
+  {
+    "id": "ens-133",
+    "topic": "ensembles",
+    "subtopic": "Ensemble fundamentals review",
+    "difficulty": "recall",
+    "q": "What is the core idea shared by all ensemble learning methods (bagging, boosting, and stacking)?",
+    "options": [
+      "Combining multiple models to produce predictions that are generally better than any single model alone",
+      "Always using exactly one single model trained on the entire available dataset",
+      "Replacing all model training entirely with manual, hand-written rule-based expert systems instead of any learning",
+      "Avoiding the use of decision trees under absolutely all circumstances whatsoever"
+    ],
+    "correct": 0,
+    "explanation": "Ensemble learning is built on the principle that combining several models' predictions, through averaging, voting, or a learned combination, typically produces more accurate and robust results than relying on a single model."
+  },
+  {
+    "id": "ens-134",
+    "topic": "ensembles",
+    "subtopic": "Ensemble fundamentals review",
+    "difficulty": "application",
+    "q": "A hospital readmission model built as a single decision tree is replaced with a random forest, and test accuracy improves from 65% to 82% while training accuracy drops slightly from 100%. What does this change most directly indicate about the original tree?",
+    "options": [
+      "The original tree was overfitting, and the ensemble's variance reduction improved generalization",
+      "The original tree was actually underfitting and needed an even simpler model",
+      "The underlying dataset must have somehow changed between the two experiments",
+      "Random forests always have lower training accuracy than any single tree regardless of overfitting"
+    ],
+    "correct": 0,
+    "explanation": "A sharp drop from near-perfect training accuracy accompanied by a test accuracy improvement is a textbook sign that the original model was overfitting, and that the ensemble's averaging corrected for it."
+  },
+  {
+    "id": "ens-135",
+    "topic": "ensembles",
+    "subtopic": "Ensemble fundamentals review",
+    "difficulty": "recall",
+    "q": "In the context of ensemble learning, what is a 'base learner'?",
+    "options": [
+      "One of the individual models that make up the ensemble, before their outputs are combined",
+      "The final combined prediction that the ensemble produces as a whole, after combination",
+      "Just another synonym used for the meta-learner inside a stacking ensemble",
+      "The specific feature with the highest importance score across the entire ensemble"
+    ],
+    "correct": 0,
+    "explanation": "Base learners are the individual models (e.g., individual trees in a forest, or weak learners in boosting) whose outputs the ensemble method combines into a final prediction."
+  },
+  {
+    "id": "ens-136",
+    "topic": "ensembles",
+    "subtopic": "Ensemble fundamentals review",
+    "difficulty": "application",
+    "q": "A retail analytics team compares a single pruned decision tree, a random forest, and an XGBoost model on the same churn dataset. The random forest and XGBoost both substantially outperform the single tree. What is the most general explanation for this pattern?",
+    "options": [
+      "Combining many learners through variance reduction (bagging) or sequential bias reduction (boosting) outperforms a single learner",
+      "A single decision tree is mathematically and fundamentally incapable of ever achieving reasonable accuracy under any condition whatsoever",
+      "Ensembles always perform worse than single models on churn data specifically",
+      "Random forest and XGBoost must therefore be using identical algorithms internally"
+    ],
+    "correct": 0,
+    "explanation": "Both random forest (variance reduction via bagging) and XGBoost (bias reduction via boosting) are examples of how combining multiple learners generally improves on a single base learner's performance, even though they achieve it through different mechanisms."
+  },
+  {
+    "id": "ens-137",
+    "topic": "ensembles",
+    "subtopic": "Ensemble fundamentals review",
+    "difficulty": "recall",
+    "q": "Which of the following would most likely be classified as a weak learner suitable for boosting?",
+    "options": [
+      "A decision stump (a tree with only one split) that performs only slightly better than random guessing",
+      "A fully grown, unpruned decision tree that achieves 100% accuracy on its training data",
+      "A large random forest containing as many as 500 individual, fully grown decision trees",
+      "A stacking ensemble built from five structurally diverse base model types combined"
+    ],
+    "correct": 0,
+    "explanation": "Boosting is specifically designed to combine many weak learners, such as shallow decision stumps, each only marginally better than chance, into a single strong predictor through sequential error correction."
+  },
+  {
+    "id": "ens-138",
+    "topic": "ensembles",
+    "subtopic": "Ensemble fundamentals review",
+    "difficulty": "application",
+    "q": "A credit card company's fraud model combines predictions from 100 decision trees using averaging, where each tree was trained independently on a different bootstrapped sample using a different random subset of features at each split. Which ensemble technique does this describe?",
+    "options": [
+      "Random forest",
+      "AdaBoost",
+      "Stacking",
+      "Gradient boosting"
+    ],
+    "correct": 0,
+    "explanation": "Independent training on bootstrapped samples with per-split random feature subsampling, combined via averaging or voting, is the defining structure of a random forest."
+  },
+  {
+    "id": "ens-139",
+    "topic": "ensembles",
+    "subtopic": "Ensemble fundamentals review",
+    "difficulty": "recall",
+    "q": "Why might practitioners prefer an ensemble method over tuning a single complex model extensively?",
+    "options": [
+      "Ensembles often achieve more robust generalization by combining the strengths of multiple models rather than one model's assumptions",
+      "Single models are mathematically incapable of ever reaching good accuracy",
+      "Ensemble methods are claimed to never require any hyperparameter tuning at all, in any situation or circumstance whatsoever, ever",
+      "Ensembles always train faster than a single model regardless of ensemble size"
+    ],
+    "correct": 0,
+    "explanation": "Combining multiple models, even imperfect ones, often yields more robust and higher-performing predictions than squeezing every bit of performance out of one single model, since ensembles reduce variance and/or bias in ways a lone model cannot."
+  },
+  {
+    "id": "ens-140",
+    "topic": "ensembles",
+    "subtopic": "Ensemble fundamentals review",
+    "difficulty": "application",
+    "q": "A loan-approval model trained as a single, shallow decision tree (max depth 2) performs poorly on both training and test data. Simply switching to bagging (many shallow trees averaged) does NOT meaningfully improve performance. What is the most likely explanation?",
+    "options": [
+      "The shallow trees are underfitting (high bias), and bagging mainly addresses variance, not bias, so it cannot fix this issue",
+      "Bagging is claimed to be mathematically and fundamentally incompatible with decision trees entirely, in all cases by definition",
+      "The dataset must therefore contain no useful predictive signal at all",
+      "Bagging is said to always decrease performance compared to a single tree"
+    ],
+    "correct": 0,
+    "explanation": "Because bagging's main benefit is variance reduction, it does little to help a base learner that is underfitting due to high bias (like overly shallow trees); boosting or simply allowing deeper trees would be more appropriate fixes here."
+  },
+  {
+    "id": "ens-141",
+    "topic": "ensembles",
+    "subtopic": "Ensemble fundamentals review",
+    "difficulty": "recall",
+    "q": "Which technique helps reduce underfitting in a model that is currently too simple to capture the pattern in the data?",
+    "options": [
+      "Allowing the model more capacity, such as adding more relevant features or increasing tree depth",
+      "Applying stronger L2 regularization to further constrain the model",
+      "Reducing the number of training epochs or boosting rounds even further than before, regardless of the model",
+      "Dropping half of the available predictive features at random"
+    ],
+    "correct": 0,
+    "explanation": "Underfitting stems from a model being too constrained to capture the underlying pattern, so increasing capacity (more informative features, deeper trees, less regularization) directly addresses it, in contrast to regularization or early stopping which combat overfitting instead."
+  },
+  {
+    "id": "ens-142",
+    "topic": "ensembles",
+    "subtopic": "Ensemble fundamentals review",
+    "difficulty": "analysis",
+    "q": "A team evaluates five models on a tabular churn dataset: logistic regression, a single decision tree, a random forest, an AdaBoost ensemble, and a stacked ensemble combining all four. Why might the stacked ensemble be expected to perform at least as well as any individual model, assuming it is built correctly with out-of-fold predictions?",
+    "options": [
+      "The meta-learner can learn to weight each base model by its reliability, effectively falling back to the best model if others add no value",
+      "Stacking always guarantees strictly higher accuracy than any ensemble method by mathematical law",
+      "Stacking is claimed to be unable to include any tree-based models as base learners",
+      "Stacking requires discarding all but the single best-performing base model before training the meta-learner, with absolutely no exceptions"
+    ],
+    "correct": 0,
+    "explanation": "A properly trained meta-learner can, in principle, learn to rely mostly on whichever base models are genuinely informative, so a well-built stack should not meaningfully underperform its best constituent model, though in practice gains over the single best model are not guaranteed."
+  },
+  {
+    "id": "ens-143",
+    "topic": "ensembles",
+    "subtopic": "Feature importance",
+    "difficulty": "analysis",
+    "q": "Refer to the feature-importance chart below for an employee-attrition model built from HR records.",
+    "options": [
+      "The dominance of 'Employee Exit Form Filed' suggests it likely encodes the outcome itself and needs investigating for leakage",
+      "The chart shows a perfectly healthy model with absolutely no concerns at all",
+      "The chart proves that tenure is completely and entirely irrelevant to attrition at every single company worldwide, without exception",
+      "The chart indicates that the model is badly underfitting the training data"
+    ],
+    "correct": 0,
+    "explanation": "A feature like an exit form flag is plausibly recorded at or after the point attrition is determined, so its overwhelming dominance is a classic leakage red flag rather than a genuine predictive driver.",
+    "chart": {
+      "type": "bar",
+      "labels": [
+        "Tenure (years)",
+        "Salary Band",
+        "Manager Rating",
+        "Commute Distance",
+        "Employee Exit Form Filed"
+      ],
+      "values": [
+        0.06,
+        0.05,
+        0.07,
+        0.03,
+        0.79
+      ],
+      "caption": "Figure: Feature importance for an employee-attrition model"
+    }
+  },
+  {
+    "id": "ens-144",
+    "topic": "ensembles",
+    "subtopic": "Feature importance",
+    "difficulty": "application",
+    "q": "Refer to the feature-importance chart below for a manufacturing QC model predicting defective units from sensor readings.",
+    "options": [
+      "Importance is spread across several physically plausible sensors, consistent with a model learning genuine process signals",
+      "The chart shows the model relying entirely on just one single leaked sensor reading alone, completely ignoring all the rest",
+      "The chart indicates that none of the five sensors are useful predictors",
+      "The chart proves the model will fail once deployed on the production line"
+    ],
+    "correct": 0,
+    "explanation": "Several related process variables (temperature, pressure, vibration, speed) sharing importance roughly evenly is a reasonable pattern for a model that has learned a real, multi-factor process relationship.",
+    "chart": {
+      "type": "bar",
+      "labels": [
+        "Temperature",
+        "Pressure",
+        "Vibration",
+        "Line Speed",
+        "Humidity"
+      ],
+      "values": [
+        0.24,
+        0.21,
+        0.19,
+        0.23,
+        0.13
+      ],
+      "caption": "Figure: Feature importance for a defect-prediction model"
+    }
+  },
+  {
+    "id": "ens-145",
+    "topic": "ensembles",
+    "subtopic": "Feature importance",
+    "difficulty": "analysis",
+    "q": "Refer to the feature-importance chart below for an agricultural yield-prediction model trained on farm-level data.",
+    "options": [
+      "'Field ID' outweighing rainfall and soil quality suggests the model may be memorizing field-specific quirks instead of real relationships",
+      "This pattern shows the model is perfectly generalizable to any new, unseen field",
+      "This pattern is said to prove that rainfall has absolutely no effect on yield",
+      "This pattern supposedly indicates the dataset simply has far too many features to ever be useful for any model, under any circumstance"
+    ],
+    "correct": 0,
+    "explanation": "When an identifier-like feature such as field ID overwhelms genuinely causal agronomic variables, it signals the model may be relying on memorized, field-specific patterns that will not transfer well to new fields.",
+    "chart": {
+      "type": "bar",
+      "labels": [
+        "Rainfall",
+        "Soil Quality Index",
+        "Fertilizer Used",
+        "Field ID",
+        "Average Temperature"
+      ],
+      "values": [
+        0.09,
+        0.11,
+        0.08,
+        0.63,
+        0.09
+      ],
+      "caption": "Figure: Feature importance for a crop-yield model"
+    }
+  },
+  {
+    "id": "ens-146",
+    "topic": "ensembles",
+    "subtopic": "Feature importance",
+    "difficulty": "application",
+    "q": "Refer to the feature-importance chart below for an insurance claim-approval model.",
+    "options": [
+      "A roughly even spread across claim amount, policy tenure, prior claims, and documentation completeness suggests a balanced model",
+      "The chart indicates that the model ignores claim amount entirely in its decisions",
+      "The chart shows clear evidence of data leakage through a dominant feature",
+      "The chart indicates the model cannot be used at all for any claims above a certain amount threshold specified well in advance by policy"
+    ],
+    "correct": 0,
+    "explanation": "No single feature dominates here, and all four are plausible, legitimate drivers of claim approval decisions, which is a reassuring (if not conclusive) sign that the model isn't over-relying on one shortcut.",
+    "chart": {
+      "type": "bar",
+      "labels": [
+        "Claim Amount",
+        "Policy Tenure",
+        "Prior Claims Count",
+        "Documentation Completeness"
+      ],
+      "values": [
+        0.27,
+        0.23,
+        0.26,
+        0.24
+      ],
+      "caption": "Figure: Feature importance for an insurance claim-approval model"
+    }
+  },
+  {
+    "id": "ens-147",
+    "topic": "ensembles",
+    "subtopic": "Feature importance",
+    "difficulty": "analysis",
+    "q": "Refer to the feature-importance chart below for a student dropout-prediction model built from academic records.",
+    "options": [
+      "'Final Exam Grade' dominating importance is suspicious, since final results may only be available after dropout is already determined",
+      "This pattern is said to prove attendance has no bearing on dropout risk at all",
+      "This pattern shows the model is well balanced and fully ready for early-warning deployment use at scale across the entire institution",
+      "This pattern indicates the dataset lacks enough features to build a model"
+    ],
+    "correct": 0,
+    "explanation": "If the model is meant to flag at-risk students early, a feature only available near or after the point of dropout (like a final exam grade) dominating importance suggests a timing/leakage issue rather than a genuinely early predictive signal.",
+    "chart": {
+      "type": "bar",
+      "labels": [
+        "Attendance Rate",
+        "Assignment Completion",
+        "Midterm Grade",
+        "Final Exam Grade",
+        "Extracurricular Hours"
+      ],
+      "values": [
+        0.08,
+        0.1,
+        0.12,
+        0.65,
+        0.05
+      ],
+      "caption": "Figure: Feature importance for a student dropout-risk model"
+    }
+  },
+  {
+    "id": "ens-148",
+    "topic": "ensembles",
+    "subtopic": "Feature importance",
+    "difficulty": "application",
+    "q": "Refer to the feature-importance chart below for a telecom customer-churn model.",
+    "options": [
+      "Contract type, monthly charges, tenure, and support calls all contributing meaningfully suggests several sensible signals combine",
+      "The chart shows the model relies on a single dominant feature with no other meaningful contributors at all in this particular case",
+      "The chart indicates that every single feature in the model is equally useless",
+      "The chart proves the model cannot distinguish churners from non-churners"
+    ],
+    "correct": 0,
+    "explanation": "A spread of importance across plausible churn drivers (contract terms, billing, tenure, and support interactions) is consistent with a model that has learned a multi-factor view of churn risk rather than leaning on one proxy.",
+    "chart": {
+      "type": "bar",
+      "labels": [
+        "Contract Type",
+        "Monthly Charges",
+        "Tenure",
+        "Support Calls",
+        "Payment Method"
+      ],
+      "values": [
+        0.26,
+        0.21,
+        0.25,
+        0.18,
+        0.1
+      ],
+      "caption": "Figure: Feature importance for a telecom churn model"
+    }
+  }
+]

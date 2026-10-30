@@ -1,0 +1,1772 @@
+[
+  {
+    "id": "xai-001",
+    "topic": "explainable-ai",
+    "subtopic": "Why Explainability Matters",
+    "difficulty": "recall",
+    "q": "In regulated domains such as consumer lending, a central reason explanation methods are required alongside a model's risk score is that ______.",
+    "options": [
+      "regulators and rejected applicants are legally entitled to specific reasons behind an adverse decision, not just a numeric score",
+      "explanation methods always increase a model's raw predictive accuracy on held-out data, regardless of any other changes made to it",
+      "explanation methods guarantee that a model's decisions are completely free of any demographic or sampling bias",
+      "explanation methods remove the need for any ongoing model validation, monitoring, or periodic retraining"
+    ],
+    "correct": 0,
+    "explanation": "Fair-lending style regulations require actionable reasons for adverse credit decisions; explanation methods address that need but do not themselves raise accuracy, guarantee fairness, or replace validation."
+  },
+  {
+    "id": "xai-002",
+    "topic": "explainable-ai",
+    "subtopic": "Why Explainability Matters",
+    "difficulty": "application",
+    "q": "A hospital deploys a readmission-risk model with strong validation metrics, but attending physicians refuse to act on its recommendations without being told what evidence drove a specific patient's score. What does this scenario mainly illustrate about explainability?",
+    "options": [
+      "Even a statistically accurate model needs to earn the trust of the people who must act on individual predictions",
+      "Readmission-risk models are inherently less accurate than other categories of clinical prediction models used in the same hospital",
+      "Physicians are required by hospital policy to personally retrain every model before they are permitted to use it",
+      "Explanation methods only become genuinely useful once a model's measured accuracy drops below some acceptable threshold"
+    ],
+    "correct": 0,
+    "explanation": "High validation accuracy does not automatically produce the per-decision trust that practitioners need to act on a prediction; explanations help bridge that gap."
+  },
+  {
+    "id": "xai-003",
+    "topic": "explainable-ai",
+    "subtopic": "Why Explainability Matters",
+    "difficulty": "application",
+    "q": "An insurance regulator asks a company to justify why a particular customer was charged a significantly higher premium than a similar-looking customer. Which capability does the insurer most need to respond adequately?",
+    "options": [
+      "A local explanation showing which specific factors drove that customer's premium relative to a typical policyholder",
+      "A report showing the overall model's accuracy measured only on the original training dataset",
+      "A complete list of every feature used anywhere across the company's various pricing systems",
+      "A confirmation that the model passed its most recently scheduled cross-validation check"
+    ],
+    "correct": 0,
+    "explanation": "Regulatory justification for an individual pricing decision requires a local, instance-specific explanation, not an aggregate accuracy figure or a generic feature inventory."
+  },
+  {
+    "id": "xai-004",
+    "topic": "explainable-ai",
+    "subtopic": "Why Explainability Matters",
+    "difficulty": "analysis",
+    "q": "A hiring platform's resume-screening model is found to consistently score applicants from a particular postal code lower, even though postal code is not an explicit input feature. What is the most likely explanation-related use case this finding represents?",
+    "options": [
+      "Fairness auditing uncovering a feature that may be acting as a proxy for a protected characteristic",
+      "Local fidelity testing confirming the surrogate model reproduces the original model's predictions",
+      "Hyperparameter tuning revealing that the model is substantially underfitting the available training data",
+      "Dataset shift detection showing that the test set's feature distribution differs sharply from the training set's"
+    ],
+    "correct": 0,
+    "explanation": "A systematic, geography-linked scoring pattern without an explicit postal-code feature is a classic signal that another feature is proxying for a protected characteristic, which explanation and fairness-auditing methods are designed to surface."
+  },
+  {
+    "id": "xai-005",
+    "topic": "explainable-ai",
+    "subtopic": "Why Explainability Matters",
+    "difficulty": "recall",
+    "q": "Using explanation methods to identify that a model is relying on an unexpected or leaked feature rather than genuine signal is best described as which use of explainability?",
+    "options": [
+      "Model debugging",
+      "Hyperparameter optimization",
+      "Feature scaling",
+      "Cross-validation"
+    ],
+    "correct": 0,
+    "explanation": "Detecting spurious or leaked features that drive predictions for the wrong reasons is a core model-debugging application of explanation methods."
+  },
+  {
+    "id": "xai-006",
+    "topic": "explainable-ai",
+    "subtopic": "Why Explainability Matters",
+    "difficulty": "application",
+    "q": "A bank's fraud-detection system flags a long-time customer's transaction and freezes their card. The customer calls to dispute it. Which explainability benefit is most directly relevant to resolving this call?",
+    "options": [
+      "A local explanation that tells the analyst which specific factors pushed this one transaction's fraud score high enough to trigger a freeze",
+      "A global feature-importance ranking computed in advance across millions of historical transactions company-wide using a static ranking computed once per quarter",
+      "An accuracy report describing the fraud model's overall performance on last year's held-out test set",
+      "A record of how many parameters and layers the fraud-detection model's architecture contains"
+    ],
+    "correct": 0,
+    "explanation": "Resolving a single disputed decision needs a case-specific, local explanation rather than aggregate statistics about the model as a whole."
+  },
+  {
+    "id": "xai-007",
+    "topic": "explainable-ai",
+    "subtopic": "Why Explainability Matters",
+    "difficulty": "recall",
+    "q": "Before deploying a model, a practitioner is often said to need two distinct kinds of trust. What are they?",
+    "options": [
+      "Trust in any single prediction enough to act on it, and overall trust in the model before putting it into production",
+      "Trust in the cloud provider hosting the model, and trust in the software license covering the training code",
+      "Trust in the project's budget forecast, and separate trust in its overall delivery timeline",
+      "Trust in the color scheme of the reporting dashboard, and trust in the naming convention used for its features and the version-control history behind it"
+    ],
+    "correct": 0,
+    "explanation": "Explainability literature distinguishes per-prediction trust (should I act on this one output?) from overall model trust (should this model be deployed at all?)."
+  },
+  {
+    "id": "xai-008",
+    "topic": "explainable-ai",
+    "subtopic": "Why Explainability Matters",
+    "difficulty": "application",
+    "q": "A credit card issuer denies an increase request and tells the applicant only that their 'score was too low.' Under fair-lending style regulation, which requirement does this response most likely fail to satisfy?",
+    "options": [
+      "The obligation to provide specific, actionable reasons behind an adverse credit decision",
+      "The requirement that all credit-approval models achieve at least 90 percent test accuracy",
+      "The requirement that all credit-scoring models be restricted to simple linear regressions only",
+      "The obligation to publicly publish the full training dataset used to build the model"
+    ],
+    "correct": 0,
+    "explanation": "Fair-lending style rules typically require specific reasons for a denial, not merely a score; accuracy thresholds, model-family mandates, and dataset publication are not the relevant legal requirement here."
+  },
+  {
+    "id": "xai-009",
+    "topic": "explainable-ai",
+    "subtopic": "Why Explainability Matters",
+    "difficulty": "application",
+    "q": "A credit card issuer's gradient boosting approval model reaches 95 percent test accuracy, yet the compliance team insists on adding an explanation layer before launch. This is primarily because ______.",
+    "options": [
+      "accuracy alone does not reveal which factors drove any individual approval or denial, which regulators and applicants may need to know",
+      "accuracy below 99 percent is not legally permitted for any consumer-facing financial model",
+      "gradient boosting models can never be legally deployed unless first converted into simple linear regressions",
+      "explanation layers are legally required only once a model's measured accuracy falls below 50 percent"
+    ],
+    "correct": 0,
+    "explanation": "Test accuracy says nothing about the reasoning behind individual decisions, which is what compliance and fair-lending obligations typically require."
+  },
+  {
+    "id": "xai-010",
+    "topic": "explainable-ai",
+    "subtopic": "Why Explainability Matters",
+    "difficulty": "analysis",
+    "q": "Why is raw predictive accuracy on its own generally considered insufficient for a fairness audit of a lending or hiring model?",
+    "options": [
+      "Accuracy describes overall correctness but says nothing about which features drive decisions for different applicant subgroups",
+      "Accuracy measures can only ever be computed for regression models, never for classification models",
+      "Accuracy scores are always inflated by at least ten percent whenever the underlying model is biased according to internal audit estimates",
+      "Accuracy can never be computed again once a model has been deployed into live production"
+    ],
+    "correct": 0,
+    "explanation": "A model can be highly accurate overall while still relying differently on features across subgroups in ways that raise fairness concerns; accuracy alone doesn't expose this."
+  },
+  {
+    "id": "xai-011",
+    "topic": "explainable-ai",
+    "subtopic": "Why Explainability Matters",
+    "difficulty": "analysis",
+    "q": "A dermatology image classifier performs excellently on a public benchmark, but an explanation method reveals it is paying strong attention to a ruler marker that happens to appear more often in images of malignant lesions. What problem does this expose?",
+    "options": [
+      "The model may be relying on a spurious artifact correlated with the label rather than genuine diagnostic features",
+      "The model's convolutional layers must be far too shallow to represent any meaningful image features at all",
+      "The benchmark dataset must actually contain no malignant lesion examples at all, despite its reported labels as later confirmed by an independent lab review",
+      "The explanation method itself must have introduced the ruler marker artifact into the original images"
+    ],
+    "correct": 0,
+    "explanation": "A feature correlated with the outcome but not causally or clinically meaningful (like an incidental ruler marker) is a textbook data-leakage or spurious-correlation issue that explanation methods help expose."
+  },
+  {
+    "id": "xai-012",
+    "topic": "explainable-ai",
+    "subtopic": "Why Explainability Matters",
+    "difficulty": "analysis",
+    "q": "A SHAP analysis shows that a loan model's second-most-influential feature correlates strongly with a protected demographic attribute, even though the attribute itself was excluded from training. What is the most defensible conclusion?",
+    "options": [
+      "The finding raises a fairness concern that warrants further investigation, since an explanation showing a correlated feature does not by itself prove or disprove discrimination",
+      "The model is definitely legally compliant, since the protected attribute itself was never explicitly used as a training feature anywhere",
+      "The model is definitely discriminatory, and this single finding alone is sufficient legal grounds to stop using it immediately",
+      "SHAP has made a computational error somewhere, since features excluded from training should never show any measurable influence"
+    ],
+    "correct": 0,
+    "explanation": "An explanation can reveal a feature correlated with a protected attribute without proving legal discrimination one way or the other; it flags a need for deeper fairness testing rather than settling the question outright."
+  },
+  {
+    "id": "xai-013",
+    "topic": "explainable-ai",
+    "subtopic": "Why Explainability Matters",
+    "difficulty": "recall",
+    "q": "Determining when a specific model prediction should be trusted versus questioned or escalated to a human reviewer is best described as which concept?",
+    "options": [
+      "Trust calibration",
+      "Feature scaling",
+      "Data augmentation",
+      "Ensemble averaging"
+    ],
+    "correct": 0,
+    "explanation": "Trust calibration is the practice of deciding, prediction by prediction, whether to rely on a model's output or seek further review, which explanation methods support."
+  },
+  {
+    "id": "xai-014",
+    "topic": "explainable-ai",
+    "subtopic": "Why Explainability Matters",
+    "difficulty": "application",
+    "q": "An insurance auditor wants to know both why one specific policyholder was charged an unusually high premium and whether the pricing model as a whole leans too heavily on any single rating factor across the entire portfolio. What does this request illustrate?",
+    "options": [
+      "The need for both a local, instance-level explanation and a separate global, portfolio-level explanation, since they answer different questions",
+      "The need to retrain the entire pricing model from scratch using only its single most important rating feature",
+      "The need to replace the pricing model entirely with a simple, manually maintained rule-based lookup table",
+      "The fact that local, instance-level and global, portfolio-level explanations will always produce exactly identical conclusions no matter how the pricing model is later modified"
+    ],
+    "correct": 0,
+    "explanation": "Instance-level ('why this customer') and portfolio-level ('overall reliance pattern') questions require local and global explanations respectively; they are complementary, not interchangeable or automatically identical."
+  },
+  {
+    "id": "xai-015",
+    "topic": "explainable-ai",
+    "subtopic": "The Black-Box Problem",
+    "difficulty": "recall",
+    "q": "Ensemble methods and deep neural networks are frequently described as 'black-box' models mainly because ______.",
+    "options": [
+      "their internal mapping from input to output is too complex for a human to trace directly, even though the inputs and outputs are observable",
+      "they cannot be evaluated using any standard accuracy, precision, or error metric at all",
+      "they require specialized proprietary hardware that only the original vendor is able to access",
+      "they are guaranteed to produce a different output every single time the identical input is given to them even on identical hardware and software"
+    ],
+    "correct": 0,
+    "explanation": "The black-box label refers to the opacity of the internal input-to-output mapping, not to an inability to measure accuracy, a hardware restriction, or non-determinism."
+  },
+  {
+    "id": "xai-016",
+    "topic": "explainable-ai",
+    "subtopic": "The Black-Box Problem",
+    "difficulty": "application",
+    "q": "A loan applicant asks a bank 'why was I denied, why not approved, and what could I change to get approved next time?' The bank's model can only output a numeric risk score. What does this scenario illustrate?",
+    "options": [
+      "A black-box model can issue a high-stakes decision without being able to answer the applicant's natural follow-up questions",
+      "The applicant is legally prohibited in every jurisdiction from ever asking why a loan was denied",
+      "The bank's risk score is mathematically guaranteed to be wrong specifically in this one case",
+      "Any loan denial score that falls above a fixed numeric threshold is automatically discriminatory"
+    ],
+    "correct": 0,
+    "explanation": "A bare score cannot answer 'why,' 'why not,' or 'how to improve,' which is the central practical consequence of the black-box problem in high-stakes lending."
+  },
+  {
+    "id": "xai-017",
+    "topic": "explainable-ai",
+    "subtopic": "The Black-Box Problem",
+    "difficulty": "recall",
+    "q": "Which statement best captures the core of the black-box problem in machine learning?",
+    "options": [
+      "Inputs and outputs can be observed, but the mapping the model uses to get from one to the other remains opaque",
+      "Black-box models can never achieve competitive accuracy when compared against simpler, transparent models on every benchmark dataset ever published",
+      "Black-box models cannot legally be deployed in any regulated production system whatsoever",
+      "Black-box models require a human to manually label every single prediction before it is released"
+    ],
+    "correct": 0,
+    "explanation": "The defining feature of the black-box problem is that the internal input-output mapping is hidden, independent of accuracy, deployability, or labeling requirements."
+  },
+  {
+    "id": "xai-018",
+    "topic": "explainable-ai",
+    "subtopic": "The Black-Box Problem",
+    "difficulty": "analysis",
+    "q": "A data science team replaces a simple logistic regression credit model with a large gradient boosting ensemble and sees a meaningful accuracy gain, but a corresponding drop in their ability to directly interpret individual decisions. What does this situation best illustrate?",
+    "options": [
+      "A common tradeoff where added model complexity increases predictive accuracy but reduces built-in interpretability",
+      "A sign that gradient boosting ensembles are never appropriate for any kind of credit decision",
+      "Proof that the new ensemble model must inevitably be overfitting the available training data",
+      "Evidence that logistic regression always outperforms gradient boosting ensembles on credit data in every published industry benchmark study"
+    ],
+    "correct": 0,
+    "explanation": "This reflects the well-known accuracy-interpretability tradeoff; it does not by itself prove overfitting, rule out gradient boosting for credit use, or establish that logistic regression is superior."
+  },
+  {
+    "id": "xai-019",
+    "topic": "explainable-ai",
+    "subtopic": "The Black-Box Problem",
+    "difficulty": "application",
+    "q": "Fraud investigators can see that a transaction was flagged and blocked, but the detection model provides no further detail about which signals triggered the block. What operational problem does this create?",
+    "options": [
+      "Investigators cannot efficiently justify the block to the customer or to compliance reviewers without additional explanation tooling",
+      "The blocked transaction can never again be processed by any payment network whatsoever",
+      "The fraud model's overall accuracy automatically drops to zero the moment this happens",
+      "The bank is legally required to disable its entire fraud-detection system immediately"
+    ],
+    "correct": 0,
+    "explanation": "Lack of insight into the triggering signals makes it hard to justify or review individual blocks, which is an operational consequence of the black-box problem rather than a technical failure of the model itself."
+  },
+  {
+    "id": "xai-020",
+    "topic": "explainable-ai",
+    "subtopic": "The Black-Box Problem",
+    "difficulty": "recall",
+    "q": "A model whose internal logic is directly readable by a human, such as a shallow decision tree or a sparse linear model, is often contrasted with a black-box model and referred to as which type of model?",
+    "options": [
+      "An intrinsically interpretable (or 'glass-box') model",
+      "A post-hoc, model-agnostic explainable system",
+      "A model-agnostic local surrogate approximation built on perturbed input samples",
+      "A perturbation-based local explanation method"
+    ],
+    "correct": 0,
+    "explanation": "Models whose structure is inherently understandable are called intrinsically interpretable or glass-box models, as opposed to black-box models that require post-hoc explanation methods."
+  },
+  {
+    "id": "xai-021",
+    "topic": "explainable-ai",
+    "subtopic": "The Black-Box Problem",
+    "difficulty": "analysis",
+    "q": "A healthcare organization is choosing between a highly accurate deep learning triage model and a slightly less accurate but fully transparent scoring rule for a life-or-death triage decision. What is the central tradeoff they must weigh?",
+    "options": [
+      "Whether the accuracy gain from the black-box model justifies the loss of built-in transparency for a high-stakes decision",
+      "Whether the deep learning triage model can realistically be trained faster than the simple scoring rule",
+      "Whether the transparent scoring rule actually requires more computing memory than the deep learning model when both are run on identical hospital servers",
+      "Whether either model can be successfully deployed and run on a standard mobile device"
+    ],
+    "correct": 0,
+    "explanation": "The key decision in such high-stakes settings is balancing accuracy against transparency, not training speed, memory footprint, or deployment platform."
+  },
+  {
+    "id": "xai-022",
+    "topic": "explainable-ai",
+    "subtopic": "The Black-Box Problem",
+    "difficulty": "application",
+    "q": "A hiring platform uses a black-box model to automatically reject candidates with no explanation provided to either recruiters or applicants. What risk does this practice primarily create?",
+    "options": [
+      "Legal and ethical risk, since affected candidates and auditors cannot verify the basis for adverse hiring decisions",
+      "A guaranteed, measurable reduction in the hiring platform's overall predictive accuracy",
+      "An automatic violation of unrelated data storage regulations that have nothing to do with hiring",
+      "A legal requirement that the platform switch entirely to manual resume review for every candidate"
+    ],
+    "correct": 0,
+    "explanation": "Unexplained automated rejections raise legal and ethical concerns around accountability and recourse, which is the central risk of using unexplained black-box decisions in hiring."
+  },
+  {
+    "id": "xai-023",
+    "topic": "explainable-ai",
+    "subtopic": "Shapley Values and Game-Theoretic Foundations",
+    "difficulty": "recall",
+    "q": "Shapley values originate from cooperative game theory, where they were originally designed to fairly divide a jointly produced ______ among the players who collaborated to produce it.",
+    "options": [
+      "payoff",
+      "dataset",
+      "hyperparameter grid",
+      "loss function"
+    ],
+    "correct": 0,
+    "explanation": "Shapley values solve the problem of fairly allocating a cooperative game's total payoff among its players, which SHAP repurposes as allocating a prediction among features."
+  },
+  {
+    "id": "xai-024",
+    "topic": "explainable-ai",
+    "subtopic": "Shapley Values and Game-Theoretic Foundations",
+    "difficulty": "application",
+    "q": "In SHAP's game-theoretic framing of a loan-approval model, each input feature is treated as a 'player,' and the model's predicted score is treated as the ______ that the players jointly produce.",
+    "options": [
+      "payoff of the cooperative game",
+      "training loss of the full model",
+      "number of total training epochs",
+      "size of the full training dataset"
+    ],
+    "correct": 0,
+    "explanation": "SHAP reframes a prediction as the outcome (payoff) of a cooperative game among features acting as players, which is the basis for applying Shapley values."
+  },
+  {
+    "id": "xai-025",
+    "topic": "explainable-ai",
+    "subtopic": "Shapley Values and Game-Theoretic Foundations",
+    "difficulty": "recall",
+    "q": "Which concept from game theory underlies the SHAP explanation method?",
+    "options": [
+      "Shapley values",
+      "Nash equilibrium",
+      "Minimax regret",
+      "Prisoner's dilemma payoff matrices"
+    ],
+    "correct": 0,
+    "explanation": "SHAP is built directly on Shapley values from cooperative game theory, not on Nash equilibria, minimax regret, or classic non-cooperative game examples."
+  },
+  {
+    "id": "xai-026",
+    "topic": "explainable-ai",
+    "subtopic": "Shapley Values and Game-Theoretic Foundations",
+    "difficulty": "analysis",
+    "q": "A feature's Shapley value for a given prediction is computed by averaging its marginal contribution across ______, so that the order in which features are considered does not unfairly favor any one feature.",
+    "options": [
+      "many different possible combinations (coalitions) of the other features",
+      "a single fixed ordering of all features chosen arbitrarily in advance",
+      "only the two features that are most strongly correlated in the dataset according to a simple correlation threshold",
+      "only the training epochs used to originally fit the underlying model"
+    ],
+    "correct": 0,
+    "explanation": "Shapley values average a feature's contribution across many different feature coalitions rather than relying on one arbitrary ordering, which is what makes the allocation fair regardless of feature order."
+  },
+  {
+    "id": "xai-027",
+    "topic": "explainable-ai",
+    "subtopic": "Shapley Values and Game-Theoretic Foundations",
+    "difficulty": "application",
+    "q": "In a credit scoring context, SHAP's 'baseline' or 'expected value' typically represents which of the following?",
+    "options": [
+      "The average predicted score across a representative background population, before any specific applicant's feature values are considered",
+      "The maximum possible score that any applicant could theoretically ever receive across the model's entire scoring range under the model's current configuration",
+      "The score belonging to the single best-qualified applicant found anywhere across the entire training dataset",
+      "The minimum score legally required for an applicant's loan file to pass the company's internal compliance review"
+    ],
+    "correct": 0,
+    "explanation": "The baseline in SHAP is the model's average output over a background dataset, serving as the reference point from which individual feature contributions are measured."
+  },
+  {
+    "id": "xai-028",
+    "topic": "explainable-ai",
+    "subtopic": "Shapley Values and Game-Theoretic Foundations",
+    "difficulty": "recall",
+    "q": "Each SHAP value quantifies how much a feature pushes a specific prediction away from a ______, which serves as the reference point for that explanation.",
+    "options": [
+      "baseline or average prediction",
+      "randomly chosen training example",
+      "fixed regulatory threshold",
+      "the feature's own historical maximum value"
+    ],
+    "correct": 0,
+    "explanation": "SHAP values are always defined relative to a baseline (typically the model's expected output), not a random example, a regulatory cutoff, or a feature's historical extreme."
+  },
+  {
+    "id": "xai-029",
+    "topic": "explainable-ai",
+    "subtopic": "Shapley Values and Game-Theoretic Foundations",
+    "difficulty": "application",
+    "q": "A hospital's SHAP-based explanation states that a patient's predicted readmission risk equals the baseline population risk plus the sum of that patient's individual feature contributions. What property of SHAP does this description rely on?",
+    "options": [
+      "The additive decomposition of the prediction into a baseline plus feature contributions",
+      "The strict requirement that the underlying readmission model be built as a decision tree",
+      "The requirement that every feature used in the model be encoded as a binary indicator",
+      "The built-in assumption that the patient's age is always the single dominant feature"
+    ],
+    "correct": 0,
+    "explanation": "SHAP's additive structure (prediction equals baseline plus the sum of contributions) is a general property of the method, independent of model type, feature encoding, or which feature dominates."
+  },
+  {
+    "id": "xai-030",
+    "topic": "explainable-ai",
+    "subtopic": "Shapley Values and Game-Theoretic Foundations",
+    "difficulty": "analysis",
+    "q": "Why does the Shapley-value approach consider a feature's contribution across many different combinations of other present or absent features, rather than just adding up each feature's effect in isolation?",
+    "options": [
+      "Because features can interact, and a feature's true marginal contribution can depend on which other features are already included, so averaging across combinations attributes credit fairly",
+      "Because evaluating marginal contributions across many coalitions this way turns out, somewhat surprisingly, to be the single fastest possible method for explaining any arbitrary black-box model",
+      "Because financial and hiring regulators specifically mandate that exactly one predetermined feature combination be tested and documented for every individual applicant",
+      "Because this particular coalition-averaging process guarantees that the resulting explanation will always exactly reproduce a simpler linear model's fitted coefficients"
+    ],
+    "correct": 0,
+    "explanation": "Considering multiple coalitions accounts for feature interactions and avoids unfairly crediting or blaming a feature based on an arbitrary single ordering; it is not chosen for speed, regulatory mandate, or forced agreement with linear coefficients."
+  },
+  {
+    "id": "xai-031",
+    "topic": "explainable-ai",
+    "subtopic": "Shapley Values and Game-Theoretic Foundations",
+    "difficulty": "recall",
+    "q": "In the SHAP framework, what do the 'players' in the underlying cooperative game represent?",
+    "options": [
+      "The input features of the model",
+      "The individual training examples in the dataset",
+      "The separate models in an ensemble",
+      "The hyperparameters chosen during model tuning"
+    ],
+    "correct": 0,
+    "explanation": "SHAP treats each input feature as a player contributing to the model's prediction, not training examples, ensemble members, or hyperparameters."
+  },
+  {
+    "id": "xai-032",
+    "topic": "explainable-ai",
+    "subtopic": "Shapley Values and Game-Theoretic Foundations",
+    "difficulty": "application",
+    "q": "Why might an insurer prefer a Shapley-value-based attribution over simply reading coefficients from a linear regression pricing model, even for a model that is itself linear?",
+    "options": [
+      "Because Shapley-based attribution generalizes cleanly to nonlinear and interaction-heavy models, giving a consistent approach the insurer can reuse if it later adopts a more complex model",
+      "Because linear regression coefficients are mathematically impossible to interpret meaningfully for any audience, regulatory or otherwise, under any circumstances",
+      "Because Shapley values are mathematically guaranteed to always produce strictly larger numbers than ordinary linear regression coefficients, regardless of the data",
+      "Because insurance regulators have formally banned the use of linear regression pricing models in every single jurisdiction the insurer currently operates in"
+    ],
+    "correct": 0,
+    "explanation": "A key advantage of the Shapley-value approach is that it extends naturally to nonlinear, interaction-heavy models, offering a consistent explanation framework the organization can reuse across model types, unlike reading raw regression coefficients."
+  },
+  {
+    "id": "xai-033",
+    "topic": "explainable-ai",
+    "subtopic": "Shapley Values and Game-Theoretic Foundations",
+    "difficulty": "analysis",
+    "q": "Exact computation of Shapley values is described as expensive mainly because it conceptually requires evaluating a feature's contribution across an enormous number of different feature coalitions, growing very quickly as more features are added. What is the practical consequence of this for real-world SHAP tools?",
+    "options": [
+      "Practical SHAP implementations typically rely on approximations or model-specific shortcuts rather than computing every possible coalition exactly",
+      "SHAP can only ever be meaningfully applied to simple models that have strictly fewer than three input features in total",
+      "SHAP always produces exactly identical computation runtimes no matter how many input features the underlying model actually has",
+      "SHAP requires an analyst to manually relabel the entire original training dataset before computing each and every new explanation even when nothing about the model has changed"
+    ],
+    "correct": 0,
+    "explanation": "Because exact Shapley computation scales poorly with the number of features, practical tools use approximation methods or model-specific algorithms (such as tree-based shortcuts) instead of brute-force enumeration."
+  },
+  {
+    "id": "xai-034",
+    "topic": "explainable-ai",
+    "subtopic": "Shapley Values and Game-Theoretic Foundations",
+    "difficulty": "recall",
+    "q": "SHAP stands for SHapley Additive ______.",
+    "options": [
+      "exPlanations",
+      "Predictions",
+      "Permutations",
+      "Probabilities"
+    ],
+    "correct": 0,
+    "explanation": "SHAP is an acronym for SHapley Additive exPlanations, reflecting its basis in Shapley values and its additive decomposition of a prediction."
+  },
+  {
+    "id": "xai-035",
+    "topic": "explainable-ai",
+    "subtopic": "Shapley Values and Game-Theoretic Foundations",
+    "difficulty": "application",
+    "q": "A fraud-detection model has two highly correlated features that both capture 'recent account activity.' Using a Shapley-value approach to allocate credit between them is intended to achieve what, compared to picking one arbitrarily?",
+    "options": [
+      "A fair split of credit between the two overlapping features based on their contribution across many coalitions, rather than an arbitrary all-or-nothing assignment to just one",
+      "Automatic removal of one of the two highly correlated recent-account-activity features from the dataset before model training even begins",
+      "A guarantee that the two correlated features will always receive exactly equal credit, regardless of how differently they actually behave across coalitions no matter what the underlying data actually shows",
+      "An automatic, guaranteed increase in the fraud-detection model's overall predictive accuracy simply as a result of applying this approach"
+    ],
+    "correct": 0,
+    "explanation": "The Shapley-value approach is designed to divide credit fairly among features that provide overlapping information, based on their actual contributions across coalitions; it does not automatically force equal splits, remove features, or change accuracy."
+  },
+  {
+    "id": "xai-036",
+    "topic": "explainable-ai",
+    "subtopic": "Shapley Values and Game-Theoretic Foundations",
+    "difficulty": "recall",
+    "q": "SHAP treats a model's prediction as the outcome of which kind of game among features?",
+    "options": [
+      "A cooperative game, where features work together to jointly produce the prediction",
+      "A zero-sum competitive game, where features directly compete against each other for the same payoff",
+      "A sequential game, where only the very first feature evaluated in the ordering matters at all",
+      "A game with no clearly defined payoff or outcome structure at all"
+    ],
+    "correct": 0,
+    "explanation": "SHAP's foundation is a cooperative game in which features jointly contribute to a shared outcome (the prediction), not a competitive, sequential-only, or payoff-less game."
+  },
+  {
+    "id": "xai-037",
+    "topic": "explainable-ai",
+    "subtopic": "Shapley Value Axioms",
+    "difficulty": "recall",
+    "q": "What does the efficiency axiom guarantee about a SHAP explanation?",
+    "options": [
+      "The sum of all feature contributions plus the baseline exactly equals the model's actual prediction for that instance",
+      "Every single feature in the model must receive exactly the same numerical contribution value",
+      "Features with exactly zero correlation to the output must nonetheless still receive a nonzero contribution",
+      "The explanation must always use no more than three features, regardless of how many the full model actually has"
+    ],
+    "correct": 0,
+    "explanation": "Efficiency requires that contributions add up exactly to the gap between the prediction and the baseline; it says nothing about forcing equal contributions, nonzero values for uncorrelated features, or a feature-count limit."
+  },
+  {
+    "id": "xai-038",
+    "topic": "explainable-ai",
+    "subtopic": "Shapley Value Axioms",
+    "difficulty": "application",
+    "q": "An auditor checks a SHAP explanation for a denied loan applicant and confirms that the baseline score plus the sum of all feature contributions exactly equals the applicant's final predicted score. Which Shapley axiom does this check verify?",
+    "options": [
+      "Efficiency",
+      "Symmetry",
+      "Dummy (null player)",
+      "Additivity across models"
+    ],
+    "correct": 0,
+    "explanation": "Confirming that contributions sum exactly to the prediction-minus-baseline gap is precisely what the efficiency axiom guarantees."
+  },
+  {
+    "id": "xai-039",
+    "topic": "explainable-ai",
+    "subtopic": "Shapley Value Axioms",
+    "difficulty": "recall",
+    "q": "What does the symmetry axiom require of two features that make identical contributions across every possible coalition of the other features?",
+    "options": [
+      "They must receive equal attribution from the explanation method",
+      "They must be merged into a single combined feature before training",
+      "One of the two identical features must always receive exactly zero attribution",
+      "They must always have identical raw numeric values recorded in the dataset"
+    ],
+    "correct": 0,
+    "explanation": "Symmetry guarantees equal treatment for features that contribute identically across all coalitions; it does not require merging features, zeroing one out, or identical raw values."
+  },
+  {
+    "id": "xai-040",
+    "topic": "explainable-ai",
+    "subtopic": "Shapley Value Axioms",
+    "difficulty": "application",
+    "q": "A hiring model includes both 'years of relevant experience' and a near-duplicate proxy field that behaves identically across every coalition tested. A Shapley-based explanation assigns them equal attribution. Which axiom does this illustrate?",
+    "options": [
+      "Symmetry",
+      "Efficiency",
+      "Dummy (null player)",
+      "Local fidelity"
+    ],
+    "correct": 0,
+    "explanation": "Equal attribution for two features that contribute identically in every coalition is the defining behavior guaranteed by the symmetry axiom."
+  },
+  {
+    "id": "xai-041",
+    "topic": "explainable-ai",
+    "subtopic": "Shapley Value Axioms",
+    "difficulty": "recall",
+    "q": "What does the dummy (or null player) axiom guarantee about a feature that never changes the model's prediction in any coalition it is added to?",
+    "options": [
+      "That feature must receive a contribution of exactly zero",
+      "That feature must be removed from the dataset before any further analysis",
+      "That feature must receive the largest contribution among all features",
+      "That feature must be duplicated to confirm the finding"
+    ],
+    "correct": 0,
+    "explanation": "The dummy/null player axiom guarantees zero attribution for a feature that never affects the outcome regardless of which coalition it joins; it does not require removing, duplicating, or over-weighting that feature."
+  },
+  {
+    "id": "xai-042",
+    "topic": "explainable-ai",
+    "subtopic": "Shapley Value Axioms",
+    "difficulty": "application",
+    "q": "A fraud analyst adds a randomly generated noise column to a model purely to test the explanation pipeline, and finds that its SHAP value is consistently near zero across many transactions. Which axiom's expected behavior does this confirm?",
+    "options": [
+      "Dummy (null player)",
+      "Efficiency",
+      "Symmetry",
+      "Additivity across models"
+    ],
+    "correct": 0,
+    "explanation": "A feature with no real influence on the prediction receiving near-zero attribution is exactly what the dummy/null player axiom predicts, and it is a useful sanity check during debugging."
+  },
+  {
+    "id": "xai-043",
+    "topic": "explainable-ai",
+    "subtopic": "Shapley Value Axioms",
+    "difficulty": "analysis",
+    "q": "What does the additivity axiom guarantee when a prediction comes from a combination of several sub-models, such as an averaged ensemble?",
+    "options": [
+      "The Shapley values for the combined model can be obtained by combining the Shapley values computed for each sub-model",
+      "Every sub-model in the ensemble must produce exactly the same prediction for the whole ensemble to be considered valid",
+      "Only the very first sub-model listed in the ensemble can ever be explained using Shapley values",
+      "The combined ensemble's accuracy must always exceed that of each and every individual sub-model within it"
+    ],
+    "correct": 0,
+    "explanation": "Additivity guarantees that explanations are consistent across model composition, so combined-model attributions can be built from the individual sub-models' attributions; it says nothing about forcing identical sub-model outputs, limiting which sub-model is explainable, or guaranteeing an accuracy ranking."
+  },
+  {
+    "id": "xai-044",
+    "topic": "explainable-ai",
+    "subtopic": "Shapley Value Axioms",
+    "difficulty": "application",
+    "q": "An insurer's final premium prediction is the average of a rules-based score and a machine-learning score. A Shapley-based explanation for the combined premium can be obtained by appropriately combining the separate explanations computed for the rules-based score and the machine-learning score. Which axiom supports doing this validly?",
+    "options": [
+      "Additivity",
+      "Symmetry",
+      "Dummy (null player)",
+      "Efficiency"
+    ],
+    "correct": 0,
+    "explanation": "Additivity is the axiom that specifically guarantees explanations remain valid and combinable when a prediction is built from multiple component models."
+  },
+  {
+    "id": "xai-045",
+    "topic": "explainable-ai",
+    "subtopic": "Shapley Value Axioms",
+    "difficulty": "analysis",
+    "q": "Why do the Shapley axioms matter in practice, beyond being a mathematical formality?",
+    "options": [
+      "They guarantee a mathematically consistent and fair attribution, which ad hoc or heuristic importance measures are not guaranteed to provide",
+      "They guarantee that a model's overall predictive accuracy will measurably and permanently improve once they are applied in practice on every single dataset tested",
+      "They eliminate the need to ever collect a representative background dataset before computing any explanation at all",
+      "They allow a model to be deployed straight into production without requiring any further validation or testing steps"
+    ],
+    "correct": 0,
+    "explanation": "The axioms provide formal consistency and fairness guarantees for attributing a prediction to its features, something heuristic importance scores lack; they do not affect model accuracy, background-data requirements, or deployment validation."
+  },
+  {
+    "id": "xai-046",
+    "topic": "explainable-ai",
+    "subtopic": "Shapley Value Axioms",
+    "difficulty": "recall",
+    "q": "The efficiency axiom guarantees that the feature contributions in a SHAP explanation ______ the gap between the model's prediction for an instance and the baseline prediction.",
+    "options": [
+      "sum exactly to",
+      "are always strictly less than",
+      "are always strictly greater than",
+      "bear no mathematical relationship to"
+    ],
+    "correct": 0,
+    "explanation": "Efficiency specifically requires an exact sum, not an inequality or lack of relationship, between the contributions and the prediction-baseline gap."
+  },
+  {
+    "id": "xai-047",
+    "topic": "explainable-ai",
+    "subtopic": "Shapley Value Axioms",
+    "difficulty": "analysis",
+    "q": "A risk model includes two insurance rating factors that are near-perfect duplicates of the same underlying information. A Shapley-based explanation splits the credit for this information roughly evenly between the two factors across many applicants. What does this behavior demonstrate?",
+    "options": [
+      "The symmetry axiom in action, since features that behave identically across coalitions receive equal attribution",
+      "A computational bug in the SHAP library, since duplicated information should always be assigned entirely to one single factor",
+      "The dummy axiom in action, since any duplicated rating factor should instead receive exactly zero attribution",
+      "A clear violation of the efficiency axiom, since the total summed attribution now exceeds the actual prediction"
+    ],
+    "correct": 0,
+    "explanation": "Evenly splitting credit between two behaviorally identical features is the expected, correct outcome under the symmetry axiom, not a bug or a violation of other axioms."
+  },
+  {
+    "id": "xai-048",
+    "topic": "explainable-ai",
+    "subtopic": "Shapley Value Axioms",
+    "difficulty": "recall",
+    "q": "Which axiom ensures that when a model can be decomposed into additive components, the Shapley-based explanation of the whole model stays consistent with explanations of its parts?",
+    "options": [
+      "Additivity",
+      "Symmetry",
+      "Dummy (null player)",
+      "Local fidelity"
+    ],
+    "correct": 0,
+    "explanation": "Additivity is specifically the axiom addressing consistency of explanations across additive model decompositions, distinct from symmetry, the dummy/null player property, and the separate (non-Shapley) concept of local fidelity."
+  },
+  {
+    "id": "xai-049",
+    "topic": "explainable-ai",
+    "subtopic": "Shapley Value Axioms",
+    "difficulty": "analysis",
+    "q": "An auditor finds that an attribution method's reported feature contributions for a credit applicant do not sum to the gap between the model's prediction and its baseline, even though the method is marketed as Shapley-based. What is the most defensible conclusion?",
+    "options": [
+      "The method is likely an approximation that has not fully satisfied the efficiency axiom, so its outputs should be treated with caution",
+      "The underlying credit model itself must be systematically and deliberately biased against this particular applicant",
+      "The baseline value used in this specific computation must, by definition, have been calculated completely incorrectly",
+      "Efficiency is not actually one of the formal mathematical guarantees that Shapley-based methods are ever supposed to provide according to the original Shapley-value literature"
+    ],
+    "correct": 0,
+    "explanation": "A genuine Shapley-based explanation should satisfy efficiency exactly; a mismatch most likely points to approximation error in the implementation, not necessarily model bias, a miscalculated baseline, or a misunderstanding of what efficiency guarantees."
+  },
+  {
+    "id": "xai-050",
+    "topic": "explainable-ai",
+    "subtopic": "Shapley Value Axioms",
+    "difficulty": "application",
+    "q": "A model-monitoring team wants a single automated check to flag whether their SHAP explanation library is computing attributions correctly for a new custom model type. Which property would make the most useful automated check?",
+    "options": [
+      "Verifying that, for each prediction, the baseline plus the sum of feature contributions equals the model's actual output",
+      "Verifying that every single feature in the model receives an identical numerical contribution value",
+      "Verifying that each generated explanation always uses strictly fewer than five total listed features",
+      "Verifying that the new custom model's overall test accuracy always exceeds 95 percent on held-out data"
+    ],
+    "correct": 0,
+    "explanation": "Checking that contributions sum correctly to the prediction (the efficiency property) is a natural automated sanity check; the other options don't correspond to any Shapley guarantee or sound monitoring practice."
+  },
+  {
+    "id": "xai-051",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP Plot Interpretation",
+    "difficulty": "recall",
+    "q": "What information does a SHAP summary (beeswarm) plot typically convey about each feature?",
+    "options": [
+      "Both the overall importance of the feature and the direction in which its values push predictions",
+      "Only the global importance ranking of each feature, with no information about direction",
+      "Only the exact dollar value associated with each feature for one single customer's case",
+      "Only whether or not that particular feature was included somewhere during model training and never during live scoring"
+    ],
+    "correct": 0,
+    "explanation": "A SHAP summary plot combines magnitude (spread of SHAP values) with color-coded feature value, revealing both importance and the direction of each feature's effect."
+  },
+  {
+    "id": "xai-052",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP Plot Interpretation",
+    "difficulty": "application",
+    "q": "In a credit model's SHAP summary plot, points representing high income values cluster on the positive side of the SHAP axis. What does this indicate?",
+    "options": [
+      "Higher income tends to push the model's prediction toward a more favorable outcome, such as approval",
+      "Higher income values were systematically removed from the dataset before model training began as part of a routine data-cleaning step",
+      "Income has no measurable effect whatsoever on any of the model's predictions",
+      "The model always assigns exactly the same SHAP value to every single income level"
+    ],
+    "correct": 0,
+    "explanation": "Points clustering on the positive side for high feature values shows that higher income is associated with pushing the prediction upward (toward approval), not that income was dropped or has no effect."
+  },
+  {
+    "id": "xai-053",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP Plot Interpretation",
+    "difficulty": "recall",
+    "q": "What is the main purpose of a SHAP waterfall plot?",
+    "options": [
+      "To show, for one specific prediction, how each feature pushes the output from the baseline to the final predicted value",
+      "To show the overall ranking of feature importance averaged across the entire training dataset as a whole",
+      "To show how a single feature's raw values were distributed across the dataset before any modeling work was done",
+      "To show the full pairwise correlation matrix computed among all of the model's input features"
+    ],
+    "correct": 0,
+    "explanation": "A waterfall plot is a local explanation tool, walking through one instance's prediction step by step from the baseline; it is not a global ranking, a raw distribution plot, or a correlation matrix."
+  },
+  {
+    "id": "xai-054",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP Plot Interpretation",
+    "difficulty": "application",
+    "q": "A SHAP waterfall plot for one patient's readmission-risk prediction shows 'age' pushing the risk upward and 'non-smoker status' pushing it downward, cumulatively landing on the final predicted risk. What does this plot represent?",
+    "options": [
+      "A local explanation showing how this specific patient's individual feature values combine to produce their final predicted risk",
+      "The average readmission risk computed across the hospital's entire patient population taken as a whole",
+      "A global ranking of which clinical features are most important across every patient treated at the hospital over the past five fiscal years",
+      "The raw, unprocessed training data that was originally used to fit the hospital's readmission model"
+    ],
+    "correct": 0,
+    "explanation": "This is a local, single-prediction waterfall explanation for one patient, not a population average, a global ranking, or the training dataset itself."
+  },
+  {
+    "id": "xai-055",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP Plot Interpretation",
+    "difficulty": "recall",
+    "q": "What does a SHAP dependence plot primarily show?",
+    "options": [
+      "How a feature's SHAP value changes as the feature's own value changes, often revealing nonlinear patterns",
+      "The accuracy of the overall model measured separately across different subsets of the data broken down by region and clinic",
+      "Which specific hyperparameters were chosen when originally training the underlying model",
+      "The total number of missing or null values present in each individual feature column"
+    ],
+    "correct": 0,
+    "explanation": "A dependence plot plots a feature's value against its corresponding SHAP value across instances, revealing the shape of its effect, not accuracy, hyperparameters, or missing-data counts."
+  },
+  {
+    "id": "xai-056",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP Plot Interpretation",
+    "difficulty": "application",
+    "q": "An insurer's SHAP dependence plot for 'claims history' shows the feature's SHAP value rising sharply once the claim count exceeds two, then leveling off for higher counts. What does this pattern suggest?",
+    "options": [
+      "The feature's effect on predicted premium is nonlinear, with most of the impact occurring around a specific threshold rather than increasing steadily",
+      "The claims-history feature has absolutely no measurable effect on the predicted premium at any possible claim count",
+      "The underlying pricing model must be purely linear with respect to the claims-history feature across its entire range",
+      "The dependence plot's shape indicates there must be an underlying data entry error somewhere in the claims history field"
+    ],
+    "correct": 0,
+    "explanation": "A sharp rise followed by a plateau is a classic nonlinear, threshold-like effect, inconsistent with 'no effect,' a purely linear relationship, or necessarily indicating a data error."
+  },
+  {
+    "id": "xai-057",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP Plot Interpretation",
+    "difficulty": "analysis",
+    "q": "A feature's SHAP values are consistently clustered very close to zero across nearly all instances in a dataset, regardless of the feature's own value. What should be concluded about this feature?",
+    "options": [
+      "The feature has little influence on this model's predictions for this population",
+      "The feature is the single most important driver of the model's predictions",
+      "The feature must have been entered incorrectly for every instance in the dataset due to a faulty intake form",
+      "The feature's near-zero SHAP values indicate a violation of the efficiency axiom"
+    ],
+    "correct": 0,
+    "explanation": "SHAP values hovering near zero across the board indicate low influence on predictions; this does not make the feature the most important, imply systematic data entry errors, or indicate any axiom violation."
+  },
+  {
+    "id": "xai-058",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP Plot Interpretation",
+    "difficulty": "application",
+    "q": "A hiring model's SHAP summary plot shows that 'years since graduation' has a wide spread of SHAP values even among candidates with similar raw values for that feature. What does this spread most likely indicate?",
+    "options": [
+      "The feature's effect likely depends on other features, suggesting an interaction effect rather than a simple uniform relationship",
+      "The 'years since graduation' feature was most likely accidentally duplicated somewhere in the underlying dataset during a routine data migration",
+      "The hiring model is substantially underfitting the data and should be retrained using fewer input features",
+      "SHAP values can never be computed reliably for any categorical or discrete hiring features at all"
+    ],
+    "correct": 0,
+    "explanation": "A wide spread of SHAP values at similar feature values typically points to interaction effects with other features, rather than duplication, underfitting, or a limitation around categorical features."
+  },
+  {
+    "id": "xai-059",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP Plot Interpretation",
+    "difficulty": "recall",
+    "q": "A global SHAP feature-importance ranking is typically produced by computing what, across many instances?",
+    "options": [
+      "The mean of the absolute SHAP values for each feature",
+      "The single largest SHAP value ever observed for each feature",
+      "The correlation between each feature and the model's accuracy",
+      "The number of times each feature appears in the dataset"
+    ],
+    "correct": 0,
+    "explanation": "Mean absolute SHAP value across instances is the standard way to summarize a feature's overall (global) importance, as opposed to a single extreme value, an accuracy correlation, or a raw feature count."
+  },
+  {
+    "id": "xai-060",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP Plot Interpretation",
+    "difficulty": "application",
+    "q": "A fraud-detection team needs to report the top five global drivers of fraud risk to a compliance committee, summarized across the whole transaction dataset. Which SHAP visualization is most appropriate for this purpose?",
+    "options": [
+      "A SHAP bar or summary plot showing mean absolute feature importance across all transactions",
+      "A single waterfall plot generated for just one specific flagged transaction",
+      "A dependence plot restricted to just one single transaction and nothing else",
+      "A force plot showing only the baseline value with absolutely no feature contributions shown"
+    ],
+    "correct": 0,
+    "explanation": "A global summary or bar plot aggregates importance across the whole dataset, which fits a portfolio-level compliance report better than a single-instance waterfall, a single-instance dependence view, or a plot with no contributions shown."
+  },
+  {
+    "id": "xai-061",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP Plot Interpretation",
+    "difficulty": "recall",
+    "q": "In a SHAP summary plot, what does the 'direction of effect' for a feature refer to?",
+    "options": [
+      "Whether high or low values of that feature tend to push the prediction up or down",
+      "Whether the feature's raw values were originally measured in metric or imperial units",
+      "Whether the feature appears earlier or later in the dataset's column order",
+      "Whether the feature's SHAP values were computed using TreeSHAP or KernelSHAP"
+    ],
+    "correct": 0,
+    "explanation": "Direction of effect describes how a feature's value level (high vs low) relates to pushing the prediction upward or downward, not units, column order, or which SHAP algorithm was used."
+  },
+  {
+    "id": "xai-062",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP Plot Interpretation",
+    "difficulty": "analysis",
+    "q": "Two features show similar overall magnitude in a SHAP summary plot, but one has points spread across both the positive and negative sides depending on other context, while the other sits almost entirely on one side regardless of context. What distinguishes them?",
+    "options": [
+      "The first feature's effect appears to depend on context or interactions, while the second has a more consistently one-directional effect across the dataset",
+      "The first feature is simply categorical in nature while the second one is a continuous numeric variable entirely with no numeric values recorded anywhere",
+      "The first feature was measured with noticeably more decimal precision than the second feature ever was",
+      "The first feature happens to have a considerably larger dataset sample size available than the second feature"
+    ],
+    "correct": 0,
+    "explanation": "A feature whose effect flips sign depending on context typically reflects interaction-dependent behavior, while a consistently one-sided feature reflects a stable directional effect; neither pattern follows automatically from data type, measurement precision, or sample size."
+  },
+  {
+    "id": "xai-063",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP Plot Interpretation",
+    "difficulty": "application",
+    "q": "Reading a SHAP force or waterfall plot for one denied loan applicant from left to right, arrows pushing the prediction toward denial are shown in one color, and arrows pushing toward approval are shown in another, cumulatively landing on the final score. What is the correct way to interpret this plot?",
+    "options": [
+      "Each feature's contribution is added in sequence to the baseline, and the final position after all contributions represents this applicant's predicted score",
+      "Only the single largest arrow shown in the entire plot actually matters, and every smaller arrow can safely be ignored no matter how small that arrow appears",
+      "The two different colors simply represent which department of the bank originally reviewed the loan application",
+      "The plot actually shows the applicant's raw, unprocessed feature values rather than their individual contributions"
+    ],
+    "correct": 0,
+    "explanation": "The plot's cumulative, left-to-right structure shows how contributions combine with the baseline to reach the final prediction; it is not limited to the single largest contribution, department-coded, or a plot of raw values."
+  },
+  {
+    "id": "xai-064",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP Plot Interpretation",
+    "difficulty": "recall",
+    "q": "What is the key distinction between a SHAP waterfall plot and a SHAP summary (beeswarm) plot?",
+    "options": [
+      "A waterfall plot explains one specific prediction locally, while a summary plot aggregates explanations across many instances globally",
+      "A waterfall plot can only be used for regression models, while a summary plot can only be used for classification models",
+      "A waterfall plot shows a prediction's raw underlying data, while a summary plot shows only the model's tuned hyperparameters",
+      "There is no meaningful difference between them at all; the two plots show exactly identical information in different colors"
+    ],
+    "correct": 0,
+    "explanation": "The waterfall plot is a local, single-instance tool and the summary plot is a global, multi-instance aggregation; the distinction is not about regression versus classification, raw data versus hyperparameters, or a cosmetic color difference."
+  },
+  {
+    "id": "xai-065",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP Plot Interpretation",
+    "difficulty": "application",
+    "q": "An insurance regulator wants to see both an explanation for one specific customer's premium and evidence about the pricing model's overall behavior across the portfolio. Which pairing of SHAP visualizations would satisfy both needs?",
+    "options": [
+      "A waterfall (or force) plot for the individual customer, and a summary (beeswarm) or bar plot aggregated across the portfolio",
+      "Two separate waterfall plots generated for the exact same customer, each one computed using a different baseline drawn from two different background samples",
+      "A single dependence plot restricted only to the one specific customer in question, showing nothing else",
+      "A simple bar chart comparing only the model's training and test accuracy scores side by side"
+    ],
+    "correct": 0,
+    "explanation": "Local, single-customer insight calls for a waterfall or force plot, while portfolio-wide behavior calls for a summary or bar plot; repeating the same local plot, restricting a dependence plot to one customer, or showing accuracy scores would not meet both needs."
+  },
+  {
+    "id": "xai-066",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP Plot Interpretation",
+    "difficulty": "analysis",
+    "q": "A deployment team notices in a SHAP dependence plot that a feature's effect on predicted output is positive at low values of the feature, but turns negative at high values of the same feature. What should this finding prompt the team to do?",
+    "options": [
+      "Investigate further, since a sign reversal suggests a nonlinear or non-monotonic relationship that may need to be checked against domain expectations",
+      "Immediately conclude the SHAP computation contains a bug, since SHAP values must always have a single consistent sign per feature",
+      "Ignore the finding entirely, since SHAP dependence plots are mathematically incapable of representing any nonlinear relationships",
+      "Retrain the entire model using only strictly linear algorithms, since nonlinear relationships are never considered valid in production systems regardless of what domain experts might say"
+    ],
+    "correct": 0,
+    "explanation": "A sign reversal across a feature's value range is a legitimate nonlinear or non-monotonic pattern that SHAP can reveal, warranting further domain investigation rather than assuming a bug, dismissing the finding, or abandoning nonlinear models altogether."
+  },
+  {
+    "id": "xai-067",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Local Surrogate Mechanics",
+    "difficulty": "recall",
+    "q": "LIME builds its explanation by generating perturbed versions of an instance and fitting a ______ model to the black-box model's predictions on those perturbed samples.",
+    "options": [
+      "simple, interpretable surrogate",
+      "second deep neural network",
+      "identical copy of the original black-box model",
+      "random forest with the same number of trees as the original model"
+    ],
+    "correct": 0,
+    "explanation": "LIME's core mechanism is fitting a simple, interpretable surrogate (commonly a sparse linear model) to local perturbed data, not another deep network, an identical copy, or a matched random forest."
+  },
+  {
+    "id": "xai-068",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Local Surrogate Mechanics",
+    "difficulty": "application",
+    "q": "To explain why a particular applicant was denied a loan, LIME creates many slightly modified versions of that applicant's data and queries the black-box model's prediction for each one. What is the purpose of this step?",
+    "options": [
+      "To generate a local dataset that captures how the black-box model behaves in the neighborhood of this specific applicant",
+      "To permanently replace the applicant's original recorded data with these newly modified versions",
+      "To completely retrain the black-box model from scratch using only these modified versions of the data",
+      "To compute the overall accuracy of the black-box model across the bank's entire lending portfolio"
+    ],
+    "correct": 0,
+    "explanation": "Perturbed sampling creates a local dataset describing model behavior near one instance, for fitting a surrogate; it does not alter the original record, retrain the underlying model, or compute global accuracy."
+  },
+  {
+    "id": "xai-069",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Local Surrogate Mechanics",
+    "difficulty": "recall",
+    "q": "What does the term 'model-agnostic' mean in the context of LIME?",
+    "options": [
+      "LIME only needs to query a model's predictions and does not require access to its internal parameters or architecture",
+      "LIME can only ever be meaningfully applied to simple linear regression models and nothing else at all",
+      "LIME requires full, direct access to a model's internal weights and architecture before it can even run down to the level of individual matrix weights",
+      "LIME automatically selects and swaps in the single best-performing model type for any given dataset"
+    ],
+    "correct": 0,
+    "explanation": "Model-agnostic means LIME treats the underlying model as a black box that it can only query for predictions, rather than being restricted to one model family or requiring internal access."
+  },
+  {
+    "id": "xai-070",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Local Surrogate Mechanics",
+    "difficulty": "application",
+    "q": "A data science team applies LIME to a deep neural network readmission-risk model without ever inspecting the network's weights or architecture, relying only on the model's prediction outputs. What property of LIME does this demonstrate?",
+    "options": [
+      "Its model-agnostic design, which only requires the ability to query predictions from the underlying model",
+      "Its strict requirement that every explained model must be a shallow decision tree",
+      "Its fundamental inability to ever explain any kind of neural network model whatsoever regardless of the network's depth or size",
+      "Its heavy dependence on direct access to the model's internal gradient computations"
+    ],
+    "correct": 0,
+    "explanation": "This scenario is a direct illustration of LIME's model-agnostic property; LIME is not restricted to decision trees, is capable of explaining neural networks, and (unlike gradient-based methods) does not require access to gradients."
+  },
+  {
+    "id": "xai-071",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Local Surrogate Mechanics",
+    "difficulty": "recall",
+    "q": "In LIME, perturbed samples that are closer to the original instance being explained are given ______ weight when fitting the local surrogate model.",
+    "options": [
+      "greater",
+      "zero",
+      "identical, regardless of distance",
+      "negative"
+    ],
+    "correct": 0,
+    "explanation": "LIME's proximity weighting gives closer samples greater influence on the fitted surrogate, rather than zero, identical, or negative weight regardless of distance."
+  },
+  {
+    "id": "xai-072",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Local Surrogate Mechanics",
+    "difficulty": "application",
+    "q": "LIME is used to explain a hiring model's score for one candidate. A perturbed candidate profile that differs only slightly from the original has more influence on the resulting explanation than a perturbed profile that differs drastically. What does this behavior reflect?",
+    "options": [
+      "Proximity weighting, which gives more influence to samples closer to the instance being explained",
+      "The dummy (or null player) axiom, which actually comes from Shapley value theory instead",
+      "The efficiency axiom, which also actually comes from Shapley value theory instead",
+      "A straightforward bug somewhere in LIME's random perturbation sampling process"
+    ],
+    "correct": 0,
+    "explanation": "Giving more influence to nearby perturbed samples is exactly the intended behavior of LIME's proximity weighting; it is unrelated to Shapley axioms (which apply to SHAP, not LIME) and is not a bug."
+  },
+  {
+    "id": "xai-073",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Local Surrogate Mechanics",
+    "difficulty": "analysis",
+    "q": "Why might LIME represent a continuous feature like age as a binned indicator (for example, 'age between 40 and 55') rather than using the raw numeric value directly in its surrogate model?",
+    "options": [
+      "Because LIME often fits its surrogate on an interpretable representation that is easier for a human to read than the raw numeric feature",
+      "Because the underlying black-box model itself is fundamentally unable to process raw numeric age features at all",
+      "Because binned age-range features always produce measurably higher prediction accuracy than raw numeric ones do",
+      "Because financial regulators specifically and explicitly require all continuous features to be removed before explanation before any explanation can legally be issued"
+    ],
+    "correct": 0,
+    "explanation": "LIME frequently uses an interpretable representation (such as binned ranges) distinct from the raw feature actually used by the black-box model, purely to make the surrogate's explanation easier for humans to read."
+  },
+  {
+    "id": "xai-074",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Local Surrogate Mechanics",
+    "difficulty": "application",
+    "q": "To explain why a fraud-alert note was flagged, LIME represents the text using binary indicators for whether specific words are present or absent, rather than using the dense numeric vector the underlying classifier actually processes. What does this illustrate?",
+    "options": [
+      "LIME's use of an interpretable representation that differs from the raw features the black-box model actually uses",
+      "The strict requirement that all text classifiers must be fully retrained using binary word features company-wide, with no exceptions permitted",
+      "A fundamental limitation that prevents LIME from ever being meaningfully applied to any text data",
+      "Clear evidence that the underlying fraud classifier must itself be a simple linear model"
+    ],
+    "correct": 0,
+    "explanation": "Using word-presence indicators instead of the classifier's actual dense representation is a standard example of LIME's interpretable-representation concept; it says nothing about retraining requirements, an inability to handle text, or the underlying model's architecture."
+  },
+  {
+    "id": "xai-075",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Local Surrogate Mechanics",
+    "difficulty": "recall",
+    "q": "LIME's optimization balances local fidelity, meaning how well the surrogate approximates the black-box model nearby, against ______, meaning how simple the resulting explanation remains for a human to interpret.",
+    "options": [
+      "interpretability (or explanation complexity)",
+      "the overall size of the training dataset",
+      "the number of perturbation samples generated",
+      "the black-box model's overall predictive accuracy"
+    ],
+    "correct": 0,
+    "explanation": "LIME's core tradeoff is between fidelity (accuracy of the local approximation) and interpretability (simplicity of the explanation), not dataset size, sample count, or the original model's overall accuracy."
+  },
+  {
+    "id": "xai-076",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Local Surrogate Mechanics",
+    "difficulty": "analysis",
+    "q": "A LIME surrogate fits a denied applicant's neighborhood almost perfectly, but the resulting explanation lists forty separate feature contributions. Why might this still be considered an unsuitable explanation, despite its high fidelity?",
+    "options": [
+      "An explanation with that many simultaneous contributions is too complex for a human reviewer to interpret, undermining the goal of a simple, usable explanation",
+      "High fidelity scores are mathematically never achievable at all when using any simple linear surrogate model",
+      "Forty separate listed features always indicates with certainty that the underlying black-box model itself is broken",
+      "LIME explanations are strictly and permanently capped at exactly five total features by definition, with no exceptions"
+    ],
+    "correct": 0,
+    "explanation": "Even a highly faithful local approximation fails its purpose if the explanation is too complex to be read by a human; this has nothing to do with linear surrogates being unable to achieve fidelity, model breakage, or a fixed feature cap."
+  },
+  {
+    "id": "xai-077",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Local Surrogate Mechanics",
+    "difficulty": "recall",
+    "q": "In a LIME surrogate using a sparse linear model, what do the fitted coefficients represent?",
+    "options": [
+      "The local direction and approximate magnitude of each feature's contribution to the prediction within that instance's neighborhood",
+      "The global importance ranking of each feature computed in aggregate across the entire original training dataset and nothing about any single applicant",
+      "The exact, guaranteed causal effect of physically changing each feature value out in the real world",
+      "The raw number of times each individual feature happens to literally appear across the whole dataset"
+    ],
+    "correct": 0,
+    "explanation": "LIME coefficients describe a local, surrogate-based contribution, not a global importance ranking, a causal effect, or a simple feature-occurrence count."
+  },
+  {
+    "id": "xai-078",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Local Surrogate Mechanics",
+    "difficulty": "application",
+    "q": "A LIME explanation for a particular high-premium insurance customer assigns a positive weight to 'recent claim' and a negative weight to 'no accidents in past five years.' How should these weights be read?",
+    "options": [
+      "For this specific customer, a recent claim pushes the local surrogate's predicted premium up, while no recent accidents pushes it down, within the sampled neighborhood around their profile",
+      "Every single customer anywhere in the portfolio who has a recent claim will experience an exactly identical premium increase regardless of other factors no matter what their policy details otherwise show",
+      "These weights directly represent the true, scientifically proven causal financial effect of this customer deliberately choosing to avoid accidents",
+      "These weights apply completely and uniformly to the entire customer base, regardless of any individual policyholder's own specific profile or history"
+    ],
+    "correct": 0,
+    "explanation": "LIME weights are local and instance-specific, describing the surrogate's behavior for this one customer's sampled neighborhood; they do not generalize uniformly to all customers or establish a causal real-world effect."
+  },
+  {
+    "id": "xai-079",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Local Surrogate Mechanics",
+    "difficulty": "analysis",
+    "q": "Why can't the coefficients from a LIME surrogate generally be interpreted as causal effects?",
+    "options": [
+      "They describe associations captured by a local approximation within a sampled neighborhood, not the result of an actual intervention on the feature",
+      "LIME coefficients are always automatically and permanently set to exactly zero by default before any explanation is run",
+      "LIME can only ever be meaningfully applied to data that was collected from randomized controlled clinical trials",
+      "LIME coefficients are generated essentially at random, completely independent of the black-box model's actual underlying predictions"
+    ],
+    "correct": 0,
+    "explanation": "LIME coefficients reflect correlational patterns the surrogate picked up locally, not the outcome of a controlled intervention, which is why they shouldn't be read causally; the other options misdescribe how LIME actually works."
+  },
+  {
+    "id": "xai-080",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Local Surrogate Mechanics",
+    "difficulty": "application",
+    "q": "In a credit model's LIME explanation, increasing income in the perturbed samples is associated with lower predicted default risk. Which conclusion is appropriate to draw from this alone?",
+    "options": [
+      "The local surrogate links higher income to lower predicted risk for this applicant, but this does not prove that raising their real income would causally reduce actual default risk",
+      "Giving this specific applicant an immediate raise in salary is mathematically guaranteed to directly and permanently reduce their real-world default risk going forward according to this one local explanation alone",
+      "Income has no relationship whatsoever to this credit model's predictions, either for this applicant or for any other applicant anywhere in the entire portfolio",
+      "The black-box credit model must be using income as its one and only sole input feature, with every single other field ignored entirely and completely"
+    ],
+    "correct": 0,
+    "explanation": "The explanation reveals an associative pattern within the local surrogate, not a guaranteed causal outcome from a real intervention, and it certainly doesn't imply income is the model's only feature or that it's irrelevant elsewhere."
+  },
+  {
+    "id": "xai-081",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Local Surrogate Mechanics",
+    "difficulty": "recall",
+    "q": "LIME is categorized as a ______ explanation method because it explains an already-trained black-box model after the fact, rather than modifying how that model is trained.",
+    "options": [
+      "post-hoc",
+      "intrinsic",
+      "pre-training",
+      "unsupervised"
+    ],
+    "correct": 0,
+    "explanation": "LIME is a post-hoc method, applied after training to interpret an existing model's behavior, as opposed to intrinsic interpretability built into the model itself, a pre-training step, or an unsupervised learning technique."
+  },
+  {
+    "id": "xai-082",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Local Surrogate Mechanics",
+    "difficulty": "analysis",
+    "q": "An analyst runs LIME twice on the exact same loan applicant using two different random seeds and gets two noticeably different sets of top features in the resulting explanation. What does this most directly reveal about LIME?",
+    "options": [
+      "LIME's explanations can be sensitive to the randomness in its perturbation sampling, raising a stability concern",
+      "The underlying black-box model itself produced two genuinely different predictions for the same applicant even though the input applicant record stayed the same",
+      "LIME always produces identical explanations regardless of random seed, so this result is impossible",
+      "The applicant's underlying data must somehow have been corrupted in between the two separate runs"
+    ],
+    "correct": 0,
+    "explanation": "Variation across runs with different seeds is a documented instability issue tied to LIME's random perturbation sampling; it doesn't imply the black-box prediction itself changed, contradict LIME's known behavior, or suggest data corruption."
+  },
+  {
+    "id": "xai-083",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Local Surrogate Mechanics",
+    "difficulty": "application",
+    "q": "An organization has an accurate but opaque gradient boosting hiring model already in production and cannot retrain it on short notice, yet needs individual explanations for candidate decisions quickly. Why is LIME well suited to this situation?",
+    "options": [
+      "Because LIME can explain an already-trained, opaque model after deployment without needing to retrain it or inspect its internals",
+      "Because LIME would require rebuilding the entire hiring model from scratch using only fully interpretable algorithms",
+      "Because LIME can only ever be meaningfully applied before a model is actually deployed into live production",
+      "Because LIME completely and permanently eliminates the need for any further human review of candidate hiring decisions"
+    ],
+    "correct": 0,
+    "explanation": "LIME's post-hoc, model-agnostic nature lets it explain an existing production model without retraining or redesign; it does not require rebuilding the model, is not limited to pre-deployment use, and does not remove the need for human oversight."
+  },
+  {
+    "id": "xai-084",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Local Surrogate Mechanics",
+    "difficulty": "recall",
+    "q": "In LIME, the parameter that controls how large a neighborhood around the instance is treated as 'close,' influencing which perturbed samples most strongly affect the fitted surrogate, is commonly called the ______.",
+    "options": [
+      "kernel width (or proximity parameter)",
+      "learning rate",
+      "regularization strength of the black-box model",
+      "number of decision tree leaves"
+    ],
+    "correct": 0,
+    "explanation": "Kernel width (or an equivalent proximity parameter) controls the size of the neighborhood LIME treats as local, distinct from a learning rate, the black-box model's own regularization, or tree-leaf counts."
+  },
+  {
+    "id": "xai-085",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Practical Application and Limitations",
+    "difficulty": "recall",
+    "q": "When applying LIME to an image classifier, individual pixels are typically too fine-grained to use directly, so LIME commonly groups neighboring pixels into ______ before perturbing them.",
+    "options": [
+      "superpixels",
+      "convolution kernels",
+      "training epochs",
+      "confusion matrix cells"
+    ],
+    "correct": 0,
+    "explanation": "LIME for images typically operates on superpixels, contiguous pixel regions from an image segmentation step, rather than convolution kernels, epochs, or confusion-matrix concepts."
+  },
+  {
+    "id": "xai-086",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Practical Application and Limitations",
+    "difficulty": "analysis",
+    "q": "A tumor-detection CNN's LIME explanation for a correctly classified malignant case highlights a background ruler marker rather than the tissue region itself. What does this suggest?",
+    "options": [
+      "The model may be relying on a spurious visual cue correlated with the label rather than genuine diagnostic tissue features",
+      "LIME has somehow incorrectly segmented the image into superpixels that cannot be meaningfully interpreted and must be recomputed from scratch entirely",
+      "The CNN's overall diagnostic accuracy on this particular case must be below fifty percent",
+      "The ruler marker itself has been scientifically proven to cause malignancy within the imaging dataset"
+    ],
+    "correct": 0,
+    "explanation": "Highlighting an incidental marker rather than clinically relevant tissue is a classic sign the model may be exploiting a spurious correlation, not evidence of a segmentation error, low accuracy, or a causal claim about the marker."
+  },
+  {
+    "id": "xai-087",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Practical Application and Limitations",
+    "difficulty": "recall",
+    "q": "For text classifiers, LIME typically perturbs an input sentence by ______ individual words and observing how the model's prediction changes.",
+    "options": [
+      "removing or masking",
+      "translating into a different language",
+      "capitalizing",
+      "alphabetically reordering"
+    ],
+    "correct": 0,
+    "explanation": "LIME's standard text perturbation approach removes or masks words to observe the resulting change in prediction, not translation, capitalization, or reordering."
+  },
+  {
+    "id": "xai-088",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Practical Application and Limitations",
+    "difficulty": "application",
+    "q": "While explaining a sentiment classifier with LIME, removing the word 'not' from the sentence 'The medicine is not effective' changes it to 'The medicine is effective.' What problem does this illustrate about LIME's text perturbation approach?",
+    "options": [
+      "Word removal can fundamentally change a sentence's meaning, creating a mismatch between the perturbed samples and realistic text",
+      "LIME cannot ever be meaningfully applied to any kind of sentiment classification task at all, under any circumstances in any language or domain whatsoever",
+      "The word 'not' is always automatically assigned exactly zero importance by LIME in every single case examined",
+      "Sentiment classifiers can never correctly process any form of negation whatsoever in any sentence they encounter"
+    ],
+    "correct": 0,
+    "explanation": "This example shows how naive word removal can flip meaning entirely, a known limitation of LIME's text perturbation; it does not mean LIME is inapplicable to sentiment tasks, that 'not' is always unimportant, or that classifiers can't handle negation at all."
+  },
+  {
+    "id": "xai-089",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Practical Application and Limitations",
+    "difficulty": "recall",
+    "q": "LIME's perturbation for tabular data commonly varies numeric features ______ of one another, which can create unrealistic combinations when the real-world features are actually correlated.",
+    "options": [
+      "independently",
+      "in perfect lockstep",
+      "only in pairs that are manually pre-approved",
+      "using a fixed, unchangeable increment"
+    ],
+    "correct": 0,
+    "explanation": "Independent perturbation of features is the common source of LIME's unrealistic-sample problem under correlation, not lockstep variation, manual pre-approval, or fixed increments."
+  },
+  {
+    "id": "xai-090",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Practical Application and Limitations",
+    "difficulty": "analysis",
+    "q": "LIME generates a synthetic loan applicant with very high income, very young age, and no employment history at all, a combination that essentially never occurs among real applicants. What limitation of LIME does this illustrate?",
+    "options": [
+      "The risk of generating unrealistic perturbed samples when correlated real-world features are perturbed independently",
+      "The supposed guarantee that LIME always produces fully causally valid, real-world explanations",
+      "The fact that LIME can never be meaningfully applied to any tabular loan dataset at all",
+      "Clear evidence that the underlying black-box credit model has significantly overfit its training data"
+    ],
+    "correct": 0,
+    "explanation": "This scenario is the classic correlated-feature sampling problem in LIME, not a causal guarantee, a general inapplicability to tabular data, or direct evidence of model overfitting."
+  },
+  {
+    "id": "xai-091",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Practical Application and Limitations",
+    "difficulty": "recall",
+    "q": "As an evaluation criterion for a LIME explanation, 'fidelity' specifically asks which question?",
+    "options": [
+      "How closely does the surrogate's predictions match the black-box model's predictions within the explained neighborhood?",
+      "How quickly, in wall-clock computation time, can the full local explanation actually be generated?",
+      "How many total features does the resulting local explanation ultimately choose to display?",
+      "How similar is this particular explanation to the explanation generated for a completely unrelated, different instance? drawn from a completely separate dataset"
+    ],
+    "correct": 0,
+    "explanation": "Fidelity concerns the surrogate's local accuracy relative to the real model, distinct from computational speed, explanation sparsity, or similarity between unrelated instances."
+  },
+  {
+    "id": "xai-092",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Practical Application and Limitations",
+    "difficulty": "recall",
+    "q": "As an evaluation criterion for a LIME explanation, 'stability' specifically asks which question?",
+    "options": [
+      "Does repeating the explanation procedure for the same instance return similar important features and weights?",
+      "Does the explanation perfectly match the black-box model's prediction for every instance in the dataset? with zero tolerance for any deviation",
+      "Does the resulting explanation use the fewest possible number of randomly perturbed samples available?",
+      "Does the generated explanation only ever select purely categorical features and never numeric ones?"
+    ],
+    "correct": 0,
+    "explanation": "Stability is about consistency of the explanation across repeated runs for the same instance, not perfect dataset-wide fidelity, minimal sample count, or a restriction to categorical features."
+  },
+  {
+    "id": "xai-093",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Practical Application and Limitations",
+    "difficulty": "analysis",
+    "q": "A fraud investigator reruns LIME ten times on the same flagged transaction and finds that the top three listed features change substantially from run to run. What limitation does this evidence most directly point to?",
+    "options": [
+      "Explanation instability tied to the randomness in LIME's sampling procedure and possibly its kernel-width setting",
+      "A mathematical guarantee that this particular flagged transaction is definitely genuinely fraudulent",
+      "Conclusive proof that the underlying fraud-detection model itself is badly miscalibrated",
+      "Clear evidence that LIME can never be meaningfully used on any kind of transaction data at all"
+    ],
+    "correct": 0,
+    "explanation": "Changing top features across repeated runs on the same instance is the textbook instability problem in LIME, not proof of fraud, model miscalibration, or a general inability to handle transaction data."
+  },
+  {
+    "id": "xai-094",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Practical Application and Limitations",
+    "difficulty": "analysis",
+    "q": "Compared to a very small kernel width, a much larger kernel width in LIME broadens the neighborhood used to fit the surrogate. What risk does this broadening introduce, especially for a highly nonlinear black-box model?",
+    "options": [
+      "It risks reducing local fidelity, because a single linear surrogate may no longer approximate the model's genuinely nonlinear behavior well over such a wide neighborhood",
+      "It guarantees that the resulting explanation will always use noticeably fewer features than a small kernel width setting ever would no matter how the surrogate is actually fit",
+      "It completely and permanently eliminates any remaining need for proximity weighting in the surrogate-fitting process altogether",
+      "It automatically and reliably improves the local surrogate's explanation stability across many separately repeated runs"
+    ],
+    "correct": 0,
+    "explanation": "A wider neighborhood increases the chance that a simple linear surrogate misses real nonlinear structure, hurting fidelity; it does not automatically reduce feature count, remove the need for proximity weighting, or guarantee better stability."
+  },
+  {
+    "id": "xai-095",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Practical Application and Limitations",
+    "difficulty": "analysis",
+    "q": "A LIME explanation identifies 'claims history' as the most locally important feature for one specific high-risk insurance customer. Can the analyst conclude that claims history is the most important feature for the entire customer base?",
+    "options": [
+      "No, a feature's local importance for one instance says nothing about its importance across the whole population of customers",
+      "Yes, local importance measured for any single one instance always perfectly generalizes to the entire customer population with no need for any further local analysis",
+      "Yes, but only if that particular customer's premium happens to be above the overall portfolio average",
+      "No, because LIME can never correctly identify a truly important feature for any single instance whatsoever"
+    ],
+    "correct": 0,
+    "explanation": "Local importance is instance-specific and does not automatically generalize to the whole population; conversely, LIME is capable of correctly identifying importance for individual instances, so the only defensible answer is that generalization to the whole base isn't warranted."
+  },
+  {
+    "id": "xai-096",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Practical Application and Limitations",
+    "difficulty": "analysis",
+    "q": "Why is LIME's computational cost often a practical concern when explaining large neural networks or models served only through an API?",
+    "options": [
+      "Because generating a useful local explanation requires many repeated queries to the black-box model for perturbed samples",
+      "Because LIME must completely retrain the entire black-box neural network from scratch for each new explanation",
+      "Because LIME requires downloading the complete original training dataset before generating every single explanation",
+      "Because LIME can only ever be run on specialized, purpose-built quantum computing hardware"
+    ],
+    "correct": 0,
+    "explanation": "The cost driver is the volume of perturbed-sample queries needed per explanation, not full retraining, mandatory access to the original training set, or any specialized hardware requirement."
+  },
+  {
+    "id": "xai-097",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Practical Application and Limitations",
+    "difficulty": "analysis",
+    "q": "A compliance officer finds LIME's explanations for 100 hiring decisions plausible on their face, but wants additional assurance before relying on them to defend an adverse employment decision. What should be checked in addition to plausibility?",
+    "options": [
+      "The fidelity and stability of the explanations, to confirm they reliably reflect the underlying model's actual local behavior",
+      "Only whether all one hundred of the explanations were generated using LIME's standard default kernel-width setting",
+      "Only whether each individual candidate's submitted resume happened to include the specific word 'experience'",
+      "Nothing further at all, since any plausible-looking explanation is always considered sufficiently reliable evidence regardless of the stakes involved"
+    ],
+    "correct": 0,
+    "explanation": "Plausibility alone does not establish reliability; checking fidelity and stability is the appropriate additional due diligence before relying on explanations for a high-stakes decision, unlike checking a single hyperparameter default, a single keyword, or assuming plausibility is sufficient."
+  },
+  {
+    "id": "xai-098",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Practical Application and Limitations",
+    "difficulty": "analysis",
+    "q": "Because LIME typically fits a simple linear surrogate, it can fail to capture ______ present in a genuinely nonlinear black-box model, since a straight-line local approximation only reflects a first-order view of the model's behavior.",
+    "options": [
+      "interaction or nonlinear effects between features",
+      "the model's overall training and validation accuracy",
+      "the number of features in the original dataset",
+      "the original names of all of the dataset's features"
+    ],
+    "correct": 0,
+    "explanation": "A linear surrogate's main limitation is missing interaction and nonlinear effects, not losing track of training accuracy figures, feature counts, or feature names, which it retains regardless."
+  },
+  {
+    "id": "xai-099",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Practical Application and Limitations",
+    "difficulty": "application",
+    "q": "To explain a tabular model's prediction for a continuous 'age' feature, LIME commonly transforms it into a range such as '40 < age <= 55' rather than using the raw numeric value directly. What is this process called?",
+    "options": [
+      "Discretization into an interpretable representation",
+      "Standard normalization of the feature's numeric scale",
+      "One-hot encoding of a single categorical variable",
+      "Standard imputation of a single missing data value"
+    ],
+    "correct": 0,
+    "explanation": "Converting a continuous feature into discrete ranges for the surrogate's interpretable representation is discretization, distinct from scale normalization, one-hot encoding (which applies to categorical variables), or missing-value imputation."
+  },
+  {
+    "id": "xai-100",
+    "topic": "explainable-ai",
+    "subtopic": "LIME Practical Application and Limitations",
+    "difficulty": "analysis",
+    "q": "Two loan applicants who differ only slightly in income receive noticeably different LIME explanations, with different top features listed for each. What should this prompt an analyst to examine?",
+    "options": [
+      "Whether the explanation is robust to small input changes, since similar applicants should produce similar local explanations unless near a genuine decision boundary",
+      "Whether the two applicants were actually scored using two completely different and independently trained black-box lending models entirely from scratch",
+      "Whether LIME is fundamentally and permanently incapable of ever explaining any kind of tabular loan-approval model whatsoever, regardless of its complexity including the very simplest ones",
+      "Whether the underlying applicant dataset happens to contain duplicate or near-duplicate applicant records somewhere within its full set of entries"
+    ],
+    "correct": 0,
+    "explanation": "A large explanation change for a small input change raises a robustness question, which could be legitimate near a decision boundary or could reflect instability; it doesn't necessarily mean different models were used, that LIME can't handle tabular data, or that there are duplicate records."
+  },
+  {
+    "id": "xai-101",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP vs LIME Comparison and Combined Use",
+    "difficulty": "analysis",
+    "q": "A bank's gradient boosting loan model has a SHAP summary plot showing 'Previous Default' and 'Credit Score' as the dominant global features, while a LIME explanation for one specific rejected customer highlights 'Income' and 'Loan Amount' as the main local reasons. What best explains why the two methods highlight different features for this customer?",
+    "options": [
+      "SHAP summarizes average contribution patterns across many applicants while LIME fits a local approximation specific to this one applicant's neighborhood, so the two can reasonably disagree without either being wrong",
+      "One of the two explanation methods must contain a software bug, since a genuinely correct explanation method always agrees completely with every other correct explanation method",
+      "The bank's gradient boosting model must be assigning essentially random scores, since consistent explanations are only ever possible for simple linear models",
+      "LIME always automatically overrides and completely replaces whatever SHAP reports for that exact same prediction, every single time"
+    ],
+    "correct": 0,
+    "explanation": "Global, aggregated attribution (SHAP summary) and a locally fitted, instance-specific approximation (LIME) measure different things and can legitimately diverge for a single customer without indicating a bug, a broken model, or that one method simply overrides the other."
+  },
+  {
+    "id": "xai-102",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP vs LIME Comparison and Combined Use",
+    "difficulty": "analysis",
+    "q": "Continuing the same scenario, what can the bank reasonably infer about the model's behavior from the fact that SHAP and LIME disagree for this one rejected customer?",
+    "options": [
+      "The model's behavior for this customer is likely nonlinear or shaped by feature interactions that the two methods capture differently, rather than there necessarily being an error",
+      "The underlying lending model has definitely and completely memorized its training data, meaning it must be badly overfitting in general and should be discarded immediately",
+      "This particular customer's loan application must have contained some invalid, inconsistent, or corrupted underlying data somewhere",
+      "The bank must immediately and permanently stop using both of these explanation methods entirely, going forward with no exceptions"
+    ],
+    "correct": 0,
+    "explanation": "Disagreement for a single instance is more naturally read as evidence of nonlinearity or interaction effects captured differently by each method, not as proof of overfitting, data corruption, or a reason to abandon both methods."
+  },
+  {
+    "id": "xai-103",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP vs LIME Comparison and Combined Use",
+    "difficulty": "recall",
+    "q": "Which statement correctly contrasts the theoretical foundations of SHAP and LIME?",
+    "options": [
+      "SHAP is grounded in Shapley values from cooperative game theory, while LIME is grounded in fitting a local surrogate regression model on perturbed samples",
+      "SHAP and LIME are both based on exactly the same underlying mathematical theory, differing only in their visualization style",
+      "LIME is actually grounded in Shapley values from game theory, while SHAP is grounded in local surrogate regression instead",
+      "Both SHAP and LIME absolutely require fully retraining the original black-box model before either one can produce any explanation every single time either one is used"
+    ],
+    "correct": 0,
+    "explanation": "SHAP's foundation is cooperative game theory and Shapley values, while LIME's is local surrogate regression on perturbed data; the two are not the same theory, the foundations are not swapped, and neither method requires retraining the original model."
+  },
+  {
+    "id": "xai-104",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP vs LIME Comparison and Combined Use",
+    "difficulty": "application",
+    "q": "A hospital wants to (1) audit which factors most influence readmission risk across its entire patient population, and (2) give one attending physician a quick, understandable reason for a single patient's elevated score. Which combined approach best serves both goals?",
+    "options": [
+      "Use a SHAP summary (global) plot aggregated across many patients for the population-level audit, and a local explanation such as a SHAP waterfall or LIME output for the individual patient",
+      "Use only a single LIME explanation generated once and then apply it uniformly across the entire patient population without any further modification at all",
+      "Use only the readmission model's single overall accuracy score to try to satisfy both of these very different audit purposes at once",
+      "Use just one single SHAP dependence plot restricted to a single feature to try to satisfy both of these very different purposes at once"
+    ],
+    "correct": 0,
+    "explanation": "Population-level auditing calls for an aggregated global view, while a single patient's case calls for a local explanation; a single LIME run, an accuracy figure, or a one-feature dependence plot cannot satisfy both needs."
+  },
+  {
+    "id": "xai-105",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP vs LIME Comparison and Combined Use",
+    "difficulty": "recall",
+    "q": "Which of the following correctly distinguishes the formal guarantees of SHAP from those of LIME?",
+    "options": [
+      "SHAP's attributions satisfy formal consistency properties such as efficiency and symmetry, while LIME's local regression coefficients carry no equivalent formal guarantee",
+      "LIME's attributions actually satisfy formal mathematical consistency properties like efficiency, while SHAP's carry no such equivalent guarantee at all according to its original publication",
+      "Both methods satisfy exactly identical formal mathematical guarantees, both of which are ultimately derived from cooperative game theory",
+      "Neither method actually provides any kind of mathematically motivated or theoretically grounded attribution at all, in any form"
+    ],
+    "correct": 0,
+    "explanation": "Only SHAP's Shapley-value basis comes with formal axiomatic guarantees (efficiency, symmetry, etc.); LIME's surrogate-fitting approach does not carry an equivalent formal guarantee, and both methods are mathematically motivated, just differently."
+  },
+  {
+    "id": "xai-106",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP vs LIME Comparison and Combined Use",
+    "difficulty": "application",
+    "q": "A regulator asks a bank to demonstrate that its explanation method's reported feature contributions always reconcile exactly with the change in a loan applicant's predicted score. Which explanation approach is inherently better suited to satisfy this specific requirement?",
+    "options": [
+      "SHAP, because its efficiency axiom guarantees contributions sum exactly to the gap between the prediction and the baseline",
+      "LIME, because its local surrogate model is always mathematically guaranteed to match the black-box prediction exactly even without a background dataset of any kind",
+      "Either method equally, because both are mathematically guaranteed to reconcile exactly with the original prediction",
+      "Neither method, because no explanation approach can ever reconcile exactly with any model's actual prediction"
+    ],
+    "correct": 0,
+    "explanation": "SHAP's efficiency axiom specifically guarantees an exact reconciliation; LIME's surrogate is only an approximation with no such guarantee, so SHAP is the better-suited tool for this precise regulatory requirement."
+  },
+  {
+    "id": "xai-107",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP vs LIME Comparison and Combined Use",
+    "difficulty": "analysis",
+    "q": "For one insurance customer, SHAP and LIME largely agree on the top three drivers of their premium. What does this agreement most reasonably suggest?",
+    "options": [
+      "It strengthens confidence that those features are genuinely driving the prediction for this customer, since two differently-founded methods converge on the same answer",
+      "It proves conclusively and beyond any reasonable doubt that the entire pricing model is completely free of bias",
+      "It proves that the two differently-founded explanation methods must be mathematically identical to one another in every single case",
+      "It means the insurer no longer needs to retain or carefully maintain either explanation method going forward from this point on"
+    ],
+    "correct": 0,
+    "explanation": "Convergence between two independently-founded methods is reassuring evidence (not absolute proof of fairness), it doesn't mean the methods are mathematically identical in general, and it doesn't eliminate the ongoing value of having both tools available."
+  },
+  {
+    "id": "xai-108",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP vs LIME Comparison and Combined Use",
+    "difficulty": "application",
+    "q": "A bank wants to show regulators both that its lending model behaves consistently across its whole applicant population and that any single rejected applicant received an adequate, specific explanation. Which combined use of SHAP and LIME best supports this goal?",
+    "options": [
+      "Use a global SHAP summary or bar plot to show the lending model's reliance isn't concentrated in one feature, plus local SHAP waterfall or LIME explanations for individual rejected applicants, cross-checked where possible",
+      "Rely solely on the lending model's single overall accuracy metric score to try to answer both of these very different regulatory questions being asked at once",
+      "Generate just one single LIME explanation for one randomly chosen applicant and present it as fully representative evidence covering the bank's entire applicant population",
+      "Avoid producing any individual instance-level explanations at all, since purely aggregate global evidence alone is assumed to fully satisfy both of these separate regulatory requirements and no further documentation is ever needed"
+    ],
+    "correct": 0,
+    "explanation": "Demonstrating consistent overall behavior requires global evidence, while addressing individual applicants requires local, cross-checked explanations; accuracy metrics, a single LIME run presented as universal, or skipping individual explanations entirely would not meet both regulatory needs."
+  },
+  {
+    "id": "xai-109",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP vs LIME Comparison and Combined Use",
+    "difficulty": "recall",
+    "q": "Which of the following is a practical reason LIME is sometimes chosen over SHAP for a single, ad hoc local explanation?",
+    "options": [
+      "LIME can be set up for one quick local explanation without necessarily requiring a carefully chosen representative background dataset",
+      "LIME always computes measurably faster than every single SHAP algorithm variant for every possible model type including every tree-based SHAP implementation",
+      "LIME is the only explanation method that can ever be meaningfully applied to tree-based ensemble models",
+      "LIME guarantees the same formal mathematical consistency axioms that SHAP provides, but computes them faster"
+    ],
+    "correct": 0,
+    "explanation": "LIME's lighter setup for a single local query is a genuine practical advantage in some situations; it is not universally faster than every SHAP variant (tree-based SHAP can be very fast), it is not the only option for tree models, and it does not carry SHAP's axiomatic guarantees."
+  },
+  {
+    "id": "xai-110",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP vs LIME Comparison and Combined Use",
+    "difficulty": "analysis",
+    "q": "A hiring model is known to have strong interactions between 'years of experience' and 'degree level.' Which explanation approach is generally better positioned to faithfully capture this specific kind of interaction?",
+    "options": [
+      "An interaction-aware SHAP algorithm, since Shapley-based attribution accounts for how features jointly contribute across coalitions, unlike a simple linear LIME surrogate assuming local linearity",
+      "LIME, because its simple linear surrogate model automatically detects, isolates, and faithfully models all feature interactions present in any dataset",
+      "Neither method, since interaction effects of this kind can never be captured by any post-hoc explanation technique whatsoever, regardless of the approach used",
+      "Both methods equally well, since interaction handling does not meaningfully differ between them in any practical, theoretical, or computational respect"
+    ],
+    "correct": 0,
+    "explanation": "SHAP's coalition-based foundation is generally better equipped to reflect feature interactions than a simple local linear surrogate, which by construction approximates behavior as locally linear; interaction effects can be partially captured by post-hoc methods, and the two approaches are not equally suited here."
+  },
+  {
+    "id": "xai-111",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP vs LIME Comparison and Combined Use",
+    "difficulty": "analysis",
+    "q": "An audit finds that LIME names 'Income' as the dominant factor in a loan denial, while SHAP's waterfall for the exact same applicant names 'Credit Score' as dominant. What is the most appropriate next investigative step before concluding the model itself is flawed?",
+    "options": [
+      "Check the fidelity of each explanation for this instance and examine whether Income and Credit Score are correlated, since one feature may be acting as a proxy for the other",
+      "Immediately discard both explanation methods entirely and simply refuse to explain this particular model's decisions any further at all without ever offering regulators an alternative",
+      "Assume SHAP is automatically and permanently correct in every single disagreement it has with LIME, and stop investigating any further",
+      "Assume LIME is automatically and permanently correct in every single disagreement it has with SHAP, and stop investigating any further"
+    ],
+    "correct": 0,
+    "explanation": "The sound approach is to check each explanation's fidelity and consider feature correlation before drawing conclusions, rather than discarding both tools or assuming one method is always right over the other without further evidence."
+  },
+  {
+    "id": "xai-112",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP vs LIME Comparison and Combined Use",
+    "difficulty": "analysis",
+    "q": "When SHAP and LIME disagree about which feature mattered most for the same prediction, the disagreement most directly reflects a difference in ______ rather than necessarily a flaw in the underlying model.",
+    "options": [
+      "the mathematical approach each method uses to attribute a prediction",
+      "the specific training data that each method happened to be given",
+      "the particular programming language each method happens to be implemented in",
+      "the specific operating system each individual method happened to run on"
+    ],
+    "correct": 0,
+    "explanation": "SHAP and LIME can disagree simply because they define and compute 'contribution' differently; the disagreement is not inherently about differing training data, implementation language, or operating system."
+  },
+  {
+    "id": "xai-113",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP vs LIME Comparison and Combined Use",
+    "difficulty": "application",
+    "q": "For a formal regulatory submission, a bank must state precisely how much each feature contributed to a rejected applicant's score, with the contributions summing exactly to the change from the baseline. Which method's guarantees naturally support this requirement?",
+    "options": [
+      "SHAP, due to its efficiency axiom",
+      "LIME, due to its proximity-weighted kernel",
+      "Either method equally, since both guarantee an exact sum by design",
+      "Neither method, since exact summation is never possible in explainable AI"
+    ],
+    "correct": 0,
+    "explanation": "SHAP's efficiency axiom specifically guarantees exact summation to the baseline-to-prediction gap; LIME's proximity kernel affects sample weighting, not an exact-sum guarantee, and exact summation is indeed achievable under SHAP's framework."
+  },
+  {
+    "id": "xai-114",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP vs LIME Comparison and Combined Use",
+    "difficulty": "application",
+    "q": "A customer support team needs a fast, lightweight, roughly-right explanation for a single customer's case and cannot afford to run an expensive background-data computation each time. Which method is generally the more practical lightweight choice for this specific need?",
+    "options": [
+      "LIME, since it can produce a local explanation from perturbed samples around just that one instance without necessarily requiring a full background dataset",
+      "SHAP, since it always requires strictly less computation than LIME does in absolutely every context or model type",
+      "Neither method can ever be used at all without a dedicated data science team being physically present for every single request no matter how small or routine the request is",
+      "Only a full global feature-importance ranking computed across the entire dataset can ever satisfy this particular request"
+    ],
+    "correct": 0,
+    "explanation": "LIME's lighter, instance-specific setup makes it a practical lightweight choice here; SHAP is not universally cheaper, neither method requires a dedicated team present for every single request, and a global ranking wouldn't address a single customer's specific case."
+  },
+  {
+    "id": "xai-115",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP vs LIME Comparison and Combined Use",
+    "difficulty": "analysis",
+    "q": "A SHAP dependence plot shows that a feature has a consistent global effect direction across an insurer's whole portfolio, but one specific customer's LIME explanation shows the opposite direction of effect for that same feature. What is the best interpretation?",
+    "options": [
+      "The feature may have an interaction effect that reverses its influence for certain subgroups or instances, so a global average pattern doesn't guarantee the same direction for every single case",
+      "The SHAP dependence plot must have been computed somewhere incorrectly, since global and local effect directions are always required to match exactly",
+      "The LIME explanation must have been computed somewhere incorrectly, since local and global effect directions are always required to match exactly",
+      "One of the two underlying models actually being explained here must secretly and silently be a completely different model from the other one"
+    ],
+    "correct": 0,
+    "explanation": "Global patterns are averages and don't guarantee identical direction for every individual case, especially when interaction effects are present; this doesn't necessarily mean either tool made a computational error or that different models were involved."
+  },
+  {
+    "id": "xai-116",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP vs LIME Comparison and Combined Use",
+    "difficulty": "recall",
+    "q": "Which statement correctly contrasts how SHAP and LIME each produce a local explanation for one specific prediction?",
+    "options": [
+      "SHAP's local explanation decomposes the prediction using Shapley values relative to a baseline, while LIME's local explanation fits a simple surrogate model on perturbed neighbors of that instance",
+      "SHAP's local explanation always requires training an entirely new neural network from scratch, while LIME's never requires querying the original model at all and discarding the original gradient boosting model",
+      "SHAP can only ever provide purely global, dataset-wide explanations and has absolutely no local, instance-level explanation capability at all",
+      "LIME can only ever provide purely global, dataset-wide explanations and has absolutely no local, instance-level explanation capability at all"
+    ],
+    "correct": 0,
+    "explanation": "Both methods can explain a single prediction, but through different mechanisms: additive Shapley-value decomposition for SHAP versus local surrogate fitting for LIME; neither statement claiming one method lacks local capability, nor the claim about training a new neural network, is accurate."
+  },
+  {
+    "id": "xai-117",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP vs LIME Comparison and Combined Use",
+    "difficulty": "application",
+    "q": "Auditors want to check whether an insurance pricing model relies too heavily on a single rating factor overall, which would raise a regulatory 'no single-feature dominance' concern. What is the most appropriate use of explanation methods for this specific check?",
+    "options": [
+      "Aggregate SHAP values across a representative sample of policyholders using a global summary or bar plot to see whether importance is spread across several features or concentrated in one",
+      "Generate just a single LIME explanation for one randomly chosen policyholder and treat it as fully representative of the entire insurance portfolio without collecting any further policyholder data",
+      "Compare the model's overall accuracy before and after removing just one single rating feature, with no reference to any attribution method at all",
+      "Rely solely on the pricing model's internal hyperparameter settings alone to judge overall feature reliance patterns across the whole portfolio"
+    ],
+    "correct": 0,
+    "explanation": "A portfolio-wide reliance question calls for an aggregated global attribution view, not a single customer's local explanation, an accuracy-only comparison, or an inspection of hyperparameters unrelated to attribution."
+  },
+  {
+    "id": "xai-118",
+    "topic": "explainable-ai",
+    "subtopic": "SHAP vs LIME Comparison and Combined Use",
+    "difficulty": "analysis",
+    "q": "During a model debugging exercise, SHAP flags 'zip code' as a top global driver of a credit model's predictions, while LIME flags it only occasionally, and inconsistently, at the local level for specific applicants. What should this pattern prompt the team to investigate?",
+    "options": [
+      "Whether zip code is acting as a proxy for a protected characteristic such as race or socioeconomic status, given its strong but inconsistent influence across individual cases",
+      "Whether the credit model's reported overall accuracy score was mistakenly computed using the completely wrong held-out test set entirely",
+      "Whether LIME is fundamentally and permanently incapable of ever flagging any geographic feature at all, purely by design",
+      "Whether the SHAP library currently installed on the team's own machine has somehow silently become corrupted or badly misconfigured"
+    ],
+    "correct": 0,
+    "explanation": "A feature that is consistently important globally but erratic locally is a common fairness-audit trigger worth investigating as a potential proxy variable, rather than pointing to a mismatched test set, an inherent LIME limitation around geographic features, or a corrupted software installation."
+  }
+]

@@ -1,0 +1,1367 @@
+[
+  {
+    "id": "mlops-001",
+    "topic": "mlops",
+    "subtopic": "Data drift vs concept drift",
+    "difficulty": "recall",
+    "q": "In production ML systems, a change in the statistical distribution of input features over time, while the relationship between features and the target stays the same, is called ______.",
+    "options": [
+      "Data drift",
+      "Concept drift",
+      "Label leakage",
+      "Model decay"
+    ],
+    "correct": 0,
+    "explanation": "Data drift refers specifically to a shift in the input feature distribution; the mapping from features to target is unaffected, which distinguishes it from concept drift."
+  },
+  {
+    "id": "mlops-002",
+    "topic": "mlops",
+    "subtopic": "Data drift vs concept drift",
+    "difficulty": "recall",
+    "q": "A change in the underlying relationship between input features and the target variable over time, even if the input distribution itself stays stable, is called ______.",
+    "options": [
+      "Concept drift",
+      "Data drift",
+      "Selection bias",
+      "Overfitting"
+    ],
+    "correct": 0,
+    "explanation": "Concept drift is defined by a change in P(y|x) — the same inputs now imply a different outcome — independent of whether the input distribution itself has moved."
+  },
+  {
+    "id": "mlops-003",
+    "topic": "mlops",
+    "subtopic": "Data drift vs concept drift",
+    "difficulty": "application",
+    "q": "A credit-scoring API approved loans with stable accuracy for two years. In the last quarter, the share of applicants who are gig-economy workers, a group barely represented in the training data, has grown sharply, and approval quality has quietly declined even though the lending criteria have not changed. This is best explained by ______.",
+    "options": [
+      "Data drift",
+      "Concept drift",
+      "Class imbalance in the original training set",
+      "Feature scaling mismatch"
+    ],
+    "correct": 0,
+    "explanation": "The population of applicants has changed to include categories underrepresented at training time, which is a textbook case of data (covariate) drift rather than a change in the input-output relationship."
+  },
+  {
+    "id": "mlops-004",
+    "topic": "mlops",
+    "subtopic": "Data drift vs concept drift",
+    "difficulty": "application",
+    "q": "A fraud-detection model keeps seeing transactions with the same amounts, merchant categories and timing patterns as in training, but a new fraud ring has learned to make genuinely fraudulent transactions look like the old legitimate ones, so the same input pattern now implies a different label. This is best described as ______.",
+    "options": [
+      "Concept drift",
+      "Data drift",
+      "Covariate shift",
+      "Sampling bias"
+    ],
+    "correct": 0,
+    "explanation": "The feature distribution is unchanged, but the true relationship between the pattern and the fraud/legitimate label has flipped, which is the defining signature of concept drift."
+  },
+  {
+    "id": "mlops-005",
+    "topic": "mlops",
+    "subtopic": "Data drift vs concept drift",
+    "difficulty": "analysis",
+    "q": "A churn-prediction team wants to know whether a recent drop in model precision is caused by concept drift rather than data drift. Which observation would most directly support the concept-drift explanation?",
+    "options": [
+      "On freshly labelled production data, the feature distributions look statistically unchanged from training, yet the model's precision and recall have both fallen sharply",
+      "Several categorical features now show values that never appeared during training, and the live feature distribution has visibly diverged from the training distribution",
+      "The mean and variance of numeric features have shifted noticeably compared to the training set, matching a classic covariate-shift pattern rather than a stable distribution",
+      "The volume of incoming prediction requests has increased substantially, while the feature distributions and model precision both remain essentially unchanged"
+    ],
+    "correct": 0,
+    "explanation": "Concept drift is diagnosed when the input distribution is stable but the actual relationship between inputs and outcomes has changed, which shows up as degraded performance with no corresponding feature-distribution shift."
+  },
+  {
+    "id": "mlops-006",
+    "topic": "mlops",
+    "subtopic": "Data drift vs concept drift",
+    "difficulty": "application",
+    "q": "An online retailer's recommendation model was trained on ordinary browsing sessions. During a major flash-sale event, the catalogue of products is unchanged, but discount-driven impulse browsing means the same click sequence that used to predict 'no purchase' now often precedes a purchase. This is an example of ______.",
+    "options": [
+      "Concept drift",
+      "Data drift",
+      "Target leakage",
+      "Stratification failure"
+    ],
+    "correct": 0,
+    "explanation": "The same observed behaviour now maps to a different outcome because customer intent has changed, which is concept drift rather than a change in the feature distribution itself."
+  },
+  {
+    "id": "mlops-007",
+    "topic": "mlops",
+    "subtopic": "Data drift vs concept drift",
+    "difficulty": "analysis",
+    "q": "After deployment, a hospital readmission-risk model's accuracy drops. One engineer suspects a bug in the feature-extraction code rather than drift. Which single test would best rule the bug in or out?",
+    "options": [
+      "Re-run the exact same serving code offline on freshly collected, correctly labelled production data and compare its metrics to the training-time metrics",
+      "Re-read the original training script line by line to check for typos or logic errors, without comparing any predictions against real production data",
+      "Increase the classification threshold and observe whether accuracy improves, without separately checking whether the feature-extraction code itself still behaves correctly",
+      "Retrain the model from scratch on the original training set and redeploy it immediately, without first confirming whether the current code or the data is actually at fault"
+    ],
+    "correct": 0,
+    "explanation": "Reproducing the exact serving pipeline offline on real, correctly labelled recent data isolates whether the degradation is a genuine performance drop (drift) rather than a bug, which the other options do not directly test."
+  },
+  {
+    "id": "mlops-008",
+    "topic": "mlops",
+    "subtopic": "Data drift vs concept drift",
+    "difficulty": "application",
+    "q": "A deployed model's true outcomes only become known weeks after a prediction is made, for example whether a loan eventually defaults. Which signal can reveal likely drift in the meantime, before any new labels exist?",
+    "options": [
+      "A statistical distance, such as population stability index or KL divergence, between the live incoming feature distribution and the training feature distribution exceeding a set threshold",
+      "The model's cross-validation accuracy measured during training, which reflects only how well the model fit the original historical data and says nothing about live traffic",
+      "The number of lines of code changed in the last deployment, which tracks engineering activity but has no direct relationship to whether the incoming data looks different",
+      "The test-set accuracy recorded before deployment, which was computed once on a static snapshot and cannot reflect anything happening in production afterward"
+    ],
+    "correct": 0,
+    "explanation": "Distribution-distance metrics on unlabelled incoming features are the standard early-warning signal for drift when ground-truth labels are delayed or unavailable."
+  },
+  {
+    "id": "mlops-009",
+    "topic": "mlops",
+    "subtopic": "Data drift vs concept drift",
+    "difficulty": "recall",
+    "q": "An image classifier for a supermarket self-checkout is trained to recognise 40 produce types. After a supplier change, several new fruit varieties that were never part of the training catalogue start appearing at checkout. This situation is best described as ______.",
+    "options": [
+      "Data drift",
+      "Concept drift",
+      "Model drift reversal",
+      "Target leakage"
+    ],
+    "correct": 0,
+    "explanation": "New categories appearing at inference time that were never present in training is a classic input-distribution change, i.e. data drift."
+  },
+  {
+    "id": "mlops-010",
+    "topic": "mlops",
+    "subtopic": "Data drift vs concept drift",
+    "difficulty": "application",
+    "q": "A payment-fraud model's precision drops sharply within a single day, coinciding with a known fraud ring exploiting a new loophole. This pattern is best classified as ______.",
+    "options": [
+      "Sudden concept drift",
+      "Gradual data drift",
+      "Seasonal data drift",
+      "Random label noise"
+    ],
+    "correct": 0,
+    "explanation": "An abrupt, single-day change in the relationship between transaction patterns and the fraud label, tied to a specific event, is sudden concept drift rather than a slow distributional shift."
+  },
+  {
+    "id": "mlops-011",
+    "topic": "mlops",
+    "subtopic": "Data drift vs concept drift",
+    "difficulty": "application",
+    "q": "An insurance pricing model's calibration slowly worsens over eighteen months as the customer base gradually shifts from mostly urban to mostly rural policyholders, region by region. This is best described as ______.",
+    "options": [
+      "Gradual data drift",
+      "Sudden concept drift",
+      "Label leakage",
+      "Random noise in the training labels"
+    ],
+    "correct": 0,
+    "explanation": "A slow, steady change in the composition of the input population over many months is the classic pattern of gradual data drift."
+  },
+  {
+    "id": "mlops-012",
+    "topic": "mlops",
+    "subtopic": "Data drift vs concept drift",
+    "difficulty": "analysis",
+    "q": "A monitoring dashboard shows that the average value of a customer-age feature served to a model has jumped overnight. Which piece of evidence would most clearly show this is real data drift and not a bug introduced in the feature pipeline?",
+    "options": [
+      "Reprocessing the same raw upstream records through the exact serving pipeline offline reproduces the same shifted age values",
+      "The model's accuracy has not changed at all since the shift, even though the age values still look different",
+      "The engineering team deployed new feature-pipeline code the same week the shift appeared, without anyone checking the raw source records",
+      "The shift appeared in only one of several identical model replicas serving the exact same upstream data feed"
+    ],
+    "correct": 0,
+    "explanation": "If independently reprocessing the raw source data reproduces the same shift, the change originates upstream in the real data rather than in a newly introduced bug in the serving code."
+  },
+  {
+    "id": "mlops-013",
+    "topic": "mlops",
+    "subtopic": "Data drift vs concept drift",
+    "difficulty": "recall",
+    "q": "A churn model scores 92% validation accuracy before launch, yet performance decays within a year in production. What is the most fundamental reason validation accuracy cannot guarantee long-term production performance?",
+    "options": [
+      "Validation data is drawn from the same time window and distribution as training data, so it cannot reflect how the real world changes after the model is frozen",
+      "Validation accuracy is almost always computed incorrectly by teams who accidentally reuse training rows inside the validation split itself, a mistake many assume fully explains any later production decline",
+      "Validation sets are usually far too large relative to the training set to be statistically representative of real customers",
+      "Accuracy as a metric is mathematically impossible to reproduce outside of the exact training environment it was first measured in"
+    ],
+    "correct": 0,
+    "explanation": "A validation score only reflects the past distribution the model was built on; it has no information about future drift, so it cannot by itself guarantee lasting production performance."
+  },
+  {
+    "id": "mlops-014",
+    "topic": "mlops",
+    "subtopic": "Data drift vs concept drift",
+    "difficulty": "application",
+    "q": "A voice-assistant speech model was trained mostly on recordings from users under 35. Over time, adoption grows fastest among users over 60, whose speech patterns differ acoustically, and recognition accuracy drops even though the correct transcription for any given utterance is unchanged. This is best explained by ______.",
+    "options": [
+      "Data drift",
+      "Concept drift",
+      "Overfitting to the validation set",
+      "Target leakage"
+    ],
+    "correct": 0,
+    "explanation": "The input acoustic distribution has shifted toward an underrepresented demographic while the ground-truth mapping from speech to transcription has not changed, which is data drift."
+  },
+  {
+    "id": "mlops-015",
+    "topic": "mlops",
+    "subtopic": "Production monitoring",
+    "difficulty": "application",
+    "q": "A deployed loan-default model only receives true outcome labels 90 days after a prediction. Which of the following is the most useful signal to monitor in the meantime?",
+    "options": [
+      "The distribution of input features and predicted scores compared against their training-time distributions",
+      "The number of servers currently running the model, which reflects infrastructure capacity rather than anything about prediction quality",
+      "The size of the Docker image used to deploy the model, which depends on installed libraries rather than live data",
+      "The git commit hash of the last code change, which identifies a version but says nothing about incoming data"
+    ],
+    "correct": 0,
+    "explanation": "When ground-truth labels are delayed, comparing live feature and score distributions to training-time baselines is the main way to detect emerging problems before performance metrics can even be computed."
+  },
+  {
+    "id": "mlops-016",
+    "topic": "mlops",
+    "subtopic": "Production monitoring",
+    "difficulty": "application",
+    "q": "A production monitoring dashboard for a conversion-prediction model tracks the average predicted probability of conversion every day. Why is a sudden change in this average, even without new labels, a useful early-warning signal?",
+    "options": [
+      "A shift in the average predicted score can indicate that the input population or the model's behaviour has changed, which may precede a drop in measured accuracy once labels arrive",
+      "It directly measures the model's true accuracy in real time, so no separate labelled evaluation is ever required to confirm performance",
+      "It replaces the need for any feature-distribution monitoring, since the average predicted score already captures every possible input change long before labels could ever confirm a real accuracy drop",
+      "It guarantees the model needs to be retrained immediately, regardless of whether enough new labelled data has actually accumulated"
+    ],
+    "correct": 0,
+    "explanation": "Tracking the mean predicted score is a cheap, label-free proxy that can flag population or behaviour changes early, well before delayed ground-truth labels confirm an actual accuracy drop."
+  },
+  {
+    "id": "mlops-017",
+    "topic": "mlops",
+    "subtopic": "Production monitoring",
+    "difficulty": "recall",
+    "q": "Which pair of metrics should a production ML monitoring system track together, rather than relying on only one?",
+    "options": [
+      "Model-quality signals such as prediction and feature distributions, and operational signals such as latency and error rate",
+      "Only the number of GitHub commits merged each week and the overall size of the original training dataset",
+      "Only the hyperparameters chosen during training, since they are assumed to remain informative forever",
+      "Only the amount of cloud compute spent on training, tracked purely for budgeting rather than quality purposes"
+    ],
+    "correct": 0,
+    "explanation": "A healthy monitoring setup covers both whether the model's inputs and outputs look sane and whether the service itself is operating correctly, since either can fail independently."
+  },
+  {
+    "id": "mlops-018",
+    "topic": "mlops",
+    "subtopic": "Production monitoring",
+    "difficulty": "application",
+    "q": "A recommendation system logs every prediction request and, separately, an endpoint lets users report whether they actually purchased the recommended item. Why is capturing this feedback loop important for monitoring?",
+    "options": [
+      "Without ground-truth feedback eventually linked back to each prediction, true performance metrics like precision and recall cannot be recomputed on live traffic",
+      "It is only useful for improving the user interface design, and has no bearing on measuring or maintaining the model's predictive quality once the interface team has signed off on it",
+      "It removes the need to ever monitor input feature distributions, since purchase feedback alone fully captures any possible drift",
+      "It guarantees the model will never need retraining, because user feedback by itself keeps the model permanently up to date"
+    ],
+    "correct": 0,
+    "explanation": "Label-quality monitoring metrics such as precision and recall require real outcomes; a feedback channel is what turns raw predictions into a labelled dataset that can be used to measure and later retrain the model."
+  },
+  {
+    "id": "mlops-019",
+    "topic": "mlops",
+    "subtopic": "Production monitoring",
+    "difficulty": "application",
+    "q": "A company deploys a new fraud-detection model to only 10% of live traffic first, closely watching error rate and key business metrics before rolling it out to everyone. What is the main purpose of this approach?",
+    "options": [
+      "To limit the damage from a bad model by catching problems on a small slice of traffic before it affects all users",
+      "To make the model train faster by only computing gradients on a small, randomly chosen slice of traffic",
+      "To reduce the overall size of the training dataset needed before the model can ever be considered ready to deploy",
+      "To avoid having to track or log any experiments at all once the model reaches full live traffic"
+    ],
+    "correct": 0,
+    "explanation": "A canary release contains the blast radius of a flawed model to a small fraction of traffic, giving the team a chance to catch problems before full exposure."
+  },
+  {
+    "id": "mlops-020",
+    "topic": "mlops",
+    "subtopic": "Production monitoring",
+    "difficulty": "recall",
+    "q": "A deployed model-serving API exposes a '/health' endpoint that returns a simple status check, separate from the '/predict' endpoint. What is this primarily used for?",
+    "options": [
+      "Letting the infrastructure automatically detect and restart the service if it becomes unresponsive, independent of model prediction quality",
+      "Measuring the model's accuracy on live data by comparing its predictions against ground-truth labels as they arrive, which a health-check endpoint is assumed to already do automatically",
+      "Logging every prediction request and input feature so it can later be used for retraining and drift analysis",
+      "Comparing the new model's predictions against the current champion model before deciding whether to promote it"
+    ],
+    "correct": 0,
+    "explanation": "A health-check endpoint is an operational liveness signal consumed by infrastructure tooling, not a model-quality metric; it answers whether the service process is alive and able to respond."
+  },
+  {
+    "id": "mlops-021",
+    "topic": "mlops",
+    "subtopic": "Production monitoring",
+    "difficulty": "analysis",
+    "q": "A healthcare risk model performed well before deployment but degraded after six months. A post-mortem finds: new categories appeared in categorical features, the input distribution has shifted, the model was never retrained, and no monitoring metrics were ever tracked. Which of these four findings is the most important immediate gap to fix first?",
+    "options": [
+      "The absence of monitoring, since without tracked metrics the other three problems would never have been detected in time",
+      "The new categories in categorical features, since re-encoding them is the only one of the four problems that can be fixed without retraining",
+      "The lack of retraining, since retraining the model on its own would have automatically prevented every other issue from ever occurring",
+      "The shifted input distribution, since distributions always revert to normal on their own without any intervention being needed"
+    ],
+    "correct": 0,
+    "explanation": "Without monitoring there is no visibility into drift or performance decay at all, so the lack of monitoring is the upstream gap that let the other three issues go unnoticed for six months."
+  },
+  {
+    "id": "mlops-022",
+    "topic": "mlops",
+    "subtopic": "Production monitoring",
+    "difficulty": "analysis",
+    "q": "A nationwide credit-scoring model shows stable overall accuracy, but a monitoring review that breaks results down by region reveals one region's approval accuracy has fallen sharply while it is hidden by good performance everywhere else. What does this best illustrate?",
+    "options": [
+      "Aggregate metrics can mask serious degradation in specific sub-populations, so monitoring should include sliced or segmented metrics, not just overall averages",
+      "Regional data should never be collected at all, since collecting it is itself what caused the regional performance problem to occur",
+      "The model must be using the region itself as a leaked feature, which is the only possible explanation for any regional performance gap",
+      "Aggregate accuracy is always a sufficient monitoring signal for any application, regardless of how diverse its user sub-populations are"
+    ],
+    "correct": 0,
+    "explanation": "An overall metric can average out a serious localised failure; segmenting monitoring by relevant subgroups is needed to catch problems that aggregate numbers hide."
+  },
+  {
+    "id": "mlops-023",
+    "topic": "mlops",
+    "subtopic": "Production monitoring",
+    "difficulty": "recall",
+    "q": "Why do most production ML systems log every prediction request along with the input features and the model version that served it?",
+    "options": [
+      "To enable later auditing, debugging of specific incidents, and building the labelled dataset used for future retraining and drift analysis",
+      "Logging is only required for legal compliance purposes and otherwise serves no real technical or debugging use for the team",
+      "It replaces the need for ever holding out a separate validation set during the original model training process",
+      "It is required only when using deep learning models, since simpler algorithms never need their predictions logged at all"
+    ],
+    "correct": 0,
+    "explanation": "Prediction logs are the raw material for auditing specific decisions, diagnosing incidents, measuring drift, and assembling future training data once outcomes become known."
+  },
+  {
+    "id": "mlops-024",
+    "topic": "mlops",
+    "subtopic": "Production monitoring",
+    "difficulty": "application",
+    "q": "A call-centre uses a churn model to decide which 20% of customers to call. The data science team tracks recall among the top 20% ranked customers in production, not just overall accuracy. Why is this a better production monitoring metric for this use case?",
+    "options": [
+      "It directly measures whether the customers the business will actually act on are the ones most likely to churn, matching how the model's output is really used",
+      "It is always numerically higher than plain accuracy, which simply makes the monitoring dashboard look more impressive to stakeholders",
+      "It removes the need to ever compute overall accuracy at all, since recall within the top slice is considered a complete replacement",
+      "It is completely unaffected by the class imbalance between churners and non-churners, unlike every other metric the team could track"
+    ],
+    "correct": 0,
+    "explanation": "A monitoring metric should mirror how predictions are actually consumed; since only the top 20% get called, recall within that slice is the metric that reflects real business value."
+  },
+  {
+    "id": "mlops-025",
+    "topic": "mlops",
+    "subtopic": "Production monitoring",
+    "difficulty": "application",
+    "q": "A monitoring pipeline is configured to only trigger a drift alert when both the measured drift share exceeds a set threshold AND at least a minimum number of freshly labelled rows have been collected. Why require both conditions rather than the drift measurement alone?",
+    "options": [
+      "Requiring enough labelled data avoids triggering alerts, and potentially costly retraining, based on noisy drift estimates from too small a sample",
+      "It guarantees the measured drift share will always come out as exactly zero once enough labelled rows have accumulated",
+      "It removes the need to ever recompute the drift metric again once the minimum labelled-row threshold has first been reached",
+      "It ensures the model gets retrained every single day regardless of whether any drift was actually detected that day"
+    ],
+    "correct": 0,
+    "explanation": "A drift estimate computed on very few recent samples is unreliable; combining it with a minimum sample-size requirement prevents acting on statistical noise."
+  },
+  {
+    "id": "mlops-026",
+    "topic": "mlops",
+    "subtopic": "Production monitoring",
+    "difficulty": "application",
+    "q": "A team considers their monitoring 'done' because they re-run the original validation set through the production model once a month and confirm the score matches the original report. What is the key weakness of this monitoring approach?",
+    "options": [
+      "Re-scoring the same frozen validation set can never reveal drift, since it never contains any new, real incoming production data",
+      "Running the same frozen validation set once a month is computationally impossible for any team without a dedicated GPU cluster",
+      "Validation sets become statistically corrupted every single time they are reused for a repeated monthly scoring check",
+      "It is actually a complete and sufficient monitoring strategy on its own, with nothing further needed for production safety"
+    ],
+    "correct": 0,
+    "explanation": "Repeatedly scoring the same static, frozen dataset will always return the same result and by construction cannot detect any change in the real-world data the model now sees."
+  },
+  {
+    "id": "mlops-027",
+    "topic": "mlops",
+    "subtopic": "Retraining triggers and strategy",
+    "difficulty": "recall",
+    "q": "Which of the following is the most sound trigger for initiating model retraining in a production ML system?",
+    "options": [
+      "A combination of detected drift beyond a set threshold and enough newly labelled data having accumulated to retrain reliably",
+      "A fixed calendar schedule alone, retraining every month regardless of whether any drift or new labelled data actually exist",
+      "Whenever a developer personally feels the model is probably getting stale, based on general intuition rather than measured evidence",
+      "Only when the original training script happens to be edited for an unrelated code cleanup or refactor"
+    ],
+    "correct": 0,
+    "explanation": "A sound retraining trigger combines evidence that something has actually changed with enough fresh, labelled data to retrain reliably, rather than relying on a fixed clock or a gut feeling."
+  },
+  {
+    "id": "mlops-028",
+    "topic": "mlops",
+    "subtopic": "Retraining triggers and strategy",
+    "difficulty": "application",
+    "q": "A fraud-detection team considers retraining their model automatically every time a single new labelled transaction arrives. What is the main problem with this strategy?",
+    "options": [
+      "A single new example gives too noisy and small a signal to justify retraining, risking frequent unstable model changes without real improvement",
+      "Retraining on one new example at a time is computationally identical in cost and speed to retraining on a full labelled batch of thousands of transactions",
+      "It would make the model completely immune to concept drift for the rest of its deployed lifetime",
+      "It eliminates the need for any quality gate before promoting a new model, since each update is assumed to be an improvement"
+    ],
+    "correct": 0,
+    "explanation": "Triggering retraining on each individual new label produces highly unstable updates driven by noise rather than a meaningful signal of real change."
+  },
+  {
+    "id": "mlops-029",
+    "topic": "mlops",
+    "subtopic": "Retraining triggers and strategy",
+    "difficulty": "application",
+    "q": "After an automated pipeline retrains a churn model on fresh data, it compares the new candidate model's PR-AUC against the currently deployed model's PR-AUC on the same evaluation set, and only replaces the deployed model if the candidate is at least as good. What is the main purpose of this step?",
+    "options": [
+      "To prevent a retrained model that is actually worse than the current one from being promoted to production",
+      "To make the retraining job itself run noticeably faster on the same evaluation set",
+      "To remove the need for any human review of the retraining pipeline's code or configuration",
+      "To guarantee that the candidate model will always pass and get promoted regardless of its PR-AUC score relative to the currently deployed production model"
+    ],
+    "correct": 0,
+    "explanation": "This quality gate is a safeguard that stops a regression from being promoted automatically, ensuring only genuine improvements replace the current production model."
+  },
+  {
+    "id": "mlops-030",
+    "topic": "mlops",
+    "subtopic": "Retraining triggers and strategy",
+    "difficulty": "analysis",
+    "q": "An automated retraining pipeline passes its quality gate and opens a pull request with the new model's metrics for a human to review before merging, rather than deploying the new model immediately and automatically. What is the main benefit of keeping this human review step?",
+    "options": [
+      "It lets a person catch subtler problems the automated gate cannot evaluate, such as fairness concerns or a metric improvement driven by a biased data slice, before the model reaches real users",
+      "It is only there to slow the deployment pipeline down for bureaucratic reasons, since the automated numeric gate is assumed to already catch every problem a model could possibly have",
+      "It replaces the need for the automated quality gate entirely, because a single human glance at the metrics is assumed to be a fully sufficient substitute for systematic testing",
+      "It is required only because automated quality gates can never be trusted at all, not because a human notices anything the numeric gate was never designed to catch"
+    ],
+    "correct": 0,
+    "explanation": "A human reviewer complements the automated numeric gate by catching issues that a single aggregate metric cannot detect, such as subtle bias or unintended side effects."
+  },
+  {
+    "id": "mlops-031",
+    "topic": "mlops",
+    "subtopic": "Retraining triggers and strategy",
+    "difficulty": "analysis",
+    "q": "A retraining job is configured to always use only the most recent 30 days of labelled data. During a short but unusual promotional campaign, customer behaviour temporarily looks very different from normal. What risk does always retraining on just the latest window create here?",
+    "options": [
+      "The new model may overfit to the temporary, unrepresentative promotional-period behaviour and perform worse once normal conditions return",
+      "The model will become completely immune to all future concept drift once it has been retrained on the promotional-period data",
+      "The retraining job will fail to run at all, because the pipeline cannot process data from an unusual promotional period",
+      "It guarantees the new model will beat the old one on the quality gate, purely because the training window was more recent"
+    ],
+    "correct": 0,
+    "explanation": "A rigid fixed-window retraining policy can inadvertently overweight a short-lived anomalous period, producing a model that is tuned to a temporary pattern rather than the normal regime."
+  },
+  {
+    "id": "mlops-032",
+    "topic": "mlops",
+    "subtopic": "Retraining triggers and strategy",
+    "difficulty": "recall",
+    "q": "Besides a quality gate before promotion, what else should a responsible automated retraining pipeline provide in case a newly promoted model behaves badly once it sees full live traffic?",
+    "options": [
+      "A fast rollback mechanism to shift traffic back to the previous model version",
+      "A guarantee that retraining will never be needed again after this one deployment",
+      "Removal of the previous model's artifacts right away to free up storage",
+      "Disabling all monitoring alerts until the next scheduled retraining run begins"
+    ],
+    "correct": 0,
+    "explanation": "Since no offline gate can guarantee perfect live behaviour, a quick rollback path to the previous known-good model is an essential safety net."
+  },
+  {
+    "id": "mlops-033",
+    "topic": "mlops",
+    "subtopic": "Retraining triggers and strategy",
+    "difficulty": "application",
+    "q": "After a retrained fraud model passes its offline quality gate, the deployment pipeline first routes only a small percentage of live traffic to it, watches error rates and key metrics, and only then shifts to 100%. Why not send 100% of traffic immediately once the offline gate passes?",
+    "options": [
+      "Offline evaluation data can never fully capture every real production condition, so a small live traffic slice acts as a final safety check before full exposure",
+      "Sending traffic gradually in stages is a legal requirement imposed on all machine learning systems handling financial transactions",
+      "It is purely a performance optimisation technique for reducing server load, entirely unrelated to catching model safety issues",
+      "Offline quality gates are always fundamentally wrong, so only live production traffic can ever serve as a valid test of a model"
+    ],
+    "correct": 0,
+    "explanation": "A canary rollout exists precisely because an offline gate, however rigorous, cannot anticipate every real-world edge case, so a staged live test is used as an additional safeguard."
+  },
+  {
+    "id": "mlops-034",
+    "topic": "mlops",
+    "subtopic": "Retraining triggers and strategy",
+    "difficulty": "application",
+    "q": "A team retrains their demand-forecasting model every Sunday night regardless of whether any drift has been detected. What is a key limitation of pure calendar-based retraining compared to drift-triggered retraining?",
+    "options": [
+      "It can retrain unnecessarily when nothing has changed, or fail to retrain quickly enough if a sudden drift event happens mid-week",
+      "It is impossible to implement reliably with any modern MLOps scheduling or orchestration tooling available today",
+      "It always produces a strictly worse model than drift-triggered retraining, regardless of how stable the data happens to be",
+      "It removes the need for a quality gate, since a fixed weekly schedule is assumed to already guarantee model quality"
+    ],
+    "correct": 0,
+    "explanation": "A fixed schedule is indifferent to actual change: it wastes effort retraining when nothing has shifted and reacts too slowly to sudden drift that happens between scheduled runs."
+  },
+  {
+    "id": "mlops-035",
+    "topic": "mlops",
+    "subtopic": "Retraining triggers and strategy",
+    "difficulty": "recall",
+    "q": "When a new model is promoted to replace the current production model, why is it standard practice to keep the previous model's artifact and metadata retrievable rather than deleting it?",
+    "options": [
+      "So the system can roll back quickly to a known-good model if the new one misbehaves after deployment",
+      "Because retraining a future model is entirely impossible without keeping the exact old model file",
+      "Because the new model's predictions are assumed to always be identical to the previous one's anyway",
+      "Because the monitoring tools themselves require the old model file in order to compute any drift metrics"
+    ],
+    "correct": 0,
+    "explanation": "Keeping the previous model accessible is what makes a fast rollback possible, which is a key safety mechanism if the newly promoted model turns out to be flawed."
+  },
+  {
+    "id": "mlops-036",
+    "topic": "mlops",
+    "subtopic": "Retraining triggers and strategy",
+    "difficulty": "application",
+    "q": "A drift-monitoring system is deliberately configured to wait until at least 1,000 freshly labelled rows are available before allowing an automatic retraining job to start, even if drift is already detected. What problem does this guard against?",
+    "options": [
+      "Retraining a model on too small a sample of new data, which could produce an unstable or unreliable model update",
+      "The possibility that the drift-monitoring system itself is broken and silently reporting false alerts every day",
+      "The need to ever perform a quality gate check before promoting any newly retrained candidate model",
+      "The risk of the model overfitting specifically to the original, now-outdated training set used at launch"
+    ],
+    "correct": 0,
+    "explanation": "Requiring a minimum volume of labelled data before retraining ensures the new model is trained on a sample large enough to be statistically reliable, not just a drift alert."
+  },
+  {
+    "id": "mlops-037",
+    "topic": "mlops",
+    "subtopic": "Retraining triggers and strategy",
+    "difficulty": "analysis",
+    "q": "A credit-risk model was never retrained after launch and had no monitoring in place, leading to a slow, undetected accuracy decline. Which retraining strategy addresses the root cause most directly?",
+    "options": [
+      "Continuously monitor for drift and performance decay, and trigger retraining with a quality gate and review whenever drift and sufficient new labelled data are both present",
+      "Retrain the model once, immediately, and then never check on its performance or the data again for the rest of its deployment",
+      "Switch to a much more complex model architecture, such as a deep neural network, without changing anything about the monitoring or retraining process that surrounds it, leaving the same detection gap in place",
+      "Increase the size of the original training set used at launch, without adding any ongoing monitoring or retraining process afterward"
+    ],
+    "correct": 0,
+    "explanation": "The root cause was the absence of monitoring and a retraining trigger, so the fix must add both continuous drift monitoring and a disciplined, gated retraining loop, not just a one-off action."
+  },
+  {
+    "id": "mlops-038",
+    "topic": "mlops",
+    "subtopic": "Data leakage and pipeline hygiene",
+    "difficulty": "application",
+    "q": "A team tunes hyperparameters by checking performance on a held-out set, and then reports that same held-out set's score as the final test performance. What is the main risk?",
+    "options": [
+      "Information from the held-out set leaks into model selection, so the reported score is an overly optimistic estimate of true generalisation performance",
+      "The held-out set becomes too statistically large to be a useful or meaningful measure of generalisation performance",
+      "The model will systematically underfit the training data as a direct and unavoidable result of this evaluation choice",
+      "Hyperparameter tuning itself becomes mathematically impossible to perform correctly once a held-out set has already been reused for the final reported test score"
+    ],
+    "correct": 0,
+    "explanation": "Reusing the same set for both tuning and final evaluation means decisions were implicitly optimised against it, so its score no longer reflects unseen, independent generalisation performance."
+  },
+  {
+    "id": "mlops-039",
+    "topic": "mlops",
+    "subtopic": "Data leakage and pipeline hygiene",
+    "difficulty": "application",
+    "q": "A student computes the mean and standard deviation for feature scaling using the entire dataset, and only afterwards splits the data into training and test sets. What is the consequence of scaling before splitting?",
+    "options": [
+      "Statistics from the test set influence the scaling applied to the training set, leaking test-set information and producing an overly optimistic evaluation",
+      "The model will always underperform compared to a version that scaled features only after splitting into train and test",
+      "Feature scaling itself becomes mathematically undefined once the mean and standard deviation are computed before any split",
+      "It has no effect at all on the evaluation, since scaling is just a linear transform and linear transforms are assumed to never leak any information across a split"
+    ],
+    "correct": 0,
+    "explanation": "Fitting the scaler on the full dataset lets test-set values shape the transform applied to the training data, which is a direct form of leakage from test into train."
+  },
+  {
+    "id": "mlops-040",
+    "topic": "mlops",
+    "subtopic": "Data leakage and pipeline hygiene",
+    "difficulty": "application",
+    "q": "A student removes outliers by computing thresholds, such as values beyond three standard deviations, from the full dataset before splitting into train and test. Why is this a mistake?",
+    "options": [
+      "The outlier thresholds are influenced by test-set values, so information from the test set leaks into preprocessing decisions applied to the training data",
+      "Outlier removal using standard deviation thresholds should never be performed under any circumstances in any machine learning pipeline, regardless of when it happens relative to splitting",
+      "It guarantees the final trained model will have strictly higher variance than a model trained without outlier removal",
+      "It only matters when using tree-based models, since linear models are assumed to be unaffected by outliers in the data"
+    ],
+    "correct": 0,
+    "explanation": "Computing outlier statistics across the whole dataset lets test-set values affect what gets removed from training, leaking test-set information into preprocessing."
+  },
+  {
+    "id": "mlops-041",
+    "topic": "mlops",
+    "subtopic": "Data leakage and pipeline hygiene",
+    "difficulty": "application",
+    "q": "A hospital readmission model includes a feature called discharge_summary_mentions_followup_plan, which is only ever filled in by staff after they already know whether the patient will be readmitted. Including this feature causes ______.",
+    "options": [
+      "Target leakage, since the feature is only available because it encodes information derived from the outcome itself",
+      "Concept drift, since the discharge-summary feature's distribution will naturally shift as staffing and practices change",
+      "Class imbalance, since hospital readmission events are comparatively rare relative to non-readmission cases",
+      "Feature scaling issues, since the discharge-summary feature is categorical text rather than a numeric value"
+    ],
+    "correct": 0,
+    "explanation": "A feature that is only populated as a consequence of the outcome being known encodes the label itself, which is the defining pattern of target leakage."
+  },
+  {
+    "id": "mlops-042",
+    "topic": "mlops",
+    "subtopic": "Data leakage and pipeline hygiene",
+    "difficulty": "application",
+    "q": "A student designs this pipeline: removes outliers using statistics from the whole dataset, applies an SVM, and uses the same held-out split for both hyperparameter tuning and final testing. Which single change would most directly fix the testing problem here?",
+    "options": [
+      "Reserve a separate, untouched test set that is used only once, after all tuning is complete, with a distinct validation set used for tuning",
+      "Remove outliers after all hyperparameter tuning is finished instead of before, while still reusing the same split for testing",
+      "Replace the SVM with a different algorithm entirely, while keeping the exact same train/test splitting procedure unchanged",
+      "Scale the features before computing the outlier-removal thresholds, rather than changing anything about the data splitting"
+    ],
+    "correct": 0,
+    "explanation": "The testing problem specifically is that tuning and final evaluation share the same data; the fix is to separate a validation set used for tuning from an untouched test set used only once at the end."
+  },
+  {
+    "id": "mlops-043",
+    "topic": "mlops",
+    "subtopic": "Data leakage and pipeline hygiene",
+    "difficulty": "application",
+    "q": "A data scientist imputes missing values in a numeric column using the overall column mean computed across the entire dataset, before splitting into train and test sets. What is the problem with this approach?",
+    "options": [
+      "The imputed values incorporate information from the test set, leaking it into the training data and inflating evaluation performance",
+      "Mean imputation of missing values is never an acceptable technique to use under any circumstances in a production pipeline",
+      "It will always reduce the total number of usable rows remaining in the dataset after the imputation step completes",
+      "It has no measurable impact on the final evaluation, because missing values are assumed to always be rare in practice"
+    ],
+    "correct": 0,
+    "explanation": "Computing the imputation value from the full dataset lets test-set rows influence the values used to fill in missing training data, which is leakage."
+  },
+  {
+    "id": "mlops-044",
+    "topic": "mlops",
+    "subtopic": "Data leakage and pipeline hygiene",
+    "difficulty": "recall",
+    "q": "What is the correct order of operations to avoid leakage when preprocessing a dataset that will be split into train and test sets?",
+    "options": [
+      "Split the data first, then fit any scaler, imputer or encoder only on the training set, and apply the already-fitted transform to the test set",
+      "Fit the scaler and imputer on the whole dataset first using every available row, and only split the data into train and test partitions afterward once fitting is already complete",
+      "Split the data only after the final model has already been fully trained and its performance already measured",
+      "Fit the scaler on the test set alone, and then apply that fitted transform to the training set before model fitting"
+    ],
+    "correct": 0,
+    "explanation": "The leakage-safe order is split first, then fit preprocessing exclusively on the training partition, then transform the test set using those already-fitted parameters."
+  },
+  {
+    "id": "mlops-045",
+    "topic": "mlops",
+    "subtopic": "Data leakage and pipeline hygiene",
+    "difficulty": "application",
+    "q": "A team selects the top 20 most correlated features with the target by computing correlations across the full dataset, before splitting into train and test. Why is this a leakage problem?",
+    "options": [
+      "The chosen features were picked partly based on their relationship with the target in the test set, so the test set is no longer an independent, unseen evaluation",
+      "Feature selection using correlation can only ever be validly performed after the final model has already been trained and tested",
+      "Correlation-based feature selection is always statistically invalid regardless of when it is computed relative to the train/test split, even on a dataset with no leakage at all",
+      "It increases the risk of the model underfitting the training data, but creates no leakage into the test set whatsoever"
+    ],
+    "correct": 0,
+    "explanation": "Because the correlation used to pick features was computed including test-set rows, the test set has already influenced the modelling choices, undermining its independence."
+  },
+  {
+    "id": "mlops-046",
+    "topic": "mlops",
+    "subtopic": "Data leakage and pipeline hygiene",
+    "difficulty": "application",
+    "q": "A data scientist imputes missing values and applies a one-hot encoder to categorical columns before splitting a dataset for a model that predicts hospital readmission. What single structural fix would most reliably prevent this class of mistake in future pipelines?",
+    "options": [
+      "Wrap preprocessing steps and the model together inside one pipeline object that is fit only on the training partition after splitting",
+      "Only use categorical encoders that are known to run noticeably faster, regardless of when they are fitted relative to the split",
+      "Impute missing values with a constant value of zero instead of the column mean, without changing when imputation is fitted",
+      "Always use a substantially larger dataset so that any leakage effect becomes small enough to be considered negligible"
+    ],
+    "correct": 0,
+    "explanation": "Encapsulating preprocessing and modelling in a single pipeline fit only on the training split enforces the correct split-then-fit order structurally, rather than relying on manual discipline."
+  },
+  {
+    "id": "mlops-047",
+    "topic": "mlops",
+    "subtopic": "Data leakage and pipeline hygiene",
+    "difficulty": "analysis",
+    "q": "A data scientist applies PCA to the entire training dataset once, and then runs 5-fold cross-validation on the PCA-transformed features to select a model. What is the subtle leakage risk here?",
+    "options": [
+      "Each cross-validation fold's validation data influenced the shared PCA transform, so information from each validation fold leaks into the features used to train on the other folds",
+      "PCA cannot be combined with cross-validation under any circumstances, since the two techniques are assumed to be fundamentally incompatible with one another in every modelling scenario",
+      "Cross-validation becomes mathematically undefined once PCA has been applied to the data beforehand, regardless of the fitting order",
+      "There is no leakage risk at all here, as long as that same shared PCA transform is later reused for the final held-out test set too"
+    ],
+    "correct": 0,
+    "explanation": "Fitting PCA once on data that will later be split into folds means every fold's held-out rows already contributed to the shared transform, which is a leakage path specific to preprocessing outside the cross-validation loop."
+  },
+  {
+    "id": "mlops-048",
+    "topic": "mlops",
+    "subtopic": "Data leakage and pipeline hygiene",
+    "difficulty": "application",
+    "q": "A dataset contains many near-duplicate customer records, for example the same customer appearing multiple times with minor timestamp differences. A random train/test split is used without deduplication or grouping by customer. What problem is most likely to occur?",
+    "options": [
+      "Near-duplicate records of the same customer can end up in both the training and test sets, letting the model partly memorise test examples and inflating its apparent performance",
+      "The dataset will automatically become perfectly balanced across classes once near-duplicate customer records are present, regardless of how imbalanced the original labels actually were",
+      "The model will be completely unable to train at all whenever near-duplicate records exist anywhere in the dataset",
+      "Feature scaling will fail to converge numerically whenever near-duplicate rows are split across train and test"
+    ],
+    "correct": 0,
+    "explanation": "Splitting at the row level when rows are not independent, because multiple rows belong to the same entity, lets near-duplicate information leak across the split, inflating test performance."
+  },
+  {
+    "id": "mlops-049",
+    "topic": "mlops",
+    "subtopic": "Data leakage and pipeline hygiene",
+    "difficulty": "application",
+    "q": "A loan-default model includes a feature indicating whether a collections call was ever made to the borrower. Collections calls are only made to customers who already missed a payment. What is the issue with including this feature to predict default risk at the time of loan approval?",
+    "options": [
+      "It is target leakage, because the feature can only take a meaningful value after the outcome the model is trying to predict has effectively already happened",
+      "It is a sign of concept drift between training and deployment, since collections practices are assumed to change over time",
+      "It is simply a class-imbalance problem, since defaults are rare, that standard resampling techniques would straightforwardly fix without changing which features are included",
+      "It is a harmless feature to include as long as it is numerically scaled correctly before being fed into the model"
+    ],
+    "correct": 0,
+    "explanation": "The feature's value is only determined because a missed payment already occurred, so it indirectly reveals the outcome the model is supposed to predict in advance, which is target leakage."
+  },
+  {
+    "id": "mlops-050",
+    "topic": "mlops",
+    "subtopic": "Data leakage and pipeline hygiene",
+    "difficulty": "recall",
+    "q": "In a typical scikit-learn-style pipeline, why should fit() or fit_transform() never be called on the test set for a scaler, encoder or imputer?",
+    "options": [
+      "Fitting on the test set lets its statistics influence the transform, leaking test information into what should be an independent evaluation",
+      "It is only a stylistic convention favoured by some teams, with no actual effect on the final reported evaluation results or on how trustworthy that evaluation really is",
+      "The test set is usually too small in size for a scaler or encoder to be reliably fit on in the first place",
+      "It would only make the fit_transform call run measurably more slowly on larger production-scale datasets"
+    ],
+    "correct": 0,
+    "explanation": "Any fit() call on the test set bakes test-set statistics into the preprocessing, meaning the test set is no longer a clean, unseen evaluation of the pipeline."
+  },
+  {
+    "id": "mlops-051",
+    "topic": "mlops",
+    "subtopic": "Data leakage and pipeline hygiene",
+    "difficulty": "analysis",
+    "q": "A stock-movement prediction model is built from historical price data. The dataset is split into train and test using a random shuffle rather than a chronological cut-off. What leakage risk does this introduce?",
+    "options": [
+      "The model can be trained on data from after the test period, effectively letting it 'see the future' relative to some test examples, which is not possible at real prediction time",
+      "Random splitting always produces a measurably smaller test set in absolute size than an equivalent chronological splitting approach applied to the same historical price data collected over several trading years",
+      "It guarantees the resulting model will systematically underfit whatever test set happens to be produced by the random shuffle",
+      "It has no real effect on the evaluation at all, since historical price data is assumed to have no time dependence worth respecting"
+    ],
+    "correct": 0,
+    "explanation": "Shuffling time-ordered data breaks the natural chronology, allowing information from later time points to end up in training while being tested on earlier points, which could never happen in real deployment."
+  },
+  {
+    "id": "mlops-052",
+    "topic": "mlops",
+    "subtopic": "Data leakage and pipeline hygiene",
+    "difficulty": "analysis",
+    "q": "A team runs many rounds of hyperparameter search, checking test-set performance after every round and stopping once the test score looks good, without a separate validation set. What is the main consequence?",
+    "options": [
+      "Repeatedly checking and reacting to the test score effectively uses it to guide model selection, making the final reported test score an overly optimistic estimate",
+      "The hyperparameter search will take exactly the same amount of wall-clock time as it would using a separate validation set, regardless of how many rounds are repeated",
+      "It eliminates the need to ever hold out any separate evaluation set at all for the rest of the project going forward",
+      "It only affects models that use explicit regularisation terms, leaving unregularised models completely unaffected"
+    ],
+    "correct": 0,
+    "explanation": "Repeatedly peeking at the test score while deciding when to stop or what to try next is a subtler form of leakage, since the test set is being used, cumulatively, to steer decisions about the model."
+  },
+  {
+    "id": "mlops-053",
+    "topic": "mlops",
+    "subtopic": "Data leakage and pipeline hygiene",
+    "difficulty": "analysis",
+    "q": "A churn model includes a feature counting the number of support tickets opened in the customer's final month before the churn label was recorded, computed using the entire final month including days after the customer had effectively already churned. Why is this risky?",
+    "options": [
+      "The feature can be inflated by behaviour that happens because the customer already churned, so it partly encodes the outcome rather than genuinely predicting it in advance",
+      "Support ticket counts are never informative for churn prediction in any circumstance, regardless of when the counting window ends relative to the recorded churn event or how many tickets were opened",
+      "It is purely a numeric scaling problem that a standard scaler would fully resolve, not a leakage problem at all",
+      "It would only be a genuine problem if the support ticket count were stored as a categorical rather than numeric feature"
+    ],
+    "correct": 0,
+    "explanation": "Because the feature window overlaps with the period after the churn event itself, it can reflect the consequence of churning rather than a genuine early warning signal, which is a subtle form of target leakage."
+  },
+  {
+    "id": "mlops-054",
+    "topic": "mlops",
+    "subtopic": "Experiment tracking and versioning",
+    "difficulty": "recall",
+    "q": "Besides versioning model code with git, why do mature ML teams also version the datasets used to train each model?",
+    "options": [
+      "A model's behaviour depends heavily on the exact data it was trained on, so without data versioning a past result cannot be reliably reproduced or audited",
+      "Dataset versioning is only genuinely needed for very large, multi-terabyte datasets rather than for the ordinary-sized ones most teams actually work with day to day",
+      "Git can already track large CSV files and binary datasets just as efficiently and reliably as it tracks source code",
+      "Data versioning on its own fully replaces the need to separately version the trained model artifact itself"
+    ],
+    "correct": 0,
+    "explanation": "Since training results depend jointly on code and data, reproducing or auditing a past model requires knowing and retrieving the exact data version it was trained on, not just the code."
+  },
+  {
+    "id": "mlops-055",
+    "topic": "mlops",
+    "subtopic": "Experiment tracking and versioning",
+    "difficulty": "application",
+    "q": "A team tried dozens of hyperparameter combinations over several weeks but didn't log the parameters, metrics or data version for each run. Months later, they cannot explain why their best-performing model was better than the others. What does this scenario best illustrate?",
+    "options": [
+      "Without systematic experiment tracking, past results become impossible to reproduce or compare meaningfully, even when the team remembers roughly what they tried",
+      "The team's best-performing model must have simply been overfitting to the training data from the very start, regardless of what the missing hyperparameter logs might have shown",
+      "Hyperparameter tuning of any kind is inherently irreproducible no matter how carefully a team logs its runs",
+      "This scenario is primarily a data drift problem rather than a gap in the team's experiment-tracking process"
+    ],
+    "correct": 0,
+    "explanation": "The core issue is missing experiment tracking: without recorded parameters, metrics and data versions, no later analysis can reliably attribute why one run outperformed another."
+  },
+  {
+    "id": "mlops-056",
+    "topic": "mlops",
+    "subtopic": "Experiment tracking and versioning",
+    "difficulty": "application",
+    "q": "A model registry stores every trained model version along with its metrics, and lets the team point an alias like '@champion' at whichever version is currently serving production traffic. What is the main benefit of this alias-based approach?",
+    "options": [
+      "Downstream systems, like the serving API and the retraining gate, can always reference the current best model consistently, without hardcoding a specific version number that would need updating everywhere it is used",
+      "It eliminates the need to ever formally evaluate a new candidate model before promotion, since simply updating the alias pointer is assumed to guarantee the new version is already a genuine improvement over whichever one it replaces",
+      "It automatically fixes any data drift the currently aliased production model happens to experience, without requiring any monitoring, retraining job or human intervention at all",
+      "It replaces the need to store any versioned model files in a registry at all, since the alias pointer itself is treated as a complete, self-contained model artifact"
+    ],
+    "correct": 0,
+    "explanation": "An alias decouples 'which model is currently in production' from a specific hardcoded version number, so promoting a new champion is a single pointer update instead of changing every consumer."
+  },
+  {
+    "id": "mlops-057",
+    "topic": "mlops",
+    "subtopic": "Experiment tracking and versioning",
+    "difficulty": "recall",
+    "q": "Why do experiment-tracking tools record the hyperparameters, metrics and data version for every training run, not just the one that is eventually chosen?",
+    "options": [
+      "It lets the team compare alternatives, justify the final choice, and reproduce or revisit any past experiment later, not only the winning one",
+      "Logging every failed and successful experiment alike is a strict legal requirement imposed by most data protection regulations",
+      "Only the information from the single final chosen run is ever genuinely useful to a team, since discarded experiments teach nothing",
+      "It is only useful for debugging underlying software bugs in the training code, not for justifying any model-selection decision"
+    ],
+    "correct": 0,
+    "explanation": "Recording every run, not only the winner, is what allows genuine comparison, justification of the final choice, and later re-examination of any experiment."
+  },
+  {
+    "id": "mlops-058",
+    "topic": "mlops",
+    "subtopic": "Experiment tracking and versioning",
+    "difficulty": "application",
+    "q": "An experiment-tracking entry for a trained model stores a link to the exact code commit, the data version, and the hyperparameters used to produce it, alongside the resulting metrics. Why is tying all of these together important?",
+    "options": [
+      "It lets anyone later recreate exactly how that specific model was produced and understand which factors could explain its particular performance",
+      "It is only useful for satisfying legal compliance audits, and has no real benefit for everyday technical debugging work once the model has already been deployed",
+      "It allows the model to automatically retrain itself whenever any one of the three linked factors happens to change",
+      "It removes the need for any quality gate check before the resulting model can be deployed to production"
+    ],
+    "correct": 0,
+    "explanation": "Linking the code, data and hyperparameters used to the resulting metrics gives a complete, reproducible record of exactly how a given model was produced."
+  },
+  {
+    "id": "mlops-059",
+    "topic": "mlops",
+    "subtopic": "Experiment tracking and versioning",
+    "difficulty": "application",
+    "q": "Before choosing an algorithm for a marketing-response model, a team trains logistic regression, a random forest and a gradient-boosted model, logging each one's metrics on the identical evaluation set. Why evaluate all three on the exact same evaluation set rather than different ones?",
+    "options": [
+      "Using the same evaluation set makes the comparison fair, since any difference in scores then reflects differences between the models rather than differences between evaluation samples",
+      "It guarantees that the most complex of the three candidates, the gradient-boosted model, will always come out ahead regardless of the actual marketing-response data or how carefully each algorithm was tuned",
+      "Using the identical evaluation set for all three models is only genuinely necessary when the overall dataset being evaluated is very small",
+      "It removes the need to ever perform cross-validation at all when comparing logistic regression, random forest and gradient boosting models"
+    ],
+    "correct": 0,
+    "explanation": "Holding the evaluation data constant isolates the model as the only varying factor, so the resulting metric differences can be attributed to the models themselves rather than to sampling variation."
+  },
+  {
+    "id": "mlops-060",
+    "topic": "mlops",
+    "subtopic": "Experiment tracking and versioning",
+    "difficulty": "recall",
+    "q": "Why should every logged prediction in production include which specific model version produced it?",
+    "options": [
+      "It allows later investigation to attribute any issue, drift, or complaint to the specific model version responsible, especially when multiple versions may be active during a canary rollout",
+      "It is only useful for internal billing and infrastructure cost-allocation purposes, with no investigative value once a model has already passed its quality gate and been promoted to serve live production traffic",
+      "Logging the model version becomes completely unnecessary once that version has already passed its offline quality gate before being promoted to production",
+      "It allows the model to automatically retrain itself the moment a new prediction is logged against it, without any separate labelled-data trigger"
+    ],
+    "correct": 0,
+    "explanation": "During a canary release or across time, more than one model version may be serving traffic, so tagging each prediction with its model version is essential for attributing incidents correctly."
+  },
+  {
+    "id": "mlops-061",
+    "topic": "mlops",
+    "subtopic": "Experiment tracking and versioning",
+    "difficulty": "application",
+    "q": "A customer disputes a credit decision made six months ago. To investigate, the team needs to reproduce exactly what the model predicted at that time and why. What does this require having versioned?",
+    "options": [
+      "The exact model version that served that prediction and the exact input data as it existed at that time",
+      "Only the current production model, since models are assumed to rarely change in any meaningful way over six months",
+      "Only the original raw dataset collected before any preprocessing, with no need to know which model version was used",
+      "Nothing at all, since individual credit predictions can never be reproduced after the fact once six months have passed"
+    ],
+    "correct": 0,
+    "explanation": "Reproducing a historical decision requires retrieving both the exact model version and the exact input as they existed at prediction time, which is only possible with proper versioning of both."
+  },
+  {
+    "id": "mlops-062",
+    "topic": "mlops",
+    "subtopic": "Experiment tracking and versioning",
+    "difficulty": "analysis",
+    "q": "Two data scientists on the same team each separately retrain a demand-forecasting model on slightly different snapshots of the data, without recording which data snapshot or code version was used for either run. Weeks later, they cannot explain why one run slightly outperforms the other. What root problem does this illustrate?",
+    "options": [
+      "Missing experiment tracking makes it impossible to tell whether the performance difference came from the data, the code, or the hyperparameters",
+      "It proves that one of the two data scientists must have made a calculation error somewhere in their retraining script, rather than pointing to any process failure",
+      "It is strong evidence of label noise present in the original demand-forecasting dataset used by both scientists",
+      "It means cross-validation was never used by either data scientist when evaluating their retrained model"
+    ],
+    "correct": 0,
+    "explanation": "Without recording exactly which data, code and hyperparameters each run used, there is no way to disentangle which factor actually caused the difference in performance."
+  },
+  {
+    "id": "mlops-063",
+    "topic": "mlops",
+    "subtopic": "Experiment tracking and versioning",
+    "difficulty": "recall",
+    "q": "In a regulated domain such as consumer credit scoring, why is it especially important to keep an auditable record of exactly which data and model version produced each historical decision?",
+    "options": [
+      "Regulators or disputes may require the organisation to explain or justify a specific past decision, which is only possible if the exact model and data used at that time can be identified and reproduced",
+      "Audits conducted by regulators or disputing customers only ever examine the current production model's present-day behaviour, never any historical credit decision made months or years earlier in the relationship",
+      "Versioning is required only for the training code used to build each model, never for the underlying data or feature pipeline it depended on",
+      "It is purely a storage optimisation technique aimed at reducing how much disk space the model registry consumes over several years"
+    ],
+    "correct": 0,
+    "explanation": "Regulatory and dispute-resolution requirements often demand being able to explain a specific past decision, which is impossible without traceable, versioned records of the model and data in effect at that time."
+  },
+  {
+    "id": "mlops-064",
+    "topic": "mlops",
+    "subtopic": "CI/CD for ML",
+    "difficulty": "recall",
+    "q": "How does continuous integration for a machine learning system typically differ from continuous integration for traditional software?",
+    "options": [
+      "ML continuous integration must also validate data quality and check that a candidate model meets a performance bar, in addition to running the usual code tests",
+      "ML continuous integration never needs to run any automated tests at all, since model quality is assumed to be checked manually by a human before every single release",
+      "ML continuous integration only ever tests the trained model's file size and the overall disk space it occupies in storage",
+      "ML continuous integration is identical in every single respect to traditional software CI, since code is code regardless of what it produces"
+    ],
+    "correct": 0,
+    "explanation": "ML CI/CD must test not only the code but also the data and the resulting model's quality, since a passing build in traditional software terms says nothing about whether the model itself is any good."
+  },
+  {
+    "id": "mlops-065",
+    "topic": "mlops",
+    "subtopic": "CI/CD for ML",
+    "difficulty": "application",
+    "q": "A team's continuous-integration pipeline runs code linting and unit tests, re-validates data against a schema, and re-checks whether a candidate model would beat the current production model, all automatically on every pull request. What is the main purpose of running the model-comparison check specifically in CI?",
+    "options": [
+      "To catch, before merging, a code or data change that would silently degrade the model, rather than discovering it only after it reaches production",
+      "To make the pull request merge noticeably faster by skipping redundant code-quality and linting checks",
+      "To replace the need for any ongoing monitoring once the newly validated model has already been deployed to production and is serving real customer traffic",
+      "To avoid ever needing a separate, held-out test set once the model-comparison check has been added to the pipeline"
+    ],
+    "correct": 0,
+    "explanation": "Running the quality gate automatically on every pull request ensures a regression is caught before merge, not discovered only after the change has already reached production."
+  },
+  {
+    "id": "mlops-066",
+    "topic": "mlops",
+    "subtopic": "CI/CD for ML",
+    "difficulty": "application",
+    "q": "A continuous-deployment pipeline for an ML service builds a new container image, deploys it at a small percentage of traffic, runs an automated smoke test against a health-check endpoint, and only then gradually increases traffic to 100%. What does this design primarily protect against?",
+    "options": [
+      "A newly built image that fails to start correctly or behaves badly in production affecting all users immediately",
+      "The need to ever retrain the underlying model once the new container image has successfully passed its smoke test",
+      "Data drift occurring gradually in the input features over weeks or months after the new image is deployed",
+      "The possibility of two different engineering teams working on the same shared repository at the same time"
+    ],
+    "correct": 0,
+    "explanation": "Staging the rollout with a health check and gradual traffic increase limits exposure if the newly built image is broken or behaves unexpectedly once live."
+  },
+  {
+    "id": "mlops-067",
+    "topic": "mlops",
+    "subtopic": "CI/CD for ML",
+    "difficulty": "recall",
+    "q": "Why do well-designed ML pipelines validate incoming data against a predefined schema or data contract as part of continuous integration?",
+    "options": [
+      "To catch malformed, missing, or unexpectedly typed data early, before it can silently corrupt training or break the pipeline downstream",
+      "Because data contracts and schemas are a strict requirement imposed by every major cloud provider's platform",
+      "Because validating a schema eliminates the need for any separate model quality gate later in the pipeline",
+      "Because it replaces the need for any ongoing monitoring once the model has already been deployed to production and is serving real customer traffic"
+    ],
+    "correct": 0,
+    "explanation": "Validating a data contract early fails fast on unexpected data, preventing it from silently propagating into training and corrupting downstream results."
+  },
+  {
+    "id": "mlops-068",
+    "topic": "mlops",
+    "subtopic": "CI/CD for ML",
+    "difficulty": "application",
+    "q": "A deployment pipeline requires a designated reviewer to manually approve every release to the production environment, even after all automated checks have passed. What is the main reason for keeping this manual approval step?",
+    "options": [
+      "It provides a final human checkpoint that can catch issues automated checks are not designed to evaluate, such as business risk or timing of the release",
+      "Automated checks are never trustworthy for any ML system, regardless of how thoroughly they have been tested and validated by the engineering team beforehand",
+      "It is required only because CI and CD pipelines can never be meaningfully automated for machine learning systems at all",
+      "It removes the need to run any automated tests at all once a human reviewer has been added to the deployment process"
+    ],
+    "correct": 0,
+    "explanation": "A manual approval gate adds human judgement for concerns automated tests are not built to assess, such as business timing or broader risk, complementing rather than replacing automation."
+  },
+  {
+    "id": "mlops-069",
+    "topic": "mlops",
+    "subtopic": "CI/CD for ML",
+    "difficulty": "application",
+    "q": "A production ML service exposes a way to instantly shift all live traffic back to the previous model revision if a newly deployed one misbehaves. Why is having this rollback mechanism considered an essential part of CD for ML, not just a nice-to-have?",
+    "options": [
+      "A model regression may not be caught by automated checks alone and can only be discovered once it is already serving real traffic, so a fast way back to a known-good version limits the damage",
+      "Rollback mechanisms are only ever genuinely useful for traditional software deployments, never for machine learning model revisions, since a passed quality gate is assumed to rule out any possible regression",
+      "It replaces the need for any offline quality gate check before a new model revision is ever deployed to live production traffic",
+      "It guarantees that data drift will never occur again for any future model revision, once a rollback mechanism has been configured"
+    ],
+    "correct": 0,
+    "explanation": "Since no pre-deployment check can guarantee flawless live behaviour, a fast rollback path is the final safety net for limiting harm from an undetected regression."
+  },
+  {
+    "id": "mlops-070",
+    "topic": "mlops",
+    "subtopic": "CI/CD for ML",
+    "difficulty": "recall",
+    "q": "Traditional software CI/CD pipelines mainly need to version and test source code. What additional artifacts must an ML CI/CD pipeline also version and validate to be trustworthy?",
+    "options": [
+      "The training data, or its version, and the resulting trained model artifacts, alongside the code",
+      "Only the cloud infrastructure configuration files used to provision and deploy the serving servers",
+      "Only the list of team members who currently have access to the shared code repository",
+      "Nothing extra at all; code versioning alone is always considered sufficient for any ML system"
+    ],
+    "correct": 0,
+    "explanation": "An ML system's behaviour depends on code, data, and the trained model artifact together, so a trustworthy CI/CD pipeline must version and validate all three, not just the code."
+  },
+  {
+    "id": "mlops-071",
+    "topic": "mlops",
+    "subtopic": "CI/CD for ML",
+    "difficulty": "analysis",
+    "q": "A fraud-detection model passes every unit test in continuous integration, including code-quality checks and a basic smoke test that the service starts and returns predictions. It still fails badly within weeks of deployment due to drift. What does this best illustrate about CI/CD for ML?",
+    "options": [
+      "Passing CI only confirms that the code runs correctly and the model meets a static quality bar at merge time; it cannot guarantee future performance against data that has not arrived yet",
+      "CI tests of any kind are fundamentally pointless for ML systems and should simply be removed entirely, since they clearly failed to prevent this slow drift-related failure from ever happening at all",
+      "The model must have had an undetected bug hiding somewhere inside its unit tests, which a smoke test should have caught before merge",
+      "It proves that the deployment pipeline itself, rather than the model's exposure to new real-world data, was fundamentally broken"
+    ],
+    "correct": 0,
+    "explanation": "CI checks are a point-in-time quality bar; they cannot anticipate future changes in the real world, which is exactly why ongoing monitoring and retraining are needed on top of CI/CD."
+  },
+  {
+    "id": "mlops-072",
+    "topic": "mlops",
+    "subtopic": "CI/CD for ML",
+    "difficulty": "application",
+    "q": "An ML platform team builds a single Docker image once in CI and promotes that exact same image through staging and then production, rather than rebuilding the image separately for each environment. Why is this considered best practice?",
+    "options": [
+      "It guarantees the model and its dependencies that were tested are the exact same artifact that ultimately reaches production, avoiding subtle differences introduced by a separate build",
+      "It makes the resulting container image noticeably smaller in overall file size compared to rebuilding it separately for each of the staging, testing and production environments involved",
+      "It is required only because Docker itself is technically incapable of rebuilding the exact same image more than once from a given Dockerfile",
+      "It removes the need to ever run any automated smoke tests specifically in the staging environment before reaching production"
+    ],
+    "correct": 0,
+    "explanation": "Promoting the identical, already-tested image avoids the risk that a separate rebuild for a later environment could introduce subtle, untested differences."
+  },
+  {
+    "id": "mlops-073",
+    "topic": "mlops",
+    "subtopic": "CI/CD for ML",
+    "difficulty": "application",
+    "q": "An ML team pins exact versions of every library in a lock file and has CI fail the build if the lock file is out of sync with the project's dependency list. What risk does this specifically guard against?",
+    "options": [
+      "An unpinned or mismatched dependency silently changing the behaviour of preprocessing or model code between training and serving, producing inconsistent results",
+      "The risk of gradual data drift occurring naturally in the live production input features over several months of operation",
+      "The risk of a designated code reviewer simply forgetting to approve a pull request before it accidentally gets merged into the shared main branch used for every subsequent training run",
+      "The risk of the final trained model artifact becoming too large in file size to fit within normal deployment size limits"
+    ],
+    "correct": 0,
+    "explanation": "Pinning exact dependency versions and checking them in CI prevents a library version mismatch from silently changing preprocessing or model behaviour between environments."
+  },
+  {
+    "id": "mlops-074",
+    "topic": "mlops",
+    "subtopic": "CI/CD for ML",
+    "difficulty": "recall",
+    "q": "Why is enforcing 'all automated checks must pass before a pull request can be merged' particularly important for an ML repository that also contains the data processing pipeline?",
+    "options": [
+      "A broken preprocessing step or schema violation merged into the main branch could silently corrupt every future training run until it is noticed",
+      "It is purely a stylistic convention adopted by some teams, with no functional benefit for data pipelines specifically, regardless of how many contributors maintain them",
+      "It is only genuinely relevant for repositories maintained by more than ten active contributors at the same time",
+      "It guarantees that the resulting retrained model will always be measurably more accurate than the previous version"
+    ],
+    "correct": 0,
+    "explanation": "Because the data pipeline directly feeds model training, a merged bug in preprocessing can silently poison every subsequent training run, making a hard merge gate especially important."
+  },
+  {
+    "id": "mlops-075",
+    "topic": "mlops",
+    "subtopic": "Train/test splitting strategy",
+    "difficulty": "recall",
+    "q": "What does a stratified train/test split specifically preserve, compared to a plain random split?",
+    "options": [
+      "The proportion of each class, or category, in both the training and test sets, matching the original dataset's distribution",
+      "The exact row order of the original dataset, keeping every record in precisely the same sequence as before",
+      "The original column order of the dataset, keeping every feature in exactly the same position as before",
+      "The mean and variance of every single numeric feature, preserved exactly between train and test sets"
+    ],
+    "correct": 0,
+    "explanation": "Stratified splitting specifically preserves the class or category proportions across the resulting partitions, which a plain random split does not guarantee."
+  },
+  {
+    "id": "mlops-076",
+    "topic": "mlops",
+    "subtopic": "Train/test splitting strategy",
+    "difficulty": "application",
+    "q": "A fraud dataset has only 2% fraudulent transactions. A plain random 80/20 split is used, and by chance the test set ends up with almost no fraud cases. What problem does stratified splitting by class specifically address here?",
+    "options": [
+      "It ensures the rare fraud class is represented in both train and test sets in roughly the same proportion as the full dataset, avoiding an unreliable evaluation from an unlucky split",
+      "It guarantees the resulting fraud model will achieve measurably higher precision purely because the split itself was stratified by class",
+      "It removes the need for any class-imbalance handling technique, such as resampling or class weighting, during the actual model training step that follows this carefully stratified train/test split",
+      "It changes the total number of rows present in the full dataset by discarding whichever rows do not fit neatly into a stratum"
+    ],
+    "correct": 0,
+    "explanation": "Stratification by class keeps the rare class's proportion consistent across the split, avoiding an unlucky random split that leaves too few minority-class examples to evaluate reliably."
+  },
+  {
+    "id": "mlops-077",
+    "topic": "mlops",
+    "subtopic": "Train/test splitting strategy",
+    "difficulty": "application",
+    "q": "A churn-prediction model will be used to score customers going forward in time. Which splitting strategy best matches how the model will actually be used once deployed?",
+    "options": [
+      "Split chronologically, training on older data and testing on more recent data, rather than shuffling randomly across time",
+      "Split randomly across the entire historical time range, shuffling every row freely regardless of its date",
+      "Split the dataset stratified only by customer age group, ignoring the order in which events occurred",
+      "Split the dataset by the alphabetical order of each customer's name, ignoring both class and time"
+    ],
+    "correct": 0,
+    "explanation": "Since the model will predict future outcomes from past patterns once deployed, a chronological split, training on the past and testing on the future, mirrors the real deployment setting far better than a random shuffle."
+  },
+  {
+    "id": "mlops-078",
+    "topic": "mlops",
+    "subtopic": "Train/test splitting strategy",
+    "difficulty": "application",
+    "q": "A dataset of balanced, independent customer surveys with no meaningful time ordering and roughly equal classes is being split for a classification task. Which splitting approach is most appropriate here?",
+    "options": [
+      "A plain random split is adequate, since the classes are already balanced and there is no time dependence to respect",
+      "A stratified split is strictly required here even though the classes are already roughly balanced across the dataset",
+      "A chronological split is required regardless of whether the survey data actually has any meaningful time dependence",
+      "No train/test split is needed at all before training, since the surveys are assumed to already be representative"
+    ],
+    "correct": 0,
+    "explanation": "When classes are already balanced and rows are independent with no time dependence, a plain random split is sufficient; the extra constraints of stratified or chronological splitting are unnecessary here."
+  },
+  {
+    "id": "mlops-079",
+    "topic": "mlops",
+    "subtopic": "Train/test splitting strategy",
+    "difficulty": "analysis",
+    "q": "A dataset is stratified by the target class during splitting, but a particular customer segment that behaves very differently is, by chance, almost entirely placed in the training set. What does this illustrate?",
+    "options": [
+      "Stratifying on one variable, the target, does not automatically guarantee balance across every other variable that might matter for evaluation",
+      "Stratified splitting on the target class always eliminates every possible source of evaluation bias across any other variable",
+      "It proves that stratified splitting is strictly worse in general than a plain random split for this kind of dataset",
+      "It means the dataset must be mislabelled, since a properly labelled dataset could never produce this kind of imbalance"
+    ],
+    "correct": 0,
+    "explanation": "Stratifying by class only controls for that one variable; other important segments can still be unevenly distributed between train and test purely by chance."
+  },
+  {
+    "id": "mlops-080",
+    "topic": "mlops",
+    "subtopic": "Train/test splitting strategy",
+    "difficulty": "application",
+    "q": "A dataset contains multiple transaction records per customer. If a plain random split is used, some of the same customer's transactions can land in both the training and test sets. Which splitting strategy avoids this specific leakage risk?",
+    "options": [
+      "A group-aware split that keeps all of a given customer's records together in either the training set or the test set, never both",
+      "A stratified split performed only by transaction amount, ignoring which customer each transaction actually belongs to",
+      "A chronological split performed by the hour of each transaction, regardless of which customer it came from",
+      "Removing all transactions with duplicate amounts before splitting, without grouping by customer at all"
+    ],
+    "correct": 0,
+    "explanation": "A group-aware split, keeping all of one entity's records entirely on one side of the split, is the correct way to prevent the same customer appearing in both partitions."
+  },
+  {
+    "id": "mlops-081",
+    "topic": "mlops",
+    "subtopic": "Train/test splitting strategy",
+    "difficulty": "recall",
+    "q": "Why do practitioners commonly use stratified k-fold cross-validation rather than plain k-fold when a dataset is imbalanced?",
+    "options": [
+      "It ensures each fold keeps roughly the same class proportions as the full dataset, giving a more reliable and less noisy estimate of performance across folds",
+      "It automatically increases the actual number of minority-class examples available within each individual fold",
+      "It removes the need to ever compute a separate, final held-out test set once stratified cross-validation has been performed across every available fold of the imbalanced dataset",
+      "It guarantees results that are completely identical to those from a plain random k-fold split on the same data"
+    ],
+    "correct": 0,
+    "explanation": "Stratified k-fold keeps the class balance consistent in every fold, reducing the variance and unreliability that plain random folds can introduce when a dataset is imbalanced."
+  },
+  {
+    "id": "mlops-082",
+    "topic": "mlops",
+    "subtopic": "Train/test splitting strategy",
+    "difficulty": "analysis",
+    "q": "A team predicting next-month sales shuffles all historical monthly records randomly before splitting into train and test, instead of holding out only the most recent months for testing. What consequence does this most directly risk?",
+    "options": [
+      "The model may be evaluated on test months that are chronologically earlier than some training months, letting it effectively learn from the future relative to parts of the test set",
+      "The model will always underfit the training data as a direct and unavoidable result of shuffling the monthly sales records randomly",
+      "It guarantees strictly better generalisation to future sales months than a proper chronological split would ever achieve",
+      "It has no real effect on the evaluation at all, since monthly sales figures are assumed to have no meaningful time dependence worth respecting in any demand-forecasting task whatsoever"
+    ],
+    "correct": 0,
+    "explanation": "Random shuffling of time-ordered sales data can place later months in training and earlier months in test, letting the model implicitly use future information that would never be available at real prediction time."
+  },
+  {
+    "id": "mlops-083",
+    "topic": "mlops",
+    "subtopic": "End-to-end pipeline design and diagnosis",
+    "difficulty": "recall",
+    "q": "Which sequence best describes a sane end-to-end production ML pipeline?",
+    "options": [
+      "Preprocess data, train the model, validate it against a quality bar, deploy it, monitor it in production, and retrain when needed",
+      "Deploy an untrained model to production first, then begin collecting data afterward, and only then decide whether to train it at all",
+      "Train the model once, delete all of the original training data afterward, and then monitor only the deployment infrastructure",
+      "Monitor production traffic first before any model exists, then design the preprocessing steps entirely around whatever is observed"
+    ],
+    "correct": 0,
+    "explanation": "A sane pipeline follows preprocess, train, validate, deploy, monitor, retrain in that order, closing the loop so that production feedback feeds back into future retraining."
+  },
+  {
+    "id": "mlops-084",
+    "topic": "mlops",
+    "subtopic": "End-to-end pipeline design and diagnosis",
+    "difficulty": "analysis",
+    "q": "A model performs well in the lab but poorly after six months in production. A review finds new categories in categorical features, a shifted input distribution, no retraining since launch, and no monitoring metrics ever tracked. Which of the following best summarises the root cause of this failure?",
+    "options": [
+      "The deployment had no mechanism to detect or respond to real-world change, so drift accumulated silently until performance collapsed",
+      "The original model was underfit from the very start and genuinely never worked correctly even during the lab evaluation",
+      "The lab evaluation team used the wrong accuracy formula when first reporting the model's original performance numbers",
+      "The production servers hosting the model were underpowered and unable to handle the volume of incoming requests"
+    ],
+    "correct": 0,
+    "explanation": "All four findings point to the same underlying gap: nothing in the deployed system was designed to detect or respond to change, so real-world drift was free to accumulate unchecked."
+  },
+  {
+    "id": "mlops-085",
+    "topic": "mlops",
+    "subtopic": "End-to-end pipeline design and diagnosis",
+    "difficulty": "application",
+    "q": "Given a model that failed in production due to undetected drift and no retraining, which single addition to the pipeline would most directly close the gap that allowed the failure to go unnoticed for six months?",
+    "options": [
+      "Continuous monitoring of input and prediction distributions with alerting on significant drift",
+      "A more powerful algorithm with structurally lower bias than whatever model was originally deployed",
+      "A substantially larger original training dataset collected before the model was first launched",
+      "A stricter accuracy threshold applied only once, at the initial launch review before deployment"
+    ],
+    "correct": 0,
+    "explanation": "The failure went unnoticed specifically because nothing was monitoring for change after launch, so adding continuous drift monitoring with alerting directly closes that detection gap."
+  },
+  {
+    "id": "mlops-086",
+    "topic": "mlops",
+    "subtopic": "End-to-end pipeline design and diagnosis",
+    "difficulty": "application",
+    "q": "A junior engineer proposes a pipeline that goes straight from training to deployment, with no separate validation step comparing the new model against any quality bar. What is the main risk of skipping this step?",
+    "options": [
+      "A model that performs worse than the current production model, or simply bad, could reach real users with nothing to catch it first",
+      "Training itself would become technically impossible to run without a separate validation step configured beforehand",
+      "It would make the overall deployment pipeline run noticeably slower by adding an unnecessary extra step",
+      "It has no real risk at all, since strong training metrics already fully guarantee good production performance going forward"
+    ],
+    "correct": 0,
+    "explanation": "Without a validation gate comparing the new model to a quality bar before deployment, there is nothing stopping a bad or regressed model from reaching production unchecked."
+  },
+  {
+    "id": "mlops-087",
+    "topic": "mlops",
+    "subtopic": "End-to-end pipeline design and diagnosis",
+    "difficulty": "application",
+    "q": "A pipeline validates incoming raw data against a predefined schema, checking expected columns, types and value ranges, before any preprocessing or training happens. Why place this check so early in the pipeline rather than relying on later validation only?",
+    "options": [
+      "Catching malformed or unexpected data immediately avoids wasting downstream computation on, and prevents silent corruption from, bad inputs that should never have reached training",
+      "Schema checks are only ever meaningful after the model has already been fully deployed and is actively serving real live production traffic to actual paying customers around the clock",
+      "It removes the need for any ongoing monitoring at all once the model has been deployed and is serving live production traffic",
+      "It guarantees that the resulting model will never need to be retrained for the rest of its entire deployed lifetime"
+    ],
+    "correct": 0,
+    "explanation": "Failing fast at the data-contract stage prevents invalid data from silently propagating into expensive downstream steps like training, where problems would be harder to trace."
+  },
+  {
+    "id": "mlops-088",
+    "topic": "mlops",
+    "subtopic": "End-to-end pipeline design and diagnosis",
+    "difficulty": "recall",
+    "q": "Why do well-designed ML pipelines break the workflow into distinct, independently re-runnable stages, such as download, prepare, train and evaluate, tracked with recorded hashes of inputs and outputs, rather than one large monolithic script?",
+    "options": [
+      "It lets the pipeline skip re-running stages whose inputs have not changed, and makes it possible to reproduce or debug any single stage without rerunning everything",
+      "It is required because monolithic single-file scripts cannot technically be written at all in the Python programming language used by most modern data science teams today",
+      "It automatically removes the need for a separate held-out test set anywhere in the overall pipeline design",
+      "It guarantees that every individual stage will produce exactly identical metrics no matter how many times it is rerun"
+    ],
+    "correct": 0,
+    "explanation": "Breaking the workflow into tracked, re-runnable stages allows unchanged stages to be skipped efficiently and makes it possible to isolate, reproduce and debug any single stage independently."
+  },
+  {
+    "id": "mlops-089",
+    "topic": "mlops",
+    "subtopic": "End-to-end pipeline design and diagnosis",
+    "difficulty": "analysis",
+    "q": "A credit-risk model needs a complete MLOps pipeline covering monitoring, retraining and validation. Which of the following pipeline designs best satisfies all three requirements together?",
+    "options": [
+      "Continuously monitor live predictions and feature distributions for drift, automatically trigger retraining on fresh labelled data once drift and enough new data are present, and gate any retrained model behind a validation check before promotion",
+      "Monitor the model only once a year during a scheduled annual review, retraining it only if a team member happens to personally notice a problem with its live predictions sometime in between reviews",
+      "Retrain the model automatically every single day regardless of whether any meaningful drift has actually occurred, and promote every new version straight to production without ever running a validation check or comparing it against the prior deployed one",
+      "Validate the model thoroughly just once before its initial launch, and then skip any further monitoring, drift detection or retraining for the entire rest of its deployed production lifetime"
+    ],
+    "correct": 0,
+    "explanation": "Only the first option closes the loop across all three requirements: ongoing monitoring feeds a disciplined, data-driven retraining trigger, and every retrained candidate still passes a validation gate before replacing the production model."
+  },
+  {
+    "id": "mlops-090",
+    "topic": "mlops",
+    "subtopic": "End-to-end pipeline design and diagnosis",
+    "difficulty": "application",
+    "q": "A team deploys a recommendation model and considers the MLOps work finished once the API is live and serving predictions. What is missing from treating deployment as the final step?",
+    "options": [
+      "Without ongoing monitoring and a feedback loop back into retraining, the team has no way to detect or respond to the model degrading as real-world conditions change",
+      "Nothing is actually missing here; deployment is always considered the final and complete step in any MLOps workflow",
+      "Deployment inherently includes fully automatic retraining built in, requiring no further monitoring, feedback loop or configuration from the team once the recommendation API has gone live",
+      "Monitoring after deployment is only ever necessary for models that specifically use deep learning architectures"
+    ],
+    "correct": 0,
+    "explanation": "Deployment is only one stage of the full loop; without monitoring and a path back into retraining, there is no way to notice or correct degradation once the model starts seeing real-world data."
+  },
+  {
+    "id": "mlops-091",
+    "topic": "mlops",
+    "subtopic": "End-to-end pipeline design and diagnosis",
+    "difficulty": "analysis",
+    "q": "Which of the following production scenarios best demonstrates a healthy, properly functioning end-to-end MLOps pipeline?",
+    "options": [
+      "Monitoring detects rising drift, triggers a retraining job on new labelled data, the retrained model is validated against the current production model before being promoted, and a human reviews the change before it reaches all users",
+      "The model is never re-evaluated at all after its initial deployment, because the validation accuracy recorded at launch was already considered high enough to last indefinitely",
+      "A freshly retrained model is promoted directly to all production traffic immediately, without any comparison at all against the previous model's metrics, any validation gate, or any human review beforehand, regardless of how the retrained candidate actually performs",
+      "Monitoring alerts are generated correctly whenever drift occurs, but no defined process exists for anyone on the team to actually act on those alerts once they appear"
+    ],
+    "correct": 0,
+    "explanation": "A healthy pipeline closes the full loop: detection, retraining, validation against a quality bar, and human review before full promotion, which is exactly what the first scenario describes."
+  }
+]

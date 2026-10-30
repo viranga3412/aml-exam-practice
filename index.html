@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Applied ML Exam Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="app.css?v=2">
+</head>
+<body>
+<div class="page" id="app">
+
+  <header class="top">
+    <div class="brand">
+      <span class="kicker">IT 5504 · Applied Machine Learning</span>
+      <h1>Exam Practice</h1>
+    </div>
+    <nav class="tabs" role="tablist">
+      <button role="tab" class="tab active" data-tab="mcq" aria-selected="true">MCQ practice</button>
+      <button role="tab" class="tab" data-tab="essay" aria-selected="false">Structured &amp; essay</button>
+    </nav>
+  </header>
+
+  <!-- ================================================================ MCQ -->
+  <main id="tab-mcq">
+    <section id="screen-setup">
+      <div class="hero">
+        <p id="header-subtitle">Loading&hellip;</p>
+        <div class="stat-pills" id="all-time-stat"></div>
+      </div>
+
+      <div class="section-head">
+        <h2>Topics</h2>
+        <div class="link-row"><button class="link" id="topics-all">Select all</button><button class="link" id="topics-none">Clear</button></div>
+      </div>
+      <div class="topic-grid" id="topic-grid"></div>
+
+      <h2>Session</h2>
+      <div class="setup-row">
+        <label class="field"><span>Questions</span>
+          <select id="count-select">
+            <option value="20">20</option>
+            <option value="50" selected>50</option>
+            <option value="100">100</option>
+            <option value="200">200</option>
+            <option value="all">All in selected topics</option>
+          </select>
+        </label>
+        <label class="field"><span>Feedback</span>
+          <select id="mode-select">
+            <option value="instant" selected>Instant: marked the moment you click</option>
+            <option value="exam">Exam simulation: review at the end</option>
+          </select>
+        </label>
+        <label class="field"><span>Question type</span>
+          <select id="kind-select">
+            <option value="any" selected>All questions</option>
+            <option value="visual">Only graph / table questions</option>
+          </select>
+        </label>
+      </div>
+      <label class="check-row"><input type="checkbox" id="prioritize-missed"> Put questions I got wrong before first</label>
+
+      <div class="actions"><button class="primary" id="start-btn">Start practice</button></div>
+    </section>
+
+    <section id="screen-quiz" hidden>
+      <div class="quiz-bar">
+        <div class="quiz-meta">
+          <span id="quiz-position"></span>
+          <span class="live" id="quiz-score"></span>
+        </div>
+        <div class="progress"><div class="progress-fill" id="progress-fill"></div></div>
+        <div class="dots" id="answer-dots" aria-hidden="true"></div>
+      </div>
+
+      <article class="card quiz">
+        <div class="q-topic-tag" id="q-topic-tag"></div>
+        <p class="q-title" id="q-title"></p>
+        <pre class="q-code" id="q-code" hidden><code id="q-code-text"></code></pre>
+        <div id="q-extra"></div>
+        <div class="q-options" id="q-options" role="radiogroup"></div>
+        <div class="verdict" id="verdict" hidden></div>
+        <div class="explanation-box" id="explanation-box"></div>
+        <div class="quiz-actions">
+          <button class="secondary" id="prev-btn">&larr; Back</button>
+          <span class="hint" id="key-hint">Keys: 1–4 or A–D to answer · Enter for next</span>
+          <button class="primary" id="next-btn" disabled>Next &rarr;</button>
+        </div>
+      </article>
+
+      <div class="actions"><button class="ghost" id="quit-btn">End session</button></div>
+    </section>
+
+    <section id="screen-results" hidden>
+      <div class="card result-hero">
+        <div class="ring" id="summary-ring"></div>
+        <div>
+          <h2>Session summary</h2>
+          <p class="summary-score" id="summary-score"></p>
+          <p class="muted" id="summary-line"></p>
+        </div>
+      </div>
+
+      <h3>By topic</h3>
+      <div class="table-wrap"><table class="topic-breakdown">
+        <thead><tr><th>Topic</th><th>Correct</th><th>%</th></tr></thead>
+        <tbody id="topic-breakdown-body"></tbody>
+      </table></div>
+
+      <h3>Questions you missed</h3>
+      <div id="missed-list"></div>
+
+      <div class="actions">
+        <button class="primary" id="retry-missed-btn" hidden>Retry just those</button>
+        <button class="secondary" id="restart-btn">Back to topics</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================================================================ Essay -->
+  <main id="tab-essay" hidden>
+    <section id="essay-list-screen">
+      <div class="hero">
+        <p>Structured and essay questions from the real past papers (April 2021 paper and the Q1–Q3 practice set), with graphs and tables redrawn. Write your answer. A live meter shows how many marking points it already covers. Then open the model answer and correct your marks.</p>
+        <div class="stat-pills" id="essay-stat"></div>
+      </div>
+      <div class="essay-list" id="essay-list"></div>
+    </section>
+
+    <section id="essay-screen" hidden>
+      <div class="actions left"><button class="ghost" id="essay-back">&larr; All questions</button></div>
+      <article class="card essay" id="essay-body"></article>
+    </section>
+  </main>
+
+  <footer class="foot">Progress and drafts are saved in this browser only.</footer>
+</div>
+<script src="chart-render.js?v=2"></script>
+<script src="questions.js?v=2"></script>
+<script src="essays.js?v=2"></script>
+<script src="app.js?v=2"></script>
+</body>
+</html>

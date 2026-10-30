@@ -1,0 +1,1728 @@
+[
+  {
+    "id": "logreg-001",
+    "topic": "logistic-regression",
+    "subtopic": "Why not linear regression",
+    "difficulty": "application",
+    "q": "A bank tries to predict loan default (yes/no) by fitting ordinary linear regression to the 0/1 label and thresholding the output at 0.5. Why is this approach unreliable?",
+    "options": [
+      "A single extreme applicant can shift the fitted line enough to change the predicted class of several other, previously correct applicants",
+      "Linear regression cannot be computed at all once the target variable is encoded as 0/1 integers, since least squares strictly requires continuous targets",
+      "Linear regression requires every input feature to be normalized onto a [0,1] scale before it can produce any numerical output whatsoever",
+      "Ordinary linear regression cannot ever be fit using gradient descent, since only logistic regression's loss function supports iterative optimization"
+    ],
+    "correct": 0,
+    "explanation": "Linear regression minimizes squared error over all points, so an outlier far from the rest can pull the fitted line and shift where it crosses the 0.5 threshold, flipping classifications for other points."
+  },
+  {
+    "id": "logreg-002",
+    "topic": "logistic-regression",
+    "subtopic": "Why not linear regression",
+    "difficulty": "recall",
+    "q": "Which property of a classification label makes ordinary least-squares linear regression a poor direct fit for predicting it?",
+    "options": [
+      "The label is restricted to a small set of discrete classes rather than being a continuous real number",
+      "The label can never be represented as a number at all, since words like spam have no inherent numeric meaning",
+      "Linear regression cannot handle more than one input feature at a time, so multi-feature datasets break it",
+      "Classification problems always involve far more training rows than regression problems, overwhelming least squares"
+    ],
+    "correct": 0,
+    "explanation": "Linear regression is built to predict unbounded continuous values; a 0/1 label is discrete, so the model's output is not naturally interpretable as a class probability without a bounding function such as the sigmoid."
+  },
+  {
+    "id": "logreg-003",
+    "topic": "logistic-regression",
+    "subtopic": "Sigmoid function",
+    "difficulty": "recall",
+    "q": "The sigmoid function used in logistic regression maps any real-valued input z to an output in which range?",
+    "options": [
+      "(0, 1)",
+      "(-1, 1)",
+      "(0, \\u221e)",
+      "(-\\u221e, \\u221e), the same range as its input"
+    ],
+    "correct": 0,
+    "explanation": "The sigmoid function \\u03c3(z) = 1 / (1 + e^-z) squashes any real number into the open interval (0, 1), making its output interpretable as a probability."
+  },
+  {
+    "id": "logreg-004",
+    "topic": "logistic-regression",
+    "subtopic": "Sigmoid function",
+    "difficulty": "application",
+    "q": "For logistic regression, if z = w^T x = 0, the predicted probability is ______.",
+    "options": [
+      "0.5",
+      "0",
+      "1",
+      "undefined, since z = 0 is outside the sigmoid's domain"
+    ],
+    "correct": 0,
+    "explanation": "Plugging z = 0 into the sigmoid gives 1 / (1 + e^0) = 1/2 = 0.5, the point of maximum uncertainty between the two classes."
+  },
+  {
+    "id": "logreg-005",
+    "topic": "logistic-regression",
+    "subtopic": "Sigmoid function",
+    "difficulty": "application",
+    "q": "As z = w^T x becomes a large negative number, what happens to the sigmoid output \\u03c3(z)?",
+    "options": [
+      "It approaches 1 instead of 0, so the model becomes very confident in the positive class despite the negative score",
+      "It oscillates unpredictably between 0 and 1 as z becomes more negative, never settling near a fixed value regardless of the weights",
+      "It approaches -1 instead of 0, since the sigmoid mirrors the sign of increasingly negative inputs",
+      "It approaches -1, mirroring the sign of z"
+    ],
+    "correct": 0,
+    "explanation": "As z \\u2192 -\\u221e, e^-z \\u2192 \\u221e, so 1 / (1 + e^-z) \\u2192 0, meaning large negative scores push the predicted probability toward 0."
+  },
+  {
+    "id": "logreg-006",
+    "topic": "logistic-regression",
+    "subtopic": "Sigmoid function",
+    "difficulty": "recall",
+    "q": "A credit-risk model computes z = w^T x + b for an applicant, then passes z through the sigmoid function. What does the resulting number represent?",
+    "options": [
+      "The estimated probability that the applicant belongs to the positive class (e.g. will default)",
+      "The exact dollar amount the applicant is predicted to owe the bank if the loan is approved and later defaults",
+      "The number of individual features whose weighted contribution to the score happens to be positive",
+      "The margin by which this applicant's raw score exceeds every other applicant's score in the batch"
+    ],
+    "correct": 0,
+    "explanation": "The sigmoid of the linear score z is interpreted directly as a probability estimate for the positive class, which is the core idea behind logistic regression's output."
+  },
+  {
+    "id": "logreg-007",
+    "topic": "logistic-regression",
+    "subtopic": "Sigmoid function",
+    "difficulty": "analysis",
+    "q": "Why is the sigmoid function, rather than a simple clipped linear function (clip wx+b between 0 and 1), preferred for turning a linear score into a probability?",
+    "options": [
+      "The sigmoid is smooth and differentiable everywhere, which allows gradient-based optimization, whereas a clipped linear function has flat, non-informative gradients outside the clip range",
+      "The sigmoid always produces exactly the same numerical output as a clipped linear function for every input, so there is no practical difference",
+      "A clipped linear function cannot be evaluated on a computer at all because the clipping operation itself is undefined for most floating-point values",
+      "The sigmoid produces systematically larger probability values on average than a clipped linear function, which improves accuracy regardless of the underlying data distribution"
+    ],
+    "correct": 0,
+    "explanation": "A clipped linear function has zero gradient wherever it is clipped, which stalls learning for points far from the boundary; the sigmoid's smooth, non-zero gradient everywhere makes it suitable for gradient-based training."
+  },
+  {
+    "id": "logreg-008",
+    "topic": "logistic-regression",
+    "subtopic": "Binary classification framing",
+    "difficulty": "recall",
+    "q": "Which type of ML algorithm is most suitable when only input features are available and no labelled outputs exist?",
+    "options": [
+      "Unsupervised learning",
+      "Supervised learning",
+      "Reinforcement learning",
+      "Semi-supervised learning"
+    ],
+    "correct": 0,
+    "explanation": "Without labels, there is no target to supervise training against, so the task falls under unsupervised learning (e.g. clustering), not logistic regression or other supervised classifiers."
+  },
+  {
+    "id": "logreg-009",
+    "topic": "logistic-regression",
+    "subtopic": "Binary classification framing",
+    "difficulty": "recall",
+    "q": "In a spam-detection problem using logistic regression, how many distinct values can the target label y take?",
+    "options": [
+      "Exactly two",
+      "Exactly three",
+      "Any whole number up to the number of training examples",
+      "Any real number between 0 and 1"
+    ],
+    "correct": 0,
+    "explanation": "Binary classification, which logistic regression is designed for, restricts the label y to exactly two discrete classes, such as spam (1) versus not spam (0)."
+  },
+  {
+    "id": "logreg-010",
+    "topic": "logistic-regression",
+    "subtopic": "Binary classification framing",
+    "difficulty": "application",
+    "q": "A hospital wants to predict whether a patient will be readmitted within 30 days (yes/no) using features like age, prior admissions, and lab results. Which modeling approach fits this problem most directly?",
+    "options": [
+      "A binary classifier such as logistic regression",
+      "A regression model predicting a continuous readmission score with no fixed range",
+      "An unsupervised clustering algorithm, since no labels are needed",
+      "A time-series forecasting model predicting future lab values"
+    ],
+    "correct": 0,
+    "explanation": "Readmission within 30 days is a yes/no outcome with historical labels available, which is exactly the setting binary classifiers like logistic regression are built for."
+  },
+  {
+    "id": "logreg-011",
+    "topic": "logistic-regression",
+    "subtopic": "Decision boundary",
+    "difficulty": "application",
+    "q": "Logistic regression's decision boundary is ______.",
+    "options": [
+      "Linear unless features are transformed",
+      "Always linear, regardless of the features used",
+      "Always nonlinear, even with raw untransformed features",
+      "Determined entirely by the weight initialization chosen"
+    ],
+    "correct": 0,
+    "explanation": "The boundary w^T x = 0 is a linear (hyperplane) equation in the original features; it only becomes nonlinear in the original feature space if nonlinear or interaction terms are engineered and added as new features."
+  },
+  {
+    "id": "logreg-012",
+    "topic": "logistic-regression",
+    "subtopic": "Decision boundary",
+    "difficulty": "recall",
+    "q": "At the decision boundary of a logistic regression classifier, what is true of the predicted probability?",
+    "options": [
+      "It equals exactly 0.5, the threshold between the two predicted classes",
+      "It equals exactly 1.0 for both classes simultaneously, since the boundary marks perfect certainty",
+      "It is undefined at the boundary, because the sigmoid function is discontinuous at that exact point",
+      "It equals the regularization strength parameter C used when the model was originally fit"
+    ],
+    "correct": 0,
+    "explanation": "The decision boundary is defined as the set of points where z = w^T x = 0, which the sigmoid maps to exactly 0.5 \\u2014 the tie point between the two classes."
+  },
+  {
+    "id": "logreg-013",
+    "topic": "logistic-regression",
+    "subtopic": "Decision boundary",
+    "difficulty": "application",
+    "q": "A churn-prediction model using only two raw features (monthly spend, tenure) draws a straight line to separate churners from non-churners, but a large cluster of churners sits inside a circular region surrounded by non-churners. What is the most direct way to let logistic regression capture this pattern?",
+    "options": [
+      "Add polynomial or interaction terms (e.g. squared features) so the boundary becomes a curve in the original feature space",
+      "Switch to a much larger regularization strength C, since increasing C always bends the boundary to fit the data more tightly",
+      "Remove one of the two features entirely so the decision boundary collapses to a single dimension",
+      "Increase the number of training epochs well past convergence, since extra training always creates curved boundaries"
+    ],
+    "correct": 0,
+    "explanation": "Logistic regression's boundary is linear in whatever features it is given; adding engineered nonlinear features (like squared terms) lets the same linear-in-parameters model represent a curved boundary, such as a circle, in the original space."
+  },
+  {
+    "id": "logreg-014",
+    "topic": "logistic-regression",
+    "subtopic": "Decision boundary",
+    "difficulty": "analysis",
+    "q": "Why can a model that is \"linear in its parameters\" still produce a curved decision boundary when plotted against the original two raw features?",
+    "options": [
+      "If the inputs include transformed terms (e.g. x1^2, x1*x2), the boundary is linear in those terms but traces a curve in the original untransformed features",
+      "Logistic regression always produces curved decision boundaries regardless of which features or transformations are used",
+      "The sigmoid function itself is literally a straight line, so any curvature in the decision boundary must come from somewhere entirely unrelated to the features",
+      "Curved boundaries only ever occur because of numerical errors accumulating during gradient descent training"
+    ],
+    "correct": 0,
+    "explanation": "A model like w0 + w1*x1 + w2*x1^2 = 0 is linear in the weights, but because one term is x1 squared, the equation traces a parabola in the (x1, x2) plane rather than a straight line."
+  },
+  {
+    "id": "logreg-015",
+    "topic": "logistic-regression",
+    "subtopic": "Decision boundary",
+    "difficulty": "recall",
+    "q": "If a logistic regression model outputs a predicted probability of 0.82 for a given input and the classification threshold is 0.5, what class is predicted?",
+    "options": [
+      "The positive class (label 1)",
+      "The negative class (label 0)",
+      "Both classes simultaneously, since 0.82 is ambiguous",
+      "No class can be predicted without knowing the regularization strength"
+    ],
+    "correct": 0,
+    "explanation": "Since 0.82 exceeds the default 0.5 threshold, the model predicts the positive class."
+  },
+  {
+    "id": "logreg-016",
+    "topic": "logistic-regression",
+    "subtopic": "Decision boundary",
+    "difficulty": "analysis",
+    "q": "In a fraud-detection setting where missing a fraudulent transaction is far costlier than a false alarm, why might an analyst lower the classification threshold below the default 0.5?",
+    "options": [
+      "A lower threshold flags more transactions as fraud, increasing recall (catching more true fraud cases) at the cost of more false positives",
+      "A lower threshold always increases precision while leaving recall completely unchanged, regardless of the data",
+      "The threshold has no effect at all on which transactions get flagged, only on the reported training loss value",
+      "Lowering the threshold actually changes the underlying probabilities the model outputs for each transaction"
+    ],
+    "correct": 0,
+    "explanation": "Lowering the threshold makes it easier for a transaction to be classified as positive, which increases recall (fewer missed fraud cases) but typically reduces precision (more false alarms) \\u2014 a deliberate trade-off when false negatives are costlier."
+  },
+  {
+    "id": "logreg-017",
+    "topic": "logistic-regression",
+    "subtopic": "Cross-entropy loss",
+    "difficulty": "recall",
+    "q": "Which of the following loss functions is used in logistic regression?",
+    "options": [
+      "Cross-entropy loss",
+      "Mean absolute error",
+      "Hinge loss",
+      "Log-cosine loss"
+    ],
+    "correct": 0,
+    "explanation": "Logistic regression is trained by minimizing the binary cross-entropy (log loss), which is derived from maximizing the likelihood of a Bernoulli-distributed label."
+  },
+  {
+    "id": "logreg-018",
+    "topic": "logistic-regression",
+    "subtopic": "Cross-entropy loss",
+    "difficulty": "analysis",
+    "q": "Why does using mean squared error (instead of cross-entropy) with a sigmoid output tend to make logistic regression harder to train with gradient descent?",
+    "options": [
+      "The combination produces a non-convex loss surface with flat regions where gradients vanish, making optimization prone to getting stuck",
+      "Mean squared error cannot be computed at all whenever the predicted probabilities lie strictly between 0 and 1",
+      "Cross-entropy and mean squared error always produce identical gradients for the sigmoid, so there is no real practical difference",
+      "Mean squared error only works correctly for datasets containing more than two output classes, never for binary ones"
+    ],
+    "correct": 0,
+    "explanation": "Pairing squared error with the sigmoid yields a non-convex loss with large flat, low-gradient regions where predictions are confidently wrong, slowing or stalling gradient descent; cross-entropy instead produces a convex loss whose gradient stays informative."
+  },
+  {
+    "id": "logreg-019",
+    "topic": "logistic-regression",
+    "subtopic": "Cross-entropy loss",
+    "difficulty": "application",
+    "q": "A tumor-classification model predicts a probability of 0.01 for a tumor that is actually malignant (true label 1). What does cross-entropy loss do in this situation compared to a confident, correct prediction?",
+    "options": [
+      "It assigns a very large penalty, since the loss grows sharply as the predicted probability for the true class approaches 0",
+      "It assigns exactly zero penalty in this case, since the model still technically produced a valid probability value",
+      "It assigns the same fixed penalty every time, regardless of how confident or correct the prediction actually was",
+      "It assigns a negative penalty here, effectively rewarding the model for this confidently wrong prediction"
+    ],
+    "correct": 0,
+    "explanation": "Cross-entropy loss is -log(p) for the true class; as the predicted probability for the correct class approaches 0, -log(p) grows toward infinity, heavily penalizing confident wrong predictions."
+  },
+  {
+    "id": "logreg-020",
+    "topic": "logistic-regression",
+    "subtopic": "Cross-entropy loss",
+    "difficulty": "recall",
+    "q": "What makes the logistic/cross-entropy loss function convex with respect to the model's weights, a property squared error lacks when combined with the sigmoid?",
+    "options": [
+      "It is derived from the negative log-likelihood of a Bernoulli distribution, which yields a single global minimum for logistic regression's linear score",
+      "It is convex purely because logarithms themselves are convex functions for any input, independent of the model",
+      "Convexity in this context is only a convenient assumption that textbooks make for simplicity, and does not actually hold mathematically for real-world data",
+      "It becomes convex only once L2 regularization is added to the loss; without any regularization it is not convex at all"
+    ],
+    "correct": 0,
+    "explanation": "The cross-entropy loss for logistic regression comes from maximum likelihood estimation under a Bernoulli model, and this specific combination with the sigmoid produces a convex optimization problem with a unique global minimum."
+  },
+  {
+    "id": "logreg-021",
+    "topic": "logistic-regression",
+    "subtopic": "Cross-entropy loss",
+    "difficulty": "analysis",
+    "q": "Two models predict probabilities for the same true positive-class example: Model A predicts 0.95, Model B predicts 0.55. Both are technically \"correct\" at the default threshold. How does cross-entropy loss treat these two predictions differently?",
+    "options": [
+      "Cross-entropy assigns Model B a higher loss than Model A, since it rewards confident correct predictions and penalizes weaker ones even when both cross the threshold",
+      "Cross-entropy assigns both models exactly identical loss values, since both predictions cross the 0.5 threshold",
+      "Cross-entropy assigns Model A the higher loss here instead, since the loss function is claimed to always penalize more confident correct probabilities more heavily than weaker, less confident ones",
+      "Cross-entropy cannot be computed at all unless the predicted probability equals exactly 0 or exactly 1"
+    ],
+    "correct": 0,
+    "explanation": "Cross-entropy loss is -log(p) for the true class, so a weaker correct prediction like 0.55 incurs more loss than a confident one like 0.95, capturing calibration quality beyond just hitting the threshold."
+  },
+  {
+    "id": "logreg-022",
+    "topic": "logistic-regression",
+    "subtopic": "Gradient descent for logistic regression",
+    "difficulty": "recall",
+    "q": "In gradient descent for logistic regression, what update rule is typically applied to each weight at every iteration?",
+    "options": [
+      "Subtract the learning rate times the gradient of the cross-entropy loss with respect to that weight",
+      "Add the learning rate times the current weight's own value to itself, regardless of the loss gradient",
+      "Set each weight directly equal to the overall average of the training labels, ignoring the features",
+      "Replace each weight with whatever value maximizes the squared error between predictions and labels"
+    ],
+    "correct": 0,
+    "explanation": "Gradient descent iteratively updates each weight by moving it a small step (learning rate) in the direction opposite the gradient of the loss, gradually reducing cross-entropy loss."
+  },
+  {
+    "id": "logreg-023",
+    "topic": "logistic-regression",
+    "subtopic": "Gradient descent for logistic regression",
+    "difficulty": "application",
+    "q": "While training a logistic regression model on credit application data, the loss decreases very slowly and erratically over many epochs. What is a plausible first thing to check?",
+    "options": [
+      "Whether the learning rate is poorly chosen (too high causes oscillation, too low causes slow progress) and whether features are properly scaled",
+      "Whether the dataset contains any categorical features at all, since logistic regression cannot handle those under any circumstances",
+      "Whether the model has accidentally been configured to use hinge loss instead of cross-entropy, since hinge loss can't converge this way",
+      "Whether the number of target classes exceeds two, since gradient descent for logistic regression only ever works with exactly two classes"
+    ],
+    "correct": 0,
+    "explanation": "Slow or erratic convergence in gradient descent is commonly caused by a poorly tuned learning rate or unscaled features with very different magnitudes, both of which distort the gradient steps."
+  },
+  {
+    "id": "logreg-024",
+    "topic": "logistic-regression",
+    "subtopic": "Gradient descent for logistic regression",
+    "difficulty": "analysis",
+    "q": "Why does feature scaling (e.g. standardization) typically help gradient descent converge faster when training logistic regression on data with features of very different magnitudes (e.g. income in dollars vs. age in years)?",
+    "options": [
+      "Without scaling, the loss surface becomes elongated and skewed, causing gradient descent to zig-zag, whereas scaling keeps a single learning rate effective for every weight",
+      "Feature scaling actually changes the underlying classes being predicted in the dataset, which artificially makes the classification problem seem easier than it actually is for the gradient descent optimizer to solve",
+      "Gradient descent cannot mathematically be applied at all to unscaled data and will always throw a runtime error",
+      "Feature scaling only ever matters when training neural networks, and has no real effect for logistic regression"
+    ],
+    "correct": 0,
+    "explanation": "When features have very different scales, the loss surface becomes stretched along some directions, forcing gradient descent to zig-zag with a single shared learning rate; standardizing features makes gradients more balanced across weights and speeds convergence."
+  },
+  {
+    "id": "logreg-025",
+    "topic": "logistic-regression",
+    "subtopic": "Gradient descent for logistic regression",
+    "difficulty": "recall",
+    "q": "Because the cross-entropy loss for logistic regression is convex, what guarantee does gradient descent have (with an appropriately chosen learning rate)?",
+    "options": [
+      "It will converge in exactly one single iteration, no matter what learning rate is chosen beforehand",
+      "It guarantees the model will reach exactly 100% training accuracy once gradient descent fully converges",
+      "It guarantees that the trained model will generalize well to unseen test data, regardless of the features used",
+      "It guarantees the model will generalize well to unseen test data"
+    ],
+    "correct": 0,
+    "explanation": "Convexity of the loss surface means there is only one minimum (no separate local minima to get trapped in), so gradient descent with a suitable learning rate is guaranteed to approach that single global minimum."
+  },
+  {
+    "id": "logreg-026",
+    "topic": "logistic-regression",
+    "subtopic": "Gradient descent for logistic regression",
+    "difficulty": "application",
+    "q": "A practitioner sets the learning rate for gradient descent on a logistic regression model far too high. What is the most likely symptom during training?",
+    "options": [
+      "The loss oscillates or diverges instead of steadily decreasing, because the weight updates repeatedly overshoot the minimum",
+      "Training becomes extremely slow instead, taking many more epochs than necessary before it ever converges",
+      "The model automatically switches over to a closed-form least-squares solution instead of continuing gradient descent",
+      "The predicted probabilities become restricted to exactly 0 or 1 for every single training example processed"
+    ],
+    "correct": 0,
+    "explanation": "An excessively high learning rate causes each update step to overshoot the minimum, often leading to oscillating or diverging loss rather than smooth convergence."
+  },
+  {
+    "id": "logreg-027",
+    "topic": "logistic-regression",
+    "subtopic": "Regularization (L1 vs L2)",
+    "difficulty": "application",
+    "q": "A logistic regression model built for disease prediction shows unstable coefficients, high variance across cross-validation folds, and many correlated medical features (training accuracy 96%, test accuracy 72%). Which regularization choice is generally more suitable for handling the correlated-feature issue here?",
+    "options": [
+      "L2 regularization, since it shrinks correlated coefficients together smoothly rather than arbitrarily zeroing some out",
+      "L1 regularization, since it reliably guarantees the single best, deterministic subset of features even among correlated predictors",
+      "No regularization at all, since regularization techniques only help when the input features are uncorrelated",
+      "Increasing the learning rate substantially, since regularization strength has nothing to do with multicollinearity"
+    ],
+    "correct": 0,
+    "explanation": "With highly correlated features, L1 tends to arbitrarily pick one feature from a correlated group and zero out the rest (which can be unstable itself), while L2 shrinks correlated coefficients together in a smoother, more stable way, helping reduce the variance seen across folds."
+  },
+  {
+    "id": "logreg-028",
+    "topic": "logistic-regression",
+    "subtopic": "Regularization (L1 vs L2)",
+    "difficulty": "recall",
+    "q": "Which regularization penalty tends to drive some model coefficients exactly to zero, effectively performing automatic feature selection?",
+    "options": [
+      "L1 (lasso) regularization",
+      "L2 (ridge) regularization",
+      "Both L1 and L2 drive coefficients to exactly zero equally often",
+      "Neither; only dropout can zero out coefficients"
+    ],
+    "correct": 0,
+    "explanation": "The L1 penalty's geometry (a diamond-shaped constraint region) tends to produce sparse solutions where many coefficients become exactly zero, unlike L2's smooth, rounded constraint region which shrinks coefficients but rarely zeroes them out."
+  },
+  {
+    "id": "logreg-029",
+    "topic": "logistic-regression",
+    "subtopic": "Regularization (L1 vs L2)",
+    "difficulty": "application",
+    "q": "A retail company builds a churn model with hundreds of weakly-informative behavioral features and wants a smaller, more interpretable final feature set. Which regularization approach best supports this goal?",
+    "options": [
+      "L1 regularization, since it can zero out uninformative features and yield a sparse, more interpretable model",
+      "L2 regularization, since it always produces the fewest nonzero coefficients of any regularization approach",
+      "Removing regularization entirely from the model, since regularization only ever affects training speed",
+      "Increasing the number of training epochs substantially, since extra training is equivalent to feature selection"
+    ],
+    "correct": 0,
+    "explanation": "L1's tendency to zero out coefficients makes it well suited when the goal is a sparse, interpretable subset of features, whereas L2 keeps all features with reduced but nonzero weights."
+  },
+  {
+    "id": "logreg-030",
+    "topic": "logistic-regression",
+    "subtopic": "Regularization (lambda/C)",
+    "difficulty": "application",
+    "q": "What is the typical effect of increasing regularization strength in logistic regression on the model's predicted probabilities?",
+    "options": [
+      "It shrinks the predicted probabilities toward 0.5, reducing the model's confidence",
+      "It instead increases the predicted probabilities toward 1 for every single training example",
+      "It has no measurable effect whatsoever on the predicted probabilities the model outputs",
+      "The effect on predicted probabilities is undefined and unpredictable, varying randomly between runs"
+    ],
+    "correct": 0,
+    "explanation": "Stronger regularization shrinks the weight magnitudes, which shrinks the linear score z toward 0, and because sigmoid(0) = 0.5, predicted probabilities are pulled toward 0.5, making the model less confident overall."
+  },
+  {
+    "id": "logreg-031",
+    "topic": "logistic-regression",
+    "subtopic": "Regularization (lambda/C)",
+    "difficulty": "recall",
+    "q": "In scikit-learn's LogisticRegression, the parameter C controls regularization strength. What is the relationship between C and the amount of regularization applied?",
+    "options": [
+      "C is the inverse of regularization strength, so smaller C means stronger regularization",
+      "C is the regularization strength directly applied, so a smaller C always means weaker regularization",
+      "C only affects which solver is used internally and has no effect on regularization",
+      "C sets the exact number of features that will be kept in the model after fitting is complete"
+    ],
+    "correct": 0,
+    "explanation": "Scikit-learn parameterizes logistic regression's regularization using C, the inverse of the traditional lambda; a smaller C means stronger regularization, while a larger C means weaker regularization."
+  },
+  {
+    "id": "logreg-032",
+    "topic": "logistic-regression",
+    "subtopic": "Regularization (lambda/C)",
+    "difficulty": "analysis",
+    "q": "A model trained with an extremely small value of C on a credit-scoring dataset achieves similarly low accuracy on both training and test sets, and the fitted coefficients are all very close to zero. What does this suggest?",
+    "options": [
+      "The regularization strength is too high, causing the model to underfit by shrinking the weights too aggressively",
+      "The regularization strength is actually too low here, causing severe overfitting to the noisy training data",
+      "The dataset must simply contain no useful signal at all, no matter how regularization is tuned",
+      "The model has already converged to the Bayes-optimal solution and genuinely cannot be improved further"
+    ],
+    "correct": 0,
+    "explanation": "A very small C means very strong regularization; pushing weights too close to zero makes the model too simple, hurting both training and test performance \\u2014 the hallmark of underfitting rather than overfitting."
+  },
+  {
+    "id": "logreg-033",
+    "topic": "logistic-regression",
+    "subtopic": "Regularization (lambda/C)",
+    "difficulty": "application",
+    "q": "As the regularization strength lambda in logistic regression is increased from 0 toward a very large value, what typically happens to the bias and variance of the model?",
+    "options": [
+      "Bias tends to increase while variance tends to decrease",
+      "Bias tends to decrease while variance tends to increase",
+      "Both bias and variance increase together",
+      "Neither bias nor variance is affected by the regularization strength"
+    ],
+    "correct": 0,
+    "explanation": "Stronger regularization constrains the model more, which typically increases bias (the model becomes simpler and may underfit) but reduces variance (less sensitivity to the specific training sample)."
+  },
+  {
+    "id": "logreg-034",
+    "topic": "logistic-regression",
+    "subtopic": "Overfitting and underfitting",
+    "difficulty": "recall",
+    "q": "A logistic regression model achieves 98% accuracy on training data but only 70% on held-out test data. What does this large gap most likely indicate?",
+    "options": [
+      "The model is underfitting instead, since high training accuracy by itself always implies underfitting",
+      "The model is underfitting, since high training accuracy always implies underfitting",
+      "The model's regularization strength must be set far too high, suppressing its ability to fit the data at all",
+      "The evaluation metric chosen here is simply inappropriate for any binary classification task"
+    ],
+    "correct": 0,
+    "explanation": "A large gap between training and test accuracy, with training accuracy much higher, is the classic signature of overfitting \\u2014 the model fit noise or idiosyncrasies specific to the training set."
+  },
+  {
+    "id": "logreg-035",
+    "topic": "logistic-regression",
+    "subtopic": "Overfitting and underfitting",
+    "difficulty": "application",
+    "q": "A spam classifier performs poorly on both the training set and the test set, with similar low accuracy on each. Which problem does this pattern suggest?",
+    "options": [
+      "Overfitting instead, since the two accuracy scores coming out similar always indicates overfitting has occurred",
+      "Overfitting, since the two accuracy scores being similar always indicates overfitting",
+      "Data leakage somewhere in the pipeline, since training and test accuracy should never come out similar",
+      "A labeling error confined only to the test set, unrelated to how the model itself was trained"
+    ],
+    "correct": 0,
+    "explanation": "Low and similar accuracy on both training and test sets suggests the model is too simple or not capturing the underlying relationship \\u2014 underfitting \\u2014 rather than having memorized the training data."
+  },
+  {
+    "id": "logreg-036",
+    "topic": "logistic-regression",
+    "subtopic": "Overfitting and underfitting",
+    "difficulty": "analysis",
+    "q": "Why does adding many high-degree polynomial feature combinations to a logistic regression model tend to increase the risk of overfitting on a modest-sized dataset?",
+    "options": [
+      "The extra flexibility lets the decision boundary bend tightly around individual training points, capturing noise rather than the underlying pattern",
+      "Polynomial features always reduce the effective number of usable training examples available for fitting",
+      "Adding more polynomial features automatically reduces the convexity of the cross-entropy loss, directly causing instability",
+      "Polynomial terms force the sigmoid function itself to behave like a discontinuous step function near the boundary"
+    ],
+    "correct": 0,
+    "explanation": "Higher-degree polynomial features increase model flexibility, allowing the decision boundary to twist around individual training points' noise rather than the broader pattern, which hurts generalization to unseen data."
+  },
+  {
+    "id": "logreg-037",
+    "topic": "logistic-regression",
+    "subtopic": "Overfitting and underfitting",
+    "difficulty": "application",
+    "q": "Which of the following is a reasonable remedy for an overfitting logistic regression model trained on a dataset with hundreds of sparse, weakly relevant features?",
+    "options": [
+      "Apply stronger L1 or L2 regularization, or reduce the number of features used",
+      "Remove regularization entirely to let the model fit the training data more closely",
+      "Train for additional epochs past convergence without changing anything else",
+      "Switch to computing accuracy only on the training set to avoid the apparent gap"
+    ],
+    "correct": 0,
+    "explanation": "Increasing regularization strength (or reducing feature count) constrains the model's flexibility, directly addressing overfitting by discouraging the model from fitting noise in a high-dimensional, sparse feature space."
+  },
+  {
+    "id": "logreg-038",
+    "topic": "logistic-regression",
+    "subtopic": "Overfitting and underfitting",
+    "difficulty": "analysis",
+    "q": "A data scientist notices that cross-validation fold accuracies for their logistic regression model vary wildly (e.g. 95%, 68%, 91%, 70%) depending on which rows end up in each fold. What does this high variance across folds most strongly suggest?",
+    "options": [
+      "The model is perfectly calibrated already, so cross-validation is entirely unnecessary going forward",
+      "The model is perfectly calibrated and cross-validation is unnecessary going forward",
+      "The dataset must simply have no usable signal at all for any model, logistic regression or otherwise, to learn from",
+      "Cross-validation folds should always produce identical accuracy scores, regardless of which model is being evaluated"
+    ],
+    "correct": 0,
+    "explanation": "Large swings in accuracy across cross-validation folds indicate the fitted model is highly sensitive to which examples happen to be in the training set, a hallmark of high variance and overfitting, often worsened by multicollinearity."
+  },
+  {
+    "id": "logreg-039",
+    "topic": "logistic-regression",
+    "subtopic": "Multiclass extensions",
+    "difficulty": "recall",
+    "q": "When extending logistic regression to a problem with more than two classes using the one-vs-rest (OvR) strategy, how many separate binary classifiers are trained for a K-class problem?",
+    "options": [
+      "K separate binary classifiers, each distinguishing one class from all the others",
+      "Exactly 2 classifiers regardless of K",
+      "K(K-1)/2 classifiers, one for every pair of classes",
+      "A single classifier that outputs all K predictions directly, with no separate models"
+    ],
+    "correct": 0,
+    "explanation": "One-vs-rest trains one binary classifier per class, each one treating that class as positive and all remaining classes as negative, then picks the class whose classifier is most confident."
+  },
+  {
+    "id": "logreg-040",
+    "topic": "logistic-regression",
+    "subtopic": "Multiclass extensions",
+    "difficulty": "recall",
+    "q": "In multinomial (softmax) logistic regression for a K-class problem, what property must the predicted probabilities for the K classes satisfy for a given input?",
+    "options": [
+      "They must be non-negative and sum to exactly 1 across all K classes",
+      "They must each individually exceed 0.5, no matter how many classes K the problem actually has",
+      "They must always sum to exactly K, regardless of how many classes are being predicted",
+      "They must all be exactly equal to each other for every single input the model receives"
+    ],
+    "correct": 0,
+    "explanation": "The softmax function normalizes the exponentials of each class's score so that all K resulting probabilities are non-negative and sum to 1, forming a valid probability distribution over the classes."
+  },
+  {
+    "id": "logreg-041",
+    "topic": "logistic-regression",
+    "subtopic": "Multiclass extensions",
+    "difficulty": "application",
+    "q": "A retailer wants to classify customer support tickets into exactly one of five categories (billing, shipping, returns, technical, other). Which extension of logistic regression most directly handles this multiclass setup?",
+    "options": [
+      "Multinomial (softmax) logistic regression or a one-vs-rest ensemble of binary logistic regression classifiers",
+      "Standard binary logistic regression used unmodified, since it already supports five classes natively",
+      "Linear regression predicting a single continuous category index that is then rounded to the nearest class",
+      "A model that only ever outputs the majority class every time, completely ignoring the input features"
+    ],
+    "correct": 0,
+    "explanation": "Plain logistic regression is built for two classes, so five mutually exclusive categories require either the softmax (multinomial) generalization or combining multiple one-vs-rest binary classifiers."
+  },
+  {
+    "id": "logreg-042",
+    "topic": "logistic-regression",
+    "subtopic": "Multiclass extensions",
+    "difficulty": "analysis",
+    "q": "Why can one-vs-rest logistic regression sometimes produce inconsistent results, such as two classifiers both outputting a probability below 0.5 for an input that must belong to one of the classes?",
+    "options": [
+      "Each binary classifier is trained independently without constraining probabilities across classes to sum to one, so their raw outputs aren't directly comparable",
+      "One-vs-rest always guarantees properly normalized, directly comparable probabilities across every trained classifier, by mathematical design and construction, regardless of how the individual binary classifiers were trained",
+      "This inconsistency can only ever happen if the dataset actually contains exactly two classes to begin with",
+      "One-vs-rest simply cannot be implemented using logistic regression at all, regardless of the number of classes"
+    ],
+    "correct": 0,
+    "explanation": "Because each one-vs-rest classifier is trained separately against a different negative set, their output probabilities are not jointly normalized, so the maximum score (rather than a guaranteed sum-to-one assumption) is used to pick the predicted class."
+  },
+  {
+    "id": "logreg-043",
+    "topic": "logistic-regression",
+    "subtopic": "Probabilistic interpretation and odds",
+    "difficulty": "recall",
+    "q": "In logistic regression, what quantity do the model's linear coefficients (w^T x) directly represent before applying the sigmoid?",
+    "options": [
+      "The log-odds (logit) of the positive class",
+      "The raw, unnormalized probability of the positive outcome class itself",
+      "The variance of the predicted class label across the dataset",
+      "The squared error between the prediction and the true label"
+    ],
+    "correct": 0,
+    "explanation": "Logistic regression models the log-odds of the positive class as a linear function of the features; applying the sigmoid converts this log-odds value back into a probability."
+  },
+  {
+    "id": "logreg-044",
+    "topic": "logistic-regression",
+    "subtopic": "Probabilistic interpretation and odds",
+    "difficulty": "application",
+    "q": "In a disease-risk logistic regression model, a one-unit increase in a feature (e.g. age in decades) is associated with a coefficient of 0.7. How is this coefficient most naturally interpreted?",
+    "options": [
+      "A one-unit increase in the feature multiplies the odds of the positive outcome by e^0.7, holding other features fixed",
+      "A one-unit increase in the feature adds exactly 0.7 to the predicted probability, regardless of the current probability",
+      "The coefficient directly represents the predicted probability of disease at that feature value",
+      "The coefficient has no interpretable meaning until the model is fully retrained"
+    ],
+    "correct": 0,
+    "explanation": "In logistic regression, coefficients represent changes in log-odds; exponentiating a coefficient gives the multiplicative change in odds per one-unit increase in that feature, holding other features constant."
+  },
+  {
+    "id": "logreg-045",
+    "topic": "logistic-regression",
+    "subtopic": "Probabilistic interpretation and odds",
+    "difficulty": "recall",
+    "q": "What is the \"odds\" of an event with probability p, as used in deriving the logistic regression model?",
+    "options": [
+      "p / (1 - p)",
+      "p * (1 - p)",
+      "1 - p",
+      "log(p)"
+    ],
+    "correct": 0,
+    "explanation": "Odds are defined as the ratio of the probability of an event occurring to the probability of it not occurring, p / (1 - p); the logit function is the natural log of this odds ratio."
+  },
+  {
+    "id": "logreg-046",
+    "topic": "logistic-regression",
+    "subtopic": "Probabilistic interpretation and odds",
+    "difficulty": "analysis",
+    "q": "A marketing model finds that a coefficient for \"received promotional email\" is negative when predicting purchase likelihood, even though simple summary statistics show email recipients purchase more often on average. What concept most likely explains this discrepancy?",
+    "options": [
+      "Confounding or correlation with other features in the model, since a coefficient reflects the effect holding other features constant, not the raw marginal association",
+      "Logistic regression coefficients are always completely meaningless in every dataset and should therefore never be interpreted by analysts at all, no matter how carefully the model was fit or validated",
+      "The coefficient's negative sign must indicate an underlying bug somewhere in the sigmoid function's implementation",
+      "The sign of any logistic regression coefficient is entirely arbitrary and carries no real statistical information"
+    ],
+    "correct": 0,
+    "explanation": "A coefficient captures the feature's effect while holding other features in the model fixed; a reversal from the raw marginal association often signals that other correlated variables are absorbing the positive effect, a classic confounding pattern."
+  },
+  {
+    "id": "logreg-047",
+    "topic": "logistic-regression",
+    "subtopic": "Evaluation metrics",
+    "difficulty": "application",
+    "q": "A fraud-detection dataset has only 2% fraudulent transactions. A logistic regression model that always predicts \"not fraud\" achieves 98% accuracy. Why is accuracy a misleading metric here?",
+    "options": [
+      "With highly imbalanced classes, a trivial model ignoring the minority class can score high on accuracy while being useless for fraud detection",
+      "Accuracy simply cannot be computed at all whenever the two classes are imbalanced like this",
+      "Accuracy is technically only defined for multiclass problems, and never applies to binary ones",
+      "The 98% figure must actually be a calculation error somewhere in the pipeline, since accuracy can never realistically exceed 95% for any real-world model"
+    ],
+    "correct": 0,
+    "explanation": "In an imbalanced dataset, predicting the majority class for every example yields high accuracy without any real predictive skill for the minority (and often more important) class, which is why metrics like precision, recall, and F1 are preferred in such cases."
+  },
+  {
+    "id": "logreg-048",
+    "topic": "logistic-regression",
+    "subtopic": "Evaluation metrics",
+    "difficulty": "recall",
+    "q": "In a confusion matrix for a binary classifier, what does a \"false negative\" represent?",
+    "options": [
+      "An actual positive example that the model incorrectly predicted as negative",
+      "An actual negative example that the model incorrectly predicted as positive",
+      "An actual positive example that the model also correctly predicted as positive here",
+      "An actual negative example that the model also correctly predicted as negative here"
+    ],
+    "correct": 0,
+    "explanation": "A false negative occurs when the true label is positive but the model predicts negative, meaning the model missed a real positive case."
+  },
+  {
+    "id": "logreg-049",
+    "topic": "logistic-regression",
+    "subtopic": "Evaluation metrics",
+    "difficulty": "application",
+    "q": "In a cancer-screening model, why might a clinician prioritize recall (sensitivity) over precision even if it means more false alarms?",
+    "options": [
+      "A missed cancer case (false negative) is typically far more harmful than an unnecessary follow-up test (false positive)",
+      "Precision and recall are mathematically identical for any threshold, so the choice doesn't matter",
+      "Recall is always higher than precision for any classifier, so prioritizing it requires no trade-off",
+      "Recall only actually matters when the underlying dataset happens to be perfectly balanced between classes"
+    ],
+    "correct": 0,
+    "explanation": "In medical screening, missing a true case (false negative) often has much higher cost than a false alarm that leads to further testing, so clinicians often tolerate lower precision in exchange for higher recall."
+  },
+  {
+    "id": "logreg-050",
+    "topic": "logistic-regression",
+    "subtopic": "Evaluation metrics",
+    "difficulty": "recall",
+    "q": "What does the area under the ROC curve (AUC) for a binary classifier measure?",
+    "options": [
+      "The model's ability to rank a random positive example higher than a random negative one, across all thresholds",
+      "The exact accuracy of the model computed only at the single default 0.5 classification threshold",
+      "The total raw count of true positive predictions the model produced on the test set",
+      "The specific regularization strength value that was chosen and used during model training"
+    ],
+    "correct": 0,
+    "explanation": "AUC summarizes a classifier's ranking ability across every possible decision threshold, representing the probability that a randomly chosen positive example receives a higher predicted score than a randomly chosen negative example."
+  },
+  {
+    "id": "logreg-051",
+    "topic": "logistic-regression",
+    "subtopic": "Evaluation metrics",
+    "difficulty": "analysis",
+    "q": "Why is the predicted probability (not just the hard 0/1 prediction) needed to compute the ROC curve and its AUC?",
+    "options": [
+      "The ROC curve is traced by sweeping the threshold across the full range of probabilities, which needs continuous scores rather than thresholded labels",
+      "Hard 0/1 predictions are simply numerically incompatible with most standard plotting and charting software",
+      "AUC is only ever defined when predicted probabilities are used as input, since it is calculated internally as the average predicted probability across examples",
+      "The ROC curve actually ignores probability values entirely and relies solely on a single confusion matrix"
+    ],
+    "correct": 0,
+    "explanation": "Computing the ROC curve requires sweeping across many possible thresholds and recomputing true/false positive rates at each; that sweep is only possible using the continuous probability scores, not a single fixed hard prediction."
+  },
+  {
+    "id": "logreg-052",
+    "topic": "logistic-regression",
+    "subtopic": "Solvers and optimization",
+    "difficulty": "recall",
+    "q": "Why does scikit-learn's LogisticRegression offer multiple solver options (e.g. liblinear, lbfgs, saga) rather than a single fixed optimization algorithm?",
+    "options": [
+      "Different solvers have different trade-offs in dataset size, regularization-penalty support, and convergence speed, so the best choice depends on the problem",
+      "Only one of the listed solvers actually works correctly in practice, and the rest are just deprecated placeholders",
+      "The solver choice only ever affects which internal random seed gets used during fitting, not the actual optimization method applied, so switching solvers should never change the fitted coefficients or predictions in any way",
+      "All of the available solvers always produce completely identical results, so the choice is purely a cosmetic one"
+    ],
+    "correct": 0,
+    "explanation": "Solvers differ in which penalties they support (e.g. only some support L1), how well they scale to large datasets, and their convergence behavior, so scikit-learn exposes the choice to match the solver to the problem."
+  },
+  {
+    "id": "logreg-053",
+    "topic": "logistic-regression",
+    "subtopic": "Solvers and optimization",
+    "difficulty": "application",
+    "q": "A practitioner wants to train logistic regression with L1 regularization but selects the 'lbfgs' solver and the fit raises an error. What is the most likely cause?",
+    "options": [
+      "The lbfgs solver does not support the L1 penalty, so a solver like liblinear or saga must be used instead",
+      "L1 regularization simply cannot ever be used with logistic regression, no matter which solver is chosen",
+      "The lbfgs solver only actually works for continuous regression problems, never for classification tasks",
+      "L1 regularization requires the dataset to have no missing values, unrelated to solver choice"
+    ],
+    "correct": 0,
+    "explanation": "Not all solvers support all penalty types; lbfgs natively supports L2 (and no penalty) but not L1, so L1-penalized logistic regression requires a solver like liblinear or saga."
+  },
+  {
+    "id": "logreg-054",
+    "topic": "logistic-regression",
+    "subtopic": "Multicollinearity and coefficient stability",
+    "difficulty": "analysis",
+    "q": "A logistic regression model trained on many highly correlated medical features produces coefficients that flip sign and change drastically when the training sample is slightly perturbed. What underlying issue does this most clearly illustrate?",
+    "options": [
+      "Multicollinearity, where correlated features make individual coefficient estimates unstable even though the model's overall predictions may still be reasonable",
+      "The cross-entropy loss becomes non-convex specifically for correlated features, which prevents any single stable solution from existing at all, regardless of how much regularization or preprocessing is applied beforehand",
+      "The sigmoid function itself simply cannot be applied at all whenever the input features are correlated",
+      "The learning rate must be deliberately set to exactly zero in order to fix this particular coefficient issue"
+    ],
+    "correct": 0,
+    "explanation": "When features are highly correlated, many different coefficient combinations can produce nearly the same fit, so small changes in the data can cause coefficients to shift dramatically or even change sign \\u2014 the classic symptom of multicollinearity."
+  },
+  {
+    "id": "logreg-055",
+    "topic": "logistic-regression",
+    "subtopic": "Multicollinearity and coefficient stability",
+    "difficulty": "application",
+    "q": "Which regularization-based remedy most directly addresses coefficient instability caused by multicollinearity in logistic regression, without necessarily dropping any features?",
+    "options": [
+      "L2 (ridge) regularization, which shrinks correlated coefficients toward each other and stabilizes their estimates",
+      "Removing regularization entirely from the model, since regularization is believed to worsen multicollinearity",
+      "Training with a larger learning rate, since this directly reduces feature correlation",
+      "Switching the loss function to mean squared error, which is immune to multicollinearity"
+    ],
+    "correct": 0,
+    "explanation": "L2 regularization penalizes large coefficients and tends to distribute weight more evenly among correlated features, which stabilizes the coefficient estimates without necessarily eliminating any features from the model."
+  },
+  {
+    "id": "logreg-056",
+    "topic": "logistic-regression",
+    "subtopic": "Multicollinearity and coefficient stability",
+    "difficulty": "recall",
+    "q": "Which of the following is a typical symptom of multicollinearity in a fitted logistic regression model?",
+    "options": [
+      "Large standard errors and unstable coefficient estimates for the correlated features, despite the model's overall predictions remaining reasonable",
+      "A complete inability to compute any predicted probabilities at all once multicollinearity is present in the features",
+      "An absolute guarantee that the model will underfit the training data regardless of how it is regularized",
+      "A loss function that becomes entirely non-differentiable the moment two or more features are correlated"
+    ],
+    "correct": 0,
+    "explanation": "Multicollinearity inflates the variance of individual coefficient estimates (large standard errors, unstable or counterintuitive signs), even though the model's overall fit and predictions can remain reasonably accurate."
+  },
+  {
+    "id": "logreg-057",
+    "topic": "logistic-regression",
+    "subtopic": "Binary classification framing",
+    "difficulty": "recall",
+    "q": "Why is logistic regression, despite its name, classified as a classification algorithm rather than a regression algorithm?",
+    "options": [
+      "It predicts a categorical class label by thresholding a predicted probability, even though it uses a regression-like linear combination internally",
+      "It only ever accepts categorical input features as input, and cannot work with continuous ones at all",
+      "Its name was chosen for historical marketing reasons and has no connection to its functionality",
+      "It can never actually be used to produce probability estimates at all, only already-thresholded hard class labels after the fact, which is why probability-based metrics like AUC supposedly cannot be computed for it"
+    ],
+    "correct": 0,
+    "explanation": "Logistic regression computes a linear score and passes it through the sigmoid to produce a probability, which is then thresholded to output a discrete class label, placing it firmly in the classification family despite the \"regression\" name."
+  },
+  {
+    "id": "logreg-058",
+    "topic": "logistic-regression",
+    "subtopic": "Binary classification framing",
+    "difficulty": "application",
+    "q": "An analyst wants to predict whether a customer will click on an ad (yes/no) using features like browsing history and time of day. Why would logistic regression be a reasonable baseline model for this task?",
+    "options": [
+      "It is well suited to binary outcomes, produces interpretable probability estimates, and trains efficiently even with many features",
+      "It guarantees higher accuracy than any other classification algorithm on every dataset",
+      "It is supposedly the only machine learning algorithm in existence capable of handling binary labels at all",
+      "It requires no evaluation on held-out data at all, because its training accuracy always perfectly reflects real-world deployment performance"
+    ],
+    "correct": 0,
+    "explanation": "Logistic regression is a standard, efficient, interpretable baseline for binary classification tasks, producing calibrated probability estimates that are useful for ranking or thresholding decisions like ad clicks."
+  },
+  {
+    "id": "logreg-059",
+    "topic": "logistic-regression",
+    "subtopic": "Decision boundary",
+    "difficulty": "recall",
+    "q": "If a logistic regression model has learned weights such that w^T x > 0 for a given input, what class does the model predict (using the default 0.5 threshold)?",
+    "options": [
+      "The positive class, because sigmoid(w^T x) > 0.5 whenever w^T x > 0",
+      "The negative class, because positive scores always indicate the negative class",
+      "No class can be determined without knowing the exact magnitude of w^T x",
+      "Both classes equally, since sign alone never determines the prediction"
+    ],
+    "correct": 0,
+    "explanation": "Since the sigmoid function is monotonically increasing and sigmoid(0) = 0.5, any positive input z = w^T x maps to a probability above 0.5, so the model predicts the positive class."
+  },
+  {
+    "id": "logreg-060",
+    "topic": "logistic-regression",
+    "subtopic": "Sigmoid function",
+    "difficulty": "recall",
+    "q": "Which of the following best describes the shape of the sigmoid function's curve?",
+    "options": [
+      "An S-shaped curve that is flat near the extremes and steepest around its midpoint",
+      "A perfectly straight line that maintains the exact same constant slope everywhere along its length",
+      "A smooth U-shaped curve that has a single well-defined minimum somewhere near its center",
+      "A step function that jumps discontinuously straight from 0 to 1 at one single point"
+    ],
+    "correct": 0,
+    "explanation": "The sigmoid produces a smooth S-shaped (logistic) curve: nearly flat for very large positive or negative inputs, and steepest in slope near z = 0."
+  },
+  {
+    "id": "logreg-061",
+    "topic": "logistic-regression",
+    "subtopic": "Gradient descent for logistic regression",
+    "difficulty": "application",
+    "q": "A dataset for training logistic regression is far too large to fit in memory for full-batch gradient descent. Which variant of gradient descent is specifically designed to handle this by updating weights using small subsets of data at a time?",
+    "options": [
+      "Mini-batch (or stochastic) gradient descent",
+      "Newton's method, which requires computing the full Hessian matrix for the entire dataset at once",
+      "Full-batch gradient descent run on a more powerful machine, since no alternative exists",
+      "Closed-form least-squares solution, since logistic regression always has a closed-form solution"
+    ],
+    "correct": 0,
+    "explanation": "Mini-batch and stochastic gradient descent update weights using small subsets (or single examples) at each step, making them practical for datasets too large to process all at once, unlike full-batch gradient descent."
+  },
+  {
+    "id": "logreg-062",
+    "topic": "logistic-regression",
+    "subtopic": "Regularization (L1 vs L2)",
+    "difficulty": "recall",
+    "q": "Geometrically, why does the L1 penalty's constraint region (a diamond/rhombus shape) tend to produce sparse solutions, while the L2 penalty's constraint region (a circle/sphere) does not?",
+    "options": [
+      "The L1 region has sharp corners on the coordinate axes, so the loss contour is more likely to first touch the region exactly at a corner where some coefficients are zero",
+      "The L2 region actually has sharp corners of its own too, and it is these corners that force certain coefficients to become exactly zero, in exactly the same way the L1 diamond's corners are usually described as doing",
+      "Sparsity depends only on the number of training examples, not on the shape of the constraint region",
+      "Both the L1 diamond and the L2 circle produce completely identical sparsity patterns in every single case"
+    ],
+    "correct": 0,
+    "explanation": "The L1 constraint region's corners lie on the axes (where some coordinates are exactly zero); the loss function's elliptical contours are likely to first intersect the constraint region at one of these corners, producing sparse solutions, unlike the smooth L2 circle."
+  },
+  {
+    "id": "logreg-063",
+    "topic": "logistic-regression",
+    "subtopic": "Regularization (lambda/C)",
+    "difficulty": "application",
+    "q": "A data scientist tunes the regularization strength of a logistic regression model using cross-validation and plots validation accuracy against increasing regularization strength (decreasing C). The accuracy rises, peaks, then falls as regularization increases further. How should this plot be interpreted?",
+    "options": [
+      "Moderate regularization initially reduces overfitting and improves generalization, but excessive regularization eventually causes underfitting, hurting accuracy",
+      "The plot indicates a bug, since accuracy should always increase monotonically with more regularization",
+      "The plot simply shows that regularization strength has absolutely no measurable effect on validation accuracy at all, under any circumstances, meaning the rise, peak, and fall pattern observed here must simply be random noise",
+      "The peak marks the exact point where the model automatically switches over from an L1 to an L2 penalty"
+    ],
+    "correct": 0,
+    "explanation": "This U-shaped (or inverted-U) pattern is typical: too little regularization overfits, too much underfits, and there's a sweet spot in between that cross-validation is used to find."
+  },
+  {
+    "id": "logreg-064",
+    "topic": "logistic-regression",
+    "subtopic": "Probabilistic interpretation and odds",
+    "difficulty": "recall",
+    "q": "What is the \"logit\" function in the context of logistic regression?",
+    "options": [
+      "The natural logarithm of the odds, log(p / (1-p)), which logistic regression models as a linear function of the features",
+      "Simply another informal name used interchangeably for the sigmoid function itself in textbooks",
+      "The squared error computed between the predicted and actual class probabilities for an example",
+      "A commonly used synonym among practitioners for the regularization strength parameter C"
+    ],
+    "correct": 0,
+    "explanation": "The logit is the log-odds, ln(p/(1-p)); logistic regression assumes this quantity is a linear function of the input features, and the sigmoid is simply the inverse of the logit function."
+  },
+  {
+    "id": "logreg-065",
+    "topic": "logistic-regression",
+    "subtopic": "Evaluation metrics",
+    "difficulty": "application",
+    "q": "A churn model has precision of 0.40 and recall of 0.90. What does this combination suggest about the model's predictions?",
+    "options": [
+      "The model flags many customers as likely to churn, catching most true churners but also producing a large number of false alarms",
+      "The model is extremely conservative, flagging very few customers and missing most true churners",
+      "The model's predictions are perfectly balanced between false positives and false negatives",
+      "Precision and recall can never actually both be computed for the exact same trained model simultaneously, since they rely on different denominators"
+    ],
+    "correct": 0,
+    "explanation": "High recall with low precision means the model identifies most actual positive cases but also misclassifies many negatives as positive, consistent with a model that casts a wide net for the positive class."
+  },
+  {
+    "id": "logreg-066",
+    "topic": "logistic-regression",
+    "subtopic": "Overfitting and underfitting",
+    "difficulty": "recall",
+    "q": "In the bias-variance framing of model error, what does \"high bias\" in a logistic regression model typically indicate?",
+    "options": [
+      "The model is too simple to capture the underlying relationship, leading to systematic errors on both training and test data",
+      "The model fits the training data almost perfectly during training but then fails badly once it sees any new, unseen test data",
+      "The model's predictions change drastically depending on which training sample is used",
+      "The model always predicts the exact same class for every input regardless of features"
+    ],
+    "correct": 0,
+    "explanation": "High bias arises from an overly simple model that cannot capture the true relationship, leading to systematic underfitting and poor performance on both training and test sets alike."
+  },
+  {
+    "id": "logreg-067",
+    "topic": "logistic-regression",
+    "subtopic": "Multiclass extensions",
+    "difficulty": "recall",
+    "q": "In softmax regression, why is the exponential function applied to each class's raw score before normalizing?",
+    "options": [
+      "Exponentiating guarantees all values are positive, which is necessary before normalizing them into a valid probability distribution that sums to one",
+      "Exponentiating is really just a computational trick to convert the raw linear scores into integers for easier downstream computation, since computers are claimed to handle integer arithmetic far more efficiently than floating point",
+      "The exponential function is used purely for historical convention and has no mathematical necessity",
+      "Exponentiating each score conveniently removes the need for a separate bias or intercept term in the model"
+    ],
+    "correct": 0,
+    "explanation": "Raw linear scores can be negative, so exponentiating them first ensures every value is positive; dividing each by the sum of all exponentials then produces a valid probability distribution over the classes."
+  },
+  {
+    "id": "logreg-068",
+    "topic": "logistic-regression",
+    "subtopic": "Cross-entropy loss",
+    "difficulty": "recall",
+    "q": "For a single training example with true label y=1 and predicted probability p, what is the cross-entropy loss formula used?",
+    "options": [
+      "-log(p)",
+      "-log(1-p)",
+      "(1-p)^2",
+      "-p * log(p)"
+    ],
+    "correct": 0,
+    "explanation": "The binary cross-entropy loss for a true label of 1 is -log(p), the negative log-likelihood of observing the positive label under the model's predicted probability p."
+  },
+  {
+    "id": "logreg-069",
+    "topic": "logistic-regression",
+    "subtopic": "Cross-entropy loss",
+    "difficulty": "application",
+    "q": "For a single training example with true label y=0, which expression correctly gives the cross-entropy loss in terms of the predicted probability p (of the positive class)?",
+    "options": [
+      "-log(1-p)",
+      "-log(p)",
+      "p^2",
+      "-p*log(p) - (1-p)"
+    ],
+    "correct": 0,
+    "explanation": "When the true label is 0, the loss penalizes the model based on 1-p (the predicted probability of the negative class), giving -log(1-p) as the cross-entropy loss for that example."
+  },
+  {
+    "id": "logreg-070",
+    "topic": "logistic-regression",
+    "subtopic": "Multicollinearity and coefficient stability",
+    "difficulty": "application",
+    "q": "Before fitting a logistic regression model on financial ratios that are known to be highly correlated with one another, which preprocessing step most directly helps diagnose the extent of this multicollinearity?",
+    "options": [
+      "Computing a correlation matrix (or variance inflation factors) among the candidate features",
+      "Standardizing the target label itself to have zero mean and unit variance before fitting",
+      "Simply running gradient descent for many additional epochs well past the point of convergence",
+      "Switching the loss function entirely from cross-entropy over to ordinary squared error"
+    ],
+    "correct": 0,
+    "explanation": "A correlation matrix (or formal variance inflation factor analysis) directly reveals which features are strongly correlated, helping decide whether to combine, drop, or regularize them before modeling."
+  },
+  {
+    "id": "logreg-071",
+    "topic": "logistic-regression",
+    "subtopic": "Code reading",
+    "difficulty": "application",
+    "q": "In the scikit-learn pipeline below, what is the purpose of placing StandardScaler before LogisticRegression inside the same Pipeline object, rather than scaling the entire dataset once beforehand?",
+    "code": "pipeline = Pipeline([\n    (\"scaler\", StandardScaler()),\n    (\"clf\", LogisticRegression(C=1.0, solver=\"liblinear\"))\n])\npipeline.fit(X_train, y_train)\npipeline.predict(X_test)",
+    "options": [
+      "It ensures the scaler is fit only on the training fold and applied, not refit, to the test fold, preventing test data from leaking into feature scaling",
+      "It silently changes the underlying model's penalty from L2 regularization over to L1 regularization automatically behind the scenes, which is why the fitted coefficients end up sparser than expected after using the pipeline",
+      "It is purely a stylistic coding choice here, with absolutely no effect on the resulting model evaluation",
+      "It quietly forces the solver to switch internally from liblinear over to the lbfgs optimizer"
+    ],
+    "correct": 0,
+    "explanation": "Fitting the scaler inside the pipeline means it learns scaling parameters only from the training data during pipeline.fit, then applies that same transformation (without refitting) to the test data, avoiding data leakage."
+  },
+  {
+    "id": "logreg-072",
+    "topic": "logistic-regression",
+    "subtopic": "Code reading",
+    "difficulty": "application",
+    "q": "This cell raises an error when run. What is the bug?",
+    "code": "clf = LogisticRegression(penalty=\"l1\", c=10.0, solver=\"liblinear\")\nclf.fit(X_train, y_train)",
+    "options": [
+      "The regularization-strength parameter must be passed as C=10.0 (capital C); lowercase c is not a valid keyword argument",
+      "The string penalty=\"l1\" is not actually a valid value accepted by LogisticRegression at all",
+      "The solver=\"liblinear\" argument can never be combined with any penalty argument whatsoever",
+      "LogisticRegression as a class does not accept any numeric constructor arguments at all"
+    ],
+    "correct": 0,
+    "explanation": "Scikit-learn's LogisticRegression requires the regularization-strength keyword to be the capital-letter C; passing lowercase c raises a TypeError for an unexpected keyword argument."
+  },
+  {
+    "id": "logreg-073",
+    "topic": "logistic-regression",
+    "subtopic": "Code reading",
+    "difficulty": "application",
+    "q": "Given the code below, what would most likely happen if stratify=y were removed from the train_test_split call on a dataset where the positive class makes up only 5% of all rows?",
+    "code": "X_train, X_test, y_train, y_test = train_test_split(\n    X, y, test_size=0.2, random_state=42, stratify=y\n)",
+    "options": [
+      "The train and test sets could end up with noticeably different proportions of the minority class purely by chance, especially with a small or imbalanced dataset",
+      "The train_test_split call would simply fail to run at all and raise an exception immediately",
+      "X_train and X_test would always end up being exactly the same fixed size no matter what, regardless of whether stratify is used, because test_size=0.2 alone is claimed to fully determine both split sizes exactly",
+      "The random_state parameter would suddenly stop having any effect whatsoever on how the split is performed"
+    ],
+    "correct": 0,
+    "explanation": "The stratify parameter preserves the original class proportions in both the train and test splits; without it, random sampling could produce splits with notably skewed class balance, especially when one class is rare."
+  },
+  {
+    "id": "logreg-074",
+    "topic": "logistic-regression",
+    "subtopic": "Code reading",
+    "difficulty": "application",
+    "q": "Given cm = confusion_matrix(y_test, y_pred) and tn, fp, fn, tp = cm.ravel(), what layout of the 2x2 confusion matrix does this unpacking assume?",
+    "code": "cm = confusion_matrix(y_test, y_pred)\ntn, fp, fn, tp = cm.ravel()",
+    "options": [
+      "Row-major order [[tn, fp], [fn, tp]], i.e. true negatives, false positives, false negatives, then true positives when flattened",
+      "Column-major order instead, with the true positive count listed first in the flattened array before anything else, since ravel() is claimed to flatten NumPy arrays column by column rather than row by row",
+      "The layout [[tp, fp], [fn, tn]], placing true positives in the matrix's top-left corner",
+      "The order does not matter because ravel() automatically sorts values before unpacking"
+    ],
+    "correct": 0,
+    "explanation": "scikit-learn's confusion_matrix returns a 2x2 array ordered as [[TN, FP], [FN, TP]] for binary labels {0,1}; flattening it row-major with ravel() yields exactly tn, fp, fn, tp in that order."
+  },
+  {
+    "id": "logreg-075",
+    "topic": "logistic-regression",
+    "subtopic": "Code reading",
+    "difficulty": "application",
+    "q": "Why does the code below pass y_prob (from predict_proba) to roc_auc_score, rather than y_pred (the hard 0/1 predictions used for accuracy_score)?",
+    "code": "y_prob = pipeline.predict_proba(X_test)[:, 1]\nauc = roc_auc_score(y_test, y_prob)",
+    "options": [
+      "AUC is computed by sweeping across all possible classification thresholds, which requires continuous probability scores rather than a single already-thresholded prediction",
+      "roc_auc_score cannot mathematically accept continuous probability values at all, so this is actually a bug",
+      "y_prob and y_pred always contain exactly identical values in practice anyway, so the choice between them makes no real difference at all, since predict_proba and predict are claimed to always agree once a model has converged",
+      "roc_auc_score only needs y_prob to satisfy a naming convention, with no real mathematical reason"
+    ],
+    "correct": 0,
+    "explanation": "ROC AUC is computed across a sweep of thresholds applied to continuous scores; passing hard 0/1 predictions instead would collapse this sweep to a single point and give a meaningless or degenerate AUC value."
+  },
+  {
+    "id": "logreg-076",
+    "topic": "logistic-regression",
+    "subtopic": "Code reading",
+    "difficulty": "application",
+    "q": "In the loop below, two logistic regression models are trained with different penalty types using solver=\"liblinear\". Why is liblinear an appropriate solver choice here rather than lbfgs?",
+    "code": "for penalty in [\"l1\", \"l2\"]:\n    clf = LogisticRegression(penalty=penalty, C=1.0, solver=\"liblinear\")\n    clf.fit(X_train, y_train)",
+    "options": [
+      "liblinear supports L1-penalized logistic regression, while lbfgs does not support the L1 penalty",
+      "liblinear is the only solver in scikit-learn capable of computing predict_proba",
+      "liblinear automatically performs feature scaling internally before fitting",
+      "liblinear is required by scikit-learn whenever a Pipeline object is used anywhere in the code"
+    ],
+    "correct": 0,
+    "explanation": "The lbfgs solver only supports L2 regularization (or no penalty); fitting an L1-penalized model requires a solver that supports it, such as liblinear or saga."
+  },
+  {
+    "id": "logreg-077",
+    "topic": "logistic-regression",
+    "subtopic": "Code reading",
+    "difficulty": "application",
+    "q": "After running the snippet below, model.coef_ is approximately [[0.51]]. The model is then retrained with C increased from 1.0 to 10.0, and the new coefficient becomes approximately [[1.12]]. What does this change illustrate?",
+    "code": "model = LogisticRegression(C=1.0, solver=\"liblinear\")\nmodel.fit(x, y)\nprint(model.coef_)   # [[0.51]]",
+    "options": [
+      "Increasing C weakens regularization, allowing the model to fit the training data more closely with larger-magnitude coefficients",
+      "Increasing C always decreases the resulting coefficient magnitude in every case, regardless of the underlying training data, because C is mistakenly treated here as if it were the regularization strength itself rather than its inverse",
+      "The change in coefficient is unrelated to the value of C and is simply random variation",
+      "C only ever affects which solver gets used internally, never the actual fitted coefficient values"
+    ],
+    "correct": 0,
+    "explanation": "Since C is the inverse of regularization strength, increasing C reduces the penalty on large weights, allowing the optimizer to fit the training data more tightly and typically producing larger-magnitude coefficients."
+  },
+  {
+    "id": "logreg-078",
+    "topic": "logistic-regression",
+    "subtopic": "Code reading",
+    "difficulty": "application",
+    "q": "Given x = np.arange(10).reshape(-1, 1), what is the shape of the resulting array x?",
+    "code": "x = np.arange(10).reshape(-1, 1)\nprint(x.shape)",
+    "options": [
+      "(10, 1): a 2-D column vector with ten rows and one feature",
+      "(1, 10): a single row containing all ten columns side by side",
+      "(10,): a flat 1-D array that has no explicit column dimension",
+      "(5, 2): a 2-D array with five rows and two columns"
+    ],
+    "correct": 0,
+    "explanation": "reshape(-1, 1) tells numpy to infer the first dimension automatically while fixing the second dimension to 1, turning a flat 10-element array into a (10, 1) column vector, which is the 2-D shape scikit-learn expects for a single feature."
+  },
+  {
+    "id": "logreg-079",
+    "topic": "logistic-regression",
+    "subtopic": "Code reading",
+    "difficulty": "application",
+    "q": "model.predict_proba(x) returns an array whose first row is [0.74, 0.26] for a binary classifier with classes_ = [0, 1]. What does the second value, 0.26, represent?",
+    "code": "probs = model.predict_proba(x)\nprint(probs[0])   # [0.74, 0.26]\nprint(model.classes_)   # [0 1]",
+    "options": [
+      "The predicted probability that this particular example instead belongs to class 0",
+      "The model's overall accuracy score computed across the entire full dataset",
+      "The regularization strength value that was originally used when fitting this model",
+      "The regularization strength used when fitting the model"
+    ],
+    "correct": 0,
+    "explanation": "predict_proba returns one probability column per class in the order given by model.classes_; since classes_ is [0, 1], the second column corresponds to the probability of class 1."
+  },
+  {
+    "id": "logreg-080",
+    "topic": "logistic-regression",
+    "subtopic": "Code reading",
+    "difficulty": "application",
+    "q": "What does passing multi_class=\"ovr\" to LogisticRegression specify when fitting a dataset with three classes?",
+    "code": "model = LogisticRegression(solver=\"liblinear\", multi_class=\"ovr\")\nmodel.fit(X_train, y_train)",
+    "options": [
+      "It trains the model using the one-vs-rest strategy, fitting one binary classifier per class against all the others",
+      "It restricts the model so it can only ever predict two of the three available classes",
+      "It forces the model internally to use mean squared error instead of the usual cross-entropy loss",
+      "It automatically balances the class weights regardless of the actual class distribution"
+    ],
+    "correct": 0,
+    "explanation": "multi_class=\"ovr\" tells scikit-learn to fit a separate binary logistic regression classifier for each class versus all remaining classes, then combine their outputs to make a multiclass prediction."
+  },
+  {
+    "id": "logreg-081",
+    "topic": "logistic-regression",
+    "subtopic": "Code reading",
+    "difficulty": "application",
+    "q": "What does the manually-defined softmax function below compute, and what property do the values in each row of its output satisfy?",
+    "code": "def softmax(z):\n    return (np.exp(z.T) / np.sum(np.exp(z), axis=1)).T\n\nprobs = softmax(scores)",
+    "options": [
+      "It converts each row of raw class scores into a probability distribution where the values are non-negative and sum to 1",
+      "It instead computes the mean squared error between the predicted and true class scores",
+      "It returns the single highest raw score per row with all other values set to zero",
+      "It standardizes each row of the score matrix to have zero mean and unit variance, exactly like a z-score transform, which would also make every row sum to a constant unrelated to class probability"
+    ],
+    "correct": 0,
+    "explanation": "Softmax exponentiates each raw score (making all values positive) and divides by the row sum, producing a valid probability distribution over classes for every row, which sums to 1."
+  },
+  {
+    "id": "logreg-082",
+    "topic": "logistic-regression",
+    "subtopic": "Code reading",
+    "difficulty": "application",
+    "q": "What does to_classlabel(z), defined as z.argmax(axis=1), return when applied to a softmax output matrix with shape (n_samples, n_classes)?",
+    "code": "def to_classlabel(z):\n    return z.argmax(axis=1)\n\npredicted = to_classlabel(probs)",
+    "options": [
+      "For each row (sample), the index of the class with the highest predicted probability",
+      "The sum total of all predicted probabilities across the row for each sample",
+      "The average predicted probability across all classes for each sample",
+      "The total number of distinct classes present anywhere in the dataset"
+    ],
+    "correct": 0,
+    "explanation": "argmax(axis=1) finds, for each row, the column index where the value is largest; applied to softmax probabilities, this picks out the class with the highest predicted probability for each sample, i.e. the predicted class label."
+  },
+  {
+    "id": "logreg-083",
+    "topic": "logistic-regression",
+    "subtopic": "Code reading",
+    "difficulty": "application",
+    "q": "If missing values in a medical dataset are coded as 0 (e.g. a blood pressure reading of 0, which is physiologically impossible) and the code below is run before any imputation, what does it accomplish?",
+    "code": "cols_with_missing = [\"Glucose\", \"BloodPressure\", \"BMI\"]\nfor col in cols_with_missing:\n    df[col] = df[col].replace(0, np.nan)",
+    "options": [
+      "Converts the impossible zero readings into NaN so they can later be properly identified and imputed",
+      "Deletes every single row that happens to contain a zero in any of the listed columns",
+      "Replaces every missing value (NaN) already present in the dataset back with zero",
+      "Scales each of the listed columns so it has zero mean and unit variance, like standardization"
+    ],
+    "correct": 0,
+    "explanation": "Replacing the placeholder zeros with NaN makes the missing data explicit so downstream tools (like SimpleImputer) can correctly identify and fill them, rather than treating the impossible zero readings as valid measurements."
+  },
+  {
+    "id": "logreg-084",
+    "topic": "logistic-regression",
+    "subtopic": "Code reading",
+    "difficulty": "application",
+    "q": "The missing-value replacement and median imputation below are applied to the full dataframe before train_test_split is called. What potential issue does this ordering introduce, compared to fitting the imputer only on the training set?",
+    "code": "imputer = SimpleImputer(strategy=\"median\")\ndf[cols_with_missing] = imputer.fit_transform(df[cols_with_missing])\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)",
+    "options": [
+      "The imputer's median is computed using information from what will become the test set, introducing a mild form of data leakage",
+      "SimpleImputer cannot be used before train_test_split under any circumstances and will raise an error",
+      "The resulting dataframe will unexpectedly contain duplicate rows once imputation has been applied",
+      "This particular ordering causes the target column itself to be silently imputed and corrupted"
+    ],
+    "correct": 0,
+    "explanation": "Fitting the imputer on the entire dataset lets statistics from future test rows influence the computed median, a mild form of data leakage; the stricter practice is to fit the imputer only on the training split and apply it unchanged to the test split."
+  },
+  {
+    "id": "logreg-085",
+    "topic": "logistic-regression",
+    "subtopic": "Code reading",
+    "difficulty": "application",
+    "q": "What does the code block below do to every feature column in the dataframe?",
+    "code": "for col in df.drop(\"Outcome\", axis=1).columns:\n    Q1, Q3 = df[col].quantile(0.25), df[col].quantile(0.75)\n    IQR = Q3 - Q1\n    lower, upper = Q1 - 1.5*IQR, Q3 + 1.5*IQR\n    df[col] = np.where(df[col] < lower, lower,\n                        np.where(df[col] > upper, upper, df[col]))",
+    "options": [
+      "It caps (clips) outlier values in each column to the IQR-based lower and upper bounds rather than removing any rows",
+      "It instead removes every single row that contains even one outlier in any column at all from the dataset, shrinking the training set considerably compared to simply capping the extreme values",
+      "It replaces outliers with NaN so they will be imputed later by SimpleImputer",
+      "It standardizes every numeric column in the dataframe to have unit variance afterward"
+    ],
+    "correct": 0,
+    "explanation": "This is a classic IQR-based winsorization: values below the lower bound or above the upper bound are replaced (capped) with the bound itself using np.where, rather than dropping the rows entirely."
+  },
+  {
+    "id": "logreg-086",
+    "topic": "logistic-regression",
+    "subtopic": "Decision boundary",
+    "difficulty": "recall",
+    "q": "A two-feature logistic regression model has learned weights w1 = 2, w2 = -3, and bias b = 1. Which equation describes its decision boundary?",
+    "options": [
+      "2x1 - 3x2 + 1 = 0",
+      "2x1 - 3x2 + 1 = 0.5",
+      "2x1 - 3x2 + 1 = 1",
+      "x1 + x2 = 0"
+    ],
+    "correct": 0,
+    "explanation": "The decision boundary is where the linear score z = w^T x + b equals zero (since sigmoid(0) = 0.5), so the boundary equation here is 2x1 - 3x2 + 1 = 0."
+  },
+  {
+    "id": "logreg-087",
+    "topic": "logistic-regression",
+    "subtopic": "Sigmoid function",
+    "difficulty": "application",
+    "q": "A churn model outputs sigmoid(z) = 0.5 for a borderline customer. Which of the following must be true about the customer's score z = w^T x?",
+    "options": [
+      "z = 0 exactly",
+      "z = 0.5 exactly",
+      "z must be negative",
+      "z must be greater than 1"
+    ],
+    "correct": 0,
+    "explanation": "sigmoid(z) = 0.5 only when z = 0, since the sigmoid function crosses exactly 0.5 at its inflection point where the input is zero."
+  },
+  {
+    "id": "logreg-088",
+    "topic": "logistic-regression",
+    "subtopic": "Regularization (L1 vs L2)",
+    "difficulty": "analysis",
+    "q": "A team compares an L1-regularized and an L2-regularized logistic regression model on the same dataset with 500 features, only 20 of which are truly predictive. Which outcome is most consistent with typical L1 vs. L2 behavior?",
+    "options": [
+      "The L1 model ends up with most of the 480 irrelevant coefficients set to exactly zero, while the L2 model keeps small nonzero weights on nearly all 500 features",
+      "The L2 model ends up with most irrelevant coefficients set to exactly zero, while the L1 model keeps all 500 features with small nonzero weights",
+      "Both the L1 and L2 models always end up producing completely identical nonzero coefficient patterns regardless of penalty",
+      "Neither model can actually be fit at all whenever the number of features exceeds the number of truly predictive ones"
+    ],
+    "correct": 0,
+    "explanation": "L1 regularization promotes sparsity by zeroing out coefficients for irrelevant features, while L2 regularization shrinks all coefficients smoothly toward zero without typically eliminating any of them entirely."
+  },
+  {
+    "id": "logreg-089",
+    "topic": "logistic-regression",
+    "subtopic": "Evaluation metrics",
+    "difficulty": "recall",
+    "q": "What does \"precision\" measure for a binary classifier?",
+    "options": [
+      "Of all examples predicted positive, the fraction that are actually positive",
+      "Of all examples that are actually positive, the fraction correctly predicted positive",
+      "The overall fraction of all predictions (both classes) that are correct",
+      "The fraction of actual negatives correctly predicted as negative"
+    ],
+    "correct": 0,
+    "explanation": "Precision is true positives divided by all predicted positives (true positives plus false positives), measuring how trustworthy a positive prediction is."
+  },
+  {
+    "id": "logreg-090",
+    "topic": "logistic-regression",
+    "subtopic": "Overfitting and underfitting",
+    "difficulty": "application",
+    "q": "A team trains logistic regression on a dataset where the number of features (2000) far exceeds the number of training examples (150). What problem is this setup especially prone to, absent regularization?",
+    "options": [
+      "Severe overfitting, since the model has enough flexibility to perfectly separate the small training set in many possible ways, most of which won't generalize",
+      "Severe underfitting instead, since having far too many features always forces the model to remain overly simple and rigid, the same way adding more irrelevant predictors supposedly always weakens a model's fitting capacity",
+      "An inability to compute the sigmoid function at all whenever features outnumber training examples",
+      "Guaranteed convergence to the Bayes-optimal classifier, regardless of whether regularization is applied"
+    ],
+    "correct": 0,
+    "explanation": "When the number of features greatly exceeds the number of examples, the model can easily find weight combinations that perfectly fit (or even memorize) the training data, leading to severe overfitting unless regularization constrains the solution space."
+  },
+  {
+    "id": "logreg-091",
+    "topic": "logistic-regression",
+    "subtopic": "Probabilistic interpretation and odds",
+    "difficulty": "application",
+    "q": "A loan-approval model's predicted odds of default for applicant A are 3:1 and for applicant B are 1:1. Which statement correctly compares their predicted probabilities of default?",
+    "options": [
+      "Applicant A has a predicted default probability of 0.75, while applicant B's is 0.5",
+      "Applicant A and applicant B actually end up with identical predicted default probabilities here",
+      "Applicant A's predicted probability is 3.0, since odds directly equal probability",
+      "Applicant B instead has a higher predicted probability of default than applicant A does"
+    ],
+    "correct": 0,
+    "explanation": "Odds of 3:1 convert to probability via odds/(1+odds) = 3/4 = 0.75, while odds of 1:1 convert to 1/2 = 0.5, so applicant A has the higher predicted default probability."
+  },
+  {
+    "id": "logreg-092",
+    "topic": "logistic-regression",
+    "subtopic": "Gradient descent for logistic regression",
+    "difficulty": "recall",
+    "q": "Why is logistic regression typically trained using iterative optimization (gradient descent or similar) rather than a simple closed-form formula like ordinary linear regression's normal equation?",
+    "options": [
+      "The cross-entropy loss combined with the sigmoid does not have a closed-form solution for the optimal weights, so iterative numerical optimization is required",
+      "Logistic regression has no loss function to minimize, so no optimization method is strictly needed",
+      "Closed-form solutions are supposedly mathematically impossible to derive for any convex function whatsoever, no matter how it's structured, which is also why ordinary linear regression's normal equation could not exist either",
+      "Gradient descent is only used because it is faster than every other possible method in all cases"
+    ],
+    "correct": 0,
+    "explanation": "Unlike ordinary least squares, the maximum-likelihood equations for logistic regression are nonlinear in the weights and cannot be solved analytically in closed form, so iterative methods like gradient descent (or Newton's method variants) are used instead."
+  },
+  {
+    "id": "logreg-093",
+    "topic": "logistic-regression",
+    "subtopic": "Multiclass extensions",
+    "difficulty": "application",
+    "q": "A handwriting-recognition system must classify an image as one of ten digits (0-9). After computing softmax probabilities for a given image, the values are [0.01, 0.02, 0.85, 0.01, 0.02, 0.03, 0.02, 0.01, 0.02, 0.01]. Which digit does the model predict?",
+    "options": [
+      "Digit 2, since it has the highest predicted probability (0.85)",
+      "Digit 9, since it is the last value in the list",
+      "Digit 0, since probabilities are always read starting from the first position",
+      "No digit can be predicted because the probabilities do not sum to exactly 1.00"
+    ],
+    "correct": 0,
+    "explanation": "Softmax-based multiclass classification predicts the class with the highest probability; here, index 2 (digit '2') has the highest value at 0.85."
+  },
+  {
+    "id": "logreg-094",
+    "topic": "logistic-regression",
+    "subtopic": "Why not linear regression",
+    "difficulty": "recall",
+    "q": "Besides being unbounded, what is another key reason squared-error loss combined with a raw linear model is poorly suited for a classification target like spam/not-spam?",
+    "options": [
+      "A linear model's raw output can fall far outside the [0, 1] range expected of a probability, making it hard to interpret or threshold meaningfully",
+      "Squared error simply cannot be computed at all whenever the target variable happens to be encoded as an integer value, since squared differences are claimed to only be mathematically defined for continuous real numbers",
+      "Linear models of any kind cannot ever be trained using gradient descent in the first place",
+      "Linear regression always requires labels to be one-hot encoded before the model can be fit"
+    ],
+    "correct": 0,
+    "explanation": "A linear model w^T x + b can output any real number, including values far below 0 or above 1, which don't correspond to meaningful probabilities, motivating the sigmoid transformation used in logistic regression."
+  },
+  {
+    "id": "logreg-095",
+    "topic": "logistic-regression",
+    "subtopic": "Decision boundary",
+    "difficulty": "application",
+    "q": "A logistic regression model is fit on two features, x1 and x2, using the engineered feature set [x1, x2, x1^2, x2^2]. What shape of decision boundary can this model represent that a model using only [x1, x2] cannot?",
+    "options": [
+      "Curved boundaries such as circles or ellipses in the original (x1, x2) plane",
+      "Only straight lines, identical to the simpler model",
+      "A boundary that depends on the number of training examples rather than the features",
+      "No boundary at all, since squared terms break the sigmoid function"
+    ],
+    "correct": 0,
+    "explanation": "Including squared terms like x1^2 and x2^2 lets the linear-in-parameters equation trace curves such as circles or ellipses when plotted against the original x1, x2 axes, something a purely linear [x1, x2] model cannot do."
+  },
+  {
+    "id": "logreg-096",
+    "topic": "logistic-regression",
+    "subtopic": "Overfitting and underfitting",
+    "difficulty": "recall",
+    "q": "Which of the following is a standard technique to detect overfitting in a logistic regression model before deploying it?",
+    "options": [
+      "Comparing performance on a held-out validation or test set against performance on the training set",
+      "Checking only the training accuracy, since test performance cannot differ from it",
+      "Increasing the number of features used until training accuracy reaches a full 100 percent",
+      "Reducing the entire dataset down to a single example and checking whether the model still fits it"
+    ],
+    "correct": 0,
+    "explanation": "Overfitting is detected by comparing how a model performs on data it was trained on versus data it has never seen; a large gap favoring training performance signals overfitting."
+  },
+  {
+    "id": "logreg-097",
+    "topic": "logistic-regression",
+    "subtopic": "Regularization (L1 vs L2)",
+    "difficulty": "recall",
+    "q": "What is the mathematical form of the L2 regularization penalty term typically added to the logistic regression loss function?",
+    "options": [
+      "The sum of the squared weights, lambda * sum(w_i^2)",
+      "The sum of the absolute values of the weights, lambda * sum(|w_i|)",
+      "The product of all the weights",
+      "The maximum absolute value among all the weights"
+    ],
+    "correct": 0,
+    "explanation": "L2 (ridge) regularization adds a penalty proportional to the sum of squared weights, discouraging large coefficient magnitudes while keeping the penalty smooth and differentiable everywhere."
+  },
+  {
+    "id": "logreg-098",
+    "topic": "logistic-regression",
+    "subtopic": "Regularization (L1 vs L2)",
+    "difficulty": "recall",
+    "q": "What is the mathematical form of the L1 regularization penalty term typically added to the logistic regression loss function?",
+    "options": [
+      "The sum of the absolute values of the weights, lambda * sum(|w_i|)",
+      "The sum of the squared weights instead, written as lambda * sum(w_i^2)",
+      "The total number of training examples that were used to fit the model",
+      "The variance of the predicted probabilities across the entire test set"
+    ],
+    "correct": 0,
+    "explanation": "L1 (lasso) regularization adds a penalty proportional to the sum of the absolute values of the weights, which, unlike the smooth L2 penalty, tends to push some weights exactly to zero."
+  },
+  {
+    "id": "logreg-099",
+    "topic": "logistic-regression",
+    "subtopic": "Binary classification framing",
+    "difficulty": "application",
+    "q": "An email provider wants to flag messages as \"spam\" or \"not spam\" and also estimate how confident it is in each flag so that very uncertain messages can be sent to a human reviewer. Why does logistic regression suit this requirement better than a model that only outputs hard class labels?",
+    "options": [
+      "Logistic regression naturally produces a probability estimate alongside the class label, which can be used to identify borderline, low-confidence cases",
+      "Logistic regression is supposedly the only algorithm capable of processing raw text data in any form at all, unlike any other model, which is why it is claimed to be the sole choice for any natural-language spam-filtering task",
+      "Logistic regression is said to guarantee 100 percent precision on any email dataset it is applied to",
+      "Hard-label-only classifiers are claimed to always outperform probability-based ones on raw accuracy"
+    ],
+    "correct": 0,
+    "explanation": "Logistic regression's sigmoid output gives a continuous probability rather than just a hard label, making it straightforward to flag low-confidence predictions near 0.5 for additional review."
+  },
+  {
+    "id": "logreg-100",
+    "topic": "logistic-regression",
+    "subtopic": "Multicollinearity and coefficient stability",
+    "difficulty": "application",
+    "q": "In the disease-prediction scenario where a logistic regression model has unstable coefficients due to many correlated medical features, why does L1 regularization sometimes behave less predictably than L2 in this specific situation?",
+    "options": [
+      "Among highly correlated features, L1 tends to arbitrarily select one and zero out the rest, so small data changes can shift which feature \"wins,\" producing its own instability",
+      "L1 regularization simply cannot be applied to correlated features at all, and will always raise an outright error",
+      "L1 regularization is claimed to always produce lower training accuracy than L2, regardless of the underlying data",
+      "L1 regularization requires an entirely different loss function than cross-entropy to work at all, making it fundamentally incompatible with logistic regression as it is normally formulated and trained in practice"
+    ],
+    "correct": 0,
+    "explanation": "While L1 produces useful sparsity, when features are highly correlated it can arbitrarily favor one over similarly-informative others, and this choice can be unstable across different samples of the same data \\u2014 a nuance worth weighing against L2's smoother, more stable shrinkage in this scenario."
+  },
+  {
+    "id": "logreg-101",
+    "topic": "logistic-regression",
+    "subtopic": "Evaluation metrics",
+    "difficulty": "application",
+    "q": "A team evaluating two fraud-detection models finds Model A has AUC = 0.91 and Model B has AUC = 0.78, both using the same default 0.5 threshold with similar accuracy. What does the AUC difference suggest about the two models?",
+    "options": [
+      "Model A ranks fraudulent transactions above negative ones more reliably across thresholds, even if accuracy looks similar at the default threshold",
+      "Model A and Model B must have identical confusion matrices at the default threshold",
+      "AUC can never actually differ between two models that happen to have similar accuracy scores at the same fixed threshold, since AUC is mistakenly treated here as though it were simply derived from accuracy alone",
+      "Model B must definitely be the better model here, precisely because its AUC value is lower"
+    ],
+    "correct": 0,
+    "explanation": "AUC reflects a model's overall ranking quality across all thresholds, not just performance at one fixed cutoff, so a higher AUC indicates generally stronger discrimination between classes even when accuracy at a single threshold looks comparable."
+  },
+  {
+    "id": "logreg-102",
+    "topic": "logistic-regression",
+    "subtopic": "Gradient descent for logistic regression",
+    "difficulty": "application",
+    "q": "A plot of training loss versus epoch for a logistic regression model trained with gradient descent shows the loss steadily decreasing and then leveling off, forming a smooth, flattening curve. What does this pattern typically indicate?",
+    "options": [
+      "The model is converging toward a minimum of the convex cross-entropy loss, with diminishing improvement as it approaches it",
+      "The model is overfitting severely and the training loss curve should instead be increasing",
+      "The learning rate must actually have been set to zero, since the loss eventually stops changing at all",
+      "Gradient descent has clearly failed here and must be restarted using a different weight initialization"
+    ],
+    "correct": 0,
+    "explanation": "A smooth, flattening loss curve is the expected signature of gradient descent converging toward the minimum of a convex loss surface, with updates producing smaller and smaller improvements as the minimum is approached."
+  },
+  {
+    "id": "logreg-103",
+    "topic": "logistic-regression",
+    "subtopic": "Sigmoid function",
+    "difficulty": "recall",
+    "q": "What is the value of the sigmoid function's derivative at z=0, and why is this property useful during gradient-based training?",
+    "options": [
+      "The derivative is at its maximum value (0.25) at z=0, giving the strongest gradient signal exactly where the model is most uncertain",
+      "The derivative is exactly zero at z=0 in this case, so essentially no learning occurs anywhere near the decision boundary, which would make gradient descent stall precisely where classification is hardest",
+      "The derivative is undefined at z=0 because the function is discontinuous there",
+      "The derivative of the sigmoid equals exactly 1 at every single value of z, including z=0"
+    ],
+    "correct": 0,
+    "explanation": "The sigmoid's derivative, sigmoid(z)*(1-sigmoid(z)), is maximized at z=0 where sigmoid(z)=0.5, giving the strongest gradient signal for points near the decision boundary, which is often where learning matters most."
+  },
+  {
+    "id": "logreg-104",
+    "topic": "logistic-regression",
+    "subtopic": "Why not linear regression",
+    "difficulty": "application",
+    "q": "A dataset for predicting disease presence (0/1) has one patient with an extremely high value for a lab feature compared to the rest of the cohort. A plain linear regression fit (thresholded at 0.5) misclassifies several otherwise-clear-cut patients because of this one patient. What does this scenario illustrate about linear regression for classification?",
+    "options": [
+      "Linear regression's squared-error objective is sensitive to outliers, which can distort the fitted line and shift the threshold for unrelated points",
+      "Linear regression simply cannot be used at all whenever any single feature contains large numeric values",
+      "This behavior actually shows that linear regression is more robust to outliers than logistic regression is in general, since the squared-error line visibly shifted while the classification rule stayed fixed",
+      "This particular issue is claimed to only occur if the dataset happens to have fewer than 10 rows total"
+    ],
+    "correct": 0,
+    "explanation": "Squared-error minimization weights large deviations heavily, so a single extreme point can pull the fitted regression line and shift where it crosses the classification threshold, misclassifying other points \\u2014 a key motivation for using logistic regression instead."
+  },
+  {
+    "id": "logreg-105",
+    "topic": "logistic-regression",
+    "subtopic": "Code reading",
+    "difficulty": "application",
+    "q": "What is the bug in the code below, given that the dataset's raw CSV file has no header row?",
+    "code": "columns = [\"Pregnancies\", \"Glucose\", \"BloodPressure\", \"BMI\", \"Age\", \"Outcome\"]\ndf = pd.read_csv(url)",
+    "options": [
+      "The names=columns argument is missing from read_csv, so pandas will treat the first data row as the header and auto-generate integer column names instead",
+      "pd.read_csv is claimed to never be usable for loading a file directly from a URL under any circumstances",
+      "The columns list has too many entries and pandas will raise a length-mismatch error",
+      "CSV files that lack header rows are claimed to never be loadable by pandas under any circumstances at all, regardless of arguments passed, meaning read_csv would need an entirely different library just to open this file"
+    ],
+    "correct": 0,
+    "explanation": "Without passing names=columns (or header=None), pandas defaults to using the first row of data as column headers and may auto-generate integer names, silently losing the intended column labels and the first data row."
+  },
+  {
+    "id": "logreg-106",
+    "topic": "logistic-regression",
+    "subtopic": "Probabilistic interpretation and odds",
+    "difficulty": "recall",
+    "q": "Why is logistic regression sometimes described as a type of generalized linear model (GLM)?",
+    "options": [
+      "It models a transformed version of the target's expectation (the log-odds) as a linear function of the input features, which is the defining idea of a GLM",
+      "It supposedly has no linear components anywhere at all in its underlying mathematical formulation",
+      "GLM is simply just another informal name used for any model that happens to be trained using ordinary gradient descent, regardless of what link function, if any, connects its linear predictor to the response",
+      "It is called a GLM only because its name happens to contain the word \"regression\" in it"
+    ],
+    "correct": 0,
+    "explanation": "Generalized linear models combine a linear predictor with a link function connecting it to the expected value of the response; logistic regression uses the logit as its link function, relating the log-odds linearly to the features."
+  },
+  {
+    "id": "logreg-107",
+    "topic": "logistic-regression",
+    "subtopic": "Overfitting and underfitting",
+    "difficulty": "analysis",
+    "q": "A retail churn model with L2 regularization is evaluated at several regularization strengths, and the training/validation accuracy curves are plotted against model complexity. Near one end of the complexity scale, both curves show low accuracy; near the other end, training accuracy approaches 100% while validation accuracy drops. What does the region between these two extremes represent?",
+    "options": [
+      "The region of good generalization, where the model is complex enough to capture real patterns but not so complex that it starts fitting noise",
+      "A region that should never be chosen at all because it always has lower training accuracy than every other region on the curve, even though validation accuracy there is actually at its highest point",
+      "The region in the middle where the model's predictions supposedly become undefined entirely",
+      "A region that exists only in theory and cannot be identified using real validation data"
+    ],
+    "correct": 0,
+    "explanation": "Between underfitting (both curves low) and overfitting (training high, validation low) lies a region of appropriate complexity where the model generalizes best; this sweet spot is typically what hyperparameter tuning via cross-validation aims to find."
+  },
+  {
+    "id": "logreg-108",
+    "topic": "logistic-regression",
+    "subtopic": "Multiclass extensions",
+    "difficulty": "recall",
+    "q": "Compared to one-vs-rest, what is a key characteristic of the multinomial (softmax) approach to multiclass logistic regression?",
+    "options": [
+      "It fits a single unified model that jointly produces normalized probabilities across all classes at once, rather than combining separately trained binary classifiers",
+      "It can supposedly only ever be used when there are exactly two possible classes to predict",
+      "It is said to require training a completely separate neural network model from scratch for each individual class, unlike the single unified softmax model it is actually being compared against here",
+      "It produces class probabilities that are claimed not to need summing to 1 across all classes"
+    ],
+    "correct": 0,
+    "explanation": "Multinomial logistic regression directly models the probabilities of all classes jointly using the softmax function within a single optimization, as opposed to one-vs-rest, which trains independent binary classifiers and combines their outputs afterward."
+  },
+  {
+    "id": "logreg-109",
+    "topic": "logistic-regression",
+    "subtopic": "Evaluation metrics",
+    "difficulty": "recall",
+    "q": "What does the F1 score represent for a binary classifier?",
+    "options": [
+      "The harmonic mean of precision and recall, balancing both into a single metric",
+      "The simple arithmetic average computed between accuracy and AUC for the model",
+      "The total raw count of all examples that were correctly classified by the model",
+      "The variance of the predicted probabilities across all test examples"
+    ],
+    "correct": 0,
+    "explanation": "F1 score is the harmonic mean of precision and recall, giving a single balanced measure that penalizes models which sacrifice one metric heavily to improve the other."
+  },
+  {
+    "id": "logreg-110",
+    "topic": "logistic-regression",
+    "subtopic": "Decision boundary",
+    "difficulty": "analysis",
+    "q": "A logistic regression model trained on credit data uses only raw, untransformed numeric features (income, debt ratio, age) and achieves a straight-line decision boundary that separates most but not all defaulters from non-defaulters. Why can't increasing the regularization strength alone fix a boundary shape that is fundamentally too simple for the data?",
+    "options": [
+      "Regularization controls how much coefficients shrink, not the functional form of the boundary; a linear boundary stays linear unless the feature set itself changes",
+      "Increasing regularization strength always converts a linear boundary into a curved one automatically",
+      "Regularization strength and decision boundary shape are claimed to be mathematically the exact same quantity",
+      "The boundary's shape is said to depend only on the choice of optimizer algorithm used, never on regularization strength or the input features themselves, regardless of what transformations are engineered"
+    ],
+    "correct": 0,
+    "explanation": "Regularization adjusts the magnitude of the coefficients to control overfitting, but it does not change the functional form of the model; without adding transformed or interaction features, the decision boundary in the original feature space remains linear no matter how C or lambda is tuned."
+  },
+  {
+    "id": "logreg-111",
+    "topic": "logistic-regression",
+    "subtopic": "Cross-entropy loss",
+    "difficulty": "application",
+    "q": "Two fraud-detection models are compared using total cross-entropy loss on the same test set. Model A has a lower total loss than Model B, even though both have identical accuracy. What does this most likely mean?",
+    "options": [
+      "Model A's predicted probabilities are generally better calibrated, closer to 0 or 1 for the correct class, than Model B's, even though both cross the same threshold similarly often",
+      "Model A must simply have been fit with a lower regularization strength than Model B in every single possible case, since weaker regularization is mistakenly assumed to always directly lower the total cross-entropy loss on held-out data",
+      "Cross-entropy loss and accuracy always move together, so this situation could not actually occur",
+      "Model B must be using a different loss function internally, making the comparison invalid"
+    ],
+    "correct": 0,
+    "explanation": "Cross-entropy loss rewards confident, well-calibrated correct predictions and penalizes weakly-confident ones even when they fall on the correct side of the threshold, so two models can have the same accuracy but differ in total loss based on how well-calibrated their probabilities are."
+  },
+  {
+    "id": "logreg-112",
+    "topic": "logistic-regression",
+    "subtopic": "Regularization (lambda/C)",
+    "difficulty": "recall",
+    "q": "In scikit-learn, what is the default penalty type applied by LogisticRegression if the penalty parameter is left unspecified?",
+    "options": [
+      "L2 regularization",
+      "L1 regularization",
+      "No regularization (penalty=None) is always the default",
+      "Elastic net combining L1 and L2 equally"
+    ],
+    "correct": 0,
+    "explanation": "Scikit-learn's LogisticRegression defaults to L2 regularization (penalty=\"l2\") with C=1.0, unless a different penalty or regularization strength is explicitly specified."
+  },
+  {
+    "id": "logreg-113",
+    "topic": "logistic-regression",
+    "subtopic": "Gradient descent for logistic regression",
+    "difficulty": "application",
+    "q": "A company trains a logistic regression model on streaming transaction data arriving continuously and wants to update the model incrementally without retraining from scratch on the full history each time. Which optimization approach best supports this incremental update pattern?",
+    "options": [
+      "Stochastic gradient descent, which can update the weights using one (or a few) new examples at a time",
+      "A closed-form normal equation solved once on the full historical dataset",
+      "An exhaustive grid search performed over all possible weight combinations for the model",
+      "Running k-means clustering directly on the raw transaction features instead of classifying them"
+    ],
+    "correct": 0,
+    "explanation": "Stochastic gradient descent updates weights incrementally using individual or small batches of examples, making it naturally suited to streaming or online learning settings where retraining on the full history each time is impractical."
+  },
+  {
+    "id": "logreg-114",
+    "topic": "logistic-regression",
+    "subtopic": "Multicollinearity and coefficient stability",
+    "difficulty": "recall",
+    "q": "Which of the following is a practical strategy for reducing multicollinearity among input features before fitting logistic regression, aside from applying regularization?",
+    "options": [
+      "Combining or removing some of the highly correlated features, e.g. via dimensionality reduction or domain-driven feature selection",
+      "Simply increasing the learning rate used during gradient descent training of the model",
+      "Switching the activation function entirely from sigmoid over to a hard step function",
+      "Deliberately adding even more highly correlated features in an attempt to balance out the ones already present, even though this would only make the multicollinearity problem measurably worse"
+    ],
+    "correct": 0,
+    "explanation": "Beyond regularization, multicollinearity can be addressed by removing or combining redundant correlated features (e.g. through domain knowledge or techniques like PCA), reducing the redundancy that destabilizes coefficient estimates."
+  }
+]
