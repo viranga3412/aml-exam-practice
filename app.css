@@ -237,3 +237,31 @@ textarea:focus, select:focus, button:focus-visible { outline: 2px solid var(--ac
   .hint { display: none; }
   .result-hero { flex-direction: column; align-items: flex-start; }
 }
+
+/* ---------- theory guide ---------- */
+.theory-panel { margin: 0 0 16px; border: 1px solid var(--rule); border-radius: 10px; background: var(--surface-2); overflow: hidden; }
+.theory-panel.open { border-color: var(--warn); }
+.theory-toggle { display: flex; align-items: center; gap: 8px; width: 100%; background: none; border: 0; color: var(--ink); font-weight: 600; font-size: 0.9rem; padding: 10px 14px; cursor: pointer; text-align: left; }
+.theory-toggle .chev { margin-left: auto; color: var(--muted); transition: transform 0.2s; }
+.theory-panel.open .chev { transform: rotate(180deg); }
+.theory-body { padding: 0 14px 14px; }
+.theory-card { display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr); gap: 16px; align-items: start; }
+.theory-tab-card, #theory-list .theory-card, .essay-theory .theory-card { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; padding: 14px; margin-bottom: 12px; box-shadow: var(--shadow); }
+.theory-card svg.anim { width: 100%; height: auto; display: block; background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; font-family: Inter, system-ui, sans-serif; }
+.theory-panel .theory-card svg.anim { background: var(--surface); }
+.theory-text h4 { margin: 0 0 6px; font-size: 1rem; }
+.theory-text ul { margin: 0; padding-left: 18px; font-size: 0.9rem; }
+.theory-text li { margin-bottom: 4px; }
+.theory-text code { font: 0.8rem "JetBrains Mono", ui-monospace, monospace; background: var(--surface-2); padding: 1px 4px; border-radius: 4px; }
+.formula { margin-top: 8px; font: 0.86rem/1.5 "JetBrains Mono", ui-monospace, monospace; background: var(--accent-soft); color: var(--ink); padding: 6px 10px; border-radius: 6px; overflow-x: auto; }
+.trap { margin-top: 8px; font-size: 0.86rem; background: var(--bad-soft); border-left: 3px solid var(--bad); padding: 6px 10px; border-radius: 0 6px 6px 0; }
+.search { width: 100%; font: inherit; font-size: 0.95rem; color: var(--ink); background: var(--surface-2); border: 1.5px solid var(--rule); border-radius: 10px; padding: 10px 14px; }
+.theory-index { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 0; }
+.theory-index a { font-size: 0.8rem; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 4px 10px; border-radius: 999px; text-decoration: none; }
+.theory-group h2 { scroll-margin-top: 12px; }
+.essay-theory { margin: 0 0 14px; background: var(--surface-2); border-radius: 10px; padding: 10px 12px; }
+.essay-theory summary { cursor: pointer; font-weight: 600; font-size: 0.9rem; }
+.essay-theory[open] summary { margin-bottom: 10px; }
+@media (max-width: 640px) {
+  .theory-card { grid-template-columns: 1fr; }
+}

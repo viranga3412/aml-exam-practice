@@ -45,9 +45,9 @@ const $ = (id) => document.getElementById(id);
 document.querySelectorAll(".tab").forEach((btn) => {
   btn.addEventListener("click", () => {
     document.querySelectorAll(".tab").forEach((b) => { b.classList.toggle("active", b === btn); b.setAttribute("aria-selected", b === btn); });
-    $("tab-mcq").hidden = btn.dataset.tab !== "mcq";
-    $("tab-essay").hidden = btn.dataset.tab !== "essay";
+    ["mcq", "essay", "theory"].forEach((name) => ($(`tab-${name}`).hidden = btn.dataset.tab !== name));
     if (btn.dataset.tab === "essay") renderEssayList();
+    if (btn.dataset.tab === "theory") renderTheoryTab();
     try { localStorage.setItem("aml-tab", btn.dataset.tab); } catch (e) { /* ignore */ }
   });
 });
@@ -59,6 +59,9 @@ const countSelect = $("count-select");
 const modeSelect = $("mode-select");
 const kindSelect = $("kind-select");
 const prioritizeMissed = $("prioritize-missed");
+const theorySelect = $("theory-select");
+try { const saved = localStorage.getItem("aml-theory-mode"); if (saved) theorySelect.value = saved; } catch (e) { /* ignore */ }
+theorySelect.addEventListener("change", () => { try { localStorage.setItem("aml-theory-mode", theorySelect.value); } catch (e) { /* ignore */ } });
 
 const topicsPresent = [...new Set(EXAM_BANK.map((q) => q.topic))];
 topicsPresent.sort((a, b) => ORDER.indexOf(a) - ORDER.indexOf(b));
@@ -230,6 +233,7 @@ function renderQuestion() {
     qOptions.appendChild(b);
   });
 
+  renderTheoryPanel(q);
   paintAnswerState(false);
   prevBtn.disabled = session.index === 0;
   nextBtn.textContent = session.index + 1 >= session.questions.length ? "Finish" : "Next →";
@@ -277,6 +281,7 @@ function choose(i) {
   if (isInstant() && prev !== null) return; // instant answers are final
   session.answers[session.index] = i;
   if (isInstant()) recordAnswer(q.id, i === q.correct);
+  if (isInstant() && theorySelect.value === "after") setTheoryOpen(true);
   paintAnswerState(true);
   renderBar();
   if (isInstant()) nextBtn.focus({ preventScroll: true });
@@ -301,6 +306,7 @@ document.addEventListener("keydown", (e) => {
   if ($("screen-quiz").hidden || $("tab-mcq").hidden) return;
   if (e.target.matches("input, textarea, select") || e.metaKey || e.ctrlKey || e.altKey) return;
   const k = e.key.toUpperCase();
+  if (k === "T") { e.preventDefault(); if (!$("theory-panel").hidden) setTheoryOpen($("theory-body").hidden); return; }
   const n = currentQuestion().options.length;
   let idx = -1;
   if (/^[1-9]$/.test(k)) idx = parseInt(k, 10) - 1;
@@ -312,6 +318,66 @@ document.addEventListener("keydown", (e) => {
   }
   if (e.key === "ArrowLeft") { e.preventDefault(); prevBtn.click(); }
 });
+
+// ---------- Live theory panel ----------
+
+const theoryKeyFor = (q) => SUBTOPIC_THEORY[q.subtopic];
+
+function setTheoryOpen(open) {
+  $("theory-body").hidden = !open;
+  $("theory-toggle").setAttribute("aria-expanded", open);
+  $("theory-panel").classList.toggle("open", open);
+}
+
+function renderTheoryPanel(q) {
+  const key = theoryKeyFor(q), mode = theorySelect.value;
+  $("theory-panel").hidden = !key || mode === "off";
+  if (!key || mode === "off") return;
+  $("theory-title").textContent = `Theory: ${THEORY[key].title}`;
+  $("theory-body").innerHTML = theoryCardHtml(key, { hideTitle: true });
+  setTheoryOpen(mode === "learn");
+}
+$("theory-toggle").addEventListener("click", () => setTheoryOpen($("theory-body").hidden));
+
+// ---------- Theory tab ----------
+
+function theoryGroups() {
+  const groups = {};
+  EXAM_BANK.forEach((q) => {
+    const key = theoryKeyFor(q);
+    if (!key) return;
+    const seen = Object.values(groups).some((g) => g.includes(key));
+    if (!seen) (groups[q.topic] = groups[q.topic] || []).push(key);
+  });
+  return ORDER.filter((t) => groups[t]).map((t) => [t, groups[t]]);
+}
+
+let theoryRendered = false;
+function renderTheoryTab() {
+  const query = $("theory-search").value.trim().toLowerCase();
+  const groups = theoryGroups();
+  if (!theoryRendered) {
+    $("theory-index").innerHTML = groups.map(([t]) => `<a href="#th-${t}">${escHtml(TOPIC_META[t] || t)}</a>`).join("");
+    $("theory-list").innerHTML = groups.map(([t, keys]) => `
+      <section class="theory-group" id="th-${t}">
+        <h2>${escHtml(TOPIC_META[t] || t)}</h2>
+        ${keys.map((k) => theoryCardHtml(k)).join("")}
+      </section>`).join("");
+    theoryRendered = true;
+  }
+  let shown = 0;
+  $("theory-list").querySelectorAll(".theory-card").forEach((el) => {
+    const hit = !query || el.textContent.toLowerCase().includes(query);
+    el.hidden = !hit;
+    if (hit) shown += 1;
+  });
+  $("theory-list").querySelectorAll(".theory-group").forEach((g) => (g.hidden = !g.querySelector(".theory-card:not([hidden])")));
+  $("theory-index").hidden = !!query;
+  let empty = $("theory-empty");
+  if (!empty) { empty = document.createElement("p"); empty.id = "theory-empty"; empty.className = "muted"; $("theory-list").appendChild(empty); }
+  empty.textContent = shown ? "" : "No theory card matches that search.";
+}
+$("theory-search").addEventListener("input", renderTheoryTab);
 
 // ---------- Results ----------
 
@@ -465,6 +531,8 @@ function openEssay(id) {
     <div class="stem">${q.stem}</div>
     ${q.table ? renderTable(q.table) : ""}
     ${q.figure ? renderPlot(q.figure) : ""}
+    ${(ESSAY_THEORY[q.id] || []).length ? `<details class="essay-theory"><summary>💡 Theory you need for this question (${ESSAY_THEORY[q.id].map((k) => THEORY[k].title).join(" · ")})</summary>
+      ${ESSAY_THEORY[q.id].map((k) => theoryCardHtml(k)).join("")}</details>` : ""}
     <div id="essay-parts"></div>
     <div class="essay-total" id="essay-total"></div>`;
 
@@ -569,4 +637,4 @@ $("essay-back").addEventListener("click", () => {
 });
 
 // Restore last tab
-try { if (localStorage.getItem("aml-tab") === "essay") document.querySelector('.tab[data-tab="essay"]').click(); } catch (e) { /* ignore */ }
+try { const tab = localStorage.getItem("aml-tab"); if (tab === "essay" || tab === "theory") document.querySelector(`.tab[data-tab="${tab}"]`).click(); } catch (e) { /* ignore */ }

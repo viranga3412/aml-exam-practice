@@ -6,7 +6,7 @@
 <title>Applied ML Exam Practice</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="app.css?v=2">
+<link rel="stylesheet" href="app.css?v=4">
 </head>
 <body>
 <div class="page" id="app">
@@ -19,6 +19,7 @@
     <nav class="tabs" role="tablist">
       <button role="tab" class="tab active" data-tab="mcq" aria-selected="true">MCQ practice</button>
       <button role="tab" class="tab" data-tab="essay" aria-selected="false">Structured &amp; essay</button>
+      <button role="tab" class="tab" data-tab="theory" aria-selected="false">Theory</button>
     </nav>
   </header>
 
@@ -59,6 +60,13 @@
             <option value="visual">Only graph / table questions</option>
           </select>
         </label>
+        <label class="field"><span>Theory guide</span>
+          <select id="theory-select">
+            <option value="learn" selected>Learn mode: theory open while answering</option>
+            <option value="after">Show theory after I answer</option>
+            <option value="off">Off (pure exam practice)</option>
+          </select>
+        </label>
       </div>
       <label class="check-row"><input type="checkbox" id="prioritize-missed"> Put questions I got wrong before first</label>
 
@@ -80,12 +88,16 @@
         <p class="q-title" id="q-title"></p>
         <pre class="q-code" id="q-code" hidden><code id="q-code-text"></code></pre>
         <div id="q-extra"></div>
+        <div class="theory-panel" id="theory-panel">
+          <button class="theory-toggle" id="theory-toggle" aria-expanded="false"><span class="bulb">💡</span> <span id="theory-title">Theory</span><span class="chev" aria-hidden="true">▾</span></button>
+          <div class="theory-body" id="theory-body" hidden></div>
+        </div>
         <div class="q-options" id="q-options" role="radiogroup"></div>
         <div class="verdict" id="verdict" hidden></div>
         <div class="explanation-box" id="explanation-box"></div>
         <div class="quiz-actions">
           <button class="secondary" id="prev-btn">&larr; Back</button>
-          <span class="hint" id="key-hint">Keys: 1–4 or A–D to answer · Enter for next</span>
+          <span class="hint" id="key-hint">Keys: 1–4 or A–D answer · T theory · Enter next</span>
           <button class="primary" id="next-btn" disabled>Next &rarr;</button>
         </div>
       </article>
@@ -135,11 +147,22 @@
     </section>
   </main>
 
+  <!-- ================================================================ Theory -->
+  <main id="tab-theory" hidden>
+    <div class="hero">
+      <p>Every concept the questions test, with an animated diagram, the key points, the formula and the usual exam trap. Good for a last-night revision pass.</p>
+      <input type="search" id="theory-search" class="search" placeholder="Search: e.g. gamma, recall, drift, Laplace, OOB…" autocomplete="off">
+    </div>
+    <nav class="theory-index" id="theory-index"></nav>
+    <div id="theory-list"></div>
+  </main>
+
   <footer class="foot">Progress and drafts are saved in this browser only.</footer>
 </div>
-<script src="chart-render.js?v=2"></script>
-<script src="questions.js?v=2"></script>
-<script src="essays.js?v=2"></script>
-<script src="app.js?v=2"></script>
+<script src="chart-render.js?v=4"></script>
+<script src="questions.js?v=4"></script>
+<script src="essays.js?v=4"></script>
+<script src="theory.js?v=4"></script>
+<script src="app.js?v=4"></script>
 </body>
 </html>
